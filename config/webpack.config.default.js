@@ -54,7 +54,7 @@ module.exports = {
         }
       },
       {
-        test: /\.tsx$/i,
+        test: /\.jsx$/i,
         exclude: /node_modules/,
         use: [
           {
@@ -63,7 +63,7 @@ module.exports = {
               presets: [
                 ['@babel/preset-env', { useBuiltIns: 'usage', corejs: '2.0.0' }],
                 '@babel/preset-react',
-                '@babel/preset-typescript'
+                // '@babel/preset-typescript'
               ]
             }
           }

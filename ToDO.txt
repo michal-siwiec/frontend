@@ -1,0 +1,2 @@
+1) GraphQL
+2) Hot Module replacement plugin - let's use it
