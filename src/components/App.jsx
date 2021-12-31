@@ -8,8 +8,8 @@ const App = () => {
   return (
     <div className="wrapper">
       <h1>GraphQl</h1>
-      {/* <Messages /> */}
-      <Books />
+      <Messages />
+      {/* <Books /> */}
       {/* <Author /> */}
     </div>
   )

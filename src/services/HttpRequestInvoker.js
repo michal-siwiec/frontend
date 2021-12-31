@@ -7,6 +7,17 @@ const requestDemandsBody = method => {
   return httpMethodsWithBody.includes(method);
 }
 
+const invokeRequest = async (url, requestProperties) => {
+  try {
+    const resp = await fetch(url, requestProperties)
+    if(!resp.ok) throw new Error(`HTTP error: ${resp.statusText} HTTP status: ${resp.status}`)
+
+    return resp.json();
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 export default ({ method = 'GET', headers = HEADERS, data = {}, url } = {}) => {
   if (!isString(url)) throw new Error('URL has to be defined!')
 
@@ -16,7 +27,5 @@ export default ({ method = 'GET', headers = HEADERS, data = {}, url } = {}) => {
     ...(requestDemandsBody(method) && { body: JSON.stringify(data) })
   }
 
-  return fetch(url, requestProperties)
-         .then(resp => resp.json())
-  //! catch
+  return invokeRequest(url, requestProperties)
 }

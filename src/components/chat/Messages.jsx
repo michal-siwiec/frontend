@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import { API_ROOT } from '../../constants/API';
-import ConversationsChannel from '../actionCableConnectors/ConversationsChannel.jsx';
+import ActionCableConnector from '../actionCableConnector/Connector.jsx';
 import invokeHttpRequest from '../../services/HttpRequestInvoker.js';
 
 class Messages extends Component {
   constructor(props) {
     super(props)
-    this.actionCable = <ConversationsChannel handleReceivedConversation={this.handleReceivedConversation} />
+    this.actionCable = (
+      <ActionCableConnector 
+        handleReceivedConversation={this.handleReceivedConversation}
+        channel='ConversationsChannel'
+      />
+    )
     this.state = { messages: [] }
   }
 
