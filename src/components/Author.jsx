@@ -1,21 +1,11 @@
 import React from 'react';
-import { gql, useLazyQuery } from '@apollo/client';
+import { useLazyQuery } from '@apollo/client';
+import { GET_AUTHOR } from '../graphql/queries/author';
 
 const Author = () => {
-  const GET_AUTHOR = gql(`
-    query($id: ID!) {
-      author: getAuthor(id: $id) {
-        id,
-        firstName,
-        lastName
-      }
-    }
-  `)
-
   const [getAuthor, { data, error, loading }] = useLazyQuery(GET_AUTHOR, {
     variables: { id: '78e92bc5-0518-4857-93da-196b0230ee9b' }
   })
-
 
   if(loading) return <h1>Logind...</h1>
   if(error) return <h1>Something went wrong!</h1>

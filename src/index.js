@@ -1,22 +1,16 @@
-
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './components/App.jsx';
-
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-} from "@apollo/client";
-
-const client = new ApolloClient({
-  uri: 'http://localhost:4000/',
-  cache: new InMemoryCache()
-});
+import { ApolloProvider } from "@apollo/client";
+import { ActionCableProvider } from 'react-actioncable-provider';
+import Client from './graphql/client.js';
+import { API_WS_ROOT } from './constants/API';
 
 ReactDOM.render(
-  <ApolloProvider client={client}>
-    <App />
+  <ApolloProvider client={Client}>
+    <ActionCableProvider url={API_WS_ROOT}>
+      <App />
+    </ActionCableProvider>
   </ApolloProvider>,
   document.querySelector('#wrapper')
 );

@@ -1,24 +1,8 @@
 import React from 'react';
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
+import { GET_BOOKS } from '../graphql/queries/book';
 
 const Books = () => {
-  const GET_BOOKS = gql(`
-    query {
-      books: getBooks {
-        id,
-        title,
-        comments {
-          id,
-          content
-        },
-        authors {
-          id,
-          firstName
-        }
-      }
-    }
-  `)
-
   // Pooling - odpytywanie
   // const { loading, error, data } = useQuery(GET_BOOKS, {
   //   pollInterval: 4000
