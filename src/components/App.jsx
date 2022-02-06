@@ -1,17 +1,21 @@
 import React from 'react';
 import '../styles/style.scss';
-import Books from './Books.jsx';
-import Author from './Author.jsx';
-import Messages from './chat/Messages.jsx';
+import Grid from '@mui/material/Grid'
+import TopBar from './TopBar/TopBar.jsx';
+import Menu from './Menu/Menu.jsx';
+import Content from './Content/Content.jsx';
+import Aside from './Aside/Aside.jsx';
+import Footer from './Footer/Footer.jsx';
 
 const App = () => {
   return (
-    <div className="wrapper">
-      <h1>GraphQl</h1>
-      <Messages />
-      {/* <Books /> */}
-      {/* <Author /> */}
-    </div>
+    <Grid container maxWidth={1920} justify="center" >
+      <TopBar />
+      <Menu />
+      <Content />
+      <Aside />
+      <Footer />
+    </Grid>
   )
 }
 

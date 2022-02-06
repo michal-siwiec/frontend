@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLazyQuery } from '@apollo/client';
-import { GET_AUTHOR } from '../graphql/queries/author';
+import { GET_AUTHOR } from '../../graphql/queries/author';
 
 const Author = () => {
   const [getAuthor, { data, error, loading }] = useLazyQuery(GET_AUTHOR, {

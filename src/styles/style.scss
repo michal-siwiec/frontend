@@ -7,37 +7,8 @@
 body {
   background-color: darkgrey;
 
-  .wrapper {
-    width: 100%;
-    max-width: 1920px;
-    min-height: 300px;
-    border: 2px solid black;
-    text-align: center;
-    margin: 0 auto;
-
+  #wrapper {
     display: flex;
-    flex-wrap: wrap;
-
-    h1 {
-      flex-basis: 100%;
-    }
-
-    .part {
-      flex-basis: 50%;
-      min-height: 200px;
-      border: 2px solid black;
-      padding: 20px;
-    }
-
-    table, tbody, thead, tr,th, td {
-      padding: 5px;
-      border: 2px solid black;
-    }
-
-    table {
-      margin: 0 auto;
-    }
+    justify-content: center;
   }
 }
-
-
