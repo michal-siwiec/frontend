@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Grid from '@mui/material/Grid';
-
 import Box from '../reusable/Box.jsx';
 import Input from '../reusable/Input.jsx';
 import Button from '../reusable/Button.jsx';
-
+import { isEmpty } from 'lodash'; 
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../../graphql/mutations/add_user';
+import { password as passwordRegx } from '../../constants/regex.js';
 
 const Content = () => {
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -20,9 +20,15 @@ const Content = () => {
   const handleEmailOnChange = e => setEmail(e.target.value)
   const handlePasswordOnChange = e => setPassword(e.target.value)
   
-  const handleSubmit = e => {
-    e.preventDefault()
+  const isPasswordMatchToRegex = passwordRegx.test(password);
+  const isPictureLoaded = !isEmpty(avatars)
+  
+  const validForm = () => isPasswordMatchToRegex && isPictureLoaded
 
+  const handleSubmit = e => {
+    e.preventDefault(); 
+    if (!validForm()) return null;
+ 
     addAuthor({
       variables: { input: { email, password, avatars } }
     })
@@ -45,6 +51,7 @@ const Content = () => {
       <Box>
         <form enctype='multipart/form-data' onSubmit={handleSubmit}>
           <Input
+            type='email'
             placeholder='Email'
             onChange={handleEmailOnChange}
           />
