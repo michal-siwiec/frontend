@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Grid from '@mui/material/Grid';
 import Box from '../reusable/Box.jsx';
 import Input from '../reusable/Input.jsx';
@@ -13,8 +13,9 @@ const Content = () => {
   const [avatars, setAvatars] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const fileInput = useRef(null);
 
-  const [addAuthor, { data, error, loading }] = useMutation(ADD_USER)
+  const [addAuthor, { data, error, loading }] = useMutation(ADD_USER);
 
   const handleFileOnChange = e => setSelectedFiles([...selectedFiles, ...e.target.files])
   const handleEmailOnChange = e => setEmail(e.target.value)
@@ -22,16 +23,27 @@ const Content = () => {
   
   const isPasswordMatchToRegex = passwordRegx.test(password);
   const isPictureLoaded = !isEmpty(avatars)
-  
+
   const validForm = () => isPasswordMatchToRegex && isPictureLoaded
+  const invokeGraphqlRequest = () => (
+    addAuthor({
+      variables: { input: { email, password, avatars } }
+    })
+  )
+  const resetFormState = () => {
+    setSelectedFiles([]);
+    setAvatars([]);
+    setEmail('');
+    setPassword('');
+    fileInput.current.value = ""
+  };
 
   const handleSubmit = e => {
     e.preventDefault(); 
     if (!validForm()) return null;
  
-    addAuthor({
-      variables: { input: { email, password, avatars } }
-    })
+    invokeGraphqlRequest();
+    resetFormState();
   }
 
   useEffect(() => {
@@ -47,25 +59,26 @@ const Content = () => {
   return (
     <Grid xs={6} minHeight={'70vh'} border={1}>
       <h1>Create Account!</h1>
-      
       <Box>
         <form enctype='multipart/form-data' onSubmit={handleSubmit}>
           <Input
             type='email'
             placeholder='Email'
             onChange={handleEmailOnChange}
+            value={email}
           />
           <Input
             placeholder='Password'
             onChange={handlePasswordOnChange}
+            value={password}
           />
           <Input
             type='file'
             onChange={handleFileOnChange}
             inputProps={{ multiple: true }}
+            inputRef={fileInput}
           />
           <Button value='Upload' />
-
           <Box>
             { avatars.map(avatar => <img src={avatar.storagePath} />) }
           </Box>
