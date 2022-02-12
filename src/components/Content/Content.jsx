@@ -8,6 +8,8 @@ import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../../graphql/mutations/add_user';
 import { password as passwordRegx } from '../../constants/regex.js';
 
+import { Avatar } from '@mui/material';
+
 const Content = () => {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [avatars, setAvatars] = useState([]);
@@ -20,9 +22,14 @@ const Content = () => {
   const handleFileOnChange = e => setSelectedFiles([...selectedFiles, ...e.target.files])
   const handleEmailOnChange = e => setEmail(e.target.value)
   const handlePasswordOnChange = e => setPassword(e.target.value)
+  const handleAvatarOnClick = avatar_index => {
+    const transformedAvatars = avatars.map((avatar, index) => ({ ...avatar, main: index === avatar_index }))
+    setAvatars(transformedAvatars)
+  }
   
   const isPasswordMatchToRegex = passwordRegx.test(password);
-  const isPictureLoaded = !isEmpty(avatars)
+  const isPictureLoaded = !isEmpty(avatars);
+  const mainAvatar = avatars.find(avatar => avatar.main)?.storagePath;
 
   const validForm = () => isPasswordMatchToRegex && isPictureLoaded
   const invokeGraphqlRequest = () => (
@@ -80,9 +87,24 @@ const Content = () => {
           />
           <Button value='Upload' />
           <Box>
-            { avatars.map(avatar => <img src={avatar.storagePath} />) }
+            {
+              avatars.map((avatar, index) => (
+                <img
+                  src={avatar.storagePath}
+                  key={`avatar-${index}`}
+                  onClick={() => handleAvatarOnClick(index)}
+                />
+              ))
+            }
           </Box>
         </form>
+      </Box>
+      <Box>
+        <Avatar
+          alt={email}
+          src={mainAvatar}
+          sx={{ width: 64, height: 64 }}
+        />
       </Box>
     </Grid>
   )
