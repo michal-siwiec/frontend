@@ -8,6 +8,7 @@ const Box = ({ children }) => (
   </MUI_Box>
 );
 
+//! Box is not required
 Box.propTypes = {
   children: element.isRequired
 };

@@ -44,6 +44,7 @@
     "@mui/styled-engine-sc": "^5.1.0",
     "@types/styled-components": "^5.1.19",
     "browser-sync": "^2.27.7",
+    "framer-motion": "^6.2.6",
     "graphql": "^16.2.0",
     "lodash": "^4.17.21",
     "react": "^17.0.2",

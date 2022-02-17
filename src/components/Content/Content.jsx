@@ -1,20 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Grid from '@mui/material/Grid';
+import { Grid, Avatar, TextField } from '@mui/material';
+import { useMutation } from '@apollo/client';
+import { isEmpty } from 'lodash'; 
+import { ADD_USER } from '../../graphql/mutations/add_user';
+import { password as passwordRegx } from '../../constants/regex.js';
 import Box from '../reusable/Box.jsx';
 import Input from '../reusable/Input.jsx';
 import Button from '../reusable/Button.jsx';
-import { isEmpty } from 'lodash'; 
-import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../../graphql/mutations/add_user';
-import { password as passwordRegx } from '../../constants/regex.js';
-
-import { Avatar } from '@mui/material';
+import InfoBox from '../reusable/InfoBox.jsx';
+import DepartingBox from '../reusable/animatedContainers/DepartingBox.jsx'
 
 const Content = () => {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [avatars, setAvatars] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [userJustAdded, setUserJustAdded] = useState(false);
   const fileInput = useRef(null);
 
   const [addAuthor, { data, error, loading }] = useMutation(ADD_USER);
@@ -45,12 +46,20 @@ const Content = () => {
     fileInput.current.value = ""
   };
 
+  const handleVisibleUserAddedModal = () => {
+    setUserJustAdded(true)
+    setTimeout(() => {
+      setUserJustAdded(false)
+    }, 10000)
+  }
+
   const handleSubmit = e => {
     e.preventDefault(); 
     if (!validForm()) return null;
  
     invokeGraphqlRequest();
     resetFormState();
+    handleVisibleUserAddedModal()
   }
 
   useEffect(() => {
@@ -68,23 +77,29 @@ const Content = () => {
       <h1>Create Account!</h1>
       <Box>
         <form enctype='multipart/form-data' onSubmit={handleSubmit}>
-          <Input
-            type='email'
-            placeholder='Email'
-            onChange={handleEmailOnChange}
-            value={email}
-          />
-          <Input
-            placeholder='Password'
-            onChange={handlePasswordOnChange}
-            value={password}
-          />
-          <Input
-            type='file'
-            onChange={handleFileOnChange}
-            inputProps={{ multiple: true }}
-            inputRef={fileInput}
-          />
+          <DepartingBox order={1}>
+            <Input
+              type='email'
+              placeholder='Email'
+              onChange={handleEmailOnChange}
+              value={email}
+            />
+          </DepartingBox>
+          <DepartingBox order={2}>
+            <Input
+              placeholder='Password'
+              onChange={handlePasswordOnChange}
+              value={password}
+            />
+          </DepartingBox>
+          <DepartingBox order={3}>
+            <Input
+              type='file'
+              onChange={handleFileOnChange}
+              inputProps={{ multiple: true }}
+              inputRef={fileInput}
+            />
+          </DepartingBox>
           <Button value='Upload' />
           <Box>
             {
@@ -106,6 +121,7 @@ const Content = () => {
           sx={{ width: 64, height: 64 }}
         />
       </Box>
+      { userJustAdded && <InfoBox severity='warning' info='User was added succesfully'/> }
     </Grid>
   )
 }
