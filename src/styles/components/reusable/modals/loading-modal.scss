@@ -1,0 +1,17 @@
+.loading-modal {
+  @include flex-container;
+
+  &__content-wrapper {
+    padding: 1.5rem;
+    background-color: white;
+    text-align: center;
+  }
+
+  &__header {
+    margin-bottom: 1rem;    
+  }
+
+  &__loader.MuiCircularProgress-root {
+    color: black;
+  }
+}

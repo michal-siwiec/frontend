@@ -1,0 +1,13 @@
+.info-modal {
+  @include flex-container;
+
+  &__content-wrapper.MuiGrid-container {
+    width: 30%;
+    padding: 1.5rem;
+    background-color: white;
+  }
+
+  &__header {
+    margin-bottom: 1.5rem;
+  }
+}
