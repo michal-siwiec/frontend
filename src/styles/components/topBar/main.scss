@@ -1,0 +1,29 @@
+.top-bar {
+  margin-bottom: 7rem;
+
+  &__logo {
+    width: auto;
+    height: 3rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__list {
+    display: flex;
+    justify-content: end;
+
+    &--authentication {
+      justify-content: center;
+    }
+  }
+
+  &__list-item {
+    margin: 0 1rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

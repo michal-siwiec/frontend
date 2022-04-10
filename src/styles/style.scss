@@ -1,29 +1,4 @@
-@import 'variables/variables.scss';
-@import 'mixins/mixins.scss';
-@import 'components/reusable/modals/main.scss';
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-size: 12px;
-  background-color: darkgrey;
-
-  #wrapper {
-    display: flex;
-    justify-content: center;
-  }
-
-  img {
-    max-width: 200px;
-    height: auto;
-  }
-
-  .form-input {
-    border: 2px solid white;
-    border-radius: 10px;
-  }
-}
+@import 'variables.scss';
+@import 'mixins.scss';
+@import 'default.scss';
+@import 'components/main.scss';

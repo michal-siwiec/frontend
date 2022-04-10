@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $default-background-color;
+  font-size: $default-font-size;
+  font-family: $default-font-style, 'Arial';
+  color: $default-font-color;
+  font-weight: $default-font-weight;
+  line-height: $default-line-height;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: $default-font-color;
+}
+
+#wrapper {
+  max-width: $max-page-width;
+  margin: 0 auto;
+}
