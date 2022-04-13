@@ -1,18 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import '../styles/style.scss';
-import Grid from '@mui/material/Grid'
 import TopBar from './topBar/Index.jsx';
 import Content from './Content/Index.jsx';
 import Footer from './footer/Index.jsx';
 
-const App = () => {
-  return (
-    <Grid container>
-      <TopBar />
-      <Content />
-      <Footer />
-    </Grid>
-  )
-}
+const App = () => (
+  <Fragment>
+    <TopBar />
+    <Content />
+    <Footer />
+  </Fragment>
+)
 
 export default App;
