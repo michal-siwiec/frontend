@@ -1,0 +1,14 @@
+&__social-media {
+  border-top: .3px solid gray;
+}
+
+&__social-media-square {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: .7rem !important;
+  background-color: gray;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

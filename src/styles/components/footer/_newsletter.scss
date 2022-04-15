@@ -1,0 +1,20 @@
+&__newsletter {
+  position: relative;
+}
+
+&__newsletter-form {
+  position: absolute;
+  bottom: 5px;
+}
+
+&__newsletter-email {
+  padding: 3px 7px;
+}
+
+&__newsletter-submit {
+  padding: 3px 7px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

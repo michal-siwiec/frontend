@@ -14,12 +14,12 @@ import {
 
 export const contactInfo = [
   {
-    icon: <FontAwesomeIcon icon={faPhone} />,
+    icon: <FontAwesomeIcon icon={faMap} />,
     header: 'ADDRESS',
     value: '123 Street Name, City, England'
   },
   {
-    icon: <FontAwesomeIcon icon={faMap} />,
+    icon: <FontAwesomeIcon icon={faPhone} />,
     header: 'PHONE',
     value: '+48724131140'
   },

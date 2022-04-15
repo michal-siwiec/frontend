@@ -1,0 +1,14 @@
+&__payment-options {
+  border-top: .3px solid gray;
+}
+
+&__payment-options-list {
+  display: flex;
+}
+
+&__payment-options-picture {
+  width: auto;
+  height: 25px;
+  margin: 0 .5rem;
+  background-color: $white;
+}

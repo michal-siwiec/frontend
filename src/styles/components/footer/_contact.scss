@@ -1,0 +1,17 @@
+&__contact-elements {
+  width: 80%;
+}
+
+&__contact-element {
+  width: 80%;
+  padding: 10px 0;
+  border-bottom: .3px solid gray;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+&__contact-header {
+  color: white;
+}
