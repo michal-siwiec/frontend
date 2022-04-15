@@ -1,20 +1,16 @@
 import React from 'react';
-import Grid from '@mui/material/Grid';
+import CenteringContainer from '../reusable/CenteringContainer.jsx';
 
 const AllRightsReserved = () => (
-  <Grid
-    item
-    container
-    justifyContent="center"
-    alignItems="center"
-    xs={5}
-    borderTop={1}
+  <CenteringContainer
+    isItem
+    columnQuantity={5}
     className="footer__all-rights-reserved"
   >
     <h5>
       Porto eCommerce 2018. All Rights Reserved
     </h5>
-  </Grid>
+  </CenteringContainer>
 );
 
 export default AllRightsReserved;

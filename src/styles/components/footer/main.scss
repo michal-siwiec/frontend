@@ -74,6 +74,10 @@
     color: white;
   }
 
+  &__payment-options {
+    border-top: .3px solid gray;
+  }
+
   &__payment-options-list {
     display: flex;
   }
@@ -87,6 +91,11 @@
 
   &__all-rights-reserved {
     font-size: 16px;
+    border-top: .3px solid gray;
+  }
+
+  &__social-media {
+    border-top: .3px solid gray;
   }
 
   &__social-media-square {

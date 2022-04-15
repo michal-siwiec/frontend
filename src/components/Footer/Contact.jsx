@@ -1,6 +1,7 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import { contactInfo } from '../../data/components/footer.jsx';
+import CenteringContainer from '../reusable/CenteringContainer.jsx';
 
 const Contact = () => (
   <Grid item xs={12}>
@@ -11,15 +12,9 @@ const Contact = () => (
       {
         contactInfo.map(({ icon, header, value }) => (
           <Grid container className="footer__contact-element">
-            <Grid
-              container
-              item 
-              xs={1.5}
-              justifyContent="center"
-              alignItems="center"
-            >
+            <CenteringContainer columnQuantity={1.5} isItem>
               <span className="footer__icon">{icon}</span>
-            </Grid>
+            </CenteringContainer>
             <Grid item xs={10.5}>
               <h4 className="footer__contact-header">{header}</h4>
               <p className="footer__text">{value}</p>

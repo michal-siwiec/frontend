@@ -1,15 +1,11 @@
 import React from 'react';
-import Grid from '@mui/material/Grid';
 import { paymentOptionsInfo } from '../../data/components/footer.jsx';
+import CenteringContainer from '../reusable/CenteringContainer.jsx';
 
 const PaymentOptions = () => (
-  <Grid
-    item
-    container
-    justifyContent="center"
-    alignItems="center"
-    xs={4}
-    borderTop={1}
+  <CenteringContainer
+    isItem
+    columnQuantity={4}
     className="footer__payment-options"
   >
     <ul className="footer__payment-options-list">
@@ -25,7 +21,7 @@ const PaymentOptions = () => (
         ))
       }
     </ul>
-  </Grid>
+  </CenteringContainer>
 );
 
 export default PaymentOptions;

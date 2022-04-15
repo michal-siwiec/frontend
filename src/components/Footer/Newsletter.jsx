@@ -7,7 +7,9 @@ const Newsletter = () => (
       NEWSLETTER
     </header>
     <Grid item>
-      Get all the nawest information on Events,<br />sales and offers.<br/>Sign up for newsletter today.
+      Get all the nawest information on Events,
+      <br />sales and offers.
+      <br/>Sign up for newsletter today.
     </Grid>
     <Grid item className="footer__newsletter-form">
       <input type="email" className="footer__newsletter-email" />
