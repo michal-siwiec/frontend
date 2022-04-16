@@ -2,7 +2,7 @@ import React, { Fragment, useState, useRef, useEffect } from 'react';
 import { useMutation } from '@apollo/client';
 import { REGISTER_USER, TEST_USER } from '../../../graphql/mutations/user';
 import AvatarsGenerator from '../../../services/RegisterForm/AvatarsGenerator';
-import RegisterFormValidator from '../../../services/RegisterForm/RegisterFormValidator';
+import RegisterFormValidator from '../../../validators/registerFormValidator';
 import Input from '../../reusable/Input.jsx';
 import Button from '../../reusable/Button.jsx';
 import DepartingBox from '../../reusable/animatedContainers/DepartingBox.jsx'
@@ -33,7 +33,7 @@ const Form = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    const formValidator = new RegisterFormValidator({ password, avatars });
+    const formValidator = new RegisterFormValidator({ password, email, avatars });
     if (!formValidator.valid()) return null;
 
     registerUser({ variables: { input: { email, password, avatars } } })
