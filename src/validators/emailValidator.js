@@ -9,12 +9,11 @@ class EmailValidator {
 
   valid() {
     return this.#isEmailMatchToRegex();
-  };
+  }
 
   #isEmailMatchToRegex() {
-    // return emailRegx.test(this.#email)
-    return true;
-  };
-};
+    return emailRegx.test(this.#email);
+  }
+}
 
 export default EmailValidator;

@@ -1,31 +1,26 @@
 import React from 'react';
-import { string, func } from 'prop-types';
-import { Button as  MUI_Button} from '@mui/material';
+import { Button as MuiButton } from '@mui/material';
+import { propTypes, defaultProps } from '../../props/reusable/button';
 import Box from './Box.jsx';
 
-const Button = ({ type, variant, value, onClick }) => (
+const Button = ({
+  type,
+  variant,
+  value,
+  onClick
+}) => (
   <Box>
-    <MUI_Button
+    <MuiButton
       type={type}
       variant={variant}
       onClick={onClick}
     >
       {value}
-    </MUI_Button>
+    </MuiButton>
   </Box>
-)
+);
 
-Button.propTypes = {
-  type: string,
-  variant: string,
-  value: string.isRequired,
-  onClick: func
-};
-
-Button.defaultProps = {
-  type: 'submit',
-  variant: 'outlined',
-  onClick: () => {}
-};
+Button.propTypes = propTypes;
+Button.defaultProps = defaultProps;
 
 export default Button;

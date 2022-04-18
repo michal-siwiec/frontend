@@ -1,11 +1,11 @@
 import React from 'react';
 import { element } from 'prop-types';
-import { Box as MUI_Box} from '@mui/material';
+import { Box as MuiBox } from '@mui/material';
 
 const Box = ({ children }) => (
-  <MUI_Box>
+  <MuiBox>
     {children}
-  </MUI_Box>
+  </MuiBox>
 );
 
 //! Box is not required

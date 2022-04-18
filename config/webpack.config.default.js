@@ -46,28 +46,15 @@ module.exports = {
         test: /\.(js|jsx)$/i,
         loader: 'babel-loader',
         exclude: /node_modules/,
+        resolve: {
+          extensions: [".js", ".jsx"]
+        },
         options: {
           presets: [
             ['@babel/preset-env', { useBuiltIns: 'usage', corejs: '2.0.0' }],
             '@babel/preset-react'
           ]
         }
-      },
-      {
-        test: /\.jsx$/i,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: [
-                ['@babel/preset-env', { useBuiltIns: 'usage', corejs: '2.0.0' }],
-                '@babel/preset-react',
-                // '@babel/preset-typescript'
-              ]
-            }
-          }
-        ]
       }
     ]
   },

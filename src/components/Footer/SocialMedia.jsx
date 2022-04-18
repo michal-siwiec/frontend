@@ -15,7 +15,7 @@ const SocialMedia = () => (
         </Grid>
       ))
     }
- </CenteringContainer>
+  </CenteringContainer>
 );
 
 export default SocialMedia;

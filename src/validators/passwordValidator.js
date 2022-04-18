@@ -9,10 +9,10 @@ class PasswordValidator {
 
   valid() {
     this.#isPasswordMatchToRegex();
-  };
+  }
 
   #isPasswordMatchToRegex() {
-    return passwordRegx.test(this.#password)
+    return passwordRegx.test(this.#password);
   }
 }
 

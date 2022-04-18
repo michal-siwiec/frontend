@@ -4,7 +4,7 @@ import Contact from './Contact.jsx';
 import MyAccount from './MyAccount.jsx';
 import MainFeatures from './MainFeatures.jsx';
 import Newsletter from './Newsletter.jsx';
-import PaymentOptions from './PaymentOptions.jsx'
+import PaymentOptions from './PaymentOptions.jsx';
 import AllRightsReserved from './AllRightsReserved.jsx';
 import SocialMedia from './SocialMedia.jsx';
 
@@ -26,6 +26,6 @@ const Footer = () => (
       </Grid>
     </Grid>
   </footer>
-)
+);
 
 export default Footer;

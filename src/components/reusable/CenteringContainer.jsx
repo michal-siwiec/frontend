@@ -1,8 +1,13 @@
 import React from 'react';
-import { propTypes, defaultProps } from '../../props/reusable/centeringContainer.js';
 import Grid from '@mui/material/Grid';
+import { propTypes, defaultProps } from '../../props/reusable/centeringContainer';
 
-const CenteringContainer = ({ children, columnQuantity, className, isItem }) => (
+const CenteringContainer = ({
+  children,
+  columnQuantity,
+  className,
+  isItem
+}) => (
   <Grid
     justifyContent="center"
     alignItems="center"
@@ -10,11 +15,11 @@ const CenteringContainer = ({ children, columnQuantity, className, isItem }) => 
     className={className}
     item={isItem}
     container
-    >
-      {children}
+  >
+    {children}
   </Grid>
-)
-    
+);
+
 CenteringContainer.propTypes = propTypes;
 CenteringContainer.defaultProps = defaultProps;
 

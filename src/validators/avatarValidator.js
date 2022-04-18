@@ -1,4 +1,4 @@
-import { isEmpty } from 'lodash'; 
+import { isEmpty } from 'lodash';
 
 class AvatarValidator {
   #avatars;
@@ -9,11 +9,11 @@ class AvatarValidator {
 
   valid() {
     return this.#isPictureLoaded();
-  };
+  }
 
   #isPictureLoaded() {
     return !isEmpty(this.#avatars);
   }
-};
+}
 
 export default AvatarValidator;

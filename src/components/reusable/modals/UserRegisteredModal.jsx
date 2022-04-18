@@ -1,12 +1,12 @@
 import React from 'react';
 import { Grid, Modal } from '@mui/material';
+import { propTypes } from '../../../props/reusable/modals/userRegisteredModal';
 import Button from '../Button.jsx';
 
 const UserRegisteredModal = ({ open, setUserRegisterWithSuccess }) => {
   const blockClassName = 'info-modal';
 
   const handleLoginClick = () => {
-    console.log('logowanie!');
     setUserRegisterWithSuccess(false);
   };
 
@@ -22,14 +22,16 @@ const UserRegisteredModal = ({ open, setUserRegisterWithSuccess }) => {
           </h2>
         </Grid>
         <Grid item xs={4}>
-          <Button value='Anuluj' onClick={() =>  setUserRegisterWithSuccess(false)} />
+          <Button value="Anuluj" onClick={() => setUserRegisterWithSuccess(false)} />
         </Grid>
         <Grid item xs={6}>
-          <Button value='Zaloguj się' onClick={handleLoginClick} />
+          <Button value="Zaloguj się" onClick={handleLoginClick} />
         </Grid>
       </Grid>
     </Modal>
-  )
+  );
 };
+
+UserRegisteredModal.propTypes = propTypes;
 
 export default UserRegisteredModal;

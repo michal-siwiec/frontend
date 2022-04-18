@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal, CircularProgress } from '@mui/material';
+import { propTypes } from '../../../props/reusable/modals/loadingModal';
 
 const LoadingModal = ({ open, info }) => {
   const blockClassName = 'loading-modal';
@@ -16,7 +17,9 @@ const LoadingModal = ({ open, info }) => {
         <CircularProgress disableShrink className={`${blockClassName}__loader`} />
       </div>
     </Modal>
-  )
+  );
 };
+
+LoadingModal.propTypes = propTypes;
 
 export default LoadingModal;

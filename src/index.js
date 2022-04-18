@@ -1,14 +1,16 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './components/App.jsx';
+/* eslint react/jsx-filename-extension: 0 */
+
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import { ApolloProvider } from "@apollo/client";
 import { ActionCableProvider } from 'react-actioncable-provider';
-import Client from './graphql/client.js';
+import { ApolloProvider } from '@apollo/client';
+import client from './graphql/client';
 import { API_WS_ROOT } from './constants/API';
+import App from './components/App.jsx';
 
 ReactDOM.render(
-  <ApolloProvider client={Client}>
+  <ApolloProvider client={client}>
     <ActionCableProvider url={API_WS_ROOT}>
       <BrowserRouter>
         <App />

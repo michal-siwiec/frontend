@@ -1,11 +1,14 @@
 import React from 'react';
 import { ActionCable } from 'react-actioncable-provider';
+import { propTypes } from '../../props/connector';
 
 const ActionCableConnector = ({ channel, handleReceivedConversation }) => (
   <ActionCable
-    channel={{ channel: channel }}
+    channel={{ channel }}
     onReceived={handleReceivedConversation}
   />
-)
+);
+
+ActionCableConnector.propTypes = propTypes;
 
 export default ActionCableConnector;

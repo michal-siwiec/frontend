@@ -1,16 +1,18 @@
+/* eslint no-restricted-syntax: 0, no-await-in-loop: 0 */
+
 class AvatarsGenerator {
   #files;
   #avatars;
 
   constructor(files) {
     this.#files = files;
-    this.#avatars = []
+    this.#avatars = [];
   }
 
   async generateAvatars() {
     for (const [index, file] of Object.entries(this.#files)) {
-      const avatarInBase64 = await this.#convertPictureToBase64(file);
-      const main = this.#isMainAvatar(index);
+      const avatarInBase64 = await AvatarsGenerator.#convertPictureToBase64(file);
+      const main = AvatarsGenerator.#isMainAvatar(index);
       const fileName = file.name;
 
       this.#avatars.push({ fileName, main, base64: avatarInBase64 });
@@ -19,16 +21,16 @@ class AvatarsGenerator {
     return this.#avatars;
   }
 
-  #convertPictureToBase64(file) {
+  static #convertPictureToBase64(file) {
     return new Promise(resolve => {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onloadend = () => resolve(reader.result);
-    })
+    });
   }
 
-  #isMainAvatar(index) {
-    return index === '0' ? true : false;
+  static #isMainAvatar(index) {
+    return index === '0';
   }
 }
 
