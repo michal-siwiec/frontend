@@ -1,9 +1,5 @@
-&__contact-elements {
-  width: 80%;
-}
-
 &__contact-element {
-  width: 80%;
+  width: fit-content;
   padding: 10px 0;
   border-bottom: .3px solid gray;
 
@@ -14,4 +10,10 @@
 
 &__contact-header {
   color: white;
+}
+
+@media only screen and (min-width: $xl-breakpoint) {
+  &__contact-elements {
+    width: 80%;
+  }
 }

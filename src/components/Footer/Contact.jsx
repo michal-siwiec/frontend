@@ -12,7 +12,10 @@ const Contact = () => (
       {
         contactInfo.map(({ icon, header, value }) => (
           <Grid container className="footer__contact-element">
-            <CenteringContainer columnQuantity={1.5} isItem>
+            <CenteringContainer
+              columnQuantity={1.5}
+              isItem
+            >
               <span className="footer__icon">{icon}</span>
             </CenteringContainer>
             <Grid item xs={10.5}>

@@ -1,18 +1,13 @@
-&__newsletter {
-  position: relative;
-}
-
 &__newsletter-form {
-  position: absolute;
-  bottom: 5px;
+  max-width: fit-content;
 }
 
 &__newsletter-email {
-  padding: 3px 7px;
+  border: 1px solid white !important;
 }
 
 &__newsletter-submit {
-  padding: 3px 7px;
+  border: 1px solid white !important;
 
   &:hover {
     cursor: pointer;

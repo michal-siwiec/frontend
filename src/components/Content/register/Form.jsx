@@ -43,8 +43,8 @@ const Form = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    const formValidator = new RegisterFormValidator({ password, email, avatars });
-    if (!formValidator.valid()) return null;
+    // const formValidator = new RegisterFormValidator({ password, email, avatars });
+    // if (!formValidator.valid()) return null;
 
     registerUser({ variables: { input: { email, password, avatars } } });
     resetFormState();

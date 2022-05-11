@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 import { mainFeaturesInfo } from '../../data/components/footer.jsx';
 
 const MainFeatures = () => (
-  <Grid item xs={4}>
+  <Grid item xs={12} md={4} mb={{ xs: 3, lg: 0 }}>
     <header className="footer__header">
       MAIN FEATURES
     </header>

@@ -5,8 +5,13 @@ import { socialMediaInfo } from '../../data/components/footer.jsx';
 
 const SocialMedia = () => (
   <CenteringContainer
-    columnQuantity={3}
-    className="footer__social-media"
+    xs={12}
+    sm={6}
+    md={3}
+    order={{ sm: 2 }}
+    container
+    justifyContent="center"
+    alignItems="center"
   >
     {
       socialMediaInfo.map(({ icon }) => (

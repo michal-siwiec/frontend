@@ -6,13 +6,15 @@ const CenteringContainer = ({
   children,
   columnQuantity,
   className,
-  isItem
+  isItem,
+  sx
 }) => (
   <Grid
     justifyContent="center"
     alignItems="center"
     xs={columnQuantity}
     className={className}
+    sx={sx}
     item={isItem}
     container
   >

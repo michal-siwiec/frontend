@@ -1,12 +1,13 @@
 & {
-  padding: 2rem 6rem;
+  padding: 2rem 0;
   display: flex;
+  flex-wrap: wrap;
   background-color: black;
   color: gray;
 
   &__header {
     font-size: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     color: white;
   }
 
@@ -16,7 +17,6 @@
   }
 
   &__list {
-    list-style: circle;
     padding-left: 10px;
   }
 
@@ -33,5 +33,23 @@
   &__icon {
     font-size: 15px;
     color: white;
+  }
+
+  // &__bottom-wrapper {
+
+  // }
+}
+
+@media only screen and (min-width: $xl-breakpoint) {
+  & {
+    padding: 2rem 6rem;
+  }
+
+  &__header {
+    margin-bottom: 30px;
+  }
+
+  &__bottom-wrapper {
+    border-top: .3px solid gray;
   }
 }

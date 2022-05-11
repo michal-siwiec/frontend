@@ -1,12 +1,14 @@
-import { number, string } from 'prop-types';
+import { number, string, object } from 'prop-types';
 
 export const propTypes = {
   columnQuantity: number.isRequired,
   className: string,
-  isItem: false
+  isItem: false,
+  sx: object
 };
 
 export const defaultProps = {
   className: '',
-  isItem: false
+  isItem: false,
+  sx: {}
 };

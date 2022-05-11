@@ -8,18 +8,20 @@ import PaymentOptions from './PaymentOptions.jsx';
 import AllRightsReserved from './AllRightsReserved.jsx';
 import SocialMedia from './SocialMedia.jsx';
 
+// Add theme for set the same brakpoint like in _variables.scss
+
 const Footer = () => (
   <footer className="footer">
-    <Grid container xs={4}>
+    <Grid xs={12} lg={4} mb={{ xs: 3, lg: 0 }} px={2}>
       <Contact />
     </Grid>
-    <Grid container xs={8}>
-      <Grid container mb={5}>
+    <Grid container xs={12} lg={8} px={2}>
+      <Grid container mb={{ xs: 0, lg: 5 }}>
         <MyAccount />
         <MainFeatures />
         <Newsletter />
       </Grid>
-      <Grid container>
+      <Grid container className="footer__bottom-wrapper">
         <PaymentOptions />
         <AllRightsReserved />
         <SocialMedia />
