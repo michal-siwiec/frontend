@@ -15,7 +15,9 @@ const TopBar = () => (
       <input type="text" className="top-bar__search-engine-input" />
     </div>
     <div className="top-bar__login">
-      Logowanie
+      <Link to="/login">
+        Logowanie
+      </Link>
     </div>
     <div className="top-bar__menu">
       <ul className="top-bar__menu-list">
