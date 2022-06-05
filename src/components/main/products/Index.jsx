@@ -1,54 +1,29 @@
 import React from 'react';
+import { useQuery } from '@apollo/client';
+import { GET_PRODUCTS } from '../../../graphql/queries/products';
 
 const Products = () => {
   const productsBlockName = 'products'
   const productBlockName = 'product'
-  const products = [
-    {
-      name: 'Młotek ślusarski 500g',
-      price: 37.99
-    },
-    {
-      name: 'Młotek ślusarski 500g',
-      price: 37.99
-    },
-    {
-      name: 'Młotek ślusarski 500g',
-      price: 37.99
-    },
-    {
-      name: 'Młotek ślusarski 500g',
-      price: 37.99
-    },
-    {
-      name: 'Młotek ślusarski 500g',
-      price: 37.99
-    },
-    {
-      name: 'Młotek ślusarski 500g',
-      price: 37.99
-    },
-    {
-      name: 'Młotek ślusarski 500g',
-      price: 37.99
-    },
-    {
-      name: 'Młotek ślusarski 500g',
-      price: 37.99
-    }
-  ]
+
+  const { loading, error, data } = useQuery(GET_PRODUCTS);
+
+  if (loading) return <h1>Loading...</h1>
+  if (error) return <h1>Error</h1>
+
+  const { products } = data;
 
   return (
     <div className={`main__${productsBlockName} ${productsBlockName}`}>
       <h2 className={`${productsBlockName}__header`}>Polecane produkty</h2>
       <div className={`${productsBlockName}__list`}>
         {
-          products.map(({ name, price }) => (
+          products.map(({ name, price, picture }) => (
             <div className={`${productsBlockName}__${productBlockName} ${productBlockName}`}>
               <div className={`${productBlockName}__img-wrapper`}>
                 <img
-                  src="https://olx-development.s3.eu-central-1.amazonaws.com/m%C5%82otek.jpeg"
-                  alt=""
+                  src={picture}
+                  alt={name}
                   className={`${productBlockName}__img`}
                 />
               </div>
