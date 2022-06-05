@@ -1,13 +1,17 @@
 import React, { Fragment } from 'react';
 import '../styles/style.scss';
 import TopBar from './topBar/Index.jsx';
-import Content from './content/Index.jsx';
+import AdvertisingBox from './advertisingBox/Index.jsx';
+import Main from './main/Index.jsx';
+import Newsletter from './newsletter/Index.jsx';
 import Footer from './footer/Index.jsx';
 
 const App = () => (
   <Fragment>
     <TopBar />
-    <Content />
+    <AdvertisingBox />
+    <Main />
+    <Newsletter />
     <Footer />
   </Fragment>
 );

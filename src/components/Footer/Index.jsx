@@ -1,33 +1,31 @@
 import React from 'react';
-import Grid from '@mui/material/Grid';
-import Contact from './Contact.jsx';
-import MyAccount from './MyAccount.jsx';
-import MainFeatures from './MainFeatures.jsx';
-import Newsletter from './Newsletter.jsx';
-import PaymentOptions from './PaymentOptions.jsx';
-import AllRightsReserved from './AllRightsReserved.jsx';
-import SocialMedia from './SocialMedia.jsx';
+import { Link } from 'react-router-dom';
 
-// Add theme for set the same brakpoint like in _variables.scss
+const Footer = () => {
+  const blockName = 'footer'
 
-const Footer = () => (
-  <footer className="footer">
-    <Grid xs={12} lg={4} mb={{ xs: 3, lg: 0 }} px={2}>
-      <Contact />
-    </Grid>
-    <Grid container xs={12} lg={8} px={2}>
-      <Grid container mb={{ xs: 0, lg: 5 }}>
-        <MyAccount />
-        <MainFeatures />
-        <Newsletter />
-      </Grid>
-      <Grid container className="footer__bottom-wrapper">
-        <PaymentOptions />
-        <AllRightsReserved />
-        <SocialMedia />
-      </Grid>
-    </Grid>
-  </footer>
-);
+  return (
+    <div className={blockName}>
+      <div className={`${blockName}__logo`}>
+        <Link to="/">
+          <img
+            // src="https://olx-development.s3.eu-central-1.amazonaws.com/logo.svg"
+            alt="Budoman-logo"
+          />
+        </Link>
+      </div>
+      <div className={`${blockName}__privacy-policy`}>
+        Polityka prywatności
+      </div>
+      <div className={`${blockName}__shop-rules`}>
+        Regulamin sklepu
+      </div>
+      <div className={`${blockName}__contact`}>
+        Kontakt<br/>{`569${' '}659${' '}564`}
+      </div>
+    </div>
+  )
+};
+  
 
 export default Footer;
