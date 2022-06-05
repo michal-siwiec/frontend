@@ -7,7 +7,7 @@ const TopBar = () => (
       <Link to="/">
         <img
           // src="https://olx-development.s3.eu-central-1.amazonaws.com/logo.svg"
-          alt="Budoman-logo"
+          alt="Budoman logo"
         />
       </Link>
     </div>
@@ -22,8 +22,16 @@ const TopBar = () => (
     <div className="top-bar__menu">
       <ul className="top-bar__menu-list">
         <li className="top-bar-list-item">Produkty</li>
-        <li className="top-bar-list-item">O nas</li>
-        <li className="top-bar-list-item">Opinie</li>
+        <li className="top-bar-list-item">
+          <Link to="/about">
+            O nas
+          </Link>
+        </li>
+        <li className="top-bar-list-item">
+          <Link to="/opinions">
+            Opinie
+          </Link>
+        </li>
       </ul>
     </div>
     <div className="top-bar__basket">

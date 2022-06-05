@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { GET_PRODUCTS } from '../../../graphql/queries/products';
+import { GET_PRODUCTS } from '../../../graphql/queries/product';
 
 const Products = () => {
   const productsBlockName = 'products'
