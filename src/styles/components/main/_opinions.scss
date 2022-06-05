@@ -5,7 +5,7 @@
   }
 
   // mixin with flex-wrap
-  &__wrapper {
+  &__wrapper-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -57,5 +57,22 @@
 
   &__content {
     text-indent: 7px;
+  }
+}
+
+.add-opinion {
+  &__wrapper {
+    text-align: center;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  &__textarea {
+    width: 80%;
+    min-height: 150px;
+    border: 2px solid black;
   }
 }
