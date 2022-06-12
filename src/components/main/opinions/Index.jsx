@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Rating from '../../reusable/Rating.jsx';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { GET_OPINIONS } from '../../../graphql/queries/opinion';
 import { ADD_OPINION } from '../../../graphql/mutations/opinion';
 import useIsLogged from '../../../hooks/useIsLogged.jsx';
@@ -10,28 +10,36 @@ const Opinions = () => {
   const opinionBlockName = 'opinion';
   const addOpinionBlockName = 'add-opinion';
 
-  const { loading, error, data } = useQuery(GET_OPINIONS);
-  // alternatywnie mozna to tez trzymac w redux - chociaz moze to zly pomysl bo stan z reduxa sie traci
   const isLogged = useIsLogged();
   const [addedOpinion, setAddedOpinion] = useState('')
+  const [rating, setRating] = useState(0)
+
+  const { loading: loadingGetOpinions, error: errorGetOpinions, data: dataGetOpinions } = useQuery(GET_OPINIONS);
+  const [addOpinion, { loading, error, data }] = useMutation(ADD_OPINION);
 
   const handleAddOpinionOnChange = ({ target: { value } }) => {
     setAddedOpinion(value);
   };
 
+  const handleSetRating = ({ target: { value } }) => {
+    setRating(parseInt(value))
+  }
+
   const handleAddOpinionSubmit = () => {
-    console.log('submit')
+    addOpinion(
+      { variables: { input: { content: addedOpinion, mark: rating, userId: isLogged.userID } } }
+    )
   };
 
-  if (loading) return <h1>Loading...</h1>
-  if (error) return <h1>error</h1>
+  if (loadingGetOpinions) return <h1>Loading...</h1>
+  if (errorGetOpinions) return <h1>error</h1>
 
   return (
     <div className={`main__${opinionsBlockName} ${opinionsBlockName}`}>
       <h2 className={`${opinionsBlockName}__header`}>Opinie</h2>
       <div className={`${opinionsBlockName}__wrapper-list`}>
         {
-          data.opinions.map(({ content, mark, updatedAt, user: { email } }) => (
+          dataGetOpinions.opinions.map(({ content, mark, updatedAt, user: { email } }) => (
             <div className={`${opinionBlockName}`}>
               <div className={`${opinionBlockName}__picture`} />
               <div className={`${opinionBlockName}__user-name`}>{email}</div>
@@ -48,7 +56,7 @@ const Opinions = () => {
         }
       </div>
       {
-        isLogged && (
+        isLogged.status && (
           <div className={`${addOpinionBlockName}__wrapper`}>
             <h2 className={`${addOpinionBlockName}__header`}>Dodaj opinie</h2>
             <textarea
@@ -56,6 +64,7 @@ const Opinions = () => {
               value={addedOpinion}
               onChange={handleAddOpinionOnChange}
             />
+            <Rating value={rating} readOnly={false} onChange={handleSetRating} />
             <div>
               <input
                 type="submit"

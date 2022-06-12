@@ -4,9 +4,9 @@ import Cookies from 'js-cookie'
 
 const useIsLogged = () => {
   const userID = Cookies.get('user_id');
-  if (userID) return true;
+  if (!userID) return { status: true, userID: "bb00575b-cdbe-45d3-86d3-d680e589de01" };
 
-  return true;
+  return { status: false, userID: null }
 };
 
 export default useIsLogged;
