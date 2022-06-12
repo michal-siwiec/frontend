@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Rating from '../../reusable/Rating.jsx';
+import Rating from '../../reusable/rating/Index.jsx';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_OPINIONS } from '../../../graphql/queries/opinion';
 import { ADD_OPINION } from '../../../graphql/mutations/opinion';
@@ -12,7 +12,7 @@ const Opinions = () => {
 
   const isLogged = useIsLogged();
   const [addedOpinion, setAddedOpinion] = useState('')
-  const [rating, setRating] = useState(0)
+  const [rating, setRating] = useState(5)
 
   const { loading: loadingGetOpinions, error: errorGetOpinions, data: dataGetOpinions } = useQuery(GET_OPINIONS);
   const [addOpinion, { loading, error, data }] = useMutation(ADD_OPINION);
