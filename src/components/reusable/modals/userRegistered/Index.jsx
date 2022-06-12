@@ -1,10 +1,10 @@
 import React from 'react';
 import { Grid, Modal } from '@mui/material';
-import { propTypes } from '../../../props/reusable/modals/userRegisteredModal';
-import Button from '../Button.jsx';
+import { propTypes } from './types';
+import Button from '../../Button.jsx';
 
 const UserRegisteredModal = ({ open, setUserRegisterWithSuccess }) => {
-  const blockClassName = 'info-modal';
+  const blockName = 'info-modal';
 
   const handleLoginClick = () => {
     setUserRegisterWithSuccess(false);
@@ -13,11 +13,11 @@ const UserRegisteredModal = ({ open, setUserRegisterWithSuccess }) => {
   return (
     <Modal
       open={open}
-      className={blockClassName}
+      className={blockName}
     >
-      <Grid container spacing={3} className={`${blockClassName}__content-wrapper`}>
+      <Grid container spacing={3} className={`${blockName}__content-wrapper`}>
         <Grid item xs={12}>
-          <h2 className={`${blockClassName}__header`}>
+          <h2 className={`${blockName}__header`}>
             Twoje konto zostało pomyślnie założone!
           </h2>
         </Grid>

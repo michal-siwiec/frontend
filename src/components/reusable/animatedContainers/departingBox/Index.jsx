@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { propTypes } from '../../../props/reusable/departingBox';
+import { propTypes } from './types';
 
 const DepartingBox = ({ children, order }) => (
   <motion.div

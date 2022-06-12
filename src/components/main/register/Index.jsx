@@ -6,13 +6,13 @@ import React, {
 } from 'react';
 import { useMutation } from '@apollo/client';
 import { REGISTER_USER } from '../../../graphql/mutations/user';
-import AvatarsGenerator from '../../../services/RegisterForm/AvatarsGenerator';
+import AvatarsGenerator from '../../../services/AvatarsGenerator';
 import RegisterFormValidator from '../../../validators/registerFormValidator';
 import Input from '../../reusable/Input.jsx';
 import Button from '../../reusable/Button.jsx';
-import DepartingBox from '../../reusable/animatedContainers/DepartingBox.jsx';
-import LoadingModal from '../../reusable/modals/LoadingModal.jsx';
-import UserRegisteredModal from '../../reusable/modals/UserRegisteredModal.jsx';
+import DepartingBox from '../../reusable/animatedContainers/departingBox/Index.jsx';
+import LoadingModal from '../../reusable/modals/loading/Index.jsx'
+import UserRegisteredModal from '../../reusable/modals/userRegistered/Index.jsx';
 
 const Index = () => {
   const [avatars, setAvatars] = useState([]);
