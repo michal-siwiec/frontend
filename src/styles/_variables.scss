@@ -11,6 +11,8 @@ $white: #FFFFFF;
 $gray: #F0F3F8;
 $green: #6BA242;
 $black: #000000;
+$purple-gray: #202020;
+$light-gray: rgb(134, 156, 182);
 
 // Sizes
 $max-page-width: 1920px;
@@ -24,3 +26,8 @@ $default-line-height: 180%;
 
 // Background
 $default-background-color: darkgreen;
+
+// Footer
+$footer-background-color: $purple-gray;
+$footer-header-color: $light-gray;
+$footer-content-color: $white;

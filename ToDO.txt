@@ -4,3 +4,4 @@
 4) Better optimalization with useCallback and useMemo
 5) Remove Box - I dont need it
 6) npm run lint does not work as expect
+7) Put icomoon files to AWS

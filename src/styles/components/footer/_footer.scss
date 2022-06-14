@@ -1,7 +1,40 @@
 & {
   display: flex;
-  width: 100%;
+  justify-content: center;
   min-height: 200px;
-  background-color: white;
-  padding: 0 100px;
+  background-color: $footer-background-color;
+
+  &__part {
+    flex-basis: 15%;
+    margin: 0 50px;
+  }
+
+  &__header-part {
+    color: $footer-header-color;
+    transition: color .5s;
+    margin-bottom: 70px;
+
+    &:hover {
+      cursor: default;
+    }
+  }
+
+  &__content-part {
+    color: $footer-content-color;
+
+    &--products {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__content-part-element {
+    &:hover {
+      cursor: pointer;
+    }
+
+    &--product {
+      margin-right: 10px;
+    }
+  }
 }
