@@ -32,7 +32,7 @@ const Footer = () => {
   return (
     <foooter className={blockName}>
       <div className={`${blockName}__part ${blockName}__logo`}>
-        <h4 className={`${blockName}__header-part`}>
+        <h4 className={`${blockName}__part-header`}>
           <Link to="/">
             <img
               // src=""
@@ -44,10 +44,10 @@ const Footer = () => {
             {`ul. Przykładowa 5, 00-000 Warszawa`}
           </p>
         </h4>
-        <div className={`${blockName}__content-part`}>
+        <div className={`${blockName}__part-content`}>
           <div>
             <span
-              className={`${blockName}__content-part-element`}
+              className={`${blockName}__content-element`}
               onClick={handlePrivacyPolicyOnClick}
             >
               Polityka prywatności
@@ -55,7 +55,7 @@ const Footer = () => {
           </div>
           <div>
             <span
-              className={`${blockName}__content-part-element`}
+              className={`${blockName}__content-element`}
               onClick={handleShopRulesOnClick}  
             >
               Regulamin sklepu
@@ -64,13 +64,13 @@ const Footer = () => {
         </div>
       </div>
       <div className={`${blockName}__part`}>
-        <h4 className={`${blockName}__header-part`}>Produkty</h4>
-        <div className={`${blockName}__content-part ${blockName}__content-part--products`}>
+        <h4 className={`${blockName}__part-header`}>Produkty</h4>
+        <div className={`${blockName}__part-content ${blockName}__part-content--products`}>
           {
             productsCategories.map(({ name, path }) => (
               <div>
                 <Link to={path}>
-                  <span className={`${blockName}__content-part-element`}>
+                  <span className={`${blockName}__content-element`}>
                     {name}
                   </span>
                 </Link>
@@ -80,11 +80,11 @@ const Footer = () => {
         </div>
       </div>
       <div className={`${blockName}__part`}>
-        <h4 className={`${blockName}__header-part`}>Kontakt</h4>
-        <div className={`${blockName}__content-part`}>
+        <h4 className={`${blockName}__part-header`}>Kontakt</h4>
+        <div className={`${blockName}__part-content`}>
           <div>
             <span
-              className={`${blockName}__content-part-element`}
+              className={`${blockName}__content-element`}
               onClick={handleEmailOnClick}
             >
               Email: {shopMail}
@@ -92,7 +92,7 @@ const Footer = () => {
           </div>
           <div>
             <span
-              className={`${blockName}__content-part-element`}
+              className={`${blockName}__content-element`}
               onClick={handlePhoneOnClick}
             >
               { `Telefon: ${formattedPhoneNUmber(shopPhone)}` }
@@ -101,16 +101,27 @@ const Footer = () => {
         </div>
       </div>
       <div className={`${blockName}__part`}>
-        <h4 className={`${blockName}__header-part`}>Social media</h4>
-        <div className={`${blockName}__content-part`}>
+        <h4 className={`${blockName}__part-header`}>Social media</h4>
+        <div className={`${blockName}__part-content ${blockName}__part-content--socials`}>
           {
             socials.map(({ iconClass, url }) => (
-              <div>
-                <i className={iconClass} onClick={() => handleSocialOnClick(url)} />
+              <div className={`${blockName}__social`}>
+                <i
+                  className={`${iconClass} ${blockName}__content-element ${`${blockName}__social-icon`}`}
+                  onClick={() => handleSocialOnClick(url)}
+                />
               </div>
             ))
           }
         </div>
+      </div>
+      <div className={`${blockName}__copyright`}>
+        <p>
+          Copyright © 2022 The GraphQL Foundation. All rights reserved.
+        </p>
+        <p>
+          For web site terms of use, trademark policy and general project policies please see https://lfprojects.org.
+        </p>
       </div>
     </foooter>
   )

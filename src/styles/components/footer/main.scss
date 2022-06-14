@@ -1,3 +1,67 @@
 .footer {
-  @import 'footer.scss';
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-height: 200px;
+  background-color: $footer-background-color;
+  
+  &__part {
+    flex-basis: 17%;
+    margin: 20px 35px 0;
+  }
+
+  &__part-header {
+    color: #869cb6;
+    transition: color .5s;
+    margin-bottom: 20px;
+    font-weight: 300;
+    font-size: 15px;
+
+    &:hover {
+      cursor: default;
+    }
+  }
+
+  &__part-content {
+    color: $footer-content-color;
+
+    &--products {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &--socials {
+      display: flex;
+    }
+  }
+
+  &__social {
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
+  }
+
+  &__copyright {
+    flex-basis: 100%;
+    padding: 50px 0 30px;
+    text-align: center;
+    color: hsla(0, 0%, 100%, .4);
+  }
+
+  &__content-element {
+    transition: color .3s;
+
+    &:hover {
+      cursor: pointer;
+      color: #869cb6;
+    }
+
+    &--product {
+      margin-right: 10px;
+    }
+  }
+
+  &__social-icon {
+    font-size: 20px;
+  }
 }
