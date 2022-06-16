@@ -28,6 +28,7 @@
     &--products {
       display: flex;
       flex-wrap: wrap;
+      justify-content: space-between;
     }
 
     &--socials {
@@ -50,6 +51,7 @@
 
   &__content-element {
     transition: color .3s;
+    color: white;
 
     &:hover {
       cursor: pointer;

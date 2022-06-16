@@ -1,22 +1,18 @@
 import React from 'react';
 
-// It should be bcg - transmit variable from webpack to scss
+const AdvertisingBox = () => {
+  const blockName = 'advertising-box';
 
-const AdvertisingBox = () => (
-  <div className="advertising-box">
-    <img
-        src="https://olx-development.s3.eu-central-1.amazonaws.com/fotolia_budowlaniec_robotnik.jpeg"
-        alt="Pracownik budowlany"
-        className="advertising-box__picture"
-      />
-
-      <h2 className="advertising-box__header advertising-box__header--main">
-        Największy sklep budowlany w Polsce
-      </h2>
-      <h4 className="advertising-box__header advertising-box__header--secondary">
-        Tysiące produktów wysokiej jakości
-      </h4>
-  </div>
-);
+  return (
+    <div className={blockName}>
+      <div className={`${blockName}__background ${blockName}__background--dimmer`} />
+      <div className={`${blockName}__background ${blockName}__background--picture`} />
+      <div className={`${blockName}__text-wrapper`}>
+        <h2 className={`${blockName}__header`}>Największy sklep budowlany w Polsce</h2>
+        <p className={`${blockName}__text`}>Tysiące produktów wysokiej jakości</p>
+      </div>
+    </div>  
+  )
+}
 
 export default AdvertisingBox;
