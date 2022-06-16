@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { formattedPrice } from '../../../utils/price';
+import { STORAGE_URL } from '../../../constants/environment';
 
 const Product = ({ productProperties: { id, name, price, availableQuantity } }) => {
   const blockName = 'product';
@@ -18,7 +19,7 @@ const Product = ({ productProperties: { id, name, price, availableQuantity } }) 
     <div className={blockName}>
       <div className={`${blockName}__img-wrapper`}>
           <img
-            src="https://olx-development.s3.eu-central-1.amazonaws.com/m%C5%82otek.jpeg"
+            src={`${STORAGE_URL}/m%C5%82otek.jpeg`}
             alt="Zdjęcie produktu"
             className={`${blockName}__img`}
           />

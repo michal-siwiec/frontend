@@ -1,7 +1,7 @@
 /* eslint react/destructuring-assignment: 0 */
 
 import React, { Component } from 'react';
-import { API_ROOT } from '../../constants/API';
+import { API_ROOT } from '../../constants/environment';
 import ActionCableConnector from '../actionCableConnector/Connector.jsx';
 import invokeHttpRequest from '../../services/HttpRequestInvoker';
 

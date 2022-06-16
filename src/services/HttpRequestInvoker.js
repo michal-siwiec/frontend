@@ -1,5 +1,9 @@
 import { isString } from 'lodash';
-import { HEADERS } from '../constants/API';
+
+const HEADERS = {
+  'Content-Type': 'application/json',
+  Accept: 'application/json'
+};
 
 const requestDemandsBody = method => {
   const httpMethodsWithBody = ['POST', 'PATCH', 'PUT'];

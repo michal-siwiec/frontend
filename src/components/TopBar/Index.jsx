@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { STORAGE_URL } from '../../constants/environment';
 
 const TopBar = () => {
   const blockName = 'top-bar';
@@ -9,7 +10,8 @@ const TopBar = () => {
       <div className={`${blockName}__logo`}>
         <Link to="/">
           <img
-            // src="https://olx-development.s3.eu-central-1.amazonaws.com/logo.svg"
+            // src={`${STORAGE_URL}/logo.svg`}
+            src=""
             alt="Budoman logo"
           />
         </Link>

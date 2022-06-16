@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ActionCableProvider } from 'react-actioncable-provider';
 import { ApolloProvider } from '@apollo/client';
 import client from './graphql/client';
-import { API_WS_ROOT } from './constants/API';
+import { API_WS_ROOT } from './constants/environment';
 import App from './components/App.jsx';
 
 ReactDOM.render(
