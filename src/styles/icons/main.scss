@@ -1,5 +1,5 @@
 // $icon-storage-path: 'https://olx-development.s3.eu-central-1.amazonaws.com/icons/icomoon';
-// $icon-token: 'jrfkwq';
+// $icon-token: '1hjjdd';
 
 // @font-face {
 //   font-family: 'icomoon';
@@ -39,6 +39,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-tooltip_prompt:before {
+  content: "\e905";
+}
 .icon-tiktok:before {
   content: "\e901";
 }

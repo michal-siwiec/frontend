@@ -68,3 +68,11 @@ export const socials = [
 
 export const shopMail = 'siwiec.michal724@gmail.com';
 export const shopPhone = '724131140';
+
+export const shopRulesText = `
+  Pobierz zasady sklepuPobierz zasady sklepuPobierz zasady sklepuPobierz zasady sklepuPobierz zasady sklepuPobierz zasady sklepuPobierz zasady sklepuPobierz zasady sklepuPobierz zasady sklepuPobierz zasady sklepuPobierz zasady sklepuPobierz zasady sklepuPobierz zasady sklepuPobierz zasady sklepuPobierz zasady sklepu
+`;
+
+export const privacyPolicyText = `
+  Pobierz polityke prywatnościPobierz polityke prywatnościPobierz polityke prywatnościPobierz polityke prywatnościPobierz polityke prywatnościPobierz polityke prywatnościPobierz polityke prywatnościPobierz polityke prywatnościPobierz polityke prywatnościPobierz polityke prywatnościPobierz polityke prywatnościPobierz polityke prywatności
+`;

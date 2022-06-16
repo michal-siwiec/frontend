@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import FileDownloader from '../../services/fileDownloader';
-import { productsCategories, privacyPolicy, shopRules, socials, shopMail, shopPhone } from './data';
+import {
+  productsCategories,
+  privacyPolicy,
+  shopRules,
+  socials,
+  shopMail,
+  shopPhone,
+  shopRulesText,
+  privacyPolicyText
+} from './data';
 import { formattedPhoneNUmber } from '../../utils/phoneNumber';
+import Tooltip from '../reusable/tooltips/Index.jsx';
 
 const Footer = () => {
   const blockName = 'footer'
+
+  const [privacyPolicyTooltipOpen, setPrivacyPolicyTooltipOpen] = useState(false);
+  const [shopRulesTooltipOpen, setShopRulesTooltipOpen] = useState(false);
 
   const handlePrivacyPolicyOnClick = () => {
     const { url, outputName } = privacyPolicy;
@@ -29,13 +42,21 @@ const Footer = () => {
     window.open(url, '_blank');
   };
 
+  const handlePrivacyPolicyPromptOnHover = (value) => {
+    setPrivacyPolicyTooltipOpen(value);
+  };
+
+  const handleShopRulesPromptOnHover = (value) => {
+    setShopRulesTooltipOpen(value);
+  };
+
   return (
     <foooter className={blockName}>
       <div className={`${blockName}__part ${blockName}__logo`}>
         <h4 className={`${blockName}__part-header`}>
           <Link to="/">
             <img
-              // src=""
+              src=""
               alt="Budoman-logo"
               className={`${blockName}__logo-img`}
             />
@@ -45,21 +66,45 @@ const Footer = () => {
           </p>
         </h4>
         <div className={`${blockName}__part-content`}>
-          <div>
+          <div className={`${blockName}__attachment-wrapper`}>
             <span
               className={`${blockName}__content-element`}
               onClick={handlePrivacyPolicyOnClick}
             >
               Polityka prywatności
             </span>
+            <div
+              onMouseEnter={() => handlePrivacyPolicyPromptOnHover(true)}
+              onMouseLeave={() => handlePrivacyPolicyPromptOnHover(false)}
+            >
+              <Tooltip
+                open={privacyPolicyTooltipOpen}
+                headerText="Polityka prywatności"
+                secondaryText={privacyPolicyText}
+              >
+                <i className={`icon-tooltip_prompt ${blockName}__tooltip-prompt`} />
+              </Tooltip> 
+            </div>
           </div>
-          <div>
+          <div className={`${blockName}__attachment-wrapper`}>
             <span
               className={`${blockName}__content-element`}
-              onClick={handleShopRulesOnClick}  
+              onClick={handleShopRulesOnClick}
             >
               Regulamin sklepu
             </span>
+            <div
+              onMouseEnter={() => handleShopRulesPromptOnHover(true)}
+              onMouseLeave={() => handleShopRulesPromptOnHover(false)}
+            >
+              <Tooltip
+                open={shopRulesTooltipOpen}
+                headerText="Regulamin sklepu"
+                secondaryText={shopRulesText}
+              >
+                <i className={`icon-tooltip_prompt ${blockName}__tooltip-prompt`} />
+              </Tooltip>
+            </div>
           </div>
         </div>
       </div>

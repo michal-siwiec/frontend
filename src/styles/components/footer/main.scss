@@ -64,4 +64,14 @@
   &__social-icon {
     font-size: 20px;
   }
+
+  &__tooltip-prompt {
+    margin-left: 20px;
+  }
+
+  &__attachment-wrapper {
+    display: flex;
+    max-width: 175px;
+    justify-content: space-between;
+  }
 }

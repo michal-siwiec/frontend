@@ -1,0 +1,16 @@
+.tooltip {
+  .MuiTooltip-tooltip {
+    padding: 10px;
+  }
+
+  &__header {
+    font-weight: 500;
+    margin-bottom: 15px;
+  }
+
+  &__text {
+    color: white;
+    overflow: scroll;
+    max-height: 75px;
+  }
+}
