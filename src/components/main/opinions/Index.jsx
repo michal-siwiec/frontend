@@ -4,6 +4,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { GET_OPINIONS } from '../../../graphql/queries/opinion';
 import { ADD_OPINION } from '../../../graphql/mutations/opinion';
 import useIsLogged from '../../../hooks/useIsLogged.jsx';
+import AddedOpinionModal from '../../reusable/modals/addedOpinion/Index.jsx';
 
 const Opinions = () => {
   const opinionsBlockName = 'opinions';
@@ -11,11 +12,20 @@ const Opinions = () => {
   const addOpinionBlockName = 'add-opinion';
 
   const isLogged = useIsLogged();
-  const [addedOpinion, setAddedOpinion] = useState('')
+  const [addedOpinion, setAddedOpinion] = useState('');
   const [rating, setRating] = useState(5)
 
-  const { loading: loadingGetOpinions, error: errorGetOpinions, data: dataGetOpinions } = useQuery(GET_OPINIONS);
-  const [addOpinion, { loading, error, data }] = useMutation(ADD_OPINION);
+  const {
+    loading: loadingGetOpinions,
+    error: errorGetOpinions,
+    data: dataGetOpinions
+  } = useQuery(GET_OPINIONS);
+
+  const [addOpinion, {
+    loading: addedOpinionLoading,
+    error: addedOpinionError,
+    data: addedOpinionData
+  }] = useMutation(ADD_OPINION);
 
   const handleAddOpinionOnChange = ({ target: { value } }) => {
     setAddedOpinion(value);
@@ -76,6 +86,7 @@ const Opinions = () => {
           </div>
         )
       }
+      { addedOpinionData && <AddedOpinionModal /> }
     </div>
   )
 };
