@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { formattedPrice } from '../../../utils/price';
 
 const Product = ({ productProperties: { id, name, price, availableQuantity } }) => {
   const blockName = 'product';
@@ -24,7 +25,7 @@ const Product = ({ productProperties: { id, name, price, availableQuantity } }) 
         </div>
         <div className={`${blockName}__info-wrapper`}>
           <h2 className={`${blockName}__name`}>{name}</h2>
-          <h3 className={`${blockName}__price`}>{price}</h3>
+          <h3 className={`${blockName}__price`}>{formattedPrice(price)} zł</h3>
           <p className={`${blockName}__description`}>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores repellat ducimus, ea impedit id explicabo nihil obcaecati at nisi? Excepturi facilis voluptatibus facere similique doloremque deleniti amet sapiente neque? Quasi?
           </p>
