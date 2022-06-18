@@ -1,8 +1,10 @@
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
+require('dotenv').config()
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.js',
@@ -18,15 +20,16 @@ module.exports = {
         use: 'raw-loader'
       },
       {
-        test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader']
-      },
-      {
         test: /\.(scss|sass)$/i,
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
-          'sass-loader'
+          {
+            loader: 'sass-loader',
+            options: {
+              additionalData: "$storage-url: '" + process.env.STORAGE_URL + "';"
+            }
+          }
         ]
       },
       {
@@ -43,7 +46,6 @@ module.exports = {
           }
         ]
       },
-      //? Do I have to create separate {} with configuration for typescript?
       {
         test: /\.(js|jsx)$/i,
         loader: 'babel-loader',

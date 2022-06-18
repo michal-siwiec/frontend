@@ -17,7 +17,7 @@
 
     &--picture  {
       z-index: 1;
-      background-image: url("https://olx-development.s3.eu-central-1.amazonaws.com/fotolia_budowlaniec_robotnik.jpeg");
+      background-image: url("#{$storage-url}/fotolia_budowlaniec_robotnik.jpeg");
       background-repeat: no-repeat;
       background-size: cover;
     }
