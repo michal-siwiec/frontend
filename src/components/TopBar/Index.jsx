@@ -35,6 +35,7 @@ const TopBar = () => {
         </ul>
       </div>
       <div className={`${blockName}__basket`}>
+        <i className={`${blockName}__basket-icon icon-shop_basket`} />
         0,00 zł
       </div>
     </nav>
