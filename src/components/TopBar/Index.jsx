@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { STORAGE_URL } from '../../constants/environment';
+import { menuItemsProperties } from './data';
 
 const TopBar = () => {
   const blockName = 'top-bar';
@@ -9,11 +10,7 @@ const TopBar = () => {
     <nav className={blockName}>
       <div className={`${blockName}__logo`}>
         <Link to="/">
-          <img
-            // src={`${STORAGE_URL}/logo.svg`}
-            src=""
-            alt="Budoman logo"
-          />
+          <img src={`${STORAGE_URL}/logo.svg`} alt="Budoman logo" className={`${blockName}__logo-img`} />
         </Link>
       </div>
       <div className={`${blockName}__search-engine`}>
@@ -26,17 +23,15 @@ const TopBar = () => {
       </div>
       <div className={`${blockName}__menu`}>
         <ul className={`${blockName}__menu-list`}>
-          <li className={`${blockName}__list-item`}>Produkty</li>
-          <li className={`${blockName}__list-item`}>
-            <Link to="/about">
-              O nas
-            </Link>
-          </li>
-          <li className={`${blockName}__list-item`}>
-            <Link to="/opinions">
-              Opinie
-            </Link>
-          </li>
+          {
+            menuItemsProperties.map(({ path, name }) => (
+              <li className={`${blockName}__list-item`}>
+                <Link to={path} className={`${blockName}__item-link`}>
+                  {name}
+                </Link>
+              </li>
+            ))
+          }
         </ul>
       </div>
       <div className={`${blockName}__basket`}>

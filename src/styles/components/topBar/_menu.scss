@@ -2,3 +2,24 @@
   flex-basis: 80%;
   border: 2px solid black;
 }
+
+&__menu-list {
+  display: flex;
+}
+
+&__list-item {
+  &:not(:first-child, :last-child) {
+    margin: 0 10px;
+  }
+}
+
+&__item-link {
+  font-weight: 300;
+  font-size: 15px;
+  color: #869cb6;
+  transition: color .3s;
+
+  &:hover {
+    color: black;
+  }
+}

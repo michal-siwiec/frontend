@@ -13,6 +13,7 @@ import {
 } from './data';
 import { formattedPhoneNUmber } from '../../utils/phoneNumber';
 import Tooltip from '../reusable/tooltips/Index.jsx';
+import { STORAGE_URL } from '../../constants/environment';
 
 const Footer = () => {
   const blockName = 'footer'
@@ -56,7 +57,7 @@ const Footer = () => {
         <h4 className={`${blockName}__part-header`}>
           <Link to="/">
             <img
-              src=""
+              src={`${STORAGE_URL}/logo.svg`}
               alt="Budoman-logo"
               className={`${blockName}__logo-img`}
             />
