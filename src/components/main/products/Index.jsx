@@ -1,17 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useQuery } from '@apollo/client';
 import { GET_PRODUCTS } from '../../../graphql/queries/product';
 import Product from './Product.jsx';
+import { addProductsToBasket } from '../../../redux/products/actionsCreator';
 
 const Products = () => {
-  const blockName = 'products'
-
   const { loading, error, data } = useQuery(GET_PRODUCTS);
+  const [productsAlreadyInserted, setProductsAlreadyInserted] = useState(false);
+  const dispatch = useDispatch();
+  const blockName = 'products';
+  const products = data?.products || [];
+
+  const insertProductsToStore = () => {
+    if (!products || productsAlreadyInserted) return;
+
+    dispatch(addProductsToBasket(products));
+    setProductsAlreadyInserted(true);
+  };
 
   if (loading) return <h1>Loading...</h1>
   if (error) return <h1>Error</h1>
 
-  const { products } = data;
+  insertProductsToStore();
 
   return (
     <div className={`main__${blockName} ${blockName}`}>

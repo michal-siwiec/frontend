@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { formattedPrice } from '../../../utils/price';
 import { STORAGE_URL } from '../../../constants/environment';
+import { addProductToBasket } from '../../../redux/products/actionsCreator';
 
 const Product = ({ productProperties: { id, name, price, availableQuantity } }) => {
   const blockName = 'product';
@@ -12,7 +13,7 @@ const Product = ({ productProperties: { id, name, price, availableQuantity } }) 
   };
 
   const handleAddToBasketOnClick = () => {
-    console.log(`addedQuantity: ${selectedProductQuantity} productID: ${id}`)
+    dispatch(addProductToBasket({ id, quantity: selectedProductQuantity }));
   }
 
   return (
