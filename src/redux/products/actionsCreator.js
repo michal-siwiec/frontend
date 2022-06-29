@@ -1,3 +1,3 @@
-import { LOAD_PRODUCTS } from './types';
+import { createAction } from '@reduxjs/toolkit';
 
-export const loadProducts = (products) => ({ type: LOAD_PRODUCTS, payload: products });
+export const loadProducts = createAction('loadProducts');

@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { formattedPrice } from '../../../utils/price';
 import { STORAGE_URL } from '../../../constants/environment';
+import { addProductToBasket } from '../../../redux/basket/actionCreators';
 
 const Product = ({ productProperties: { id, name, price, availableQuantity } }) => {
-  const blockName = 'product';
-
+  const dispatch = useDispatch();
   const [selectedProductQuantity, setSelectedProductQuantity] = useState(1);
+  const blockName = 'product';
 
   const selectQuantityOnChange = ({ target: { value } }) => {
     setSelectedProductQuantity(value);
   };
 
   const handleAddToBasketOnClick = () => {
-  }
+    dispatch(addProductToBasket({ id, quantity: selectedProductQuantity }));
+  };
 
   return (
     <div className={blockName}>

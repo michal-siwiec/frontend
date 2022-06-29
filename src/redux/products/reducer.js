@@ -1,14 +1,13 @@
-import { LOAD_PRODUCTS } from './types';
+import { createReducer } from '@reduxjs/toolkit'
+import { loadProducts } from './actionsCreator';
 
 const initialState = { list: [] };
 
-const reducer = (state = initialState, { type, payload }) => {
-  switch(type) {
-    case LOAD_PRODUCTS:
-      return {...state, list: payload };
-    default: 
-      return state;
-  }
-};
+const reducer = createReducer(initialState, (builder) => {
+  builder
+    .addCase(loadProducts, (state, { payload }) => {
+      state.list = payload;
+    });
+});
 
 export default reducer;
