@@ -1,11 +1,11 @@
-import { ADD_PRODUCTS } from './types';
+import { LOAD_PRODUCTS } from './types';
 
-const initialState = { products: [] };
+const initialState = { list: [] };
 
 const reducer = (state = initialState, { type, payload }) => {
   switch(type) {
-    case ADD_PRODUCTS:
-      return {...state, products: payload };
+    case LOAD_PRODUCTS:
+      return {...state, list: payload };
     default: 
       return state;
   }

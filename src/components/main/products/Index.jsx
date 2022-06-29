@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useQuery } from '@apollo/client';
 import { GET_PRODUCTS } from '../../../graphql/queries/product';
 import Product from './Product.jsx';
-import { addProductsToBasket } from '../../../redux/products/actionsCreator';
+import { loadProducts } from '../../../redux/products/actionsCreator';
 
 const Products = () => {
   const { loading, error, data } = useQuery(GET_PRODUCTS);
@@ -15,7 +15,7 @@ const Products = () => {
   const insertProductsToStore = () => {
     if (!products || productsAlreadyInserted) return;
 
-    dispatch(addProductsToBasket(products));
+    dispatch(loadProducts(products));
     setProductsAlreadyInserted(true);
   };
 

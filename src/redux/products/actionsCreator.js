@@ -1,3 +1,3 @@
-import { ADD_PRODUCTS } from './types';
+import { LOAD_PRODUCTS } from './types';
 
-export const addProductsToBasket = (products) => ({ type: ADD_PRODUCTS, payload: products });
+export const loadProducts = (products) => ({ type: LOAD_PRODUCTS, payload: products });
