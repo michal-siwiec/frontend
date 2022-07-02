@@ -10,7 +10,7 @@ const TopBar = () => {
     <nav className={blockName}>
       <div className={`${blockName}__logo`}>
         <Link to="/">
-          <img src={`${STORAGE_URL}/logo.svg`} alt="Budoman logo" className={`${blockName}__logo-img`} />
+          <img src={`${STORAGE_URL}/images/logo.svg`} alt="Budoman logo" className={`${blockName}__logo-img`} />
         </Link>
       </div>
       <div className={`${blockName}__search-engine`}>

@@ -24,7 +24,7 @@ const Product = ({ product: { id, name, price, availableQuantity } }) => {
     <div className={blockName}>
       <div className={`${blockName}__img-wrapper`}>
           <img
-            src={`${STORAGE_URL}/m%C5%82otek.jpeg`}
+            src={`${STORAGE_URL}/images/products/m%C5%82otek.jpeg`}
             alt="Zdjęcie produktu"
             className={`${blockName}__img`}
           />

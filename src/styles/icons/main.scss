@@ -1,31 +1,18 @@
-// $icon-storage-path: 'https://olx-development.s3.eu-central-1.amazonaws.com/icons/icomoon';
-// $icon-token: '1hjjdd';
-
-// @font-face {
-//   font-family: 'icomoon';
-//   src:  url('#{$icon-storage-path}/icomoon.eot?#{$icon-token}');
-//   src:  url('#{$icon-storage-path}/icomoon.eot?#{$icon-token}#iefix') format('embedded-opentype'),
-//     url('#{$icon-storage-path}/icomoon.ttf?#{$icon-token}') format('truetype'),
-//     url('#{$icon-storage-path}/icomoon.woff?#{$icon-token}') format('woff'),
-//     url('#{$icon-storage-path}/icomoon.svg?#{$icon-token}#icomoon') format('svg');
-//   font-weight: normal;
-//   font-style: normal;
-//   font-display: block;
-// }
+$icon-storage-path: "#{$storage-url}/icons/icomoon";
 
 @font-face {
   font-family: 'icomoon';
-  src:  url('/src/styles/icons/icomoon.eot') format('embedded-opentype'),
-    url('/src/styles/icons/icomoon.ttf') format('truetype'),
-    url('/src/styles/icons/icomoon.woff') format('woff'),
-    url('/src/styles/icons/icomoon.svg') format('svg');
+  src:  url('#{$icon-storage-path}/icomoon.eot');
+  src:  url('#{$icon-storage-path}/icomoon.eot') format('embedded-opentype'),
+        url('#{$icon-storage-path}/icomoon.ttf'),
+        url('#{$icon-storage-path}/icomoon.woff'),
+        url('#{$icon-storage-path}/icomoon.svg');
   font-weight: normal;
   font-style: normal;
-  font-display: block;
+  font-display: block;  
 }
 
 [class^="icon-"], [class*=" icon-"] {
-  /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
   speak: never;
   font-style: normal;
@@ -33,8 +20,6 @@
   font-variant: normal;
   text-transform: none;
   line-height: 1;
-
-  /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

@@ -1,3 +1,5 @@
+import { STORAGE_URL } from '../../constants/environment';
+
 export const productsCategories = [
   {
     name: 'Narzędzia na budowę',
@@ -35,12 +37,12 @@ export const productsCategories = [
 
 export const privacyPolicy = {
   outputName: 'polityka_prywatności.pdf',
-  url: 'https://png.pngtree.com/element_pic/16/11/12/b0fec90342cf839396e4595772e2ebc4.jpg'
+  url: `${STORAGE_URL}/documents/regulamin_sklepu.pdf`
 };
 
 export const shopRules = {
   outputName: 'regulamin_sklepu.pdf',
-  url: `https://static4.depositphotos.com/1006994/298/v/950/depositphotos_2983099-stock-illustration-grunge-design.jpg`
+  url: `${STORAGE_URL}/documents/polityka_prywatnosci.pdf`
 };
 
 export const socials = [
@@ -70,9 +72,9 @@ export const shopMail = 'siwiec.michal724@gmail.com';
 export const shopPhone = '724131140';
 
 export const shopRulesText = `
-  Pobierz zasady sklepuPobierz zasady sklepuPobierz zasady sklepuPobierz zasady sklepuPobierz zasady sklepuPobierz zasady sklepuPobierz zasady sklepuPobierz zasady sklepuPobierz zasady sklepuPobierz zasady sklepuPobierz zasady sklepuPobierz zasady sklepuPobierz zasady sklepuPobierz zasady sklepuPobierz zasady sklepu
+Regulamin sklepu internetowego to zbiór zasad i norm, regulujących procesy związane z dokonywanymi na stronie sklepu transakcjami. Również w regulaminie znajdziemy informację określające zasady komunikacji sklepu z klientem oraz odwrotnej możliwości. Często są tu zawarte również informacje o przesyłkach i płatnościach.
 `;
 
 export const privacyPolicyText = `
-  Pobierz polityke prywatnościPobierz polityke prywatnościPobierz polityke prywatnościPobierz polityke prywatnościPobierz polityke prywatnościPobierz polityke prywatnościPobierz polityke prywatnościPobierz polityke prywatnościPobierz polityke prywatnościPobierz polityke prywatnościPobierz polityke prywatnościPobierz polityke prywatności
+Polityka prywatności – dokument umieszczany na witrynie internetowej w celu poinformowania użytkowników o tym, jakie dane osobowe są o nich zbierane i jak będą wykorzystywane.
 `;

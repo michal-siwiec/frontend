@@ -57,7 +57,7 @@ const Footer = () => {
         <h4 className={`${blockName}__part-header`}>
           <Link to="/">
             <img
-              src={`${STORAGE_URL}/logo.svg`}
+              src={`${STORAGE_URL}/images/logo.svg`}
               alt="Budoman-logo"
               className={`${blockName}__logo-img`}
             />
