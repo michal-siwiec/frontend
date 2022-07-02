@@ -6,7 +6,7 @@ import { addProductToBasket, clearBasket } from '../../../../redux/basket/action
 import { STORAGE_URL } from '../../../../constants/environment';
 import { propTypes } from './props';
 
-const Product = ({ product: { id, name, price, availableQuantity } }) => {
+const Product = ({ product: { id, name, price, availableQuantity, picturePath } }) => {
   const dispatch = useDispatch();
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   const blockName = 'product';
@@ -24,7 +24,7 @@ const Product = ({ product: { id, name, price, availableQuantity } }) => {
     <div className={blockName}>
       <div className={`${blockName}__img-wrapper`}>
           <img
-            src={`${STORAGE_URL}/images/products/m%C5%82otek.jpeg`}
+            src={picturePath}
             alt="Zdjęcie produktu"
             className={`${blockName}__img`}
           />
