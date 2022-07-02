@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useQuery } from '@apollo/client';
 import { GET_PRODUCTS } from '../../../graphql/queries/product';
-import Product from './Product.jsx';
 import { loadProducts } from '../../../redux/products/actionsCreator';
+import Product from './product/Index.jsx';
 
 const Products = () => {
   const { loading, error, data } = useQuery(GET_PRODUCTS);
@@ -28,7 +28,9 @@ const Products = () => {
     <div className={`main__${blockName} ${blockName}`}>
       <h2 className={`${blockName}__header`}>Polecane produkty</h2>
       <div className={`${blockName}__list`}>
-        { products.map((product) => <Product productProperties={product} />) }
+        {
+          products.map((product) => <Product product={product} key={product.id} />)
+        }
       </div>
     </div>
   )

@@ -1,20 +1,23 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { formattedPrice } from '../../../utils/price';
-import { STORAGE_URL } from '../../../constants/environment';
-import { addProductToBasket } from '../../../redux/basket/actionCreators';
+import { formattedPrice } from '../../../../utils/price';
+import { generateAddedProductPayload } from './helper';
+import { addProductToBasket, clearBasket } from '../../../../redux/basket/actionCreators';
+import { STORAGE_URL } from '../../../../constants/environment';
+import { propTypes } from './props';
 
-const Product = ({ productProperties: { id, name, price, availableQuantity } }) => {
+const Product = ({ product: { id, name, price, availableQuantity } }) => {
   const dispatch = useDispatch();
-  const [selectedProductQuantity, setSelectedProductQuantity] = useState(1);
+  const [selectedQuantity, setSelectedQuantity] = useState(1);
   const blockName = 'product';
 
   const selectQuantityOnChange = ({ target: { value } }) => {
-    setSelectedProductQuantity(value);
+    setSelectedQuantity(value);
   };
 
   const handleAddToBasketOnClick = () => {
-    dispatch(addProductToBasket({ id, quantity: selectedProductQuantity }));
+    const payload = generateAddedProductPayload({ id, selectedQuantity });
+    dispatch(addProductToBasket(payload))
   };
 
   return (
@@ -37,7 +40,7 @@ const Product = ({ productProperties: { id, name, price, availableQuantity } }) 
               type="number"
               min={1}
               max={availableQuantity}
-              value={selectedProductQuantity}
+              value={selectedQuantity}
               className={`${blockName}__button`}
               onChange={selectQuantityOnChange}
             />
@@ -52,5 +55,7 @@ const Product = ({ productProperties: { id, name, price, availableQuantity } }) 
     </div>
   )
 };
+
+Product.propTypes = propTypes;
 
 export default Product;
