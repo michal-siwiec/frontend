@@ -23,6 +23,12 @@ const Login = () => {
     setPassword(value);
   };
 
+  const saveUserIdToLocalStore = () => {
+    localStorage.setItem("userID", data.user.id);
+  };
+
+  if (data?.user) saveUserIdToLocalStore();
+
   return (
     <div className={`main__${blockName} ${blockName}`}>
       <h2 className={`${blockName}__header`}>Logowanie / Mój profil</h2>

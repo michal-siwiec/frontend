@@ -66,7 +66,7 @@ const Opinions = () => {
         }
       </div>
       {
-        isLogged.status && (
+        isLogged && (
           <div className={`${addOpinionBlockName}__wrapper`}>
             <h2 className={`${addOpinionBlockName}__header`}>Dodaj opinie</h2>
             <textarea

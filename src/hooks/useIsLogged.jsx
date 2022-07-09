@@ -1,12 +1,10 @@
-import Cookies from 'js-cookie'
-
 // To bardzo naiwna metoda - ktos moze z palca ustawic cookie
 
 const useIsLogged = () => {
-  const userID = Cookies.get('user_id');
-  if (!userID) return { status: true, userID: "bb00575b-cdbe-45d3-86d3-d680e589de01" };
+  const userID = localStorage.getItem("userID")
+  if (userID) return true;
 
-  return { status: false, userID: null }
+  return false;
 };
 
 export default useIsLogged;

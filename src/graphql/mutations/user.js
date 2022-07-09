@@ -12,7 +12,7 @@ export const REGISTER_USER = gql`
 
 export const LOGIN_USER = gql`
   mutation loginUser($input: UserAuthenticationInput!) {
-    loginUser(input: $input) {
+    user: loginUser(input: $input) {
       id
     }
   }
