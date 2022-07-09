@@ -1,10 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { ALL_PRODUCTS_CATHEGORIES } from '../../graphql/queries/allProductsCathegories';
+import { mappedProductsCathegoriesName } from './helpers';
 import { STORAGE_URL } from '../../constants/environment';
 import { menuItemsProperties } from './data';
 
 const TopBar = () => {
   const blockName = 'top-bar';
+  const { loading, error, data } = useQuery(ALL_PRODUCTS_CATHEGORIES);
+  const productsCathegories = data?.productsCathegories;
+
+  if (loading) return <h1>Loading...</h1>
+  if (error) return <h1>Error</h1>
+
+  console.log(mappedProductsCathegoriesName(productsCathegories[0].name))
 
   return (
     <nav className={blockName}>
@@ -41,5 +51,5 @@ const TopBar = () => {
     </nav>
   )
 };
-  
+
 export default TopBar;
