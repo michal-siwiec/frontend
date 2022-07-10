@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { ALL_PRODUCTS_CATHEGORIES } from '../../graphql/queries/allProductsCathegories';
+import { LOGOUT_USER } from '../../graphql/mutations/user';
 import { mappedProductsCathegoriesName } from './helpers';
 import { STORAGE_URL } from '../../constants/environment';
 import { menuItemsProperties } from './data';
@@ -9,12 +11,18 @@ import { menuItemsProperties } from './data';
 const TopBar = () => {
   const blockName = 'top-bar';
   const { loading, error, data } = useQuery(ALL_PRODUCTS_CATHEGORIES);
+  const [logoutUser, { loading: loginData, loading: loadingData, error: errorData }] = useMutation(LOGOUT_USER);
   const productsCathegories = data?.productsCathegories;
+
+  const handleLogoutUser = () => {
+    const userID = localStorage.getItem('userID');
+    const payload = { input: { id: userID } };
+
+    logoutUser({ variables: payload });
+  };
 
   if (loading) return <h1>Loading...</h1>
   if (error) return <h1>Error</h1>
-
-  console.log(mappedProductsCathegoriesName(productsCathegories[0].name))
 
   return (
     <nav className={blockName}>
@@ -30,6 +38,9 @@ const TopBar = () => {
         <Link to="/login">
           Logowanie
         </Link>
+        <div onClick={handleLogoutUser}>
+          Wyloguj
+        </div>
       </div>
       <div className={`${blockName}__menu`}>
         <ul className={`${blockName}__menu-list`}>
