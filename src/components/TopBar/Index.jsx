@@ -1,16 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
-import { useMutation } from '@apollo/client';
+import { useSelector } from 'react-redux';
+import { useQuery, useMutation } from '@apollo/client';
 import { ALL_PRODUCTS_CATHEGORIES } from '../../graphql/queries/allProductsCathegories';
 import { LOGOUT_USER } from '../../graphql/mutations/user';
 import { mappedProductsCathegoriesName } from './helpers';
+import { countTotalPrice } from '../../utils/price';
 import { STORAGE_URL } from '../../constants/environment';
 import { menuItemsProperties } from './data';
 
 const TopBar = () => {
   const blockName = 'top-bar';
   const { loading, error, data } = useQuery(ALL_PRODUCTS_CATHEGORIES);
+  const addedProducts = useSelector(({ basket: { addedProducts } }) => addedProducts);
   const [logoutUser, { loading: loginData, loading: loadingData, error: errorData }] = useMutation(LOGOUT_USER);
   const productsCathegories = data?.productsCathegories;
 
@@ -57,7 +59,7 @@ const TopBar = () => {
       </div>
       <div className={`${blockName}__basket`}>
         <i className={`${blockName}__basket-icon icon-shop_basket`} />
-        0,00 zł
+        {countTotalPrice(addedProducts)}
       </div>
     </nav>
   )
