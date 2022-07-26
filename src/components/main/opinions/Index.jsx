@@ -50,7 +50,10 @@ const Opinions = () => {
       <div className={`${opinionsBlockName}__wrapper-list`}>
         {
           dataGetOpinions.opinions.map(({ content, mark, updatedAt, user: { email } }) => (
-            <div className={`${opinionBlockName}`}>
+            <div
+              className={`${opinionBlockName}`}
+              key={`${opinionBlockName}-${content}`}
+            >
               <div className={`${opinionBlockName}__picture`} />
               <div className={`${opinionBlockName}__user-name`}>{email}</div>
               <div className={`${opinionBlockName}__user-email`}>{email}</div>

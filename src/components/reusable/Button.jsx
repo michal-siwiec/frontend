@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button as MuiButton } from '@mui/material';
 import { propTypes, defaultProps } from '../../props/reusable/button';
-import Box from './Box.jsx';
 
 const Button = ({
   type,
@@ -9,7 +8,7 @@ const Button = ({
   value,
   onClick
 }) => (
-  <Box>
+  <div>
     <MuiButton
       type={type}
       variant={variant}
@@ -17,7 +16,7 @@ const Button = ({
     >
       {value}
     </MuiButton>
-  </Box>
+  </div>
 );
 
 Button.propTypes = propTypes;
