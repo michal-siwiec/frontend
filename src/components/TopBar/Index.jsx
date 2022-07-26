@@ -48,7 +48,10 @@ const TopBar = () => {
         <ul className={`${blockName}__menu-list`}>
           {
             menuItemsProperties.map(({ path, name }) => (
-              <li className={`${blockName}__list-item`}>
+              <li
+                className={`${blockName}__list-item`}
+                key={`${blockName}__item-link-${name}`}
+              >
                 <Link to={path} className={`${blockName}__item-link`}>
                   {name}
                 </Link>

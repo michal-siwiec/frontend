@@ -14,11 +14,11 @@ import store from './redux/store';
 ReactDOM.render(
   <ApolloProvider client={client}>
     <ReduxProvider store={store}>
-      <ActionCableProvider url={API_WS_ROOT}>
+      {/* <ActionCableProvider url={API_WS_ROOT}> */}
         <BrowserRouter>
           <App />
         </BrowserRouter>
-      </ActionCableProvider>
+      {/* </ActionCableProvider> */}
     </ReduxProvider>
   </ApolloProvider>,
   document.querySelector('#wrapper')

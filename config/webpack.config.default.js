@@ -73,5 +73,6 @@ module.exports = {
       filename: 'main-[contenthash:6].css'
     }),
     new Dotenv()
-  ]
+  ],
+  devtool: "eval-cheap-source-map"
 }

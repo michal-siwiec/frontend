@@ -52,7 +52,7 @@ const Footer = () => {
   };
 
   return (
-    <foooter className={blockName}>
+    <footer className={blockName}>
       <div className={`${blockName}__part ${blockName}__logo`}>
         <h4 className={`${blockName}__part-header`}>
           <Link to="/">
@@ -114,7 +114,7 @@ const Footer = () => {
         <div className={`${blockName}__part-content ${blockName}__part-content--products`}>
           {
             productsCategories.map(({ name, path }) => (
-              <div>
+              <div key={`${blockName}-product-cathegory-${name}`}>
                 <Link to={path}>
                   <span className={`${blockName}__content-element`}>
                     {name}
@@ -151,7 +151,10 @@ const Footer = () => {
         <div className={`${blockName}__part-content ${blockName}__part-content--socials`}>
           {
             socials.map(({ iconClass, url }) => (
-              <div className={`${blockName}__social`}>
+              <div
+                className={`${blockName}__social`}
+                key={`${iconClass}-wrapper`}
+              >
                 <i
                   className={`${iconClass} ${blockName}__content-element ${`${blockName}__social-icon`}`}
                   onClick={() => handleSocialOnClick(url)}
@@ -169,7 +172,7 @@ const Footer = () => {
           For web site terms of use, trademark policy and general project policies please see https://lfprojects.org.
         </p>
       </div>
-    </foooter>
+    </footer>
   )
 };
 
