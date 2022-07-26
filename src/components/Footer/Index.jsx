@@ -11,7 +11,7 @@ import {
   shopRulesText,
   privacyPolicyText
 } from './data';
-import { formattedPhoneNUmber } from '../../utils/phoneNumber';
+import { formatPhoneNumber } from '../../utils/phoneNumber';
 import Tooltip from '../reusable/tooltips/Index.jsx';
 import { STORAGE_URL } from '../../constants/environment';
 
@@ -141,7 +141,7 @@ const Footer = () => {
               className={`${blockName}__content-element`}
               onClick={handlePhoneOnClick}
             >
-              { `Telefon: ${formattedPhoneNUmber(shopPhone)}` }
+              { `Telefon: ${formatPhoneNumber(shopPhone)}` }
             </span>
           </div>
         </div>

@@ -1,12 +1,11 @@
-export const formattedPhoneNUmber = (phoneNumber) => {
-  const dividedPartLength = 3;
-  let initial = '';
-  
-  const cut = (i) => `${phoneNumber.substr(i * 3, dividedPartLength)} `;
+export const formatPhoneNumber = (phoneNumber) => {
+  const phoneNumberToArray = phoneNumber.split('');
+  const initialValue = '';
 
-  for (let i = 0; i < 3; i++) {
-    initial += cut(i);
-  };
+  return phoneNumberToArray.reduce((prev, next, index) => {
+    const isSpaceNeeded = index !== 0 && index % 3 === 0;
+    const separator = isSpaceNeeded ? ' ' : ''; 
 
-  return initial;
-};
+    return `${prev}${separator}${next}`;
+  }, initialValue);
+}

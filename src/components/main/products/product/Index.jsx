@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { formattedPrice } from '../../../../utils/price';
-import { generateAddedProductPayload } from './helper';
+import { generateAddedProductPayload, generatePossibleProductQuantity } from './helper';
 import { addProductToBasket, clearBasket } from '../../../../redux/basket/actionCreators';
 import { STORAGE_URL } from '../../../../constants/environment';
 import { propTypes } from './props';
 
 const Product = ({ product: { id, name, price, availableQuantity, picturePath } }) => {
+  const addedProducts = useSelector(({ basket: { addedProducts } }) => addedProducts);
   const dispatch = useDispatch();
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   const blockName = 'product';
+  const possibleProductQuantity = generatePossibleProductQuantity({ id, addedProducts, availableQuantity });
 
   const selectQuantityOnChange = ({ target: { value } }) => {
     setSelectedQuantity(value);
@@ -39,7 +41,7 @@ const Product = ({ product: { id, name, price, availableQuantity, picturePath } 
             <input
               type="number"
               min={1}
-              max={availableQuantity}
+              max={possibleProductQuantity}
               value={selectedQuantity}
               className={`${blockName}__button`}
               onChange={selectQuantityOnChange}
