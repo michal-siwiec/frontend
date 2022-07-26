@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
-import Rating from '../../reusable/rating/Index.jsx';
 import { useQuery, useMutation } from '@apollo/client';
-import { GET_OPINIONS } from '../../../graphql/queries/opinion';
-import { ADD_OPINION } from '../../../graphql/mutations/opinion';
+import { GET_OPINIONS } from '../../../graphql/queries/opinion.js';
+import { ADD_OPINION } from '../../../graphql/mutations/opinion.js';
 import useIsLogged from '../../../hooks/useIsLogged.jsx';
 import AddedOpinionModal from '../../reusable/modals/addedOpinion/Index.jsx';
+import Rating from '../../reusable/rating/Index.jsx';
 
 const Opinions = () => {
   const opinionsBlockName = 'opinions';
   const opinionBlockName = 'opinion';
   const addOpinionBlockName = 'add-opinion';
+  const theHighestMark = 5;
 
   const isLogged = useIsLogged();
   const [addedOpinion, setAddedOpinion] = useState('');
-  const [rating, setRating] = useState(5)
+  const [rating, setRating] = useState(theHighestMark);
 
   const {
     loading: loadingGetOpinions,
@@ -22,8 +23,6 @@ const Opinions = () => {
   } = useQuery(GET_OPINIONS);
 
   const [addOpinion, {
-    loading: addedOpinionLoading,
-    error: addedOpinionError,
     data: addedOpinionData
   }] = useMutation(ADD_OPINION);
 
@@ -32,24 +31,30 @@ const Opinions = () => {
   };
 
   const handleSetRating = ({ target: { value } }) => {
-    setRating(parseInt(value))
-  }
+    const numberSystem = 10;
+    setRating(parseInt(value, numberSystem));
+  };
 
   const handleAddOpinionSubmit = () => {
     addOpinion(
       { variables: { input: { content: addedOpinion, mark: rating, userId: isLogged.userID } } }
-    )
+    );
   };
 
-  if (loadingGetOpinions) return <h1>Loading...</h1>
-  if (errorGetOpinions) return <h1>error</h1>
+  if (loadingGetOpinions) return <h1>Loading...</h1>;
+  if (errorGetOpinions) return <h1>error</h1>;
 
   return (
     <div className={`main__${opinionsBlockName} ${opinionsBlockName}`}>
       <h2 className={`${opinionsBlockName}__header`}>Opinie</h2>
       <div className={`${opinionsBlockName}__wrapper-list`}>
         {
-          dataGetOpinions.opinions.map(({ content, mark, updatedAt, user: { email } }) => (
+          dataGetOpinions.opinions.map(({
+            content,
+            mark,
+            updatedAt,
+            user: { email }
+          }) => (
             <div
               className={`${opinionBlockName}`}
               key={`${opinionBlockName}-${content}`}
@@ -91,7 +96,7 @@ const Opinions = () => {
       }
       { addedOpinionData && <AddedOpinionModal /> }
     </div>
-  )
+  );
 };
 
 export default Opinions;

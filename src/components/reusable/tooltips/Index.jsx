@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react';
-import { Tooltip as MuiTooltip } from '@mui/material/';
-import { propTypes, defaultProps } from './types';
+import { Tooltip as MuiTooltip } from '@mui/material';
+import { propTypes, defaultProps } from './types.js';
 
 const Tooltip = ({
   headerText,
   secondaryText,
   open,
   placement,
-  children,
+  children
 }) => {
   const blockName = 'tooltip';
 
@@ -17,7 +17,7 @@ const Tooltip = ({
       arrow
       placement={placement}
       classes={{ popper: blockName }}
-      title={
+      title={(
         <Fragment>
           <h2 className={`${blockName}__header`}>
             {headerText}
@@ -26,12 +26,12 @@ const Tooltip = ({
             {secondaryText}
           </p>
         </Fragment>
-      }
+      )}
     >
       {children}
     </MuiTooltip>
-  )
-}
+  );
+};
 
 Tooltip.propTypes = propTypes;
 Tooltip.defaultProps = defaultProps;

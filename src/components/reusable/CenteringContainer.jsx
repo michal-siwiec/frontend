@@ -1,6 +1,6 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
-import { propTypes, defaultProps } from '../../props/reusable/centeringContainer';
+import { propTypes, defaultProps } from '../../props/reusable/centeringContainer.js';
 
 const CenteringContainer = ({
   children,

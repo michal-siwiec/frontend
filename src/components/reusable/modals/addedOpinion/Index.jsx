@@ -22,11 +22,17 @@ const AddedOpinionModal = () => {
           Każda opinia jest dla nas bardzo istotna
         </p>
         <div>
-          <button className={`${blockName}__button`} onClick={handleOnClick}>OK</button>
+          <button
+            className={`${blockName}__button`}
+            onClick={handleOnClick}
+            type="submit"
+          >
+            OK
+          </button>
         </div>
       </Grid>
     </Modal>
-  )
+  );
 };
 
 export default AddedOpinionModal;

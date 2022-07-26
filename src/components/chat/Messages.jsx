@@ -1,9 +1,9 @@
 /* eslint react/destructuring-assignment: 0 */
 
 import React, { Component } from 'react';
-import { API_ROOT } from '../../constants/environment';
-import ActionCableConnector from '../actionCableConnector/Connector.jsx';
-import invokeHttpRequest from '../../services/HttpRequestInvoker';
+import { API_ROOT } from '../../constants/environment.js';
+import ActionCableConnector from '../actionCableConnector/Index.jsx';
+import invokeHttpRequest from '../../services/HttpRequestInvoker.js';
 
 class Messages extends Component {
   static addConversation = () => {
@@ -27,10 +27,10 @@ class Messages extends Component {
 
   componentDidMount() {
     invokeHttpRequest({ url: `${API_ROOT}/conversations` })
-      .then(data => this.setState({ messages: data }));
+      .then((data) => this.setState({ messages: data }));
   }
 
-  handleReceivedConversation = data => {
+  handleReceivedConversation = (data) => {
     const newMessages = JSON.parse(data);
     this.setState(({ prevMessages }) => ({ messages: prevMessages.push(newMessages) }));
   };

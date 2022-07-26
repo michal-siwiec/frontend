@@ -1,4 +1,4 @@
-import { STORAGE_URL } from '../../constants/environment';
+import { STORAGE_URL } from '../../constants/environment.js';
 
 export const productsCategories = [
   {
@@ -48,29 +48,30 @@ export const shopRules = {
 export const socials = [
   {
     iconClass: 'icon-facebook',
-    url: 'https://www.facebook.com/',
+    url: 'https://www.facebook.com/'
   },
   {
     iconClass: 'icon-instagram',
-    url: 'https://www.instagram.com/',
+    url: 'https://www.instagram.com/'
   },
   {
     iconClass: 'icon-youtube',
-    url: 'https://www.youtube.com/',
+    url: 'https://www.youtube.com/'
   },
   {
     iconClass: 'icon-twitter',
-    url: 'https://twitter.com/?lang=pl',
+    url: 'https://twitter.com/?lang=pl'
   },
   {
     iconClass: 'icon-tiktok',
-    url: 'https://www.tiktok.com/pl-PL/',
+    url: 'https://www.tiktok.com/pl-PL/'
   }
 ];
 
 export const shopMail = 'siwiec.michal724@gmail.com';
 export const shopPhone = '724131140';
 
+/* eslint-disable max-len */
 export const shopRulesText = `
 Regulamin sklepu internetowego to zbiór zasad i norm, regulujących procesy związane z dokonywanymi na stronie sklepu transakcjami. Również w regulaminie znajdziemy informację określające zasady komunikacji sklepu z klientem oraz odwrotnej możliwości. Często są tu zawarte również informacje o przesyłkach i płatnościach.
 `;
@@ -78,3 +79,4 @@ Regulamin sklepu internetowego to zbiór zasad i norm, regulujących procesy zwi
 export const privacyPolicyText = `
 Polityka prywatności – dokument umieszczany na witrynie internetowej w celu poinformowania użytkowników o tym, jakie dane osobowe są o nich zbierane i jak będą wykorzystywane.
 `;
+/* eslint-enable max-len */

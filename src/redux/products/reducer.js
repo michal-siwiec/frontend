@@ -1,5 +1,5 @@
-import { createReducer } from '@reduxjs/toolkit'
-import { loadProducts } from './actionsCreator';
+import { createReducer } from '@reduxjs/toolkit';
+import { loadProducts } from './actionsCreator.js';
 
 const initialState = { list: [] };
 

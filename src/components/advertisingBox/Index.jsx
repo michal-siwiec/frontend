@@ -11,8 +11,8 @@ const AdvertisingBox = () => {
         <h2 className={`${blockName}__header`}>Największy sklep budowlany w Polsce</h2>
         <p className={`${blockName}__text`}>Tysiące produktów wysokiej jakości</p>
       </div>
-    </div>  
-  )
-}
+    </div>
+  );
+};
 
 export default AdvertisingBox;

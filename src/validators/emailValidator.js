@@ -1,4 +1,4 @@
-import { email as emailRegx } from '../constants/regex';
+import { email as emailRegx } from '../constants/regex.js';
 
 class EmailValidator {
   #email;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button as MuiButton } from '@mui/material';
-import { propTypes, defaultProps } from '../../props/reusable/button';
+import { propTypes, defaultProps } from '../../props/reusable/button.js';
 
 const Button = ({
   type,

@@ -1,4 +1,9 @@
-import { exact, string, bool, element } from 'prop-types';
+import {
+  exact,
+  string,
+  bool,
+  element
+} from 'prop-types';
 
 export const propTypes = exact({
   headerText: string.isRequired,
@@ -10,4 +15,4 @@ export const propTypes = exact({
 
 export const defaultProps = {
   placement: 'left'
-}
+};

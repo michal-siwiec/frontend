@@ -1,5 +1,5 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { API_GRAPHQL_ROOT } from '../constants/environment';
+import { API_GRAPHQL_ROOT } from '../constants/environment.js';
 
 export default new ApolloClient({
   uri: API_GRAPHQL_ROOT,

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Modal } from '@mui/material';
-import { propTypes } from './types';
+import { propTypes } from './types.js';
 import Button from '../../Button.jsx';
 
 const UserRegisteredModal = ({ open, setUserRegisterWithSuccess }) => {

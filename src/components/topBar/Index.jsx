@@ -2,18 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useQuery, useMutation } from '@apollo/client';
-import { ALL_PRODUCTS_CATHEGORIES } from '../../graphql/queries/allProductsCathegories';
-import { LOGOUT_USER } from '../../graphql/mutations/user';
-import { mappedProductsCathegoriesName } from './helpers';
-import { countTotalPrice } from '../../utils/price';
-import { STORAGE_URL } from '../../constants/environment';
-import { menuItemsProperties } from './data';
+import { ALL_PRODUCTS_CATHEGORIES } from '../../graphql/queries/allProductsCathegories.js';
+import { LOGOUT_USER } from '../../graphql/mutations/user.js';
+// import { mappedProductsCathegoriesName } from './helpers';
+import { countTotalPrice } from '../../utils/price.js';
+import { STORAGE_URL } from '../../constants/environment.js';
+import { menuItemsProperties } from './data.js';
 
 const TopBar = () => {
   const blockName = 'top-bar';
-  const { loading, error, data } = useQuery(ALL_PRODUCTS_CATHEGORIES);
-  const addedProducts = useSelector(({ basket: { addedProducts } }) => addedProducts);
-  const [logoutUser, { loading: loginData, loading: loadingData, error: errorData }] = useMutation(LOGOUT_USER);
+  const { data } = useQuery(ALL_PRODUCTS_CATHEGORIES);
+  const productsInBasket = useSelector(({ basket: { addedProducts } }) => addedProducts);
+  const [logoutUser] = useMutation(LOGOUT_USER);
   const productsCathegories = data?.productsCathegories;
 
   const handleLogoutUser = () => {
@@ -23,8 +23,9 @@ const TopBar = () => {
     logoutUser({ variables: payload });
   };
 
-  if (loading) return <h1>Loading...</h1>
-  if (error) return <h1>Error</h1>
+  /* eslint-disable no-console */
+  console.log('productsCathegories', productsCathegories);
+  /* eslint-enable no-console */
 
   return (
     <nav className={blockName}>
@@ -40,7 +41,11 @@ const TopBar = () => {
         <Link to="/login">
           Logowanie
         </Link>
-        <div onClick={handleLogoutUser}>
+        <div
+          onMouseDown={handleLogoutUser}
+          role="button"
+          tabIndex={0}
+        >
           Wyloguj
         </div>
       </div>
@@ -62,10 +67,10 @@ const TopBar = () => {
       </div>
       <div className={`${blockName}__basket`}>
         <i className={`${blockName}__basket-icon icon-shop_basket`} />
-        {countTotalPrice(addedProducts)}
+        {countTotalPrice(productsInBasket)}
       </div>
     </nav>
-  )
+  );
 };
 
 export default TopBar;

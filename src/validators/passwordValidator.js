@@ -1,4 +1,4 @@
-import { password as passwordRegx } from '../constants/regex';
+import { password as passwordRegx } from '../constants/regex.js';
 
 class PasswordValidator {
   #password;

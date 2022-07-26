@@ -1,6 +1,6 @@
 import React from 'react';
 import { TextField } from '@mui/material';
-import { propTypes, defaultProps } from '../../props/reusable/input';
+import { propTypes, defaultProps } from '../../props/reusable/input.js';
 
 const Input = ({
   type,

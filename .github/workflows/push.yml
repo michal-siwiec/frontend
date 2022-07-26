@@ -1,0 +1,27 @@
+name: push
+on:
+  push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Setup env variables
+      uses: actions/checkout@v3
+      env:
+        API_GRAPHQL_ROOT: ${{ secrets.API_GRAPHQL_ROOT }}
+        API_ROOT: ${{ secrets.API_ROOT }}
+        API_WS_ROOT: ${{ secrets.API_WS_ROOT }}
+        STORAGE_URL: ${{ secrets.STORAGE_URL }}
+    - name: Build
+      run: |
+        npm install
+    - name: Lint
+      run: npm run lint

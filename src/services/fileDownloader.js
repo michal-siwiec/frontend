@@ -6,10 +6,10 @@ class FileDownloader {
 
   constructor({ url, outputName }) {
     this.#url = url;
-    this.#outputName = outputName
+    this.#outputName = outputName;
   }
 
-  call () {
+  call() {
     FileSaver.saveAs(this.#url, this.#outputName);
   }
 }

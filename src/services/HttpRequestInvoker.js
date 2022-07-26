@@ -5,7 +5,7 @@ const HEADERS = {
   Accept: 'application/json'
 };
 
-const requestDemandsBody = method => {
+const requestDemandsBody = (method) => {
   const httpMethodsWithBody = ['POST', 'PATCH', 'PUT'];
 
   return httpMethodsWithBody.includes(method);

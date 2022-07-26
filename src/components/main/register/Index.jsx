@@ -5,13 +5,13 @@ import React, {
   useEffect
 } from 'react';
 import { useMutation } from '@apollo/client';
-import { REGISTER_USER } from '../../../graphql/mutations/user';
-import AvatarsGenerator from '../../../services/AvatarsGenerator';
-import RegisterFormValidator from '../../../validators/registerFormValidator';
+import { REGISTER_USER } from '../../../graphql/mutations/user.js';
+import AvatarsGenerator from '../../../services/AvatarsGenerator.js';
+import RegisterFormValidator from '../../../validators/registerFormValidator.js';
 import Input from '../../reusable/Input.jsx';
 import Button from '../../reusable/Button.jsx';
 import DepartingBox from '../../reusable/animatedContainers/departingBox/Index.jsx';
-import LoadingModal from '../../reusable/modals/loading/Index.jsx'
+import LoadingModal from '../../reusable/modals/loading/Index.jsx';
 import UserRegisteredModal from '../../reusable/modals/userRegistered/Index.jsx';
 
 const Index = () => {
@@ -22,10 +22,10 @@ const Index = () => {
   const fileInput = useRef(null);
   const [registerUser, { data, loading }] = useMutation(REGISTER_USER);
 
-  const handleEmailOnChange = e => setEmail(e.target.value);
-  const handlePasswordOnChange = e => setPassword(e.target.value);
+  const handleEmailOnChange = (e) => setEmail(e.target.value);
+  const handlePasswordOnChange = (e) => setPassword(e.target.value);
 
-  const handleFileOnChange = async e => {
+  const handleFileOnChange = async (e) => {
     const files = [...e.target.files];
     const avatarsGenerator = new AvatarsGenerator(files);
     const generatedAvatars = await avatarsGenerator.generateAvatars();
@@ -40,11 +40,11 @@ const Index = () => {
     fileInput.current.value = '';
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    // const formValidator = new RegisterFormValidator({ password, email, avatars });
-    // if (!formValidator.valid()) return null;
+    const formValidator = new RegisterFormValidator({ password, email, avatars });
+    if (!formValidator.valid()) return false;
 
     registerUser({ variables: { input: { email, password, avatars } } });
     resetFormState();

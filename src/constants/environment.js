@@ -1,3 +1,5 @@
+/* eslint-disable prefer-destructuring */
+
 const STORAGE_URL = process.env.STORAGE_URL;
 const API_GRAPHQL_ROOT = process.env.API_GRAPHQL_ROOT;
 const API_ROOT = process.env.API_ROOT;

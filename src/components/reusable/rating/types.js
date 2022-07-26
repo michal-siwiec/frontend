@@ -1,4 +1,9 @@
-import { exact, string, bool, func } from 'prop-types';
+import {
+  exact,
+  string,
+  bool,
+  func
+} from 'prop-types';
 
 export const propTypes = exact({
   value: string,

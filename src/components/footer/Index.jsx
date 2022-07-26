@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import FileDownloader from '../../services/fileDownloader';
+import FileDownloader from '../../services/fileDownloader.js';
 import {
   productsCategories,
   privacyPolicy,
@@ -10,36 +10,36 @@ import {
   shopPhone,
   shopRulesText,
   privacyPolicyText
-} from './data';
-import { formatPhoneNumber } from '../../utils/phoneNumber';
+} from './data.js';
+import { formatPhoneNumber } from '../../utils/phoneNumber.js';
 import Tooltip from '../reusable/tooltips/Index.jsx';
-import { STORAGE_URL } from '../../constants/environment';
+import { STORAGE_URL } from '../../constants/environment.js';
 
 const Footer = () => {
-  const blockName = 'footer'
+  const blockName = 'footer';
 
   const [privacyPolicyTooltipOpen, setPrivacyPolicyTooltipOpen] = useState(false);
   const [shopRulesTooltipOpen, setShopRulesTooltipOpen] = useState(false);
 
-  const handlePrivacyPolicyOnClick = () => {
+  const handlePrivacyPolicyOnMouseDown = () => {
     const { url, outputName } = privacyPolicy;
-    new FileDownloader({ url, outputName }).call()
+    new FileDownloader({ url, outputName }).call();
   };
 
-  const handleShopRulesOnClick = () => {
+  const handleShopRulesOnMouseDown = () => {
     const { url, outputName } = shopRules;
-    new FileDownloader({ url, outputName }).call()
+    new FileDownloader({ url, outputName }).call();
   };
 
-  const handleEmailOnClick = () => {
-    window.location = `mailto:${shopMail}`
+  const handleEmailOnMouseDown = () => {
+    window.location = `mailto:${shopMail}`;
   };
 
-  const handlePhoneOnClick = () => {
-    window.location = `tel:${shopPhone}`
+  const handlePhoneOnMouseDown = () => {
+    window.location = `tel:${shopPhone}`;
   };
 
-  const handleSocialOnClick = (url) => {
+  const handleSocialOnMouseDown = (url) => {
     window.open(url, '_blank');
   };
 
@@ -63,14 +63,16 @@ const Footer = () => {
             />
           </Link>
           <p className={`${blockName}__logo-address`}>
-            {`ul. Przykładowa 5, 00-000 Warszawa`}
+            ul. Przykładowa 5, 00-000 Warszawa
           </p>
         </h4>
         <div className={`${blockName}__part-content`}>
           <div className={`${blockName}__attachment-wrapper`}>
             <span
               className={`${blockName}__content-element`}
-              onClick={handlePrivacyPolicyOnClick}
+              onMouseDown={handlePrivacyPolicyOnMouseDown}
+              role="link"
+              tabIndex={0}
             >
               Polityka prywatności
             </span>
@@ -84,13 +86,15 @@ const Footer = () => {
                 secondaryText={privacyPolicyText}
               >
                 <i className={`icon-tooltip_prompt ${blockName}__tooltip-prompt`} />
-              </Tooltip> 
+              </Tooltip>
             </div>
           </div>
           <div className={`${blockName}__attachment-wrapper`}>
             <span
               className={`${blockName}__content-element`}
-              onClick={handleShopRulesOnClick}
+              onMouseDown={handleShopRulesOnMouseDown}
+              role="link"
+              tabIndex={0}
             >
               Regulamin sklepu
             </span>
@@ -131,7 +135,9 @@ const Footer = () => {
           <div>
             <span
               className={`${blockName}__content-element`}
-              onClick={handleEmailOnClick}
+              onMouseDown={handleEmailOnMouseDown}
+              role="button"
+              tabIndex={0}
             >
               Email: {shopMail}
             </span>
@@ -139,7 +145,9 @@ const Footer = () => {
           <div>
             <span
               className={`${blockName}__content-element`}
-              onClick={handlePhoneOnClick}
+              onMouseDown={handlePhoneOnMouseDown}
+              role="button"
+              tabIndex={0}
             >
               { `Telefon: ${formatPhoneNumber(shopPhone)}` }
             </span>
@@ -157,7 +165,9 @@ const Footer = () => {
               >
                 <i
                   className={`${iconClass} ${blockName}__content-element ${`${blockName}__social-icon`}`}
-                  onClick={() => handleSocialOnClick(url)}
+                  onMouseDown={() => handleSocialOnMouseDown(url)}
+                  role="link"
+                  tabIndex={0}
                 />
               </div>
             ))
@@ -173,7 +183,7 @@ const Footer = () => {
         </p>
       </div>
     </footer>
-  )
+  );
 };
 
 export default Footer;

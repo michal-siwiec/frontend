@@ -21,9 +21,16 @@
 		"react/jsx-fragments": 0,
 		"react/function-component-definition": 0,
 		"comma-dangle": ["error", "never"],
-		"arrow-parens": ["error", "as-needed"],
+		"arrow-parens": ["error", "always"],
 		"lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
-		"import/prefer-default-export": "off"
+		"import/prefer-default-export": "off",
+		"react/jsx-one-expression-per-line": "off",
+		"jsx-a11y/control-has-associated-label": "off",
+		"jsx-a11y/label-has-associated-control": ["error", { "required": { "some": [ "nesting", "id"  ] } }],
+		"max-len": ["error", { "code":120, "ignorePattern": "Lorem, ipsum" }],
+		"no-param-reassign": "off",
+		"no-unused-vars": "off",
+		"import/extensions": ["error", "ignorePackages"]
 	},
 	"settings": {
 		"import/resolver": "webpack"

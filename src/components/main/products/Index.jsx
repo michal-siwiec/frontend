@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useQuery } from '@apollo/client';
-import { GET_PROMOTED_PRODUCTS } from '../../../graphql/queries/promotedProducts';
-import { loadProducts } from '../../../redux/products/actionsCreator';
+import { GET_PROMOTED_PRODUCTS } from '../../../graphql/queries/promotedProducts.js';
+import { loadProducts } from '../../../redux/products/actionsCreator.js';
 import Product from './product/Index.jsx';
 
 const Products = () => {
@@ -19,8 +19,8 @@ const Products = () => {
     setProductsAlreadyInserted(true);
   };
 
-  if (loading) return <h1>Loading...</h1>
-  if (error) return <h1>Error</h1>
+  if (loading) return <h1>Loading...</h1>;
+  if (error) return <h1>Error</h1>;
 
   insertProductsToStore();
 
@@ -33,7 +33,7 @@ const Products = () => {
         }
       </div>
     </div>
-  )
+  );
 };
 
 export default Products;
