@@ -85,7 +85,7 @@ const Footer = () => {
                 headerText="Polityka prywatności"
                 secondaryText={privacyPolicyText}
               >
-                <i className={`icon-tooltip_prompt ${blockName}__tooltip-prompt`} />
+                <i className={`icon-tooltip-prompt ${blockName}__tooltip-prompt`} />
               </Tooltip>
             </div>
           </div>
@@ -107,7 +107,7 @@ const Footer = () => {
                 headerText="Regulamin sklepu"
                 secondaryText={shopRulesText}
               >
-                <i className={`icon-tooltip_prompt ${blockName}__tooltip-prompt`} />
+                <i className={`icon-tooltip-prompt ${blockName}__tooltip-prompt`} />
               </Tooltip>
             </div>
           </div>

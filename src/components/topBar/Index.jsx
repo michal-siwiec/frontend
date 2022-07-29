@@ -66,7 +66,7 @@ const TopBar = () => {
         </ul>
       </div>
       <div className={`${blockName}__basket`}>
-        <i className={`${blockName}__basket-icon icon-shop_basket`} />
+        <i className={`${blockName}__basket-icon icon-shop-basket`} />
         {countTotalPrice(productsInBasket)}
       </div>
     </nav>

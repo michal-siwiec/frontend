@@ -4,7 +4,7 @@
   flex-wrap: wrap;
   min-height: 200px;
   background-color: $footer-background-color;
-  
+
   &__part {
     flex-basis: 17%;
     margin: 20px 35px 0;
@@ -51,7 +51,7 @@
     flex-basis: 100%;
     padding: 50px 0 30px;
     text-align: center;
-    color: hsla(0, 0%, 100%, .4);
+    color: hsla(0% 0% 100% 40%);
   }
 
   &__content-element {

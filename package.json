@@ -7,8 +7,9 @@
     "start": "webpack-dev-server --config ./config/webpack.config.development.js",
     "dev-build": "npx webpack --config ./config/webpack.config.development.js",
     "prod-build": "npx webpack --config ./config/webpack.config.production.js",
-    "lint": "npx eslint 'src/**/*.js' 'src/**/*.jsx'",
-    "test": "jest --env=jsdom"
+    "js-lint": "npx eslint 'src/**/*.js' 'src/**/*.jsx'",
+    "css-lint": "npx stylelint '**/*.css' '**/*.scss' --custom-syntax postcss-less",
+    "react-test": "jest --env=jsdom"
   },
   "keywords": [],
   "author": "",
@@ -36,11 +37,14 @@
     "image-webpack-loader": "^8.0.1",
     "jest-environment-jsdom": "^28.1.3",
     "mini-css-extract-plugin": "^2.4.5",
+    "postcss-less": "^6.0.0",
     "raw-loader": "^4.0.2",
     "react-router": "^6.2.1",
     "sass": "^1.45.2",
     "sass-loader": "^12.4.0",
     "style-loader": "^3.3.1",
+    "stylelint": "^14.9.1",
+    "stylelint-config-standard": "^26.0.0",
     "webpack": "^5.65.0",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.7.2"

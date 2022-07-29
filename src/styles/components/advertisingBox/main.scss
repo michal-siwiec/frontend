@@ -3,6 +3,7 @@
   min-height: 400px;
   position: relative;
   background-color: yellow;
+
   @include flex-container;
 
   &__background {
@@ -12,10 +13,10 @@
 
     &--dimmer {
       z-index: 2;
-      background-color: rgba(0, 0, 0, .7);
+      background-color: rgba(0 0 0 70%);
     }
 
-    &--picture  {
+    &--picture {
       z-index: 1;
       background-image: url("#{$storage-url}/images/banner/fotolia_budowlaniec_robotnik.jpeg");
       background-repeat: no-repeat;

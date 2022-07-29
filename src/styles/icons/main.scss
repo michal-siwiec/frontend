@@ -1,19 +1,21 @@
 $icon-storage-path: "#{$storage-url}/icons/icomoon";
 
 @font-face {
-  font-family: 'icomoon';
-  src:  url('#{$icon-storage-path}/icomoon.eot');
-  src:  url('#{$icon-storage-path}/icomoon.eot') format('embedded-opentype'),
-        url('#{$icon-storage-path}/icomoon.ttf'),
-        url('#{$icon-storage-path}/icomoon.woff'),
-        url('#{$icon-storage-path}/icomoon.svg');
+  font-family: icomoon;
+  src: url("#{$icon-storage-path}/icomoon.eot");
+  src:
+    url("#{$icon-storage-path}/icomoon.eot"),
+    url("#{$icon-storage-path}/icomoon.ttf"),
+    url("#{$icon-storage-path}/icomoon.woff"),
+    url("#{$icon-storage-path}/icomoon.svg");
   font-weight: normal;
   font-style: normal;
-  font-display: block;  
+  font-display: block;
 }
 
-[class^="icon-"], [class*=" icon-"] {
-  font-family: 'icomoon' !important;
+[class^="icon-"],
+[class*=" icon-"] {
+  font-family: icomoon, sans-serif !important;
   speak: never;
   font-style: normal;
   font-weight: normal;
@@ -24,24 +26,30 @@ $icon-storage-path: "#{$storage-url}/icons/icomoon";
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-shop_basket:before {
+.icon-shop-basket::before {
   content: "\e906";
 }
-.icon-tooltip_prompt:before {
+
+.icon-tooltip-prompt::before {
   content: "\e905";
 }
-.icon-tiktok:before {
+
+.icon-tiktok::before {
   content: "\e901";
 }
-.icon-twitter:before {
+
+.icon-twitter::before {
   content: "\e902";
 }
-.icon-youtube:before {
+
+.icon-youtube::before {
   content: "\e903";
 }
-.icon-instagram:before {
+
+.icon-instagram::before {
   content: "\e904";
 }
-.icon-facebook:before {
+
+.icon-facebook::before {
   content: "\e900";
 }

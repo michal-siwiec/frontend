@@ -1,9 +1,7 @@
 &__search-engine {
   flex-basis: 45%;
-  @include flex-container;
-  border: 2px solid black;
-}
 
-&__search-engine-input {
-  
+  @include flex-container;
+
+  border: 2px solid black;
 }

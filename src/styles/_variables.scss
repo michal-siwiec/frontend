@@ -6,19 +6,19 @@ $xl-breakpoint: 1200px;
 $xxl-breakpoint: 1400px;
 
 // Colors
-$red: #C9252E;
-$white: #FFFFFF;
-$gray: #F0F3F8;
-$green: #6BA242;
-$black: #000000;
+$red: #c9252e;
+$white: #fff;
+$gray: #f0f3f8;
+$green: #6ba242;
+$black: #000;
 $purple-gray: #202020;
-$light-gray: rgb(134, 156, 182);
+$light-gray: rgb(134 156 182);
 
 // Sizes
 $max-page-width: 1920px;
 
 // Fonts
-$default-font-style: Roboto, Helvetica, Helvetica, Arial, sans-serif;;
+$default-font-style: roboto, helvetica, arial, sans-serif;
 $default-font-size: 15px;
 $default-font-color: $black;
 $default-font-weight: 300;
