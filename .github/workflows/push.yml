@@ -1,6 +1,11 @@
 name: Run lint and tests
 on:
   push
+env:
+  API_GRAPHQL_ROOT: ${{ secrets.API_GRAPHQL_ROOT }}
+  API_ROOT: ${{ secrets.API_ROOT }}
+  API_WS_ROOT: ${{ secrets.API_WS_ROOT }}
+  STORAGE_URL: ${{ secrets.STORAGE_URL }}
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -12,22 +17,15 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Setup env variables
+    - name: Upload repository
       uses: actions/checkout@v3
-      env:
-        API_GRAPHQL_ROOT: ${{ secrets.API_GRAPHQL_ROOT }}
-        API_ROOT: ${{ secrets.API_ROOT }}
-        API_WS_ROOT: ${{ secrets.API_WS_ROOT }}
-        STORAGE_URL: ${{ secrets.STORAGE_URL }}
     - name: Install dependencies
       run: npm install
-    - name: Puts env variables
-      run: echo "ENV VARIABLES $API_GRAPHQL_ROOT $API_ROOT $API_WS_ROOT $STORAGE_URL $CI"
     - name: Start css linter
       run: npm run css-lint
     - name: Start js linter
       run: npm run js-lint
     - name: Start react tests
       run: npm run react-test
-    - name: Build dist version
+    - name: prod-build
       run: npm run prod-build
