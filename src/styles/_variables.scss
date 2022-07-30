@@ -8,7 +8,8 @@ $xxl-breakpoint: 1400px;
 // Colors
 $red: #c9252e;
 $white: #fff;
-$gray: #f0f3f8;
+$light-gray: #f0f3f8;
+$gray: #869cb6;
 $green: #6ba242;
 $black: #000;
 $purple-gray: #202020;
@@ -24,10 +25,5 @@ $default-font-color: $black;
 $default-font-weight: 300;
 $default-line-height: 24px;
 
-// Background
-$default-background-color: white;
-
-// Footer
-$footer-background-color: $purple-gray;
-$footer-header-color: $light-gray;
-$footer-content-color: $white;
+// Animations
+$default-hover-animation-time: .2s;

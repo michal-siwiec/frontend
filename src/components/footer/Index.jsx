@@ -53,7 +53,7 @@ const Footer = () => {
 
   return (
     <footer className={blockName}>
-      <div className={`${blockName}__part ${blockName}__logo`}>
+      <div className={`${blockName}__part`}>
         <h4 className={`${blockName}__part-header`}>
           <Link to="/">
             <img
@@ -67,9 +67,12 @@ const Footer = () => {
           </p>
         </h4>
         <div className={`${blockName}__part-content`}>
-          <div className={`${blockName}__attachment-wrapper`}>
+          <div className={`${blockName}__stretchable-container`}>
             <span
-              className={`${blockName}__content-element`}
+              className={
+                `${blockName}__content-element
+                 ${blockName}__content-element--tooltip-label`
+              }
               onMouseDown={handlePrivacyPolicyOnMouseDown}
               role="link"
               tabIndex={0}
@@ -89,9 +92,12 @@ const Footer = () => {
               </Tooltip>
             </div>
           </div>
-          <div className={`${blockName}__attachment-wrapper`}>
+          <div className={`${blockName}__stretchable-container`}>
             <span
-              className={`${blockName}__content-element`}
+              className={
+                `${blockName}__content-element
+                 ${blockName}__content-element--tooltip-label`
+              }
               onMouseDown={handleShopRulesOnMouseDown}
               role="link"
               tabIndex={0}
@@ -115,10 +121,19 @@ const Footer = () => {
       </div>
       <div className={`${blockName}__part`}>
         <h4 className={`${blockName}__part-header`}>Produkty</h4>
-        <div className={`${blockName}__part-content ${blockName}__part-content--products`}>
+        <div
+          className={
+            `${blockName}__part-content
+             ${blockName}__part-content--products
+             ${blockName}__stretchable-container`
+          }
+        >
           {
             productsCategories.map(({ name, path }) => (
-              <div key={`${blockName}-product-cathegory-${name}`}>
+              <div
+                className={`${blockName}__product-cathegory`}
+                key={`${blockName}-product-cathegory-${name}`}
+              >
                 <Link to={path}>
                   <span className={`${blockName}__content-element`}>
                     {name}
@@ -132,31 +147,43 @@ const Footer = () => {
       <div className={`${blockName}__part`}>
         <h4 className={`${blockName}__part-header`}>Kontakt</h4>
         <div className={`${blockName}__part-content`}>
-          <div>
-            <span
-              className={`${blockName}__content-element`}
-              onMouseDown={handleEmailOnMouseDown}
-              role="button"
-              tabIndex={0}
-            >
-              Email: {shopMail}
+          <div className={`${blockName}__contact-data`}>
+            <span>
+              Email:
+              <span
+                className={`${blockName}__content-element`}
+                onMouseDown={handleEmailOnMouseDown}
+                role="button"
+                tabIndex={0}
+              >
+                {` ${shopMail}`}
+              </span>
             </span>
           </div>
-          <div>
-            <span
-              className={`${blockName}__content-element`}
-              onMouseDown={handlePhoneOnMouseDown}
-              role="button"
-              tabIndex={0}
-            >
-              { `Telefon: ${formatPhoneNumber(shopPhone)}` }
+          <div className={`${blockName}__contact-data`}>
+            <span>
+              Telefon:
+              <span
+                className={`${blockName}__content-element`}
+                onMouseDown={handlePhoneOnMouseDown}
+                role="button"
+                tabIndex={0}
+              >
+                {` ${formatPhoneNumber(shopPhone)}`}
+              </span>
             </span>
           </div>
         </div>
       </div>
       <div className={`${blockName}__part`}>
         <h4 className={`${blockName}__part-header`}>Social media</h4>
-        <div className={`${blockName}__part-content ${blockName}__part-content--socials`}>
+        <div
+          className={
+            `${blockName}__part-content
+             ${blockName}__part-content--socials
+             ${blockName}__stretchable-container`
+          }
+        >
           {
             socials.map(({ iconClass, url }) => (
               <div
@@ -175,7 +202,7 @@ const Footer = () => {
         </div>
       </div>
       <div className={`${blockName}__copyright`}>
-        <p>
+        <p className={`${blockName}__copyright-text--top`}>
           Copyright © 2022 The GraphQL Foundation. All rights reserved.
         </p>
         <p>

@@ -14,5 +14,5 @@ export const propTypes = exact({
 }).isRequired;
 
 export const defaultProps = {
-  placement: 'left'
+  placement: 'top'
 };

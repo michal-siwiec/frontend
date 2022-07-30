@@ -2,6 +2,5 @@
 2) Hot Module replacement plugin - let's use it
 3) React lazy
 4) Better optimalization with useCallback and useMemo
-6) npm run lint does not work as expect
 9) Remove unnecessary variables - leave only pallete
-10) FIx problem with .env on github actions
+10) Zmien index na normalne nazwy plików

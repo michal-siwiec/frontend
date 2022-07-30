@@ -2,7 +2,7 @@ import { STORAGE_URL } from '../../constants/environment.js';
 
 export const productsCategories = [
   {
-    name: 'Narzędzia na budowę',
+    name: 'Narzędzia',
     path: ''
   },
   {
