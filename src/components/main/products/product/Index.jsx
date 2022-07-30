@@ -42,7 +42,7 @@ const Product = ({
         <h2 className={`${blockName}__name`}>{name}</h2>
         <h3 className={`${blockName}__price`}>{formattedPrice(price)} zł</h3>
         <p className={`${blockName}__description`}>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores repellat ducimus, ea impedit id explicabo nihil obcaecati at nisi? Excepturi facilis voluptatibus facere similique doloremque deleniti amet sapiente neque? Quasi?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores repellat ducimus, ea impedit id explicabo nihil obcaecati at nisi?
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, consequatur. Ex blanditiis accusamus nam molestiae officiis totam repellendus labore beatae ullam quas, hic facilis fugit illum tenetur, magni est distinctio.
         </p>
         <div className={`${blockName}__button-wrapper`}>
           <input
@@ -54,7 +54,7 @@ const Product = ({
             onChange={selectQuantityOnChange}
           />
           <div
-            className={`${blockName}__button`}
+            className={`${blockName}__button ${blockName}__button--add-to-basket`}
             onMouseDown={handleAddToBasketOnMouseDown}
             role="button"
             tabIndex={0}

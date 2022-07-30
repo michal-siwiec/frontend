@@ -4,3 +4,5 @@
 4) Better optimalization with useCallback and useMemo
 9) Remove unnecessary variables - leave only pallete
 10) Zmien index na normalne nazwy plików
+11) Add mobile product - other column position
+12) Dodac defaultowe style dla buttonów w pliku default.scss
