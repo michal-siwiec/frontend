@@ -2,7 +2,6 @@
   width: 100%;
   min-height: 400px;
   position: relative;
-  background-color: yellow;
 
   @include flex-container;
 
@@ -13,14 +12,18 @@
 
     &--dimmer {
       z-index: 2;
-      // background-color: rgba(0 0 0 70%);
+      background-color: rgba(0 0 0 / 70%);
     }
 
     &--picture {
       z-index: 1;
-      background-image: url("#{$storage-url}/images/banner/fotolia_budowlaniec_robotnik.jpeg");
+      background-image: url("#{$storage-url}/images/banner/budowa-domu.jpeg");
       background-repeat: no-repeat;
       background-size: cover;
+
+      @media screen and (min-width: $md-breakpoint) {
+        background-image: url("#{$storage-url}/images/banner/fotolia_budowlaniec_robotnik.jpeg");
+      }
     }
   }
 
@@ -28,6 +31,7 @@
     width: fit-content;
     height: 100px;
     z-index: 3;
+    text-align: center;
   }
 
   &__header {
@@ -37,7 +41,6 @@
   }
 
   &__text {
-    text-align: center;
     color: white;
   }
 }
