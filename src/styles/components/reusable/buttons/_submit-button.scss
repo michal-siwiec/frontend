@@ -1,0 +1,29 @@
+.button {
+  height: $default-control-height;
+  margin: $default-control-margin;
+  padding: $default-control-padding;
+  text-align: center;
+  border: $default-gray-bottom-border;
+  border-radius: $default-control-border-radious;
+  background-color: transparent;
+  color: $black;
+  transition: background-color, $default-hover-animation-time;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $gray;
+    color: $white;
+  }
+
+  &--newsletter {
+    flex-basis: 80%;
+  }
+
+  &--login {
+    flex-basis: 80%;
+  }
+
+  &--register {
+    flex-basis: 80%;
+  }
+}

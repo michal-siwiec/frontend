@@ -5,16 +5,19 @@ import React, {
   useEffect
 } from 'react';
 import { useMutation } from '@apollo/client';
+import { Link } from 'react-router-dom';
 import { REGISTER_USER } from '../../../graphql/mutations/user.js';
 import AvatarsGenerator from '../../../services/AvatarsGenerator.js';
 import RegisterFormValidator from '../../../validators/registerFormValidator.js';
-import Input from '../../reusable/Input.jsx';
-import Button from '../../reusable/Button.jsx';
-import DepartingBox from '../../reusable/animatedContainers/departingBox/Index.jsx';
+import FormContainer from '../../reusable/containers/FormContainer.jsx';
+import TextInput from '../../reusable/inputs/TextInput.jsx';
+import FileInput from '../../reusable/inputs/FileInput.jsx';
+import SubmitButton from '../../reusable/buttons/SubmitButton.jsx';
 import LoadingModal from '../../reusable/modals/loading/Index.jsx';
 import UserRegisteredModal from '../../reusable/modals/userRegistered/Index.jsx';
 
 const Index = () => {
+  const blockName = 'register';
   const [avatars, setAvatars] = useState([]);
   const [email, setEmail] = useState('sadasd@gmail.com');
   const [password, setPassword] = useState('Ab7776dsfsd');
@@ -59,40 +62,44 @@ const Index = () => {
   }, [userRegisteredWithSuccess]);
 
   return (
-    <Fragment>
-      <LoadingModal open={loading} info="Rejestrujemy użytkownika" />
-      <UserRegisteredModal
-        open={userRegisterWithSuccess}
-        setUserRegisterWithSuccess={setUserRegisterWithSuccess}
-        userData={data}
+    <div className={blockName}>
+      <FormContainer
+        headerChildren={(
+          <Fragment>
+            <Link to="/login">Logowanie</Link>
+            <Link to="/register">
+              <span className={`${blockName}__active-link`}> Rejestracja</span>
+            </Link>
+          </Fragment>
+        )}
+        formChildren={(
+          <Fragment>
+            <TextInput
+              placeholder="Email"
+              classNames="text-input--register"
+              onChange={handleEmailOnChange}
+              value={email}
+            />
+            <TextInput
+              placeholder="Password"
+              classNames="text-input--register"
+              onChange={handlePasswordOnChange}
+              value={password}
+            />
+            <FileInput
+              classNames="file-input--register"
+              onChange={handleFileOnChange}
+              ref={fileInput}
+            />
+            <SubmitButton
+              classNames="button--register"
+              onMouseDown={handleSubmit}
+              value="Załóż konto"
+            />
+          </Fragment>
+        )}
       />
-      <form encType="multipart/form-data" onSubmit={handleSubmit}>
-        <DepartingBox order={1}>
-          <Input
-            type="email"
-            placeholder="Email"
-            onChange={handleEmailOnChange}
-            value={email}
-          />
-        </DepartingBox>
-        <DepartingBox order={2}>
-          <Input
-            placeholder="Password"
-            onChange={handlePasswordOnChange}
-            value={password}
-          />
-        </DepartingBox>
-        <DepartingBox order={3}>
-          <Input
-            type="file"
-            onChange={handleFileOnChange}
-            inputProps={{ multiple: true }}
-            inputRef={fileInput}
-          />
-        </DepartingBox>
-        <Button value="Upload" />
-      </form>
-    </Fragment>
+    </div>
   );
 };
 

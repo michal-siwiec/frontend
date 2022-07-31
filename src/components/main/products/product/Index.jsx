@@ -4,6 +4,7 @@ import { formattedPrice } from '../../../../utils/price.js';
 import { generateAddedProductPayload, generatePossibleProductQuantity } from './helper.js';
 import { addProductToBasket } from '../../../../redux/basket/actionCreators.js';
 import { propTypes } from './props.js';
+import SubmitButton from '../../../reusable/buttons/SubmitButton.jsx';
 
 const Product = ({
   product: {
@@ -53,14 +54,10 @@ const Product = ({
             className={`${blockName}__button`}
             onChange={selectQuantityOnChange}
           />
-          <div
-            className={`${blockName}__button ${blockName}__button--add-to-basket`}
+          <SubmitButton
             onMouseDown={handleAddToBasketOnMouseDown}
-            role="button"
-            tabIndex={0}
-          >
-            Dodaj do koszyka
-          </div>
+            value="Dodaj do koszyka"
+          />
         </div>
       </div>
     </div>

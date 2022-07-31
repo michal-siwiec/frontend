@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../../graphql/mutations/user.js';
+import FormContainer from '../../reusable/containers/FormContainer.jsx';
+import TextInput from '../../reusable/inputs/TextInput.jsx';
+import SubmitButton from '../../reusable/buttons/SubmitButton.jsx';
 
 const Login = () => {
   const blockName = 'login';
@@ -30,50 +33,38 @@ const Login = () => {
   if (data?.user) saveUserIdToLocalStore();
 
   return (
-    <div className={`main__${blockName} ${blockName}`}>
-      <h2 className={`${blockName}__header`}>Logowanie / Mój profil</h2>
-      <div className={`${blockName}__form-wrapper`}>
-        <div className={`${blockName}__picture-wrapper`} />
-        <nav className={`${blockName}__action-toggler`}>
-          <div className={`${blockName}__action-tile`}>Zaloguj się</div>
-          <div className={`${blockName}__action-tile`}>
-            <Link to="/register">
-              Rejestracja
+    <div className={blockName}>
+      <FormContainer
+        headerChildren={(
+          <Fragment>
+            <Link to="/login">
+              <span className={`${blockName}__active-link`}>Logowanie </span>
             </Link>
-          </div>
-        </nav>
-        <div className={`${blockName}__form`}>
-          <div>
-            <input
-              type="text"
-              className={`${blockName}__form-input`}
+            <Link to="/register">Rejestracja</Link>
+          </Fragment>
+        )}
+        formChildren={(
+          <Fragment>
+            <TextInput
+              placeholder="Adres email"
+              classNames="text-input--login"
               value={email}
               onChange={handleEmailOnChange}
             />
-          </div>
-          <div>
-            <input
-              type="text"
-              className={`${blockName}__form-input`}
+            <TextInput
+              placeholder="Hasło"
+              classNames="text-input--login"
               value={password}
               onChange={handlePasswordOnChange}
             />
-          </div>
-          <div>
-            <input type="checkbox" id="remember-me" className={`${blockName}__form-checkbox`} />
-            <label htmlFor="remember-me">Zapamiętaj mnie</label>
-            <span className={`${blockName}__dont-remember-password`}>Nie pamiętasz hasła?</span>
-          </div>
-          <div
-            className={`${blockName}__button`}
-            onMouseDown={handleLoginOnMouseDown}
-            role="button"
-            tabIndex={0}
-          >
-            Zaloguj się
-          </div>
-        </div>
-      </div>
+            <SubmitButton
+              onMouseDown={handleLoginOnMouseDown}
+              classNames="button--login"
+              value="Zaloguj się"
+            />
+          </Fragment>
+        )}
+      />
     </div>
   );
 };

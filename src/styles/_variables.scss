@@ -8,7 +8,7 @@ $xxl-breakpoint: 1400px;
 // Colors
 $red: #c9252e;
 $white: #fff;
-$light-gray: #f0f3f8;
+$light-gray: #e6e8ec;
 $gray: #869cb6;
 $green: #6ba242;
 $black: #000;
@@ -28,7 +28,15 @@ $default-line-height: 24px;
 // Animations
 $default-hover-animation-time: .2s;
 
+// Controls
+$default-control-padding: 5px 10px;
+$default-control-border-radious: 6px;
+$default-control-height: 40px;
+$default-control-margin: 5px 10px;
+
+// Boxes
+$default-box-border-radious: 6px;
+
 // Various
-$default-border-radious: 6px;
-$default-button-padding: 5px 10px;
 $default-black-bottom-border: 1px solid rgba(0 0 0 / 40%);
+$default-gray-bottom-border: 1px solid rgba($gray, 100%);

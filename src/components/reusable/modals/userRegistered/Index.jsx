@@ -1,12 +1,12 @@
 import React from 'react';
 import { Grid, Modal } from '@mui/material';
 import { propTypes } from './types.js';
-import Button from '../../Button.jsx';
+import SubmitButton from '../../buttons/SubmitButton.jsx';
 
 const UserRegisteredModal = ({ open, setUserRegisterWithSuccess }) => {
   const blockName = 'info-modal';
 
-  const handleLoginClick = () => {
+  const handleLoginOnMouseDown = () => {
     setUserRegisterWithSuccess(false);
   };
 
@@ -22,10 +22,16 @@ const UserRegisteredModal = ({ open, setUserRegisterWithSuccess }) => {
           </h2>
         </Grid>
         <Grid item xs={4}>
-          <Button value="Anuluj" onClick={() => setUserRegisterWithSuccess(false)} />
+          <SubmitButton
+            value="Anuluj"
+            onMouseDown={handleLoginOnMouseDown}
+          />
         </Grid>
         <Grid item xs={6}>
-          <Button value="Zaloguj się" onClick={handleLoginClick} />
+          <SubmitButton
+            value="Zaloguj się"
+            onMouseDown={handleLoginOnMouseDown}
+          />
         </Grid>
       </Grid>
     </Modal>

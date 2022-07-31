@@ -6,3 +6,5 @@
 10) Zmien index na normalne nazwy plików
 11) Add mobile product - other column position
 12) Dodac defaultowe style dla buttonów w pliku default.scss
+13) Komponenty Input nie maja sensu
+14) Cancel button with back arrow

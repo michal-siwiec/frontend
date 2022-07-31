@@ -21,7 +21,7 @@
   min-height: 200px;
   margin: 10px;
   box-shadow: 0 4px 40px rgba(0 0 0 / 10%);
-  border-radius: $default-border-radious;
+  border-radius: $default-box-border-radious;
 
   @media screen and (min-width: $lg-breakpoint) {
     flex-basis: 45%;
@@ -58,25 +58,5 @@
 
   &__button-wrapper {
     display: flex;
-  }
-
-  &__button {
-    padding: $default-button-padding;
-    border: $default-black-bottom-border;
-    border-radius: $default-border-radious;
-    transition: all $default-hover-animation-time;
-
-    &:not(:first-child) {
-      margin: 0 10px;
-    }
-
-    &--add-to-basket {
-      &:hover {
-        background-color: $gray;
-        border-color: $gray;
-        color: $white;
-        cursor: pointer;
-      }
-    }
   }
 }
