@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Modal } from '@mui/material';
-import { propTypes } from './types.js';
-import SubmitButton from '../../buttons/SubmitButton.jsx';
+import { exact, bool, func } from 'prop-types';
+import SubmitButton from '../buttons/SubmitButton.jsx';
 
 const UserRegisteredModal = ({ open, setUserRegisterWithSuccess }) => {
   const blockName = 'info-modal';
@@ -38,6 +38,9 @@ const UserRegisteredModal = ({ open, setUserRegisterWithSuccess }) => {
   );
 };
 
-UserRegisteredModal.propTypes = propTypes;
+UserRegisteredModal.propTypes = exact({
+  open: bool.isRequired,
+  setUserRegisterWithSuccess: func.isRequired
+}).isRequired;
 
 export default UserRegisteredModal;

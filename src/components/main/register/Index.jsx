@@ -13,8 +13,8 @@ import FormContainer from '../../reusable/containers/FormContainer.jsx';
 import TextInput from '../../reusable/inputs/TextInput.jsx';
 import FileInput from '../../reusable/inputs/FileInput.jsx';
 import SubmitButton from '../../reusable/buttons/SubmitButton.jsx';
-import LoadingModal from '../../reusable/modals/loading/Index.jsx';
-import UserRegisteredModal from '../../reusable/modals/userRegistered/Index.jsx';
+import LoadingModal from '../../reusable/modals/loadingModal.jsx';
+import UserRegisteredModal from '../../reusable/modals/userRegisteredModal.jsx';
 
 const Index = () => {
   const blockName = 'register';

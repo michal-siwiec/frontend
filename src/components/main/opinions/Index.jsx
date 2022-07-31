@@ -3,8 +3,8 @@ import { useQuery, useMutation } from '@apollo/client';
 import { GET_OPINIONS } from '../../../graphql/queries/opinion.js';
 import { ADD_OPINION } from '../../../graphql/mutations/opinion.js';
 import useIsLogged from '../../../hooks/useIsLogged.jsx';
-import AddedOpinionModal from '../../reusable/modals/addedOpinion/Index.jsx';
-import Rating from '../../reusable/rating/Index.jsx';
+import AddedOpinionModal from '../../reusable/modals/addedOpinionModal.jsx';
+import Rating from '../../reusable/Rating.jsx';
 
 const Opinions = () => {
   const opinionsBlockName = 'opinions';
