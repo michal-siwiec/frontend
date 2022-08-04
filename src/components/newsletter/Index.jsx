@@ -26,8 +26,8 @@ const Newsletter = () => {
   return (
     <div className={blockName}>
       <FormContainer
-        headerChildren="Zapisz się na newsletter aby być na bieżąco!"
-        formChildren={(
+        header="Zapisz się na newsletter aby być na bieżąco!"
+        form={(
           <Fragment>
             <TextInput
               placeholder="Imię"

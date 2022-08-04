@@ -46,7 +46,7 @@ const Login = () => {
   return (
     <div className={blockName}>
       <FormContainer
-        headerChildren={(
+        header={(
           <Fragment>
             <Link to="/login">
               <span className={`${blockName}__active-link`}>Logowanie </span>
@@ -54,7 +54,7 @@ const Login = () => {
             <Link to="/register">Rejestracja</Link>
           </Fragment>
         )}
-        formChildren={(
+        form={(
           <Fragment>
             <TextInput
               placeholder="Adres email"

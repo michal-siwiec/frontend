@@ -16,6 +16,8 @@ import SubmitButton from '../../reusable/buttons/SubmitButton.jsx';
 import LoadingModal from '../../reusable/modals/loadingModal.jsx';
 import UserRegisteredModal from '../../reusable/modals/userRegisteredModal.jsx';
 
+// I should transmit form with modifier insead add modifier to each element
+
 const Index = () => {
   const blockName = 'register';
   const [avatars, setAvatars] = useState([]);
@@ -64,7 +66,7 @@ const Index = () => {
   return (
     <div className={blockName}>
       <FormContainer
-        headerChildren={(
+        header={(
           <Fragment>
             <Link to="/login">Logowanie</Link>
             <Link to="/register">
@@ -72,7 +74,7 @@ const Index = () => {
             </Link>
           </Fragment>
         )}
-        formChildren={(
+        form={(
           <Fragment>
             <TextInput
               placeholder="Email"
