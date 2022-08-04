@@ -8,7 +8,7 @@ class PasswordValidator {
   }
 
   valid() {
-    this.#isPasswordMatchToRegex();
+    return this.#isPasswordMatchToRegex();
   }
 
   #isPasswordMatchToRegex() {

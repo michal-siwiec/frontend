@@ -1,3 +1,5 @@
+// Bad approach to set container size - in several places I use flex-basis: 80%;
+
 .text-input {
   height: $default-control-height;
   margin: $default-control-margin;
@@ -23,5 +25,14 @@
 
   &--search-engine {
     flex-basis: 50%;
+  }
+
+  &--error {
+    border-color: $red;
+  }
+
+  &__error {
+    flex-basis: 80%;
+    color: $red;
   }
 }

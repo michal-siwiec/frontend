@@ -1,5 +1,3 @@
-/* eslint max-len: 0 */
-
 import PasswordValidator from './passwordValidator.js';
 import EmailValidator from './emailValidator.js';
 import AvatarValidator from './avatarValidator.js';
