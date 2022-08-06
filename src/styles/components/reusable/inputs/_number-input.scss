@@ -1,0 +1,12 @@
+.number-input {
+  height: $default-control-height;
+  margin: $default-control-margin;
+  padding: $default-control-padding;
+  border: $default-black-bottom-border;
+  border-radius: $default-control-border-radious;
+  text-align: center;
+
+  &:focus {
+    outline: none;
+  }
+}

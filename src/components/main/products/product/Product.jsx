@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import { exact, number, string } from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { formattedPrice } from '../../../../utils/price.js';
-import { generateAddedProductPayload, generatePossibleProductQuantity } from './helper.js';
+import { generateAddedProductPayload, generatePossibleProductQuantity } from './helpers.js';
 import { addProductToBasket } from '../../../../redux/basket/actionCreators.js';
-import { propTypes } from './props.js';
+import NumberInput from '../../../reusable/inputs/NumberInput.jsx';
 import SubmitButton from '../../../reusable/buttons/SubmitButton.jsx';
 
 const Product = ({
@@ -46,12 +47,9 @@ const Product = ({
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, consequatur. Ex blanditiis accusamus nam molestiae officiis totam repellendus labore beatae ullam quas, hic facilis fugit illum tenetur, magni est distinctio.
         </p>
         <div className={`${blockName}__button-wrapper`}>
-          <input
-            type="number"
-            min={1}
+          <NumberInput
             max={possibleProductQuantity}
             value={selectedQuantity}
-            className={`${blockName}__button`}
             onChange={selectQuantityOnChange}
           />
           <SubmitButton
@@ -64,6 +62,11 @@ const Product = ({
   );
 };
 
-Product.propTypes = propTypes;
+Product.propTypes = exact({
+  id: string.isRequired,
+  name: string.isRequired,
+  price: number.isRequired,
+  availableQuantity: number.isRequired
+}).isRequired;
 
 export default Product;

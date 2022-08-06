@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Products from './products/Index.jsx';
+import Products from './products/Products.jsx';
 import Login from './login/Login.jsx';
 import Register from './register/Register.jsx';
 import About from './about/Index.jsx';

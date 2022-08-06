@@ -14,5 +14,6 @@ export const generateAddedProductPayload = ({ id, selectedQuantity }) => {
 
 export const generatePossibleProductQuantity = ({ id, productsInBasket, availableQuantity }) => {
   const productQuantityInBasket = productsInBasket.find((product) => product.id === id)?.quantity || 0;
+
   return availableQuantity - productQuantityInBasket;
 };
