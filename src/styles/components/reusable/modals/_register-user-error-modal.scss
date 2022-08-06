@@ -1,0 +1,18 @@
+.register-user-error-modal {
+  @include flex-container;
+  flex-wrap: wrap;
+
+  &__content-wrapper {
+    background-color: white;
+    flex-basis: 30%;
+    padding: 1.5rem;
+  }
+
+  &__header {
+    margin-bottom: 1rem;
+  }
+
+  &__content-wrapper {
+    text-align: center;
+  }
+}

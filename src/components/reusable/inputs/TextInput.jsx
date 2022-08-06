@@ -4,6 +4,7 @@ import { exact, string, func } from 'prop-types';
 
 const TextInput = ({
   placeholder,
+  type,
   classNames,
   value,
   onChange,
@@ -11,7 +12,7 @@ const TextInput = ({
 }) => (
   <Fragment>
     <input
-      type="text"
+      type={type}
       placeholder={placeholder}
       className={clsx(`text-input ${classNames}`, validationError && 'text-input--error')}
       value={value}
@@ -31,6 +32,7 @@ TextInput.propTypes = exact({
 
 TextInput.defaultProps = {
   classNames: '',
+  type: 'text',
   validationError: ''
 };
 

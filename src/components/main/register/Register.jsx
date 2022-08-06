@@ -1,34 +1,37 @@
 import React, {
   Fragment,
   useState,
-  useRef,
-  useEffect
+  useRef
 } from 'react';
-import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
-import { REGISTER_USER } from '../../../graphql/mutations/user.js';
-import AvatarsGenerator from '../../../services/AvatarsGenerator.js';
-import ValidationRegisterFormHandler from '../../../validators/validationRegisterFormHandler.js';
+import { useMutation } from '@apollo/client';
 import FormContainer from '../../reusable/containers/FormContainer.jsx';
 import TextInput from '../../reusable/inputs/TextInput.jsx';
 import FileInput from '../../reusable/inputs/FileInput.jsx';
 import SubmitButton from '../../reusable/buttons/SubmitButton.jsx';
 import LoadingModal from '../../reusable/modals/loadingModal.jsx';
 import UserRegisteredModal from '../../reusable/modals/userRegisteredModal.jsx';
+import RegisterUserErrorModal from '../../reusable/modals/registerUserErrorModal.jsx';
+import AvatarsGenerator from '../../../services/AvatarsGenerator.js';
+import ValidationRegisterFormHandler from '../../../validators/validationRegisterFormHandler.js';
+import { REGISTER_USER } from '../../../graphql/mutations/user.js';
 
 // I should transmit form with modifier insead add modifier to each element
 
 const Register = () => {
   const blockName = 'register';
   const [avatars, setAvatars] = useState([]);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('siwiec.michal724@gmail.com');
+  const [password, setPassword] = useState('Ab47901825');
   const [emailErrorMessage, setEmailErrorMessage] = useState('');
   const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
   const [avatarsErrorMessages, setAvatarsErrorMessages] = useState('');
-  const [userRegisterWithSuccess, setUserRegisterWithSuccess] = useState(false);
+  const [registerUserError, setRegisterUserError] = useState('');
   const fileInput = useRef(null);
-  const [registerUser, { data, loading }] = useMutation(REGISTER_USER);
+  const [registerUser, {
+    data: registerUserData,
+    loading: registerUserLoading
+  }] = useMutation(REGISTER_USER, { onError: setRegisterUserError });
 
   const handleEmailOnChange = (e) => setEmail(e.target.value);
   const handlePasswordOnChange = (e) => setPassword(e.target.value);
@@ -66,12 +69,6 @@ const Register = () => {
     clearForm();
   };
 
-  const userRegisteredWithSuccess = data?.user?.id;
-
-  useEffect(() => {
-    if (userRegisteredWithSuccess) setUserRegisterWithSuccess(true);
-  }, [userRegisteredWithSuccess]);
-
   return (
     <div className={blockName}>
       <FormContainer
@@ -94,6 +91,7 @@ const Register = () => {
             />
             <TextInput
               placeholder="Password"
+              type="password"
               classNames="text-input--register"
               onChange={handlePasswordOnChange}
               value={password}
@@ -102,7 +100,7 @@ const Register = () => {
             <FileInput
               classNames="file-input--register"
               onChange={handleFileOnChange}
-              ref={fileInput}
+              innerRef={fileInput}
               validationError={avatarsErrorMessages}
             />
             <SubmitButton
@@ -113,6 +111,9 @@ const Register = () => {
           </Fragment>
         )}
       />
+      <LoadingModal open={!!registerUserLoading} info="Rejestrujemy użytkownika! Proszę czekać..." />
+      <UserRegisteredModal open={!!registerUserData} />
+      <RegisterUserErrorModal open={!!registerUserError} />
     </div>
   );
 };

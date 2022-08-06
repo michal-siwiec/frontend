@@ -9,7 +9,7 @@ import clsx from 'clsx';
 
 const FileInput = ({
   onChange,
-  inputRef,
+  innerRef,
   classNames,
   validationError
 }) => (
@@ -18,7 +18,7 @@ const FileInput = ({
       type="file"
       className={clsx(`file-input ${classNames}`, validationError && 'file-input--error')}
       onChange={onChange}
-      ref={inputRef}
+      ref={innerRef}
       multiple
     />
     {validationError && <div className="file-input__error">{validationError}</div>}
@@ -27,7 +27,7 @@ const FileInput = ({
 
 FileInput.propTypes = exact({
   onChange: func.isRequired,
-  inputRef: element.isRequired,
+  innerRef: element.isRequired,
   classNames: string,
   validationError: string.isRequired
 }).isRequired;

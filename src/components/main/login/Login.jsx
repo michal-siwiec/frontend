@@ -17,7 +17,11 @@ const Login = () => {
   const [loginUser, { data }] = useMutation(LOGIN_USER);
 
   const handleLoginOnMouseDown = () => {
-    const { emailError, passwordError, validationStatus } = new ValidationLoginFormHandler({ email, password }).call();
+    const {
+      emailError,
+      passwordError,
+      validationStatus
+    } = new ValidationLoginFormHandler({ email, password }).call();
 
     setEmailErrorMessage(emailError);
     setPasswordErrorMessage(passwordError);
