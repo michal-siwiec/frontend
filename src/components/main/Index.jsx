@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Products from './products/Index.jsx';
 import Login from './login/Login.jsx';
-import Register from './register/Index.jsx';
+import Register from './register/Register.jsx';
 import About from './about/Index.jsx';
 import Opinions from './opinions/Index.jsx';
 

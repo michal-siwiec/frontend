@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import FormContainer from '../reusable/containers/FormContainer.jsx';
 import TextInput from '../reusable/inputs/TextInput.jsx';
 import SubmitButton from '../reusable/buttons/SubmitButton.jsx';
+import ValidationNewsletterFormHandler from '../../validators/validationNewsletterFormHandler.js';
 
 const Newsletter = () => {
   const blockName = 'newsletter';
@@ -21,7 +22,9 @@ const Newsletter = () => {
     setEmail(value);
   };
 
-  const handleSaveToNewsletter = () => {};
+  const handleSaveToNewsletter = () => {
+    const validator = new ValidationNewsletterFormHandler({ name, surname, email });
+  };
 
   return (
     <div className={blockName}>

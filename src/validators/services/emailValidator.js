@@ -1,10 +1,10 @@
-import { email as emailRegx } from '../constants/regex.js';
-
 class EmailValidator {
   #email;
+  #emailRegex;
 
   constructor(email) {
     this.#email = email;
+    this.#emailRegex = /^/;
   }
 
   valid() {
@@ -12,7 +12,7 @@ class EmailValidator {
   }
 
   #isEmailMatchToRegex() {
-    return emailRegx.test(this.#email);
+    return this.#emailRegex.test(this.#email);
   }
 }
 

@@ -1,16 +1,16 @@
-import PasswordValidator from './passwordValidator.js';
-import EmailValidator from './emailValidator.js';
+import EmailValidator from './services/emailValidator.js';
+import PasswordValidator from './services/passwordValidator.js';
 
-class LoginFormValidator {
+class ValidationLoginFormHandler {
   #validEmail;
   #validPassword;
 
   constructor({ email, password }) {
-    this.#validEmail = LoginFormValidator.#isEmailValid(email);
-    this.#validPassword = LoginFormValidator.#isPasswordValid(password);
+    this.#validEmail = ValidationLoginFormHandler.#isEmailValid(email);
+    this.#validPassword = ValidationLoginFormHandler.#isPasswordValid(password);
   }
 
-  valid() {
+  call() {
     return this.#response();
   }
 
@@ -31,4 +31,4 @@ class LoginFormValidator {
   }
 }
 
-export default LoginFormValidator;
+export default ValidationLoginFormHandler;

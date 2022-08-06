@@ -8,7 +8,7 @@ import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import { REGISTER_USER } from '../../../graphql/mutations/user.js';
 import AvatarsGenerator from '../../../services/AvatarsGenerator.js';
-import RegisterFormValidator from '../../../validators/registerFormValidator.js';
+import ValidationRegisterFormHandler from '../../../validators/validationRegisterFormHandler.js';
 import FormContainer from '../../reusable/containers/FormContainer.jsx';
 import TextInput from '../../reusable/inputs/TextInput.jsx';
 import FileInput from '../../reusable/inputs/FileInput.jsx';
@@ -18,7 +18,7 @@ import UserRegisteredModal from '../../reusable/modals/userRegisteredModal.jsx';
 
 // I should transmit form with modifier insead add modifier to each element
 
-const Index = () => {
+const Register = () => {
   const blockName = 'register';
   const [avatars, setAvatars] = useState([]);
   const [email, setEmail] = useState('sadasd@gmail.com');
@@ -48,8 +48,8 @@ const Index = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const formValidator = new RegisterFormValidator({ password, email, avatars });
-    if (!formValidator.valid()) return false;
+    const formValidator = new ValidationRegisterFormHandler({ password, email, avatars });
+    if (!formValidator.call()) return false;
 
     registerUser({ variables: { input: { email, password, avatars } } });
     resetFormState();
@@ -105,4 +105,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Register;

@@ -2,12 +2,10 @@ import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../../graphql/mutations/user.js';
-import LoginFormValidator from '../../../validators/loginFormValidator.js';
+import ValidationLoginFormHandler from '../../../validators/validationLoginFormHandler.js';
 import FormContainer from '../../reusable/containers/FormContainer.jsx';
 import TextInput from '../../reusable/inputs/TextInput.jsx';
 import SubmitButton from '../../reusable/buttons/SubmitButton.jsx';
-
-// Form instead for FormCHildren and Header instead of HeaderCOntainer
 
 const Login = () => {
   const blockName = 'login';
@@ -19,7 +17,7 @@ const Login = () => {
   const [loginUser, { data }] = useMutation(LOGIN_USER);
 
   const handleLoginOnMouseDown = () => {
-    const { emailError, passwordError, validationStatus } = new LoginFormValidator({ email, password }).valid();
+    const { emailError, passwordError, validationStatus } = new ValidationLoginFormHandler({ email, password }).call();
 
     setEmailErrorMessage(emailError);
     setPasswordErrorMessage(passwordError);

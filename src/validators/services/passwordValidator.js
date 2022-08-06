@@ -1,10 +1,10 @@
-import { password as passwordRegx } from '../constants/regex.js';
-
 class PasswordValidator {
   #password;
+  #passwordRegex;
 
   constructor(password) {
     this.#password = password;
+    this.#passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
   }
 
   valid() {
@@ -12,7 +12,7 @@ class PasswordValidator {
   }
 
   #isPasswordMatchToRegex() {
-    return passwordRegx.test(this.#password);
+    return this.#passwordRegex.test(this.#password);
   }
 }
 
