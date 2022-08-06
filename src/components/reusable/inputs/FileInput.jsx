@@ -1,25 +1,35 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import {
   exact,
   func,
   element,
   string
 } from 'prop-types';
+import clsx from 'clsx';
 
-const FileInput = ({ onChange, inputRef, classNames }) => (
-  <input
-    type="file"
-    className={`file-input ${classNames}`}
-    onChange={onChange}
-    ref={inputRef}
-    multiple
-  />
+const FileInput = ({
+  onChange,
+  inputRef,
+  classNames,
+  validationError
+}) => (
+  <Fragment>
+    <input
+      type="file"
+      className={clsx(`file-input ${classNames}`, validationError && 'file-input--error')}
+      onChange={onChange}
+      ref={inputRef}
+      multiple
+    />
+    {validationError && <div className="file-input__error">{validationError}</div>}
+  </Fragment>
 );
 
 FileInput.propTypes = exact({
   onChange: func.isRequired,
   inputRef: element.isRequired,
-  classNames: string
+  classNames: string,
+  validationError: string.isRequired
 }).isRequired;
 
 FileInput.defaultProps = {

@@ -21,8 +21,11 @@ import UserRegisteredModal from '../../reusable/modals/userRegisteredModal.jsx';
 const Register = () => {
   const blockName = 'register';
   const [avatars, setAvatars] = useState([]);
-  const [email, setEmail] = useState('sadasd@gmail.com');
-  const [password, setPassword] = useState('Ab7776dsfsd');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [emailErrorMessage, setEmailErrorMessage] = useState('');
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
+  const [avatarsErrorMessages, setAvatarsErrorMessages] = useState('');
   const [userRegisterWithSuccess, setUserRegisterWithSuccess] = useState(false);
   const fileInput = useRef(null);
   const [registerUser, { data, loading }] = useMutation(REGISTER_USER);
@@ -32,13 +35,12 @@ const Register = () => {
 
   const handleFileOnChange = async (e) => {
     const files = [...e.target.files];
-    const avatarsGenerator = new AvatarsGenerator(files);
-    const generatedAvatars = await avatarsGenerator.generateAvatars();
+    const generatedAvatars = await new AvatarsGenerator(files).call();
 
     setAvatars(generatedAvatars);
   };
 
-  const resetFormState = () => {
+  const clearForm = () => {
     setAvatars([]);
     setEmail('');
     setPassword('');
@@ -48,13 +50,20 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const formValidator = new ValidationRegisterFormHandler({ password, email, avatars });
-    if (!formValidator.call()) return false;
+    const {
+      emailError,
+      passwordError,
+      avatarError,
+      validationStatus
+    } = new ValidationRegisterFormHandler({ email, password, avatars }).call();
+
+    setEmailErrorMessage(emailError);
+    setPasswordErrorMessage(passwordError);
+    setAvatarsErrorMessages(avatarError);
+    if (!validationStatus) return;
 
     registerUser({ variables: { input: { email, password, avatars } } });
-    resetFormState();
-
-    return true;
+    clearForm();
   };
 
   const userRegisteredWithSuccess = data?.user?.id;
@@ -81,17 +90,20 @@ const Register = () => {
               classNames="text-input--register"
               onChange={handleEmailOnChange}
               value={email}
+              validationError={emailErrorMessage}
             />
             <TextInput
               placeholder="Password"
               classNames="text-input--register"
               onChange={handlePasswordOnChange}
               value={password}
+              validationError={passwordErrorMessage}
             />
             <FileInput
               classNames="file-input--register"
               onChange={handleFileOnChange}
               ref={fileInput}
+              validationError={avatarsErrorMessages}
             />
             <SubmitButton
               classNames="button--register"

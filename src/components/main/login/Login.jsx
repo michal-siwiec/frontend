@@ -12,8 +12,8 @@ const Login = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [emailErrorMessage, setEmailErrorMessage] = useState(false);
-  const [passwordErrorMessage, setPasswordErrorMessage] = useState(false);
+  const [emailErrorMessage, setEmailErrorMessage] = useState('');
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
   const [loginUser, { data }] = useMutation(LOGIN_USER);
 
   const handleLoginOnMouseDown = () => {

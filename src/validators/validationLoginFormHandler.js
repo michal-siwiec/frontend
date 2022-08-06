@@ -1,32 +1,28 @@
 import EmailValidator from './services/emailValidator.js';
 import PasswordValidator from './services/passwordValidator.js';
+import errorMessages from './data/errorMessages.js';
 
 class ValidationLoginFormHandler {
-  #validEmail;
-  #validPassword;
+  #emailValidator;
+  #passwordValidator;
 
   constructor({ email, password }) {
-    this.#validEmail = ValidationLoginFormHandler.#isEmailValid(email);
-    this.#validPassword = ValidationLoginFormHandler.#isPasswordValid(password);
+    this.#emailValidator = new EmailValidator(email);
+    this.#passwordValidator = new PasswordValidator(password);
   }
 
   call() {
     return this.#response();
   }
 
-  static #isEmailValid(email) {
-    return new EmailValidator(email).valid();
-  }
-
-  static #isPasswordValid(password) {
-    return new PasswordValidator(password).valid();
-  }
-
   #response() {
+    const isValidEmail = this.#emailValidator.valid();
+    const isValidPassword = this.#passwordValidator.valid();
+
     return {
-      emailError: !this.#validEmail && 'Email ma niepoprawny format!',
-      passwordError: !this.#validPassword && 'Hasło ma niepoprawny format!',
-      validationStatus: this.#validEmail && this.#validPassword
+      emailError: !isValidEmail && errorMessages.email,
+      passwordError: !isValidPassword && errorMessages.password,
+      validationStatus: isValidEmail && isValidPassword
     };
   }
 }

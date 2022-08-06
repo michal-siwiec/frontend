@@ -13,4 +13,13 @@
   &--register {
     flex-basis: 80%;
   }
+
+  &--error {
+    border-color: $red;
+  }
+
+  &__error {
+    flex-basis: 80%;
+    color: $red;
+  }
 }

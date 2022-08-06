@@ -1,32 +1,34 @@
 import NameValidator from './services/nameValidator.js';
 import SurnameValidator from './services/surnameValidator.js';
 import EmailValidator from './services/emailValidator.js';
+import errorMessages from './data/errorMessages.js';
 
 class ValidationNewsletterFormHandler {
-  #name;
-  #surname;
-  #email;
+  #nameValidator;
+  #surnameValidator;
+  #emailValidator;
 
   constructor({ name, surname, email }) {
-    this.#name = name;
-    this.#surname = surname;
-    this.#email = email;
+    this.#nameValidator = new NameValidator(name);
+    this.#surnameValidator = new SurnameValidator(surname);
+    this.#emailValidator = new EmailValidator(email);
   }
 
   call() {
-    return this.#isNameValid() && this.#isSurnameValid() && this.#isEmailValid();
+    return this.#response();
   }
 
-  #isNameValid() {
-    return new NameValidator(this.#name).valid();
-  }
+  #response() {
+    const isNameValid = this.#nameValidator.valid();
+    const isSurnameValid = this.#surnameValidator.valid();
+    const isEmailValid = this.#emailValidator.valid();
 
-  #isSurnameValid() {
-    return new SurnameValidator(this.#surname).valid();
-  }
-
-  #isEmailValid() {
-    return new EmailValidator(this.#email).valid();
+    return {
+      nameError: !isNameValid && errorMessages.name,
+      surnameError: !isSurnameValid && errorMessages.surname,
+      emailError: !isEmailValid && errorMessages.email,
+      validationStatus: isNameValid && isSurnameValid && isEmailValid
+    };
   }
 }
 

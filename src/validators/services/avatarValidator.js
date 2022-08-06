@@ -1,18 +1,28 @@
-import { isEmpty } from 'lodash';
-
 class AvatarValidator {
   #avatars;
+  #allowedFileFormats;
 
   constructor(avatars) {
     this.#avatars = avatars;
+    this.#allowedFileFormats = ['image/png', 'image/svg+xml'];
   }
 
   valid() {
-    return this.#isPictureLoaded();
+    return this.#isValidFormat();
   }
 
-  #isPictureLoaded() {
-    return !isEmpty(this.#avatars);
+  #isValidFormat() {
+    let eachAvatarsHasValidFormat = true;
+
+    this.#avatars.forEach(({ fileType }) => {
+      const hasAllowedFormat = this.#allowedFileFormats.includes(fileType);
+
+      if (!hasAllowedFormat) {
+        eachAvatarsHasValidFormat = false;
+      }
+    });
+
+    return eachAvatarsHasValidFormat;
   }
 }
 

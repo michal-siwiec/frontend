@@ -9,6 +9,9 @@ const Newsletter = () => {
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
   const [email, setEmail] = useState('');
+  const [nameErrorMessage, setNameErrorMessage] = useState('');
+  const [surnameErrorMessage, setSurnameErrorMessage] = useState('');
+  const [emailErrorMessage, setEmailErrorMessage] = useState('');
 
   const handleNameOnChange = ({ target: { value } }) => {
     setName(value);
@@ -23,7 +26,19 @@ const Newsletter = () => {
   };
 
   const handleSaveToNewsletter = () => {
-    const validator = new ValidationNewsletterFormHandler({ name, surname, email });
+    const {
+      nameError,
+      surnameError,
+      emailError,
+      validationStatus
+    } = new ValidationNewsletterFormHandler({ name, surname, email }).call();
+
+    setNameErrorMessage(nameError);
+    setSurnameErrorMessage(surnameError);
+    setEmailErrorMessage(emailError);
+    if (!validationStatus) return;
+
+    surnameErrorMessage(''); // to fix linter - to remove
   };
 
   return (
@@ -37,18 +52,21 @@ const Newsletter = () => {
               classNames="text-input--newsletter"
               value={name}
               onChange={handleNameOnChange}
+              validationError={nameErrorMessage}
             />
             <TextInput
               placeholder="Nazwisko"
               classNames="text-input--newsletter"
               value={surname}
               onChange={handleSurnameOnChange}
+              validationError={surnameErrorMessage}
             />
             <TextInput
               placeholder="Adres email"
               classNames="text-input--newsletter"
               value={email}
               onChange={handleEmailOnChange}
+              validationError={emailErrorMessage}
             />
             <SubmitButton
               onMouseDown={handleSaveToNewsletter}

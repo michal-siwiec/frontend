@@ -9,19 +9,29 @@ class AvatarsGenerator {
     this.#avatars = [];
   }
 
-  async generateAvatars() {
+  async call() {
     for (const [index, file] of Object.entries(this.#files)) {
-      const avatarInBase64 = await AvatarsGenerator.#convertPictureToBase64(file);
-      const main = AvatarsGenerator.#isMainAvatar(index);
-      const fileName = file.name;
-
-      this.#avatars.push({ fileName, main, base64: avatarInBase64 });
+      this.#process({ file, index });
     }
 
     return this.#avatars;
   }
 
-  static #convertPictureToBase64(file) {
+  async #process({ file, index }) {
+    const fileName = file.name;
+    const fileType = file.type;
+    const main = AvatarsGenerator.#isMainAvatar(index);
+    const avatarInBase64 = await AvatarsGenerator.#convertToBase64(file);
+
+    this.#avatars.push({
+      fileName,
+      fileType,
+      main,
+      base64: avatarInBase64
+    });
+  }
+
+  static #convertToBase64(file) {
     return new Promise((resolve) => {
       const reader = new FileReader();
       reader.readAsDataURL(file);

@@ -1,32 +1,34 @@
 import PasswordValidator from './services/passwordValidator.js';
 import EmailValidator from './services/emailValidator.js';
 import AvatarValidator from './services/avatarValidator.js';
+import errorMessages from './data/errorMessages.js';
 
 class ValidationRegisterFormHandler {
   #passwordValidator;
   #emailValidator;
   #avatarValidator;
 
-  constructor({ password, email, avatars }) {
-    this.#passwordValidator = new PasswordValidator(password);
+  constructor({ email, password, avatars }) {
     this.#emailValidator = new EmailValidator(email);
+    this.#passwordValidator = new PasswordValidator(password);
     this.#avatarValidator = new AvatarValidator(avatars);
   }
 
   call() {
-    return this.#isEmailValid() && this.#isPasswordValid() && this.#isAvatarValid();
+    return this.#response();
   }
 
-  #isEmailValid() {
-    return this.#emailValidator.valid();
-  }
+  #response() {
+    const isEmailValid = this.#emailValidator.valid();
+    const isPasswordValid = this.#passwordValidator.valid();
+    const isAvatarValid = this.#avatarValidator.valid();
 
-  #isPasswordValid() {
-    return this.#passwordValidator.valid();
-  }
-
-  #isAvatarValid() {
-    this.#avatarValidator.valid();
+    return {
+      emailError: !isEmailValid && errorMessages.email,
+      passwordError: !isPasswordValid && errorMessages.password,
+      avatarError: !isAvatarValid && errorMessages.avatar,
+      validationStatus: isEmailValid && isPasswordValid && isAvatarValid
+    };
   }
 }
 
