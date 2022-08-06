@@ -4,7 +4,7 @@ import Products from './products/Products.jsx';
 import Login from './login/Login.jsx';
 import Register from './register/Register.jsx';
 import About from './about/Index.jsx';
-import Opinions from './opinions/Index.jsx';
+import Opinions from './opinions/Opinions.jsx';
 
 const Main = () => (
   <div className="main">

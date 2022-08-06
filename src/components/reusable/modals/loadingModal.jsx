@@ -1,14 +1,14 @@
 import React from 'react';
 import { Modal, CircularProgress } from '@mui/material';
-import { exact, bool, string } from 'prop-types';
+import { exact, string } from 'prop-types';
 
-const LoadingModal = ({ open, info }) => {
-  const blockName = 'loading-modal';
+const LoadingModal = ({ info }) => {
+  const blockName = 'modal';
 
   return (
     <Modal
-      open={open}
-      className={blockName}
+      open
+      className={`${blockName} ${blockName}--loading`}
     >
       <div className={`${blockName}__content-wrapper`}>
         <h2 className={`${blockName}__header`}>{info}</h2>
@@ -19,7 +19,6 @@ const LoadingModal = ({ open, info }) => {
 };
 
 LoadingModal.propTypes = exact({
-  open: bool.isRequired,
   info: string.isRequired
 }).isRequired;
 

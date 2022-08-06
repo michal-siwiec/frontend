@@ -1,3 +1,32 @@
-@import "loading-modal.scss";
-@import "info-modal.scss";
-@import "register-user-error-modal.scss";
+.modal {
+  @include flex-container($align-items: start);
+
+  margin-top: 150px;
+  outline: none;
+
+  &__content-wrapper {
+    flex-basis: 30%;
+    padding: 1.5rem;
+    background-color: $white;
+    border-radius: $default-box-border-radious;
+    box-shadow: $default-box-shadow;
+    text-align: center;
+  }
+
+  &__header {
+    margin-bottom: 1rem;
+    color: black;
+  }
+
+  &__buttons-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  // Come back to topic, how to use & in such situaltion
+  &--loading {
+    .modal__loader {
+      color: $black;
+    }
+  }
+}

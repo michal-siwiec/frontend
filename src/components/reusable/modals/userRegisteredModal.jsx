@@ -1,46 +1,37 @@
-import React from 'react';
-import { Grid, Modal } from '@mui/material';
-import { exact, bool, func } from 'prop-types';
+import React, { useState } from 'react';
+import { Modal } from '@mui/material';
 import SubmitButton from '../buttons/SubmitButton.jsx';
 
-const UserRegisteredModal = ({ open, setUserRegisterWithSuccess }) => {
-  const blockName = 'info-modal';
+const UserRegisteredModal = () => {
+  const blockName = 'modal';
+  const [isOpen, setIsOpen] = useState(true);
 
   const handleLoginOnMouseDown = () => {
-    setUserRegisterWithSuccess(false);
+    setIsOpen(false);
   };
 
   return (
     <Modal
-      open={open}
-      className={blockName}
+      open={isOpen}
+      className={`${blockName}`}
     >
-      <Grid container spacing={3} className={`${blockName}__content-wrapper`}>
-        <Grid item xs={12}>
-          <h2 className={`${blockName}__header`}>
-            Twoje konto zostało pomyślnie założone!
-          </h2>
-        </Grid>
-        <Grid item xs={4}>
+      <div className={`${blockName}__content-wrapper`}>
+        <h2 className={`${blockName}__header`}>
+          Twoje konto zostało pomyślnie założone!
+        </h2>
+        <div className={`${blockName}__buttons-wrapper`}>
           <SubmitButton
             value="Anuluj"
             onMouseDown={handleLoginOnMouseDown}
           />
-        </Grid>
-        <Grid item xs={6}>
           <SubmitButton
             value="Zaloguj się"
             onMouseDown={handleLoginOnMouseDown}
           />
-        </Grid>
-      </Grid>
+        </div>
+      </div>
     </Modal>
   );
 };
-
-UserRegisteredModal.propTypes = exact({
-  open: bool.isRequired,
-  setUserRegisterWithSuccess: func.isRequired
-}).isRequired;
 
 export default UserRegisteredModal;

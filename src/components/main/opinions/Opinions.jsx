@@ -15,16 +15,8 @@ const Opinions = () => {
   const isLogged = useIsLogged();
   const [addedOpinion, setAddedOpinion] = useState('');
   const [rating, setRating] = useState(theHighestMark);
-
-  const {
-    loading: loadingGetOpinions,
-    error: errorGetOpinions,
-    data: dataGetOpinions
-  } = useQuery(GET_OPINIONS);
-
-  const [addOpinion, {
-    data: addedOpinionData
-  }] = useMutation(ADD_OPINION);
+  const { loading: loadingGetOpinions, error: errorGetOpinions, data: dataGetOpinions } = useQuery(GET_OPINIONS);
+  const [addOpinion, { data: addedOpinionData }] = useMutation(ADD_OPINION);
 
   const handleAddOpinionOnChange = ({ target: { value } }) => {
     setAddedOpinion(value);
@@ -74,7 +66,7 @@ const Opinions = () => {
         }
       </div>
       {
-        isLogged && (
+        !isLogged && (
           <div className={`${addOpinionBlockName}__wrapper`}>
             <h2 className={`${addOpinionBlockName}__header`}>Dodaj opinie</h2>
             <textarea

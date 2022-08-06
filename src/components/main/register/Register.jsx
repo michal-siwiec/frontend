@@ -17,6 +17,7 @@ import ValidationRegisterFormHandler from '../../../validators/validationRegiste
 import { REGISTER_USER } from '../../../graphql/mutations/user.js';
 
 // I should transmit form with modifier insead add modifier to each element
+//! Problem with showing error modal after login second time
 
 const Register = () => {
   const blockName = 'register';
@@ -111,9 +112,9 @@ const Register = () => {
           </Fragment>
         )}
       />
-      <LoadingModal open={!!registerUserLoading} info="Rejestrujemy użytkownika! Proszę czekać..." />
-      <UserRegisteredModal open={!!registerUserData} />
-      <RegisterUserErrorModal open={!!registerUserError} />
+      {!!registerUserData && <UserRegisteredModal />}
+      {!!registerUserLoading && <LoadingModal info="Rejestrujemy użytkownika! Proszę czekać..." />}
+      {!!registerUserError && <RegisterUserErrorModal />}
     </div>
   );
 };
