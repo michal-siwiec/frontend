@@ -4,7 +4,7 @@ class AvatarValidator {
 
   constructor(avatars) {
     this.#avatars = avatars;
-    this.#allowedFileFormats = ['image/png', 'image/svg+xml'];
+    this.#allowedFileFormats = ['image/png', 'image/svg+xml', 'image/jpeg'];
   }
 
   valid() {

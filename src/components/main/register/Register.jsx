@@ -34,21 +34,20 @@ const Register = () => {
     loading: registerUserLoading
   }] = useMutation(REGISTER_USER, { onError: setRegisterUserError });
 
-  const handleEmailOnChange = (e) => setEmail(e.target.value);
-  const handlePasswordOnChange = (e) => setPassword(e.target.value);
-
-  const handleFileOnChange = async (e) => {
-    const files = [...e.target.files];
-    const generatedAvatars = await new AvatarsGenerator(files).call();
-
-    setAvatars(generatedAvatars);
-  };
-
   const clearForm = () => {
     setAvatars([]);
     setEmail('');
     setPassword('');
     fileInput.current.value = '';
+  };
+
+  const handleEmailOnChange = ({ target: { value } }) => setEmail(value);
+  const handlePasswordOnChange = ({ target: { value } }) => setPassword(value);
+
+  const handleFileOnChange = async ({ target: { files } }) => {
+    const generatedAvatars = await new AvatarsGenerator(files).call();
+
+    setAvatars(generatedAvatars);
   };
 
   const handleSubmit = (e) => {
