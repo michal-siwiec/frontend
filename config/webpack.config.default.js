@@ -10,8 +10,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'index-[contenthash:6].js',
-    path: path.join(__dirname, '../dist'),
-    publicPath: '/'
+    path: path.join(__dirname, '../dist')
   },
   module: {
     rules: [
