@@ -31,7 +31,8 @@
 		"no-param-reassign": "off",
 		"no-unused-vars": "off",
 		"import/extensions": ["error", "ignorePackages"],
-		"consistent-return": "off"
+		"consistent-return": "off",
+		"react/jsx-props-no-spreading": "off"
 	},
 	"settings": {
 		"import/resolver": "webpack"

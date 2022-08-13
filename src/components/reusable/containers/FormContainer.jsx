@@ -24,8 +24,8 @@ const FormContainer = ({ header, form }) => {
 };
 
 FormContainer.propTypes = exact({
-  header: element.isRequired,
-  form: oneOfType([string, element]).isRequired
+  header: oneOfType([string, element]).isRequired,
+  form: element.isRequired
 }).isRequired;
 
 export default FormContainer;

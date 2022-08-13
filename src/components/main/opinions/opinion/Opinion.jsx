@@ -4,6 +4,8 @@ import { getFirstNCharacters, shouldDisplayTextExpander } from './helpers.js';
 import ShadowedBox from '../../../reusable/containers/ShadowedBox.jsx';
 import Rating from '../../../reusable/various/Rating.jsx';
 import Avatar from '../../../reusable/various/Avatar.jsx';
+import AnimatedPresenceContainer
+  from '../../../reusable/containers/AnimatedPresenceContainer/AnimatedPresenceContainer.jsx';
 
 const Opinion = ({
   opinionsData: {
@@ -43,7 +45,13 @@ const Opinion = ({
         <div className={`${blockName}__content-wrapper`}>
           <p className={`${blockName}__content`}>
             { !contentExpanded && `"${narrowContent}..."`}
-            { contentExpanded && `"${content}"` }
+            {
+              contentExpanded && (
+                <AnimatedPresenceContainer>
+                  {`"${content}"`}
+                </AnimatedPresenceContainer>
+              )
+            }
           </p>
           {
             shouldDisplayExpander && (
