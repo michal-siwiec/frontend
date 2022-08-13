@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { useQuery, useMutation } from '@apollo/client';
 import { ALL_PRODUCTS_CATHEGORIES } from '../../graphql/queries/allProductsCathegories.js';
 import { LOGOUT_USER } from '../../graphql/mutations/user.js';
-import { countTotalPrice } from '../../utils/price.js';
+import { countTotalPrice } from '../../utils/utils.js';
 import { STORAGE_URL } from '../../constants/environment.js';
 import { menuItemsProperties } from './data.js';
 import TextInput from '../reusable/inputs/TextInput.jsx';

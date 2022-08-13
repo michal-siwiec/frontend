@@ -12,7 +12,7 @@ import {
   privacyPolicyText
 } from './data.js';
 import { STORAGE_URL } from '../../constants/environment.js';
-import { formatPhoneNumber } from '../../utils/phoneNumber.js';
+import { formatPhoneNumber } from '../../utils/utils.js';
 import Tooltip from '../reusable/various/Tooltip.jsx';
 
 const Footer = () => {

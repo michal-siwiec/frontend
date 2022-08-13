@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { exact, number, string } from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { formattedPrice } from '../../../../utils/price.js';
+import { formattedPrice } from '../../../../utils/utils.js';
 import { generateAddedProductPayload, generatePossibleProductQuantity } from './helpers.js';
 import { addProductToBasket } from '../../../../redux/basket/actionCreators.js';
 import ShadowedBox from '../../../reusable/containers/ShadowedBox.jsx';

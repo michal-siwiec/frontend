@@ -50,6 +50,8 @@
     font-style: italic;
     text-align: center;
     overflow-wrap: break-word;
+    max-height: 200px;
+    overflow: scroll;
 
     @media screen and (min-width: $md-breakpoint) {
       text-align: start;

@@ -1,11 +1,11 @@
 import React, { Fragment, useState } from 'react';
 import { exact, string, number } from 'prop-types';
-import { getFirstNCharacters, shouldDisplayTextExpander } from './helpers.js';
-import ShadowedBox from '../../../reusable/containers/ShadowedBox.jsx';
-import Rating from '../../../reusable/various/Rating.jsx';
-import Avatar from '../../../reusable/various/Avatar.jsx';
+import { getFirstNCharacters, isTextLonger } from '../../../utils/utils.js';
+import ShadowedBox from '../../reusable/containers/ShadowedBox.jsx';
+import Rating from '../../reusable/various/Rating.jsx';
+import Avatar from '../../reusable/various/Avatar.jsx';
 import AnimatedPresenceContainer
-  from '../../../reusable/containers/AnimatedPresenceContainer/AnimatedPresenceContainer.jsx';
+  from '../../reusable/containers/AnimatedPresenceContainer/AnimatedPresenceContainer.jsx';
 
 const Opinion = ({
   opinionsData: {
@@ -21,7 +21,7 @@ const Opinion = ({
   const blockName = 'opinion';
   const displayedNumberOfChars = 25;
   const narrowContent = getFirstNCharacters({ string: content, charsQuantity: displayedNumberOfChars });
-  const shouldDisplayExpander = shouldDisplayTextExpander({ string: content, charsQuantity: displayedNumberOfChars });
+  const shouldDisplayTextExpander = isTextLonger({ string: content, charsQuantity: displayedNumberOfChars });
   const [contentExpanded, setContentExpanded] = useState(false);
 
   const handleExpandContentOnMouseDown = () => {
@@ -54,7 +54,7 @@ const Opinion = ({
             }
           </p>
           {
-            shouldDisplayExpander && (
+            shouldDisplayTextExpander && (
               <span
                 className={`${blockName}__content-expander`}
                 onMouseDown={handleExpandContentOnMouseDown}
