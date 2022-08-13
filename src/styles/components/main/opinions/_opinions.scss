@@ -1,0 +1,12 @@
+.opinions {
+  &__header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  &__opinion-list-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+}

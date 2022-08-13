@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { formattedPrice } from '../../../../utils/price.js';
 import { generateAddedProductPayload, generatePossibleProductQuantity } from './helpers.js';
 import { addProductToBasket } from '../../../../redux/basket/actionCreators.js';
+import ShadowedBox from '../../../reusable/containers/ShadowedBox.jsx';
 import NumberInput from '../../../reusable/inputs/NumberInput.jsx';
 import SubmitButton from '../../../reusable/buttons/SubmitButton.jsx';
 
@@ -32,7 +33,7 @@ const Product = ({
   };
 
   return (
-    <div className={blockName}>
+    <ShadowedBox classNames={blockName}>
       <div className={`${blockName}__img-wrapper`}>
         <img
           src={picturePath}
@@ -58,7 +59,7 @@ const Product = ({
           />
         </div>
       </div>
-    </div>
+    </ShadowedBox>
   );
 };
 

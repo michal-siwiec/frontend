@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from '@mui/material';
 import SubmitButton from '../buttons/SubmitButton.jsx';
 
-const AddedOpinionModal = () => {
+const AddingOpinionSuccessModal = () => {
   const blockName = 'modal';
   const [isOpen, setIsOpen] = useState(true);
 
@@ -36,4 +36,4 @@ const AddedOpinionModal = () => {
   );
 };
 
-export default AddedOpinionModal;
+export default AddingOpinionSuccessModal;

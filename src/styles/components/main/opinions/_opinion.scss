@@ -1,21 +1,6 @@
-.opinions {
-  &__header {
-    text-align: center;
-    margin-bottom: 50px;
-  }
-
-  // mixin with flex-wrap
-  &__wrapper-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-  }
-}
-
 .opinion {
   flex-basis: 20%;
   padding: 10px;
-  border: 2px solid black;
 
   &__picture {
     width: 100px;

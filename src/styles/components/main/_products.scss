@@ -21,9 +21,6 @@
   flex-basis: 90%;
   text-align: center;
   min-height: 200px;
-  margin: 10px;
-  box-shadow: $default-box-shadow;
-  border-radius: $default-box-border-radious;
 
   @media screen and (min-width: $lg-breakpoint) {
     flex-basis: 45%;
