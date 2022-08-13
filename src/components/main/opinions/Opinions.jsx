@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_OPINIONS } from '../../../graphql/queries/opinion.js';
 import { ADD_OPINION } from '../../../graphql/mutations/opinion.js';
 import useIsLogged from '../../../hooks/useIsLogged.jsx';
 import AddedOpinionModal from '../../reusable/modals/addedOpinionModal.jsx';
 import Rating from '../../reusable/Rating.jsx';
+import FormContainer from '../../reusable/containers/FormContainer.jsx';
+import TextArea from '../../reusable/inputs/TextArea.jsx';
+import SubmitButton from '../../reusable/buttons/SubmitButton.jsx';
 
 const Opinions = () => {
   const opinionsBlockName = 'opinions';
   const opinionBlockName = 'opinion';
-  const addOpinionBlockName = 'add-opinion';
   const theHighestMark = 5;
 
   const isLogged = useIsLogged();
@@ -29,7 +31,8 @@ const Opinions = () => {
 
   const handleAddOpinionSubmit = () => {
     addOpinion(
-      { variables: { input: { content: addedOpinion, mark: rating, userId: isLogged.userID } } }
+      // { variables: { input: { content: addedOpinion, mark: rating, userId: isLogged.userID } } }
+      { variables: { input: { content: addedOpinion, mark: rating, userId: 'a0ca8305-c8cc-45fd-8e12-2408c659840d' } } }
     );
   };
 
@@ -67,23 +70,30 @@ const Opinions = () => {
       </div>
       {
         !isLogged && (
-          <div className={`${addOpinionBlockName}__wrapper`}>
-            <h2 className={`${addOpinionBlockName}__header`}>Dodaj opinie</h2>
-            <textarea
-              className={`${addOpinionBlockName}__textarea`}
-              value={addedOpinion}
-              onChange={handleAddOpinionOnChange}
-            />
-            <Rating value={rating} readOnly={false} onChange={handleSetRating} />
-            <div>
-              <input
-                type="submit"
-                value="Wyślij"
-                className={`${addOpinionBlockName}__input-submit`}
-                onClick={handleAddOpinionSubmit}
-              />
-            </div>
-          </div>
+          <FormContainer
+            header="Dodaj opinie"
+            form={(
+              <Fragment>
+                <TextArea
+                  value={addedOpinion}
+                  onChange={handleAddOpinionOnChange}
+                  classNames="text-area--add-opinion"
+                  placeholder="Dodaj opinię"
+                />
+                <Rating
+                  value={rating}
+                  readOnly={false}
+                  onChange={handleSetRating}
+                  classes="rating--add-opinion"
+                />
+                <SubmitButton
+                  onMouseDown={handleAddOpinionSubmit}
+                  value="Wyślij"
+                  classNames="button--add-opinion"
+                />
+              </Fragment>
+            )}
+          />
         )
       }
       { addedOpinionData && <AddedOpinionModal /> }

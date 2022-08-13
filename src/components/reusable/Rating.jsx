@@ -7,20 +7,30 @@ import {
   func
 } from 'prop-types';
 
-const Rating = ({ value, readOnly, onChange }) => (
-  <MuiRating value={value} readOnly={readOnly} onChange={onChange} />
+const Rating = ({
+  value,
+  readOnly,
+  onChange,
+  classes
+}) => (
+  <MuiRating
+    value={value}
+    readOnly={readOnly}
+    onChange={onChange}
+    className={classes}
+  />
 );
 
 Rating.propTypes = exact({
-  value: string,
+  value: string.isRequired,
   readOnly: bool,
-  onChange: func
+  onChange: func.isRequired,
+  classes: string
 }).isRequired;
 
 Rating.defaultProps = exact({
-  value: 0,
   readOnly: true,
-  onChange: () => {}
+  classes: ''
 }).isRequired;
 
 export default Rating;
