@@ -13,7 +13,7 @@ import {
 } from './data.js';
 import { STORAGE_URL } from '../../constants/environment.js';
 import { formatPhoneNumber } from '../../utils/phoneNumber.js';
-import Tooltip from '../reusable/Tooltip.jsx';
+import Tooltip from '../reusable/various/Tooltip.jsx';
 
 const Footer = () => {
   const blockName = 'footer';

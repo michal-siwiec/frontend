@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
 import { exact, string, number } from 'prop-types';
 import ShadowedBox from '../../reusable/containers/ShadowedBox.jsx';
-import Rating from '../../reusable/Rating.jsx';
+import Rating from '../../reusable/various/Rating.jsx';
+import Avatar from '../../reusable/various/Avatar.jsx';
 
 const Opinion = ({
   opinionsData: {
@@ -9,16 +10,22 @@ const Opinion = ({
     mark,
     updatedAt,
     user: {
-      email
+      email,
+      avatars
     }
   }
 }) => {
   const blockName = 'opinion';
 
   return (
-    <ShadowedBox classNames="opinion">
+    <ShadowedBox classNames={blockName}>
       <Fragment>
-        <div className={`${blockName}__picture`} />
+        <div className={`${blockName}__picture-wrapper`}>
+          <Avatar
+            avatars={avatars}
+            classNames={`${blockName}__picture`}
+          />
+        </div>
         <div className={`${blockName}__user-name`}>{email}</div>
         <div className={`${blockName}__user-email`}>{email}</div>
         <div className={`${blockName}__updated-at`}>{updatedAt}</div>

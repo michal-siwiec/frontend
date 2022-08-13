@@ -3,7 +3,7 @@ import { exact, func } from 'prop-types';
 import { useMutation } from '@apollo/client';
 import { ADD_OPINION } from '../../../graphql/mutations/opinion.js';
 import FormContainer from '../../reusable/containers/FormContainer.jsx';
-import Rating from '../../reusable/Rating.jsx';
+import Rating from '../../reusable/various/Rating.jsx';
 import TextArea from '../../reusable/inputs/TextArea.jsx';
 import SubmitButton from '../../reusable/buttons/SubmitButton.jsx';
 
@@ -27,7 +27,7 @@ const AddOpinionForm = ({ setIsOpinionAdded, setIsAddedOpinionError }) => {
   const handleAddOpinionSubmit = () => {
     addOpinion(
       // { variables: { input: { content: addedOpinion, mark: rating, userId: isLogged.userID } } }
-      { variables: { input: { content: addedOpinion, mark: rating, userId: 'a0ca8305-c8cc-45fd-8e12-2408c659840d' } } }
+      { variables: { input: { content: addedOpinion, mark: rating, userId: 'aea46a11-d778-49cb-b7a1-c90dfd9afe71' } } }
     );
   };
 
