@@ -1,4 +1,6 @@
 .opinions {
+  margin: 50px 0 30px;
+
   &__header {
     text-align: center;
     margin-bottom: 50px;
@@ -8,5 +10,28 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+  }
+
+  &__empty-opinions-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &__empty-opinion-header {
+    flex-basis: 100%;
+    font-size: 30px;
+    line-height: 35px;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  &__empty-opinion-scroller {
+    color: $gray;
+    font-weight: bold;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }

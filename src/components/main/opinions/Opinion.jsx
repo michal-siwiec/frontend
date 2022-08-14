@@ -21,7 +21,7 @@ const Opinion = ({
   const blockName = 'opinion';
   const displayedNumberOfChars = 25;
   const narrowContent = getFirstNCharacters({ string: content, charsQuantity: displayedNumberOfChars });
-  const shouldDisplayTextExpander = isTextLonger({ string: content, charsQuantity: displayedNumberOfChars });
+  const textToLongToDisplay = isTextLonger({ string: content, charsQuantity: displayedNumberOfChars });
   const [contentExpanded, setContentExpanded] = useState(false);
 
   const handleExpandContentOnMouseDown = () => {
@@ -44,17 +44,18 @@ const Opinion = ({
         </div>
         <div className={`${blockName}__content-wrapper`}>
           <p className={`${blockName}__content`}>
-            { !contentExpanded && `"${narrowContent}..."`}
             {
-              contentExpanded && (
+              contentExpanded ? (
                 <AnimatedPresenceContainer>
                   {`"${content}"`}
                 </AnimatedPresenceContainer>
+              ) : (
+                `"${narrowContent}${textToLongToDisplay ? '...' : ''}"`
               )
             }
           </p>
           {
-            shouldDisplayTextExpander && (
+            textToLongToDisplay && (
               <span
                 className={`${blockName}__content-expander`}
                 onMouseDown={handleExpandContentOnMouseDown}

@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { exact, func } from 'prop-types';
+import { exact, func, element } from 'prop-types';
 import { useMutation } from '@apollo/client';
 import { ADD_OPINION } from '../../../graphql/mutations/opinion.js';
 import ValidationLoginFormHandler from '../../../validators/validationAddOpinionFormHandler.js';
@@ -8,7 +8,12 @@ import Rating from '../../reusable/various/Rating.jsx';
 import TextArea from '../../reusable/inputs/TextArea.jsx';
 import SubmitButton from '../../reusable/buttons/SubmitButton.jsx';
 
-const AddOpinionForm = ({ setIsOpinionAdded, setIsAddedOpinionError }) => {
+const AddOpinionForm = ({
+  setIsOpinionAdded,
+  setIsAddedOpinionError,
+  textareaRef,
+  refetchOpinions
+}) => {
   const theHighestMark = 5;
   const [rating, setRating] = useState(theHighestMark);
   const [opinionValidationError, setOpinionValidationError] = useState('');
@@ -38,8 +43,17 @@ const AddOpinionForm = ({ setIsOpinionAdded, setIsAddedOpinionError }) => {
     );
   };
 
+  const clearForm = () => {
+    setAddedOpinion('');
+    setRating(theHighestMark);
+  };
+
   useEffect(() => {
-    if (data) return setIsOpinionAdded(true);
+    if (data) {
+      refetchOpinions();
+      clearForm();
+      setIsOpinionAdded(true);
+    }
     if (error) return setIsAddedOpinionError(true);
   }, [data, error]);
 
@@ -53,6 +67,7 @@ const AddOpinionForm = ({ setIsOpinionAdded, setIsAddedOpinionError }) => {
             onChange={handleAddOpinionOnChange}
             classNames="text-area--add-opinion"
             placeholder="Dodaj opinię"
+            textareaRef={textareaRef}
             validationError={opinionValidationError}
           />
           <Rating
@@ -74,7 +89,9 @@ const AddOpinionForm = ({ setIsOpinionAdded, setIsAddedOpinionError }) => {
 
 AddOpinionForm.propTypes = exact({
   setIsOpinionAdded: func.isRequired,
-  setIsAddedOpinionError: func.isRequired
+  setIsAddedOpinionError: func.isRequired,
+  textareaRef: element.isRequired,
+  refetchOpinions: func.isRequired
 }).isRequired;
 
 export default AddOpinionForm;
