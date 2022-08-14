@@ -1,6 +1,6 @@
 import EmailValidator from './services/emailValidator.js';
 import PasswordValidator from './services/passwordValidator.js';
-import errorMessages from './data/errorMessages.js';
+import errorMessages from './dictionary/errorMessages.js';
 
 class ValidationLoginFormHandler {
   #emailValidator;

@@ -1,7 +1,7 @@
 import PasswordValidator from './services/passwordValidator.js';
 import EmailValidator from './services/emailValidator.js';
 import AvatarValidator from './services/avatarValidator.js';
-import errorMessages from './data/errorMessages.js';
+import errorMessages from './dictionary/errorMessages.js';
 
 class ValidationRegisterFormHandler {
   #passwordValidator;

@@ -15,4 +15,9 @@
   &:focus {
     outline: none;
   }
+
+  &__error {
+    flex-basis: 80%;
+    color: $red;
+  }
 }

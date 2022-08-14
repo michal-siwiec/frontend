@@ -3,5 +3,6 @@ export default {
   surname: 'Nazwisko ma niepoprawny format!',
   email: 'Email ma niepoprawny format!',
   password: 'Hasło ma niepoprawny format!',
-  avatar: 'Dozwolone formaty to: png, svg'
+  avatar: 'Dozwolone formaty to: png, svg, jpeg',
+  opinion: 'Opinia ma niepoprawny format!'
 };

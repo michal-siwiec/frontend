@@ -1,7 +1,7 @@
 import NameValidator from './services/nameValidator.js';
 import SurnameValidator from './services/surnameValidator.js';
 import EmailValidator from './services/emailValidator.js';
-import errorMessages from './data/errorMessages.js';
+import errorMessages from './dictionary/errorMessages.js';
 
 class ValidationNewsletterFormHandler {
   #nameValidator;
