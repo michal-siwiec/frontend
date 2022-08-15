@@ -1,11 +1,12 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { exact, string, number } from 'prop-types';
-import { getFirstNCharacters, isTextLonger } from '../../../utils/utils.js';
-import ShadowedBox from '../../reusable/containers/ShadowedBox.jsx';
-import Rating from '../../reusable/various/Rating.jsx';
-import Avatar from '../../reusable/various/Avatar.jsx';
-import AnimatedPresenceContainer
-  from '../../reusable/containers/AnimatedPresenceContainer/AnimatedPresenceContainer.jsx';
+import SmoothCollapse from 'react-smooth-collapse';
+import { isEmpty } from 'lodash';
+import { appearingInSequence } from '../../../../data/animations/variant.js';
+import PresentedContentGenerator from './services/presentedContentGenerator.js';
+import ShadowedBox from '../../../reusable/containers/ShadowedBox.jsx';
+import Rating from '../../../reusable/various/Rating.jsx';
+import Avatar from '../../../reusable/various/Avatar.jsx';
 
 const Opinion = ({
   opinionsData: {
@@ -16,20 +17,42 @@ const Opinion = ({
       email,
       avatars
     }
-  }
+  },
+  index
 }) => {
   const blockName = 'opinion';
   const displayedNumberOfChars = 25;
-  const narrowContent = getFirstNCharacters({ string: content, charsQuantity: displayedNumberOfChars });
-  const textToLongToDisplay = isTextLonger({ string: content, charsQuantity: displayedNumberOfChars });
   const [contentExpanded, setContentExpanded] = useState(false);
+  const [presentedNarrowContent, setPresentedNarrowContent] = useState();
+  const [presentedRestOfContent, setPresentedRestOfContent] = useState();
+  const [isTextToLongToDisplay, setIsTextToLongToDisplay] = useState();
 
   const handleExpandContentOnMouseDown = () => {
     setContentExpanded(!contentExpanded);
   };
 
+  useEffect(() => {
+    const {
+      narrowContent,
+      restOfContent,
+      textToLongToDisplay
+    } = new PresentedContentGenerator({ displayedNumberOfChars, content, contentExpanded }).call();
+
+    setPresentedNarrowContent(narrowContent);
+    setPresentedRestOfContent(restOfContent);
+    setIsTextToLongToDisplay(textToLongToDisplay);
+  }, [contentExpanded]);
+
   return (
-    <ShadowedBox classNames={blockName}>
+    <ShadowedBox
+      classNames={blockName}
+      animationAttributes={{
+        variants: appearingInSequence,
+        custom: index,
+        initial: appearingInSequence.hidden,
+        animate: appearingInSequence.visible
+      }}
+    >
       <Fragment>
         <div className={`${blockName}__picture-wrapper`}>
           <Avatar
@@ -44,18 +67,17 @@ const Opinion = ({
         </div>
         <div className={`${blockName}__content-wrapper`}>
           <p className={`${blockName}__content`}>
+            { presentedNarrowContent }
             {
-              contentExpanded ? (
-                <AnimatedPresenceContainer>
-                  {`"${content}"`}
-                </AnimatedPresenceContainer>
-              ) : (
-                `"${narrowContent}${textToLongToDisplay ? '...' : ''}"`
+              !isEmpty(presentedRestOfContent) && (
+                <SmoothCollapse expanded={contentExpanded}>
+                  { presentedRestOfContent }
+                </SmoothCollapse>
               )
             }
           </p>
           {
-            textToLongToDisplay && (
+            isTextToLongToDisplay && (
               <span
                 className={`${blockName}__content-expander`}
                 onMouseDown={handleExpandContentOnMouseDown}
