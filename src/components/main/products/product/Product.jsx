@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { exact, number, string } from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { formattedPrice } from '../../../../utils/utils.js';
+import { appearingInSequence } from '../../../../data/animations/variant.js';
 import { generateAddedProductPayload, generatePossibleProductQuantity } from './helpers.js';
 import { addProductToBasket } from '../../../../redux/basket/actionCreators.js';
 import ShadowedBox from '../../../reusable/containers/ShadowedBox.jsx';
@@ -15,7 +16,8 @@ const Product = ({
     price,
     availableQuantity,
     picturePath
-  }
+  },
+  index
 }) => {
   const productsInBasket = useSelector(({ basket: { addedProducts } }) => addedProducts);
   const dispatch = useDispatch();
@@ -33,7 +35,15 @@ const Product = ({
   };
 
   return (
-    <ShadowedBox classNames={blockName}>
+    <ShadowedBox
+      classNames={blockName}
+      animationAttributes={{
+        variants: appearingInSequence,
+        custom: index,
+        initial: appearingInSequence.hidden,
+        animate: appearingInSequence.visible
+      }}
+    >
       <div className={`${blockName}__img-wrapper`}>
         <img
           src={picturePath}

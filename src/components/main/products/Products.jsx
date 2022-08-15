@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useQuery } from '@apollo/client';
 import { GET_PROMOTED_PRODUCTS } from '../../../graphql/queries/promotedProducts.js';
@@ -6,30 +6,33 @@ import { loadProducts } from '../../../redux/products/actionsCreator.js';
 import Product from './product/Product.jsx';
 
 const Products = () => {
-  const { loading, error, data } = useQuery(GET_PROMOTED_PRODUCTS);
-  const [productsAlreadyInserted, setProductsAlreadyInserted] = useState(false);
-  const dispatch = useDispatch();
   const blockName = 'products';
-  const products = data?.promotedProducts || [];
+  const dispatch = useDispatch();
+  const { loading, error, data } = useQuery(GET_PROMOTED_PRODUCTS);
 
-  const insertProductsToStore = () => {
-    if (!products || productsAlreadyInserted) return;
+  useEffect(() => {
+    if (!data) return;
 
-    dispatch(loadProducts(products));
-    setProductsAlreadyInserted(true);
-  };
+    dispatch(loadProducts(data.promotedProducts));
+  }, [data]);
 
   if (loading) return <h1>Loading...</h1>;
   if (error) return <h1>Error</h1>;
 
-  insertProductsToStore();
+  const { promotedProducts } = data;
 
   return (
     <div className={`main__${blockName} ${blockName}`}>
       <h2 className={`${blockName}__header`}>Polecane produkty</h2>
       <div className={`${blockName}__list`}>
         {
-          products.map((product) => <Product product={product} key={product.id} />)
+          promotedProducts.map((product, index) => (
+            <Product
+              product={product}
+              key={product.id}
+              index={index}
+            />
+          ))
         }
       </div>
     </div>
