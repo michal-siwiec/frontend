@@ -11,8 +11,8 @@ import {
   shopRulesText,
   privacyPolicyText
 } from './data.js';
-import { STORAGE_URL } from '../../constants/environment.js';
-import { formatPhoneNumber } from '../../utils/utils.js';
+import { STORAGE_URL } from '../../utils/environment.js';
+import { formatPhoneNumber } from '../../utils/helpers.js';
 import Tooltip from '../reusable/various/Tooltip.jsx';
 
 const Footer = () => {

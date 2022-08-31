@@ -5,7 +5,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { ApolloProvider } from '@apollo/client';
 import client from '../../../src/graphql/client.js';
 import store from '../../../src/redux/store.js';
-import { API_WS_ROOT } from '../../../src/constants/environment.js';
+import { API_WS_ROOT } from '../../../src/utils/environment.js';
 import { render } from '@testing-library/react';
 
 const renderWithProviders = (ui, { initialState, ...renderOptions } = {}) => {

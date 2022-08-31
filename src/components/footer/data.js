@@ -1,4 +1,4 @@
-import { STORAGE_URL } from '../../constants/environment.js';
+import { STORAGE_URL } from '../../utils/environment.js';
 
 export const productsCategories = [
   {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { countTotalPrice } from '../../../utils/utils.js';
+import { countTotalPrice } from '../../../utils/helpers.js';
 import BasketSummary from './BasketSummary.jsx';
 
 const Basket = () => {

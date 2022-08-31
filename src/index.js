@@ -7,7 +7,7 @@ import { ActionCableProvider } from 'react-actioncable-provider';
 import { ApolloProvider } from '@apollo/client';
 import { Provider as ReduxProvider } from 'react-redux';
 import client from './graphql/client.js';
-import { API_WS_ROOT } from './constants/environment.js';
+import { API_WS_ROOT } from './utils/environment.js';
 import App from './components/App.jsx';
 import store from './redux/store.js';
 
