@@ -7,7 +7,7 @@ import {
 } from 'prop-types';
 import { motion } from 'framer-motion';
 
-const ShadowedBox = ({ children, classNames, animationAttributes }) => (
+const ShadowedContainer = ({ children, classNames, animationAttributes }) => (
   <motion.div
     className={`shadowed-box ${classNames}`}
     {...animationAttributes}
@@ -16,15 +16,15 @@ const ShadowedBox = ({ children, classNames, animationAttributes }) => (
   </motion.div>
 );
 
-ShadowedBox.propTypes = exact({
+ShadowedContainer.propTypes = exact({
   children: element.isRequired,
   classNames: string.isRequired,
   animationAttributes: object
 }).isRequired;
 
-ShadowedBox.defaultProps = {
+ShadowedContainer.defaultProps = {
   classNames: '',
   animationAttributes: {}
 };
 
-export default ShadowedBox;
+export default ShadowedContainer;

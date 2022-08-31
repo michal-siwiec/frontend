@@ -4,7 +4,7 @@ import SmoothCollapse from 'react-smooth-collapse';
 import { isEmpty } from 'lodash';
 import { appearingInSequence } from '../../../../data/animations/variant.js';
 import PresentedContentGenerator from './services/presentedContentGenerator.js';
-import ShadowedBox from '../../../reusable/containers/ShadowedBox.jsx';
+import ShadowedContainer from '../../../reusable/containers/ShadowedContainer.jsx';
 import Rating from '../../../reusable/various/Rating.jsx';
 import Avatar from '../../../reusable/various/Avatar.jsx';
 
@@ -44,7 +44,7 @@ const Opinion = ({
   }, [contentExpanded]);
 
   return (
-    <ShadowedBox
+    <ShadowedContainer
       classNames={blockName}
       animationAttributes={{
         variants: appearingInSequence,
@@ -90,7 +90,7 @@ const Opinion = ({
           }
         </div>
       </Fragment>
-    </ShadowedBox>
+    </ShadowedContainer>
   );
 };
 

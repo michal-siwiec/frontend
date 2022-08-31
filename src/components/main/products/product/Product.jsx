@@ -5,7 +5,7 @@ import { formattedPrice } from '../../../../utils/utils.js';
 import { appearingInSequence } from '../../../../data/animations/variant.js';
 import { generateAddedProductPayload, generatePossibleProductQuantity } from './helpers.js';
 import { addProductToBasket } from '../../../../redux/basket/actionCreators.js';
-import ShadowedBox from '../../../reusable/containers/ShadowedBox.jsx';
+import ShadowedContainer from '../../../reusable/containers/ShadowedContainer.jsx';
 import NumberInput from '../../../reusable/inputs/NumberInput.jsx';
 import SubmitButton from '../../../reusable/buttons/SubmitButton.jsx';
 
@@ -19,10 +19,10 @@ const Product = ({
   },
   index
 }) => {
+  const blockName = 'product';
   const productsInBasket = useSelector(({ basket: { addedProducts } }) => addedProducts);
   const dispatch = useDispatch();
   const [selectedQuantity, setSelectedQuantity] = useState(1);
-  const blockName = 'product';
   const possibleProductQuantity = generatePossibleProductQuantity({ id, productsInBasket, availableQuantity });
 
   const selectQuantityOnChange = ({ target: { value } }) => {
@@ -35,7 +35,7 @@ const Product = ({
   };
 
   return (
-    <ShadowedBox
+    <ShadowedContainer
       classNames={blockName}
       animationAttributes={{
         variants: appearingInSequence,
@@ -69,7 +69,7 @@ const Product = ({
           />
         </div>
       </div>
-    </ShadowedBox>
+    </ShadowedContainer>
   );
 };
 

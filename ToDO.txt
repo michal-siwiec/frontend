@@ -10,4 +10,7 @@
 14) Cancel button with back arrow
 16) Common validation error handling for inputs in scss
 18) Refactor inputs scss
-19) Refactor modals - almost each looks like the same
+19) Refactor modals - almost each looks like the same and I bad handle open and close Modals
+20) Dodaj alias zeby nie pisac ../../../../
+21) Dodaj nowy folder 'pages' bądz 'views' w ktorym bede trzymal te kontenery
+22) Usun constants i przenies do utils
