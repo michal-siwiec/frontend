@@ -5,6 +5,9 @@ import React, {
 } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
+import AvatarsGenerator from 'services/AvatarsGenerator.js';
+import ValidationRegisterFormHandler from 'validators/validationRegisterFormHandler.js';
+import { REGISTER_USER } from 'graphql/mutations/user.js';
 import FormContainer from '../../reusable/containers/FormContainer.jsx';
 import TextInput from '../../reusable/inputs/TextInput.jsx';
 import FileInput from '../../reusable/inputs/FileInput.jsx';
@@ -12,9 +15,6 @@ import SubmitButton from '../../reusable/buttons/SubmitButton.jsx';
 import LoadingModal from '../../reusable/modals/loadingModal.jsx';
 import UserRegisteredModal from '../../reusable/modals/userRegisteredModal.jsx';
 import RegisterUserErrorModal from '../../reusable/modals/registerUserErrorModal.jsx';
-import AvatarsGenerator from '../../../services/AvatarsGenerator.js';
-import ValidationRegisterFormHandler from '../../../validators/validationRegisterFormHandler.js';
-import { REGISTER_USER } from '../../../graphql/mutations/user.js';
 
 // I should transmit form with modifier insead add modifier to each element
 //! Problem with showing error modal after login second time

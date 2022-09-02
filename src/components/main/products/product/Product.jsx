@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { exact, number, string } from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { formattedPrice } from '../../../../utils/helpers.js';
+import { formattedPrice } from 'utils/helpers.js';
+import { addProductToBasket } from 'redux_/basket/actionCreators.js';
 import { appearingInSequence } from '../../../../data/animations/variant.js';
 import { generateAddedProductPayload, generatePossibleProductQuantity } from './helpers.js';
-import { addProductToBasket } from '../../../../redux/basket/actionCreators.js';
 import ShadowedContainer from '../../../reusable/containers/ShadowedContainer.jsx';
 import NumberInput from '../../../reusable/inputs/NumberInput.jsx';
 import SubmitButton from '../../../reusable/buttons/SubmitButton.jsx';

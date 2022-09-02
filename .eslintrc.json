@@ -36,6 +36,10 @@
 		"class-methods-use-this": "off"
 	},
 	"settings": {
-		"import/resolver": "webpack"
+		"import/resolver": {
+			"node": {
+        "paths": ["./src"]
+      }
+		}
 	}
 }

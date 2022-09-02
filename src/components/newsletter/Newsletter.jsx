@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from 'react';
+import ValidationNewsletterFormHandler from 'validators/validationNewsletterFormHandler.js';
 import FormContainer from '../reusable/containers/FormContainer.jsx';
 import TextInput from '../reusable/inputs/TextInput.jsx';
 import SubmitButton from '../reusable/buttons/SubmitButton.jsx';
-import ValidationNewsletterFormHandler from '../../validators/validationNewsletterFormHandler.js';
 
 const Newsletter = () => {
   const blockName = 'newsletter';

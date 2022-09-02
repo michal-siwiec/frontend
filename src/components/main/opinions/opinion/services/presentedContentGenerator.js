@@ -1,4 +1,4 @@
-import { cutAfterNChars, isTextLonger } from '../../../../../utils/helpers.js';
+import { cutAfterNChars, isTextLonger } from 'utils/helpers.js';
 
 class PresentedContentGenerator {
   #displayedNumberOfChars;

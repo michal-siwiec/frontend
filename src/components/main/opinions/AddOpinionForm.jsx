@@ -1,8 +1,8 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { exact, func, element } from 'prop-types';
 import { useMutation } from '@apollo/client';
-import { ADD_OPINION } from '../../../graphql/mutations/opinion.js';
-import ValidationLoginFormHandler from '../../../validators/validationAddOpinionFormHandler.js';
+import { ADD_OPINION } from 'graphql/mutations/opinion.js';
+import ValidationLoginFormHandler from 'validators/validationAddOpinionFormHandler.js';
 import FormContainer from '../../reusable/containers/FormContainer.jsx';
 import Rating from '../../reusable/various/Rating.jsx';
 import TextArea from '../../reusable/inputs/TextArea.jsx';

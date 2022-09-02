@@ -1,9 +1,9 @@
 /* eslint react/destructuring-assignment: 0 */
 
 import React, { Component } from 'react';
-import { API_ROOT } from '../../utils/environment.js';
+import invokeHttpRequest from 'services/HttpRequestInvoker.js';
+import { API_ROOT } from 'utils/environment.js';
 import ActionCableConnector from '../actionCableConnector/Index.jsx';
-import invokeHttpRequest from '../../services/HttpRequestInvoker.js';
 
 class Messages extends Component {
   static addConversation = () => {

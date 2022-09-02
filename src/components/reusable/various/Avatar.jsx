@@ -6,7 +6,7 @@ import {
   bool,
   string
 } from 'prop-types';
-import { STORAGE_URL } from '../../../utils/environment.js';
+import { STORAGE_URL } from 'utils/environment.js';
 
 const Avatar = ({ avatars, classNames }) => {
   const pathToDefaultAvatar = `${STORAGE_URL}/users/empty-avatar.jpeg`;

@@ -50,7 +50,16 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
         resolve: {
-          extensions: [".js", ".jsx"]
+          extensions: [".js", ".jsx"],
+          alias: {
+            components: path.resolve(__dirname, '../', 'src/components'),
+            graphql: path.resolve(__dirname, '../' ,'src/graphql'),
+            hooks: path.resolve(__dirname, '../', 'src/hooks'),
+            redux_: path.resolve(__dirname, '../', 'src/redux_'),
+            services: path.resolve(__dirname, '../', 'src/services'),
+            utils: path.resolve(__dirname, '../', 'src/utils'),
+            validators: path.resolve(__dirname, '../', 'src/validators')
+          }
         },
         options: {
           presets: [

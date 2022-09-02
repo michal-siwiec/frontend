@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import { IS_USER_LOGGED } from '../graphql/queries/user.js';
+import { IS_USER_LOGGED } from 'graphql/queries/user.js';
 
 const useIsLogged = () => {
   const { data } = useQuery(IS_USER_LOGGED);

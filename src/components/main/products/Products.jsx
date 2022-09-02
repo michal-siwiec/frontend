@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useQuery } from '@apollo/client';
-import { GET_PROMOTED_PRODUCTS } from '../../../graphql/queries/promotedProducts.js';
-import { loadProducts } from '../../../redux/products/actionsCreator.js';
+import { GET_PROMOTED_PRODUCTS } from 'graphql/queries/promotedProducts.js';
+import { loadProducts } from 'redux_/products/actionsCreator.js';
 import Product from './product/Product.jsx';
 
 const Products = () => {

@@ -1,4 +1,4 @@
-import store from '../../../../redux/store.js';
+import store from 'redux_/store.js';
 
 export const generateAddedProductPayload = ({ id, selectedQuantity }) => {
   const numberSystem = 10;

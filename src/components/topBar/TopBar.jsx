@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { LOGOUT_USER } from '../../graphql/mutations/user.js';
-import { STORAGE_URL } from '../../utils/environment.js';
+import { LOGOUT_USER } from 'graphql/mutations/user.js';
+import { STORAGE_URL } from 'utils/environment.js';
 import { menuItemsProperties } from './data.js';
 import Basket from './basket/Basket.jsx';
 import TextInput from '../reusable/inputs/TextInput.jsx';
