@@ -2,11 +2,11 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { exact, string, number } from 'prop-types';
 import SmoothCollapse from 'react-smooth-collapse';
 import { isEmpty } from 'lodash';
+import ShadowedContainer from 'components/containers/ShadowedContainer.jsx';
+import Rating from 'components/Rating.jsx';
+import Avatar from 'components/Avatar.jsx';
 import { appearingInSequence } from '../../../../data/animations/variant.js';
 import PresentedContentGenerator from './services/presentedContentGenerator.js';
-import ShadowedContainer from '../../../reusable/containers/ShadowedContainer.jsx';
-import Rating from '../../../reusable/various/Rating.jsx';
-import Avatar from '../../../reusable/various/Avatar.jsx';
 
 const Opinion = ({
   opinionsData: {

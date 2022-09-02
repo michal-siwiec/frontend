@@ -3,10 +3,10 @@ import { useQuery } from '@apollo/client';
 import { isEmpty } from 'lodash';
 import { GET_OPINIONS } from 'graphql/queries/opinion.js';
 import useIsLogged from 'hooks/useIsLogged.jsx';
+import AddingOpinionSuccessModal from 'components/modals/AddingOpinionSuccessModal.jsx';
+import AddingOpinionErrorModal from 'components/modals/AddingOpinionErrorModal.jsx';
 import Opinion from './opinion/Opinion.jsx';
 import AddOpinionForm from './AddOpinionForm.jsx';
-import AddingOpinionSuccessModal from '../../reusable/modals/AddingOpinionSuccessModal.jsx';
-import AddingOpinionErrorModal from '../../reusable/modals/AddingOpinionErrorModal.jsx';
 
 const Opinions = () => {
   const blockName = 'opinions';

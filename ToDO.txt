@@ -4,12 +4,10 @@
 4) Better optimalization with useCallback and useMemo
 9) Remove unnecessary variables - leave only pallete
 10) Zmien index na normalne nazwy plików
-11) Add mobile product - other column position
 12) Dodac defaultowe style dla buttonów w pliku default.scss
 13) Komponenty Input nie maja sensu
 14) Cancel button with back arrow
 16) Common validation error handling for inputs in scss
 18) Refactor inputs scss
 19) Refactor modals - almost each looks like the same and I bad handle open and close Modals
-21) Dodaj nowy folder 'pages' bądz 'views' w ktorym bede trzymal te kontenery
 22) Fix order in imports

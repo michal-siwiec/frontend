@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from 'graphql/mutations/user.js';
 import ValidationLoginFormHandler from 'validators/validationLoginFormHandler.js';
-import FormContainer from '../../reusable/containers/FormContainer.jsx';
-import TextInput from '../../reusable/inputs/TextInput.jsx';
-import SubmitButton from '../../reusable/buttons/SubmitButton.jsx';
+import FormContainer from 'components/containers/FormContainer.jsx';
+import TextInput from 'components/inputs/TextInput.jsx';
+import SubmitButton from 'components/SubmitButton.jsx';
 
 const Login = () => {
   const blockName = 'login';

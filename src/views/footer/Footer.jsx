@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import FileDownloader from 'services/fileDownloader.js';
 import { formatPhoneNumber } from 'utils/helpers.js';
 import { STORAGE_URL } from 'utils/environment.js';
+import Tooltip from 'components/Tooltip.jsx';
 import {
   productsCategories,
   privacyPolicy,
@@ -13,7 +14,6 @@ import {
   shopRulesText,
   privacyPolicyText
 } from './data.js';
-import Tooltip from '../reusable/various/Tooltip.jsx';
 
 const Footer = () => {
   const blockName = 'footer';

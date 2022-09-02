@@ -3,10 +3,10 @@ import { exact, func, element } from 'prop-types';
 import { useMutation } from '@apollo/client';
 import { ADD_OPINION } from 'graphql/mutations/opinion.js';
 import ValidationLoginFormHandler from 'validators/validationAddOpinionFormHandler.js';
-import FormContainer from '../../reusable/containers/FormContainer.jsx';
-import Rating from '../../reusable/various/Rating.jsx';
-import TextArea from '../../reusable/inputs/TextArea.jsx';
-import SubmitButton from '../../reusable/buttons/SubmitButton.jsx';
+import FormContainer from 'components/containers/FormContainer.jsx';
+import Rating from 'components/Rating.jsx';
+import TextArea from 'components/inputs/TextArea.jsx';
+import SubmitButton from 'components/SubmitButton.jsx';
 
 const AddOpinionForm = ({
   setIsOpinionAdded,

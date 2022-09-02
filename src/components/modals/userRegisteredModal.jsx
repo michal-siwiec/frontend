@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal } from '@mui/material';
-import SubmitButton from '../buttons/SubmitButton.jsx';
+import SubmitButton from 'components/SubmitButton.jsx';
 
 const UserRegisteredModal = () => {
   const blockName = 'modal';

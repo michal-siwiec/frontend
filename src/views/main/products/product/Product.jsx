@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { exact, number, string } from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { formattedPrice } from 'utils/helpers.js';
 import { addProductToBasket } from 'redux_/basket/actionCreators.js';
-import { appearingInSequence } from '../../../../data/animations/variant.js';
+import ShadowedContainer from 'components/containers/ShadowedContainer.jsx';
+import NumberInput from 'components/inputs/NumberInput.jsx';
+import SubmitButton from 'components/SubmitButton.jsx';
+import { formattedPrice } from 'utils/helpers.js';
 import { generateAddedProductPayload, generatePossibleProductQuantity } from './helpers.js';
-import ShadowedContainer from '../../../reusable/containers/ShadowedContainer.jsx';
-import NumberInput from '../../../reusable/inputs/NumberInput.jsx';
-import SubmitButton from '../../../reusable/buttons/SubmitButton.jsx';
+import { appearingInSequence } from '../../../../data/animations/variant.js';
 
 const Product = ({
   product: {

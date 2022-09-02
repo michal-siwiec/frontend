@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { exact, bool, func } from 'prop-types';
 import { useSelector } from 'react-redux';
-import DialogContainer from '../../reusable/containers/DialogContainer.jsx';
+import DialogContainer from 'components/containers/DialogContainer.jsx';
 import Product from '../../main/products/product/Product.jsx';
 
 const BasketSummary = ({ isOpen, handleClose }) => {
@@ -20,8 +20,6 @@ const BasketSummary = ({ isOpen, handleClose }) => {
     </DialogContainer>
   );
 };
-
-// Jak utworzyc strukture folderow skoro product musi być wszedzie dosteonym komponentem?
 
 BasketSummary.propTypes = exact({
   isOpen: bool.isRequired,

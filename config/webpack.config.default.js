@@ -52,6 +52,7 @@ module.exports = {
         resolve: {
           extensions: [".js", ".jsx"],
           alias: {
+            views: path.resolve(__dirname, '../', 'src/views'),
             components: path.resolve(__dirname, '../', 'src/components'),
             graphql: path.resolve(__dirname, '../' ,'src/graphql'),
             hooks: path.resolve(__dirname, '../', 'src/hooks'),
