@@ -25,7 +25,7 @@ jobs:
       run: npm run css-lint
     - name: Start js linter
       run: npm run js-lint
-    - name: Start react tests
-      run: npm run react-test
+    # - name: Start react tests
+    #   run: npm run react-test
     - name: prod-build
       run: npm run prod-build
