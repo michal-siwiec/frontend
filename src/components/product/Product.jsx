@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { exact, number, string } from 'prop-types';
-import { useSelector, useDispatch } from 'react-redux';
-import { addProductToBasket } from 'redux_/basket/actionCreators.js';
 import ShadowedContainer from 'components/containers/ShadowedContainer.jsx';
-import NumberInput from 'components/inputs/NumberInput.jsx';
-import SubmitButton from 'components/SubmitButton.jsx';
 import { appearingInSequence } from 'data/animations.js';
 import { formattedPrice } from 'utils/helpers.js';
-import { generateAddedProductPayload, generatePossibleProductQuantity } from './helpers.js';
+import AddToBasketForm from './AddToBasketForm.jsx';
+import SelectedQuantityPresenter from './SelectedQuantityPresenter.jsx';
 
 const Product = ({
   product: {
@@ -17,22 +14,12 @@ const Product = ({
     availableQuantity,
     picturePath
   },
-  index
+  index,
+  mode
 }) => {
   const blockName = 'product';
-  const productsInBasket = useSelector(({ basket: { addedProducts } }) => addedProducts);
-  const dispatch = useDispatch();
-  const [selectedQuantity, setSelectedQuantity] = useState(1);
-  const possibleProductQuantity = generatePossibleProductQuantity({ id, productsInBasket, availableQuantity });
-
-  const selectQuantityOnChange = ({ target: { value } }) => {
-    setSelectedQuantity(value);
-  };
-
-  const handleAddToBasketOnMouseDown = () => {
-    const payload = generateAddedProductPayload({ id, selectedQuantity });
-    dispatch(addProductToBasket(payload));
-  };
+  const isMainMode = mode === 'main';
+  const isBasketMode = mode === 'basket';
 
   return (
     <ShadowedContainer
@@ -57,17 +44,8 @@ const Product = ({
         <p className={`${blockName}__description`}>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, consequatur. Ex blanditiis accusamus nam molestiae officiis totam repellendus labore beatae ullam quas, hic facilis fugit illum tenetur, magni est distinctio.
         </p>
-        <div className={`${blockName}__button-wrapper`}>
-          <NumberInput
-            max={possibleProductQuantity}
-            value={selectedQuantity}
-            onChange={selectQuantityOnChange}
-          />
-          <SubmitButton
-            onMouseDown={handleAddToBasketOnMouseDown}
-            value="Dodaj do koszyka"
-          />
-        </div>
+        { isMainMode && <AddToBasketForm id={id} availableQuantity={availableQuantity} /> }
+        { isBasketMode && <SelectedQuantityPresenter id={id} /> }
       </div>
     </ShadowedContainer>
   );

@@ -10,13 +10,15 @@ const NumberInput = ({
   max,
   value,
   classNames,
-  onChange
+  onChange,
+  disabled
 }) => (
   <input
     type="number"
     min={1}
     max={max}
     value={value}
+    disabled={disabled}
     className={`number-input ${classNames}`}
     onChange={onChange}
   />
@@ -30,7 +32,8 @@ NumberInput.propTypes = exact({
 }).isRequired;
 
 NumberInput.defaultProps = {
-  classNames: ''
+  classNames: '',
+  disabled: false
 };
 
 export default NumberInput;

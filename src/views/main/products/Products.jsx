@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useQuery } from '@apollo/client';
 import { GET_PROMOTED_PRODUCTS } from 'graphql/queries/promotedProducts.js';
 import { loadProducts } from 'redux_/products/actionsCreator.js';
-import Product from './product/Product.jsx';
+import Product from 'components/product/Product.jsx';
 
 const Products = () => {
   const blockName = 'products';
@@ -31,6 +31,7 @@ const Products = () => {
               product={product}
               key={product.id}
               index={index}
+              mode="main"
             />
           ))
         }
