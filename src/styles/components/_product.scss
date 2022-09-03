@@ -1,0 +1,55 @@
+.product {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 90%;
+  text-align: center;
+  min-height: 200px;
+
+  @media screen and (min-width: $lg-breakpoint) {
+    flex-basis: 45%;
+  }
+
+  &__img-wrapper {
+    flex-basis: 100%;
+    padding: 15px;
+
+    @media screen and (min-width: $md-breakpoint) {
+      flex-basis: 35%;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+  }
+
+  &__info-wrapper {
+    flex-basis: 100%;
+    padding: 15px;
+
+    @media screen and (min-width: $md-breakpoint) {
+      flex-basis: 65%;
+    }
+  }
+
+  &__name {
+    margin-bottom: 20px;
+  }
+
+  &__price {
+    margin-bottom: 15px;
+  }
+
+  &__description {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+  }
+
+  &__button-wrapper {
+    display: flex;
+    flex-basis: 100%;
+    justify-content: center;
+  }
+}

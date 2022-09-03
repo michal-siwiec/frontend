@@ -11,6 +11,7 @@ const SelectedQuantityPresenter = ({ id }) => {
     <div className={`${blockName}__button-wrapper`}>
       <NumberInput
         value={product.quantity}
+        classNames="number-input--basket-summary"
         disabled
       />
     </div>

@@ -9,7 +9,7 @@ const Basket = () => {
   const productsInBasket = useSelector(({ basket: { addedProducts } }) => addedProducts);
   const [isBasketSummaryOpen, setIsBasketSummaryOpen] = useState(false);
   const [isEmptyBasketModalOpen, setIsEmptyBasketModalOpen] = useState(false);
-  const blockName = 'top-bar';
+  const blockName = 'basket';
   const isBasketEmpty = isEmpty(productsInBasket);
 
   const openEmptyBasketModal = () => setIsEmptyBasketModalOpen(true);
@@ -22,7 +22,7 @@ const Basket = () => {
   };
 
   return (
-    <div className={`${blockName}__basket`}>
+    <div className={`top-bar__basket ${blockName}`}>
       <i
         className={`${blockName}__basket-icon icon-shop-basket`}
         onMouseDown={handleBasketOnMouseDown}

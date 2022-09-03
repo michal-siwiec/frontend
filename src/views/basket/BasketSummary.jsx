@@ -12,6 +12,7 @@ const BasketSummary = ({ isOpen, handleClose }) => {
     <DialogContainer
       isOpen={isOpen}
       handleClose={handleClose}
+      className={blockName}
     >
       <Fragment>
         <h1 className={`${blockName}__header`}>Twój koszyk</h1>
