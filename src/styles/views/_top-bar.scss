@@ -1,0 +1,53 @@
+.top-bar {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__menu {
+    flex-basis: 90%;
+    border: 2px solid black;
+  }
+
+  &__menu-list {
+    display: flex;
+  }
+
+  &__list-item {
+    &:not(:first-child, :last-child) {
+      margin: 0 10px;
+    }
+  }
+
+  &__item-link {
+    font-weight: 300;
+    font-size: 15px;
+    color: $gray;
+    transition: color .3s;
+
+    &:hover {
+      color: black;
+    }
+  }
+
+  &__search-engine {
+    flex-basis: 70%;
+
+    @include flex-container;
+
+    border: 2px solid black;
+  }
+
+  &__logo {
+    flex-basis: 20%;
+    border: 2px solid black;
+  }
+
+  &__logo-img {
+    width: 100%;
+    height: auto;
+  }
+
+  &__login {
+    flex-basis: 10%;
+    border: 2px solid black;
+  }
+}

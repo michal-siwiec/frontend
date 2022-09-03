@@ -19,7 +19,7 @@ const NumberInput = ({
     max={max}
     value={value}
     disabled={disabled}
-    className={`number-input ${classNames}`}
+    className={`input number-input ${classNames}`}
     onChange={onChange}
   />
 );

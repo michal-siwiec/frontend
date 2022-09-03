@@ -1,0 +1,11 @@
+.file-input {
+  position: relative;
+
+  &::-webkit-file-upload-button {
+    display: none;
+  }
+
+  &--register {
+    flex-basis: 80%;
+  }
+}

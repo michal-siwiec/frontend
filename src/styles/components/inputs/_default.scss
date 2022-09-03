@@ -1,12 +1,20 @@
-.number-input {
+.input {
   height: $default-control-height;
   margin: $default-control-margin;
   padding: $default-control-padding;
-  border: $default-black-bottom-border;
+  border: $default-gray-bottom-border;
   border-radius: $default-control-border-radious;
-  text-align: center;
 
   &:focus {
     outline: none;
+  }
+
+  &--error {
+    border-color: $red;
+  }
+
+  &__error {
+    flex-basis: 80%;
+    color: $red;
   }
 }

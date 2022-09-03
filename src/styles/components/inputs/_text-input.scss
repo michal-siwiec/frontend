@@ -1,0 +1,19 @@
+// Bad approach to set container size - in several places I use flex-basis: 80%;
+
+.text-input {
+  &--newsletter {
+    flex-basis: 80%;
+  }
+
+  &--login {
+    flex-basis: 80%;
+  }
+
+  &--register {
+    flex-basis: 80%;
+  }
+
+  &--search-engine {
+    flex-basis: 50%;
+  }
+}

@@ -16,12 +16,12 @@ const FileInput = ({
   <Fragment>
     <input
       type="file"
-      className={clsx(`file-input ${classNames}`, validationError && 'file-input--error')}
+      className={clsx(`input file-input ${classNames}`, validationError && 'input--error')}
       onChange={onChange}
       ref={innerRef}
       multiple
     />
-    {validationError && <div className="file-input__error">{validationError}</div>}
+    {validationError && <div className="input__error">{validationError}</div>}
   </Fragment>
 );
 

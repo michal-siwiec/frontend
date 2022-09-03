@@ -14,7 +14,7 @@ const TextInput = ({
     <input
       type={type}
       placeholder={placeholder}
-      className={clsx(`text-input ${classNames}`, validationError && 'text-input--error')}
+      className={clsx(`input text-input ${classNames}`, validationError && 'text-input--error')}
       value={value}
       onChange={onChange}
     />

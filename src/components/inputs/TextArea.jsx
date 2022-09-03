@@ -16,7 +16,7 @@ const TextArea = ({
 }) => (
   <Fragment>
     <textarea
-      className={`text-area ${classNames}`}
+      className={`input text-area ${classNames}`}
       value={value}
       onChange={onChange}
       placeholder={placeholder}
