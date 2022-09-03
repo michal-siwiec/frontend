@@ -5,7 +5,7 @@ import { isEmpty } from 'lodash';
 import ShadowedContainer from 'components/containers/ShadowedContainer.jsx';
 import Rating from 'components/Rating.jsx';
 import Avatar from 'components/Avatar.jsx';
-import { appearingInSequence } from '../../../../data/animations/variant.js';
+import { appearingInSequence } from 'data/animations.js';
 import PresentedContentGenerator from './services/presentedContentGenerator.js';
 
 const Opinion = ({

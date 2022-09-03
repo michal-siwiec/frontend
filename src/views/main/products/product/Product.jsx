@@ -5,9 +5,9 @@ import { addProductToBasket } from 'redux_/basket/actionCreators.js';
 import ShadowedContainer from 'components/containers/ShadowedContainer.jsx';
 import NumberInput from 'components/inputs/NumberInput.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
+import { appearingInSequence } from 'data/animations.js';
 import { formattedPrice } from 'utils/helpers.js';
 import { generateAddedProductPayload, generatePossibleProductQuantity } from './helpers.js';
-import { appearingInSequence } from '../../../../data/animations/variant.js';
 
 const Product = ({
   product: {

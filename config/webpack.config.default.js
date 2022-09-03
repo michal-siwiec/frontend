@@ -52,14 +52,15 @@ module.exports = {
         resolve: {
           extensions: [".js", ".jsx"],
           alias: {
-            views: path.resolve(__dirname, '../', 'src/views'),
             components: path.resolve(__dirname, '../', 'src/components'),
+            data: path.resolve(__dirname, '../', 'src/data'),
             graphql: path.resolve(__dirname, '../' ,'src/graphql'),
             hooks: path.resolve(__dirname, '../', 'src/hooks'),
             redux_: path.resolve(__dirname, '../', 'src/redux_'),
             services: path.resolve(__dirname, '../', 'src/services'),
             utils: path.resolve(__dirname, '../', 'src/utils'),
-            validators: path.resolve(__dirname, '../', 'src/validators')
+            validators: path.resolve(__dirname, '../', 'src/validators'),
+            views: path.resolve(__dirname, '../', 'src/views')
           }
         },
         options: {
