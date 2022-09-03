@@ -12,9 +12,9 @@ import FormContainer from 'components/containers/FormContainer.jsx';
 import TextInput from 'components/inputs/TextInput.jsx';
 import FileInput from 'components/inputs/FileInput.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
-import LoadingModal from 'components/modals/loadingModal.jsx';
-import UserRegisteredModal from 'components/modals/userRegisteredModal.jsx';
-import RegisterUserErrorModal from 'components/modals/registerUserErrorModal.jsx';
+import LoadingModal from 'components/modals/LoadingModal.jsx';
+import UserRegisteredModal from 'components/modals/UserRegisteredModal.jsx';
+import RegisterUserErrorModal from 'components/modals/RegisterUserErrorModal.jsx';
 
 // I should transmit form with modifier insead add modifier to each element
 //! Problem with showing error modal after login second time

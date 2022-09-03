@@ -33,7 +33,8 @@
 		"import/extensions": ["error", "ignorePackages"],
 		"consistent-return": "off",
 		"react/jsx-props-no-spreading": "off",
-		"class-methods-use-this": "off"
+		"class-methods-use-this": "off",
+		"no-unused-expressions": ["error", { "allowTernary": true }]
 	},
 	"settings": {
 		"import/resolver": {

@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import { exact, bool, func } from 'prop-types';
 import { useSelector } from 'react-redux';
 import DialogContainer from 'components/containers/DialogContainer.jsx';
-import Product from '../../main/products/product/Product.jsx';
 
 const BasketSummary = ({ isOpen, handleClose }) => {
   const blockName = 'basket-summary';
