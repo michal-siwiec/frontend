@@ -2,12 +2,10 @@
 2) Hot Module replacement plugin - let's use it
 3) React lazy
 4) Better optimalization with useCallback and useMemo
-9) Remove unnecessary variables - leave only pallete
-10) Zmien index na normalne nazwy plików
-12) Dodac defaultowe style dla buttonów w pliku default.scss
-13) Komponenty Input nie maja sensu
 14) Cancel button with back arrow
 16) Common validation error handling for inputs in scss
-18) Refactor inputs scss
 19) Refactor modals - almost each looks like the same and I bad handle open and close Modals
 22) Fix order in imports
+23) About mobile
+24) Each headers should be gray (footer example)
+25) ShadowedBox should have default animation

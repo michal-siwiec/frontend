@@ -17,12 +17,12 @@
 
     &--picture {
       z-index: 1;
-      background-image: url("#{$storage-url}/images/banner/budowa-domu.jpeg");
+      background-image: url("#{$storage-url}/images/construction-photos/building-house.jpeg");
       background-repeat: no-repeat;
       background-size: cover;
 
       @media screen and (min-width: $md-breakpoint) {
-        background-image: url("#{$storage-url}/images/banner/fotolia_budowlaniec_robotnik.jpeg");
+        background-image: url("#{$storage-url}/images/construction-photos/paver.jpeg");
       }
     }
   }
