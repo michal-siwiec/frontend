@@ -26,6 +26,12 @@ $icon-storage-path: "#{$storage-url}/icons/icomoon";
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-logo-inpost::before {
+  content: "\e909";
+}
+.icon-logo-dpd::before {
+  content: "\e920";
+}
 .icon-cash-payment::before {
   content: "\e907";
 }
