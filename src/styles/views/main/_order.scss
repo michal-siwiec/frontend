@@ -1,0 +1,28 @@
+.order {
+  // min-height: 600px;
+
+  &__form-part-container {
+    flex-basis: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+}
+
+.delivery-method,
+.payment-method {
+  &__icon {
+    font-size: 30px;
+
+    &--inpost {
+      font-size: 45px;
+    }
+  }
+
+  &__icon-label {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+  }
+}

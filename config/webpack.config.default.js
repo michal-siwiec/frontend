@@ -60,7 +60,8 @@ module.exports = {
             services: path.resolve(__dirname, '../', 'src/services'),
             utils: path.resolve(__dirname, '../', 'src/utils'),
             validators: path.resolve(__dirname, '../', 'src/validators'),
-            views: path.resolve(__dirname, '../', 'src/views')
+            views: path.resolve(__dirname, '../', 'src/views'),
+            contexts: path.resolve(__dirname, '../', 'src/contexts')
           }
         },
         options: {

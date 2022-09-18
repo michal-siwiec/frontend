@@ -1,0 +1,11 @@
+.checkbox {
+  accent-color: $light-gray;
+  margin: $default-control-margin;
+
+  &__wrapper {
+    flex-basis: 80%;
+    display: flex;
+    justify-items: center;
+    margin-bottom: 10px;
+  }
+}

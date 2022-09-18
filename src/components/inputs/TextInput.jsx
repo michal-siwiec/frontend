@@ -1,6 +1,11 @@
 import React, { Fragment } from 'react';
 import clsx from 'clsx';
-import { exact, string, func } from 'prop-types';
+import {
+  exact,
+  string,
+  func,
+  oneOf
+} from 'prop-types';
 
 const TextInput = ({
   placeholder,
@@ -25,6 +30,7 @@ const TextInput = ({
 TextInput.propTypes = exact({
   placeholder: string.isRequired,
   classNames: string,
+  type: oneOf(['text', 'password']),
   value: string.isRequired,
   onChange: func.isRequired,
   validationError: string

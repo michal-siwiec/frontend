@@ -1,12 +1,20 @@
 import React, { Fragment } from 'react';
 import { exact, bool, func } from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import DialogContainer from 'components/containers/DialogContainer.jsx';
 import Product from 'components/product/Product.jsx';
+import SubmitButton from 'components/SubmitButton.jsx';
 
 const BasketSummary = ({ isOpen, handleClose }) => {
   const blockName = 'basket-summary';
   const productsInBasket = useSelector(({ basket: { addedProducts } }) => addedProducts);
+  const navigate = useNavigate();
+
+  const handleSubmitOnMouseDown = () => {
+    handleClose();
+    navigate('/order');
+  };
 
   return (
     <DialogContainer
@@ -26,6 +34,10 @@ const BasketSummary = ({ isOpen, handleClose }) => {
             />
           ))
         }
+        <SubmitButton
+          onMouseDown={handleSubmitOnMouseDown}
+          value="Kontynuuj zakupy"
+        />
       </Fragment>
     </DialogContainer>
   );

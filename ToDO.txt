@@ -9,3 +9,7 @@
 23) About mobile
 24) Each headers should be gray (footer example)
 25) ShadowedBox should have default animation
+26) AboutUs should have better styles
+27) SyncReleatedFIelds - src/views/main/order/form/ClientDetails.jsx ?
+28) Fix checkbox view - should have white color and gray background
+29) Find difference between useReducer vs useDispatch and useStore

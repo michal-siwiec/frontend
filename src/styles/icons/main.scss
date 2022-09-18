@@ -26,36 +26,46 @@ $icon-storage-path: "#{$storage-url}/icons/icomoon";
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-logo-dpd::before {
+  content: "\e90a";
+}
+
 .icon-logo-inpost::before {
   content: "\e909";
 }
-.icon-logo-dpd::before {
-  content: "\e920";
-}
+
 .icon-cash-payment::before {
   content: "\e907";
 }
+
 .icon-traditional-transfer::before {
   content: "\e908";
 }
+
 .icon-shop-basket::before {
   content: "\e906";
 }
+
 .icon-tooltip-prompt::before {
   content: "\e905";
 }
+
 .icon-tiktok::before {
   content: "\e901";
 }
+
 .icon-twitter::before {
   content: "\e902";
 }
+
 .icon-youtube::before {
   content: "\e903";
 }
+
 .icon-instagram::before {
   content: "\e904";
 }
+
 .icon-facebook::before {
   content: "\e900";
 }
