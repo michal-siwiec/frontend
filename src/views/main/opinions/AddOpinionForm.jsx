@@ -39,7 +39,7 @@ const AddOpinionForm = ({
 
     addOpinion(
       // { variables: { input: { content: addedOpinion, mark: rating, userId: isLogged.userID } } }
-      { variables: { input: { content: addedOpinion, mark: rating, userId: 'aea46a11-d778-49cb-b7a1-c90dfd9afe71' } } }
+      { variables: { input: { content: addedOpinion, mark: rating, userId: '3d257411-3841-4d17-a209-501c58518d5c' } } }
     );
   };
 

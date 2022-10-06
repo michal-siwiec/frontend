@@ -5,7 +5,8 @@ import { GET_OPINIONS } from 'graphql/queries/opinion.js';
 import useIsLogged from 'hooks/useIsLogged.jsx';
 import AddingOpinionSuccessModal from 'components/modals/AddingOpinionSuccessModal.jsx';
 import AddingOpinionErrorModal from 'components/modals/AddingOpinionErrorModal.jsx';
-import Opinion from './opinion/Opinion.jsx';
+import OpinionsList from './OpinionsList.jsx';
+import EmptyOpinionsList from './EmptyOpinionsList.jsx';
 import AddOpinionForm from './AddOpinionForm.jsx';
 
 const Opinions = () => {
@@ -21,12 +22,7 @@ const Opinions = () => {
   } = useQuery(GET_OPINIONS);
   const textareaRef = useRef(null);
 
-  const handleSetFocusOnMouseDown = () => {
-    const timeToSetFocus = 0;
-    // It'll not work without setTimeout
-    setTimeout(() => textareaRef.current.focus(), timeToSetFocus);
-  };
-
+  // Tutaj trzeba zrobić dwa modale
   if (loading) return <h1>Loading...</h1>;
   if (error) return <h1>error</h1>;
 
@@ -36,25 +32,9 @@ const Opinions = () => {
   return (
     <div className={`main__${blockName} ${blockName}`}>
       {
-        opinionsEmpty ? (
-          <div className={`${blockName}__empty-opinions-wrapper`}>
-            <h3 className={`${blockName}__empty-opinion-header`}>
-              Niestety nie posiadamy jeszcze żadnych opini
-            </h3>
-            <span
-              className={`${blockName}__empty-opinion-scroller`}
-              onMouseDown={handleSetFocusOnMouseDown}
-              role="button"
-              tabIndex={0}
-            >
-              Podziel się z nami swoją!
-            </span>
-          </div>
-        ) : (
-          <div className={`${blockName}__opinion-list-wrapper`}>
-            { opinions.map((opinion, index) => <Opinion opinionsData={opinion} index={index} />) }
-          </div>
-        )
+        opinionsEmpty
+          ? <EmptyOpinionsList textAreaRef={textareaRef} />
+          : <OpinionsList opinions={opinions} />
       }
       {
         !isLogged && (
