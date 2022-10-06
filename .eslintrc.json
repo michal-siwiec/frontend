@@ -35,7 +35,8 @@
 		"react/jsx-props-no-spreading": "off",
 		"class-methods-use-this": "off",
 		"no-unused-expressions": ["error", { "allowTernary": true }],
-		"react/jsx-no-constructed-context-values": "off"
+		"react/jsx-no-constructed-context-values": "off",
+		"no-confusing-arrow": "off"
 	},
 	"settings": {
 		"import/resolver": {

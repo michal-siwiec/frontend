@@ -16,10 +16,7 @@ const Basket = () => {
   const closeEmptyBasketModal = () => setIsEmptyBasketModalOpen(false);
   const openBasketSummary = () => setIsBasketSummaryOpen(true);
   const closeBasketSummary = () => setIsBasketSummaryOpen(false);
-
-  const handleBasketOnMouseDown = () => {
-    isBasketEmpty ? openEmptyBasketModal() : openBasketSummary();
-  };
+  const handleBasketOnMouseDown = () => isBasketEmpty ? openEmptyBasketModal() : openBasketSummary();
 
   return (
     <div className={`top-bar__basket ${blockName}`}>
