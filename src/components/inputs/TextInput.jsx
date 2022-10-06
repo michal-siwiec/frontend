@@ -23,7 +23,7 @@ const TextInput = ({
       value={value}
       onChange={onChange}
     />
-    {validationError && <div className="text-input__error">{validationError}</div>}
+    {validationError && <div className="input__error">{validationError}</div>}
   </Fragment>
 );
 

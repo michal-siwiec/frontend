@@ -9,7 +9,7 @@ const DeliveryMethod = () => {
   const [dpdChecked, setDpdChecked] = useState(false);
   const [pickUpAtThePoint, setPickUpAtThePoint] = useState(false);
   const [selectedDeliveryMethod, setSelectedDevliveryMethod] = useState('inpost');
-  const { step, setStep } = useContext(OrderContext);
+  const { setStep } = useContext(OrderContext);
 
   const handleInPostOnClick = () => {
     setInPostChecked(true);
@@ -33,10 +33,8 @@ const DeliveryMethod = () => {
   };
 
   const handleSubmitOnMouseDown = () => {
-    setStep(3);
+    setStep(2);
   };
-
-  // if (step !== 1) return null;
 
   return (
     <div className={`order__form-part-container ${blockName}`}>

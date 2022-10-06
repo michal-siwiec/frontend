@@ -1,10 +1,14 @@
 import React, { useContext } from 'react';
-import { OrderContext } from 'contexts/contexts.js';
 import { Stepper, Step, StepLabel } from '@mui/material';
+import { OrderContext } from 'contexts/contexts.js';
+import { stepsLabel } from './data.js';
 
 const Header = () => {
-  const stepsLabel = ['Dane odbiorcy', 'Sposób dostawy', 'Metoda płatności', 'Podsumowanie'];
   const { step, setStep } = useContext(OrderContext);
+
+  const handleStepOnClick = (stepIndex) => {
+    if (step > stepIndex) setStep(stepIndex);
+  };
 
   return (
     <div>
@@ -12,7 +16,7 @@ const Header = () => {
         {
           stepsLabel.map((stepLabel, index) => (
             <Step>
-              <StepLabel onClick={() => setStep(index)}>
+              <StepLabel onClick={() => handleStepOnClick(index)}>
                 {stepLabel}
               </StepLabel>
             </Step>

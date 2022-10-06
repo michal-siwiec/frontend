@@ -8,7 +8,7 @@ const PaymentMethod = () => {
   const [cashPaymentChecked, setCashPaymentChecked] = useState(true);
   const [traditionalTransferChecked, setTraditionalTransferChecked] = useState(false);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('cashPayment');
-  const { step, setStep } = useContext(OrderContext);
+  const { setStep } = useContext(OrderContext);
 
   const handleCashPaymentOnClick = () => {
     setCashPaymentChecked(true);
@@ -22,7 +22,9 @@ const PaymentMethod = () => {
     setSelectedPaymentMethod('traditionalPayment');
   };
 
-  // if (step !== 2) return null;
+  const handleSubmitOnMouseDown = () => {
+    setStep(3);
+  };
 
   return (
     <div className={`order__form-part-container ${blockName}`}>
@@ -48,7 +50,7 @@ const PaymentMethod = () => {
       />
       <SubmitButton
         classNames="button--client-details"
-        onMouseDown={() => {}}
+        onMouseDown={handleSubmitOnMouseDown}
         value="Zapisz"
       />
     </div>

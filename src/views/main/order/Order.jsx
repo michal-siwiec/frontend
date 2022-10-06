@@ -1,15 +1,14 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { OrderContext } from 'contexts/contexts.js';
 import FormContainer from 'components/containers/FormContainer.jsx';
-import Header from './Header.jsx';
+import Header from './header/Header.jsx';
 import From from './form/Form.jsx';
 
 const Order = () => {
   const [step, setStep] = useState(0);
-  const orderContextPayload = useMemo(() => ({ step, setStep }), []);
 
   return (
-    <OrderContext.Provider value={orderContextPayload}>
+    <OrderContext.Provider value={{ step, setStep }}>
       <FormContainer
         header={<Header />}
         form={<From />}

@@ -1,5 +1,5 @@
 import React from 'react';
 
-const Summary = () => null;
+const Summary = () => <h1>SUmmary</h1>;
 
 export default Summary;
