@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { exact, bool, func } from 'prop-types';
 import { Modal } from '@mui/material';
 import SubmitButton from 'components/SubmitButton.jsx';
 
-const AddingOpinionSuccessModal = () => {
+const AddingOpinionSuccessModal = ({ isOpen, handleOnClose }) => {
   const blockName = 'modal';
-  const [isOpen, setIsOpen] = useState(true);
-
-  const handleOnClick = () => {
-    setIsOpen(false);
-  };
 
   return (
     <Modal
@@ -28,12 +24,17 @@ const AddingOpinionSuccessModal = () => {
         <div className={`${blockName}__buttons-wrapper`}>
           <SubmitButton
             value="Ok"
-            onMouseDown={handleOnClick}
+            onMouseDown={handleOnClose}
           />
         </div>
       </div>
     </Modal>
   );
 };
+
+AddingOpinionSuccessModal.propTypes = exact({
+  isOpen: bool.isRequired,
+  handleOnClose: func.isRequired
+}).isRequired;
 
 export default AddingOpinionSuccessModal;

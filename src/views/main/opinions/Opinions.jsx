@@ -29,6 +29,9 @@ const Opinions = () => {
   const { opinions } = data;
   const opinionsEmpty = isEmpty(opinions);
 
+  const closeAddedOpinionModal = () => setIsOpinionAdded(false);
+  const closeAddedOpinionErrorModal = () => setIsAddedOpinionError(false);
+
   return (
     <div className={`main__${blockName} ${blockName}`}>
       {
@@ -46,8 +49,14 @@ const Opinions = () => {
           />
         )
       }
-      { isOpinionAdded && <AddingOpinionSuccessModal /> }
-      { isAddedOpinionError && <AddingOpinionErrorModal /> }
+      <AddingOpinionSuccessModal
+        isOpen={isOpinionAdded}
+        handleOnClose={closeAddedOpinionModal}
+      />
+      <AddingOpinionErrorModal
+        isOpen={isAddedOpinionError}
+        handleOnClose={closeAddedOpinionErrorModal}
+      />
     </div>
   );
 };

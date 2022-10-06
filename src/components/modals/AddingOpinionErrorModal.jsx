@@ -2,14 +2,14 @@ import React from 'react';
 import { exact, bool, func } from 'prop-types';
 import { Modal } from '@mui/material';
 
-const AddingOpinionErrorModal = () => {
+const AddingOpinionErrorModal = ({ isOpen, handleOnClose }) => {
   const blockName = 'modal';
 
   return (
     <Modal
       className={blockName}
-      open={false}
-      onClose={() => {}}
+      open={isOpen}
+      onClose={handleOnClose}
     >
       <h1>AddingOpinionErrorModal</h1>
     </Modal>
