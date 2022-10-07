@@ -26,5 +26,5 @@ export const cutAfterNChars = ({ string, charsQuantity }) => {
   return { narrowContent, restOfContent };
 };
 
-export const formattedPrice = (price) => price.toString().replace('.', ',');
+export const formattedPrice = (price) => price.toFixed(2).toString().replace('.', ',');
 export const isTextLonger = ({ string, charsQuantity }) => string.length > charsQuantity;
