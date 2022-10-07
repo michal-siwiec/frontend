@@ -6,28 +6,16 @@ export const productsCategories = [
     path: '/products?type=tools'
   },
   {
-    name: 'Ubiór',
-    path: '/products?type=outfit'
-  },
-  {
     name: 'Chemia budowlana',
     path: '/products?type=constructionChemicals'
   },
   {
-    name: 'Strefa ogroduę',
-    path: '/products?type=gardenZone'
+    name: 'Schody',
+    path: '/products?type=stairway'
   },
   {
     name: 'Strefa dachu',
     path: '/products?type=roofZone'
-  },
-  {
-    name: 'Stfera wnętrza',
-    path: '/products?type=interiorZone'
-  },
-  {
-    name: 'Strefa ściany',
-    path: '/products?type=wallZone'
   },
   {
     name: 'Strefa fundamentu',
