@@ -3,35 +3,35 @@ import { STORAGE_URL } from 'utils/environment.js';
 export const productsCategories = [
   {
     name: 'Narzędzia',
-    path: ''
+    path: '/products?type=tools'
   },
   {
     name: 'Ubiór',
-    path: ''
+    path: '/products?type=outfit'
   },
   {
     name: 'Chemia budowlana',
-    path: ''
+    path: '/products?type=constructionChemicals'
   },
   {
     name: 'Strefa ogroduę',
-    path: ''
+    path: '/products?type=gardenZone'
   },
   {
     name: 'Strefa dachu',
-    path: ''
+    path: '/products?type=roofZone'
   },
   {
     name: 'Stfera wnętrza',
-    path: ''
+    path: '/products?type=interiorZone'
   },
   {
     name: 'Strefa ściany',
-    path: ''
+    path: '/products?type=wallZone'
   },
   {
     name: 'Strefa fundamentu',
-    path: ''
+    path: '/products?type=foundationZone'
   }
 ];
 
