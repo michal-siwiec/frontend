@@ -36,7 +36,8 @@
 		"class-methods-use-this": "off",
 		"no-unused-expressions": ["error", { "allowTernary": true }],
 		"react/jsx-no-constructed-context-values": "off",
-		"no-confusing-arrow": "off"
+		"no-confusing-arrow": "off",
+		"import/no-named-default": "off"
 	},
 	"settings": {
 		"import/resolver": {
