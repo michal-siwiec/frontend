@@ -4,8 +4,8 @@ import { productFields } from '../fragments/productFields.js';
 export const GET_PRODUCTS = gql`
   ${productFields}
 
-  query ($productInput: ProductInput) {
-    productsDetails: products(productInput: $productInput) {
+  query ($input: ProductInput) {
+    productsDetails: products(input: $input) {
       allProductsQuantity,
       products {
         ...productFields

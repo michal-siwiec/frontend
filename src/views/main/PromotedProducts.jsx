@@ -13,7 +13,7 @@ const PromotedProducts = () => {
   const dispatch = useDispatch();
   const { loading, error, data } = useQuery(
     GET_PRODUCTS,
-    { variables: { productInput: { promoted: false, pagination: { page: activePage, quantityPerPage } } } }
+    { variables: { input: { promoted: false, pagination: { page: activePage, quantityPerPage } } } }
   );
 
   const handlePaginationOnChange = (pageNumber) => setActivePage(pageNumber - 1);
