@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { Stepper, Step, StepLabel } from '@mui/material';
 import { OrderContext } from 'contexts/contexts.js';
-import { stepsLabel } from './data.js';
+import Stepper from 'components/Stepper.jsx';
+import { stepsLabels } from './data.js';
 
 const Header = () => {
   const { step, setStep } = useContext(OrderContext);
@@ -11,19 +11,11 @@ const Header = () => {
   };
 
   return (
-    <div>
-      <Stepper activeStep={step}>
-        {
-          stepsLabel.map((stepLabel, index) => (
-            <Step>
-              <StepLabel onClick={() => handleStepOnClick(index)}>
-                {stepLabel}
-              </StepLabel>
-            </Step>
-          ))
-        }
-      </Stepper>
-    </div>
+    <Stepper
+      activeStep={step}
+      handleStepOnClick={handleStepOnClick}
+      labels={stepsLabels}
+    />
   );
 };
 

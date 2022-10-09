@@ -1,1 +1,1 @@
-export const stepsLabel = ['Dane odbiorcy', 'Sposób dostawy', 'Metoda płatności', 'Podsumowanie'];
+export const stepsLabels = ['Dane odbiorcy', 'Sposób dostawy', 'Metoda płatności', 'Podsumowanie'];

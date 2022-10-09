@@ -21,7 +21,7 @@ const PromotedProducts = () => {
   useEffect(() => {
     if (!data) return;
 
-    dispatch(loadProducts(data.promotedProducts));
+    dispatch(loadProducts(products));
   }, [data]);
 
   if (loading) return <h1>Loading...</h1>;
