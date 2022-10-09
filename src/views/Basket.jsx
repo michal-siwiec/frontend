@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { isEmpty } from 'lodash';
 import { countTotalPrice } from 'utils/helpers.js';
 import EmptyBasketModal from 'components/modals/EmptyBasketModal.jsx';
-import BasketSummary from './BasketSummary.jsx';
+import BasketSummaryModal from 'components/modals/BasketSummaryModal.jsx';
 
 const Basket = () => {
   const productsInBasket = useSelector(({ basket: { addedProducts } }) => addedProducts);
@@ -27,13 +27,13 @@ const Basket = () => {
         tabIndex={0}
       />
       {countTotalPrice(productsInBasket)}
-      <BasketSummary
-        isOpen={isBasketSummaryOpen}
-        handleClose={closeBasketSummary}
-      />
       <EmptyBasketModal
         open={isEmptyBasketModalOpen}
         handleOnClose={closeEmptyBasketModal}
+      />
+      <BasketSummaryModal
+        open={isBasketSummaryOpen}
+        handleOnClose={closeBasketSummary}
       />
     </div>
   );

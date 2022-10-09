@@ -2,27 +2,27 @@ import React, { Fragment } from 'react';
 import { exact, bool, func } from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import DialogContainer from 'components/containers/DialogContainer.jsx';
+import { Modal } from '@mui/material';
 import Product from 'components/product/Product.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
 
-const BasketSummary = ({ isOpen, handleClose }) => {
-  const blockName = 'basket-summary';
+const BasketSummaryModal = ({ open, handleOnClose }) => {
+  const blockName = 'modal';
   const productsInBasket = useSelector(({ basket: { addedProducts } }) => addedProducts);
   const navigate = useNavigate();
 
   const handleSubmitOnMouseDown = () => {
-    handleClose();
+    handleOnClose();
     navigate('/order');
   };
 
   return (
-    <DialogContainer
-      isOpen={isOpen}
-      handleClose={handleClose}
+    <Modal
       className={blockName}
+      open={open}
+      onClose={handleOnClose}
     >
-      <Fragment>
+      <div className={`${blockName}__content-wrapper`}>
         <h1 className={`${blockName}__header`}>Twój koszyk</h1>
         {
           productsInBasket.map(({ id, attributes }, index) => (
@@ -34,18 +34,20 @@ const BasketSummary = ({ isOpen, handleClose }) => {
             />
           ))
         }
-        <SubmitButton
-          onMouseDown={handleSubmitOnMouseDown}
-          value="Kontynuuj zakupy"
-        />
-      </Fragment>
-    </DialogContainer>
+        <div className={`${blockName}__buttons-wrapper`}>
+          <SubmitButton
+            onMouseDown={handleSubmitOnMouseDown}
+            value="Kontynuuj zakupy"
+          />
+        </div>
+      </div>
+    </Modal>
   );
 };
 
-BasketSummary.propTypes = exact({
-  isOpen: bool.isRequired,
-  handleClose: func.isRequired
+BasketSummaryModal.propTypes = exact({
+  open: bool.isRequired,
+  handleOnClose: func.isRequired
 }).isRequired;
 
-export default BasketSummary;
+export default BasketSummaryModal;
