@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import PromotedProducts from './PromotedProducts.jsx';
-import Products from './Products.jsx';
+import Products from './Products/Products.jsx';
 import Login from './Login.jsx';
 import Register from './Register.jsx';
 import About from './about/About.jsx';

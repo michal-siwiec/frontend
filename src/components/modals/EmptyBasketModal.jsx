@@ -26,7 +26,7 @@ const EmptyBasketModal = ({ open, handleOnClose }) => {
         <div className={`${blockName}__buttons-wrapper`}>
           <SubmitButton
             onMouseDown={handleSubmitButtonOnMouseDown}
-            value="Dodaj produkt do koszyka!"
+            value="Dodaj swój pierwszy produkt!"
           />
         </div>
       </div>

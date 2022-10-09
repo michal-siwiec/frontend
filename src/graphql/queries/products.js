@@ -6,7 +6,7 @@ export const GET_PRODUCTS = gql`
 
   query ($input: ProductInput) {
     productsDetails: products(input: $input) {
-      allProductsQuantity,
+      quantity,
       products {
         ...productFields
       }

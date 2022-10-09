@@ -9,6 +9,9 @@ const Pagination = ({
   quantityPerPage
 }) => {
   const blockName = 'pagination';
+  const isOnlyOnePage = itemsQuantity <= quantityPerPage;
+
+  if (isOnlyOnePage) return null;
 
   return (
     <div className={blockName}>
@@ -23,6 +26,7 @@ const Pagination = ({
         activeClass={`${blockName}__list-item--active`}
         activeLinkClass={`${blockName}__item-link--active`}
         hideNavigation
+        hideDisabled
       />
     </div>
   );
