@@ -38,7 +38,8 @@
 		"react/jsx-no-constructed-context-values": "off",
 		"no-confusing-arrow": "off",
 		"import/no-named-default": "off",
-		"no-use-before-define": "off"
+		"no-use-before-define": "off",
+		"import/order": "off"
 	},
 	"settings": {
 		"import/resolver": {

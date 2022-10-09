@@ -5,7 +5,7 @@ import CityValidator from './services/cityValidator.js';
 import PostalCodeValidator from './services/postalCodeValidator.js';
 import EmailValidator from './services/emailValidator.js';
 import PhoneNumberValidator from './services/phoneNumberValidator.js';
-import errorMessages from './dictionary/errorMessages.js';
+import validationErrors from 'dictionaries/validationErrors.js';
 
 class ValidationClientDetailsFormHandler {
   #nameValidator;
@@ -48,13 +48,13 @@ class ValidationClientDetailsFormHandler {
     const isPhoneValid = this.#phoneNumberValidator.valid();
 
     return {
-      nameError: !isNameValid && errorMessages.name,
-      surnameError: !isSurnameValid && errorMessages.surname,
-      streetError: !isStreetValid && errorMessages.street,
-      cityError: !isCityValid && errorMessages.city,
-      postalCodeError: !isValidPostalCode && errorMessages.postalCode,
-      emailError: !isEmailValid && errorMessages.email,
-      phoneError: !isPhoneValid && errorMessages.phone,
+      nameError: !isNameValid && validationErrors.name,
+      surnameError: !isSurnameValid && validationErrors.surname,
+      streetError: !isStreetValid && validationErrors.street,
+      cityError: !isCityValid && validationErrors.city,
+      postalCodeError: !isValidPostalCode && validationErrors.postalCode,
+      emailError: !isEmailValid && validationErrors.email,
+      phoneError: !isPhoneValid && validationErrors.phone,
       validationStatus: (
         isNameValid && isSurnameValid && isStreetValid && isCityValid
         && isValidPostalCode && isEmailValid && isPhoneValid

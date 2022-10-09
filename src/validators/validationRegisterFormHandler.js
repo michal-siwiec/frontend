@@ -1,7 +1,7 @@
 import PasswordValidator from './services/passwordValidator.js';
 import EmailValidator from './services/emailValidator.js';
 import AvatarValidator from './services/avatarValidator.js';
-import errorMessages from './dictionary/errorMessages.js';
+import validationErrors from 'dictionaries/validationErrors.js';
 
 class ValidationRegisterFormHandler {
   #passwordValidator;
@@ -24,9 +24,9 @@ class ValidationRegisterFormHandler {
     const isAvatarValid = this.#avatarValidator.valid();
 
     return {
-      emailError: !isEmailValid && errorMessages.email,
-      passwordError: !isPasswordValid && errorMessages.password,
-      avatarError: !isAvatarValid && errorMessages.avatar,
+      emailError: !isEmailValid && validationErrors.email,
+      passwordError: !isPasswordValid && validationErrors.password,
+      avatarError: !isAvatarValid && validationErrors.avatar,
       validationStatus: isEmailValid && isPasswordValid && isAvatarValid
     };
   }

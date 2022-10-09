@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/client';
 import { GET_PRODUCTS } from 'graphql/queries/products.js';
 import Product from 'components/product/Product.jsx';
 import Pagination from 'components/Pagination.jsx';
-import { translatedCathegoriesNames } from './dictionary.js';
+import translatedCathegoriesNames from 'dictionaries/cathegoriesNames.js';
 
 const Products = () => {
   const [searchParams] = useSearchParams();

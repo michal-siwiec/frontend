@@ -1,6 +1,6 @@
 import EmailValidator from './services/emailValidator.js';
 import PasswordValidator from './services/passwordValidator.js';
-import errorMessages from './dictionary/errorMessages.js';
+import validationErrors from 'dictionaries/validationErrors.js';
 
 class ValidationLoginFormHandler {
   #emailValidator;
@@ -20,8 +20,8 @@ class ValidationLoginFormHandler {
     const isValidPassword = this.#passwordValidator.valid();
 
     return {
-      emailError: !isValidEmail && errorMessages.email,
-      passwordError: !isValidPassword && errorMessages.password,
+      emailError: !isValidEmail && validationErrors.email,
+      passwordError: !isValidPassword && validationErrors.password,
       validationStatus: isValidEmail && isValidPassword
     };
   }

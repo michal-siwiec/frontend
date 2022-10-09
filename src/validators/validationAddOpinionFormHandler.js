@@ -1,5 +1,5 @@
 import OpinionValidator from './services/opinionValidator.js';
-import errorMessages from './dictionary/errorMessages.js';
+import validationErrors from 'dictionaries/validationErrors.js';
 
 class ValidationLoginFormHandler {
   #opinionValidator;
@@ -16,7 +16,7 @@ class ValidationLoginFormHandler {
     const isOpinionValid = this.#opinionValidator.valid();
 
     return {
-      opinionError: !isOpinionValid && errorMessages.opinion,
+      opinionError: !isOpinionValid && validationErrors.opinion,
       validationStatus: isOpinionValid
     };
   }

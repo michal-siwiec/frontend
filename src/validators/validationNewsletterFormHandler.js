@@ -1,7 +1,7 @@
 import NameValidator from './services/nameValidator.js';
 import SurnameValidator from './services/surnameValidator.js';
 import EmailValidator from './services/emailValidator.js';
-import errorMessages from './dictionary/errorMessages.js';
+import validationErrors from 'dictionaries/validationErrors.js';
 
 class ValidationNewsletterFormHandler {
   #nameValidator;
@@ -24,9 +24,9 @@ class ValidationNewsletterFormHandler {
     const isEmailValid = this.#emailValidator.valid();
 
     return {
-      nameError: !isNameValid && errorMessages.name,
-      surnameError: !isSurnameValid && errorMessages.surname,
-      emailError: !isEmailValid && errorMessages.email,
+      nameError: !isNameValid && validationErrors.name,
+      surnameError: !isSurnameValid && validationErrors.surname,
+      emailError: !isEmailValid && validationErrors.email,
       validationStatus: isNameValid && isSurnameValid && isEmailValid
     };
   }
