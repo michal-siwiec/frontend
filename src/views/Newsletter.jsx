@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import ValidationNewsletterFormHandler from 'validators/validationNewsletterFormHandler.js';
+import ValidationNewsletterHandler from 'handlers/validationNewsletterHandler.js';
 import FormContainer from 'components/containers/FormContainer.jsx';
 import TextInput from 'components/inputs/TextInput.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
@@ -31,7 +31,7 @@ const Newsletter = () => {
       surnameError,
       emailError,
       validationStatus
-    } = new ValidationNewsletterFormHandler({ name, surname, email }).call();
+    } = new ValidationNewsletterHandler({ name, surname, email }).call();
 
     setNameErrorMessage(nameError);
     setSurnameErrorMessage(surnameError);

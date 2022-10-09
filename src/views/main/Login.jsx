@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from 'graphql/mutations/user.js';
-import ValidationLoginFormHandler from 'validators/validationLoginFormHandler.js';
+import ValidationLoginHandler from 'handlers/validationLoginHandler.js';
 import FormContainer from 'components/containers/FormContainer.jsx';
 import TextInput from 'components/inputs/TextInput.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
@@ -21,7 +21,7 @@ const Login = () => {
       emailError,
       passwordError,
       validationStatus
-    } = new ValidationLoginFormHandler({ email, password }).call();
+    } = new ValidationLoginHandler({ email, password }).call();
 
     setEmailErrorMessage(emailError);
     setPasswordErrorMessage(passwordError);

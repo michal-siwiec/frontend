@@ -1,8 +1,8 @@
-import EmailValidator from './services/emailValidator.js';
-import PasswordValidator from './services/passwordValidator.js';
+import EmailValidator from 'validators/emailValidator.js';
+import PasswordValidator from 'validators/passwordValidator.js';
 import validationErrors from 'dictionaries/validationErrors.js';
 
-class ValidationLoginFormHandler {
+class ValidationLoginHandler {
   #emailValidator;
   #passwordValidator;
 
@@ -27,4 +27,4 @@ class ValidationLoginFormHandler {
   }
 }
 
-export default ValidationLoginFormHandler;
+export default ValidationLoginHandler;

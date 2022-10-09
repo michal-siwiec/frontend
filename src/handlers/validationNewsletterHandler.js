@@ -1,9 +1,9 @@
-import NameValidator from './services/nameValidator.js';
-import SurnameValidator from './services/surnameValidator.js';
-import EmailValidator from './services/emailValidator.js';
+import NameValidator from 'validators/nameValidator.js';
+import SurnameValidator from 'validators/surnameValidator.js';
+import EmailValidator from 'validators/emailValidator.js';
 import validationErrors from 'dictionaries/validationErrors.js';
 
-class ValidationNewsletterFormHandler {
+class ValidationNewsletterHandler {
   #nameValidator;
   #surnameValidator;
   #emailValidator;
@@ -32,4 +32,4 @@ class ValidationNewsletterFormHandler {
   }
 }
 
-export default ValidationNewsletterFormHandler;
+export default ValidationNewsletterHandler;

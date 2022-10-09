@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { OrderContext } from 'contexts/contexts.js';
-import ValidationClientDetailsFormHandler from 'validators/validationClientDetailsFormHandler.js';
+import ValidationClientDetailsHandler from 'handlers/validationClientDetailsHandler.js';
 import TextInput from 'components/inputs/TextInput.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
 
@@ -60,7 +60,7 @@ const ClientDetails = () => {
       emailError,
       phoneError,
       validationStatus
-    } = new ValidationClientDetailsFormHandler({
+    } = new ValidationClientDetailsHandler({
       name,
       surname,
       street,

@@ -1,7 +1,7 @@
-import OpinionValidator from './services/opinionValidator.js';
+import OpinionValidator from 'validators/opinionValidator.js';
 import validationErrors from 'dictionaries/validationErrors.js';
 
-class ValidationLoginFormHandler {
+class ValidationAddOpinionHandler {
   #opinionValidator;
 
   constructor(opinion) {
@@ -22,4 +22,4 @@ class ValidationLoginFormHandler {
   }
 }
 
-export default ValidationLoginFormHandler;
+export default ValidationAddOpinionHandler;

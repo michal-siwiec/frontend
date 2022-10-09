@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { exact, func, element } from 'prop-types';
 import { useMutation } from '@apollo/client';
 import { ADD_OPINION } from 'graphql/mutations/opinion.js';
-import ValidationLoginFormHandler from 'validators/validationAddOpinionFormHandler.js';
+import ValidationAddOpinionHandler from 'handlers/validationAddOpinionHandler.js';
 import FormContainer from 'components/containers/FormContainer.jsx';
 import Rating from 'components/Rating.jsx';
 import TextArea from 'components/inputs/TextArea.jsx';
@@ -32,7 +32,7 @@ const AddOpinionForm = ({
   };
 
   const handleAddOpinionSubmit = () => {
-    const { opinionError, validationStatus } = new ValidationLoginFormHandler(addedOpinion).call();
+    const { opinionError, validationStatus } = new ValidationAddOpinionHandler(addedOpinion).call();
 
     setOpinionValidationError(opinionError);
     if (!validationStatus) return;

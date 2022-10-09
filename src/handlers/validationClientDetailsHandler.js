@@ -1,13 +1,13 @@
-import NameValidator from './services/nameValidator.js';
-import SurnameValidator from './services/surnameValidator.js';
-import StreetValidator from './services/streetValidator.js';
-import CityValidator from './services/cityValidator.js';
-import PostalCodeValidator from './services/postalCodeValidator.js';
-import EmailValidator from './services/emailValidator.js';
-import PhoneNumberValidator from './services/phoneNumberValidator.js';
+import NameValidator from 'validators/nameValidator.js';
+import SurnameValidator from 'validators/surnameValidator.js';
+import StreetValidator from 'validators/streetValidator.js';
+import CityValidator from 'validators/cityValidator.js';
+import PostalCodeValidator from 'validators/postalCodeValidator.js';
+import EmailValidator from 'validators/emailValidator.js';
+import PhoneNumberValidator from 'validators/phoneNumberValidator.js';
 import validationErrors from 'dictionaries/validationErrors.js';
 
-class ValidationClientDetailsFormHandler {
+class ValidationClientDetailsHandler {
   #nameValidator;
   #surnameValidator;
   #streetValidator;
@@ -63,4 +63,4 @@ class ValidationClientDetailsFormHandler {
   }
 }
 
-export default ValidationClientDetailsFormHandler;
+export default ValidationClientDetailsHandler;

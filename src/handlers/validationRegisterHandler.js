@@ -1,9 +1,9 @@
-import PasswordValidator from './services/passwordValidator.js';
-import EmailValidator from './services/emailValidator.js';
-import AvatarValidator from './services/avatarValidator.js';
+import PasswordValidator from 'validators/passwordValidator.js';
+import EmailValidator from 'validators/emailValidator.js';
+import AvatarValidator from 'validators/avatarValidator.js';
 import validationErrors from 'dictionaries/validationErrors.js';
 
-class ValidationRegisterFormHandler {
+class ValidationRegisterHandler {
   #passwordValidator;
   #emailValidator;
   #avatarValidator;
@@ -32,4 +32,4 @@ class ValidationRegisterFormHandler {
   }
 }
 
-export default ValidationRegisterFormHandler;
+export default ValidationRegisterHandler;

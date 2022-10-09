@@ -62,7 +62,8 @@ module.exports = {
             validators: path.resolve(__dirname, '../', 'src/validators'),
             views: path.resolve(__dirname, '../', 'src/views'),
             contexts: path.resolve(__dirname, '../', 'src/contexts'),
-            dictionaries: path.resolve(__dirname, '../', 'src/dictionaries')
+            dictionaries: path.resolve(__dirname, '../', 'src/dictionaries'),
+            handlers: path.resolve(__dirname, '../', 'src/handlers')
           }
         },
         options: {
