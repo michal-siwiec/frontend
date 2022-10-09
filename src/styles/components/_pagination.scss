@@ -1,0 +1,27 @@
+.pagination {
+  width: 20%;
+  margin: 30px auto;
+
+  &__list {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__list-item {
+    @include flex-container;
+
+    margin: 0 5px;
+    width: 20px;
+    height: 20px;
+
+    &--active {
+      background-color: $light-gray;
+    }
+  }
+
+  &__item-link {
+    &--active {
+      color: white;
+    }
+  }
+}
