@@ -1,6 +1,6 @@
 import { cutAfterNChars, isTextLonger } from 'utils/helpers.js';
 
-class PresentedContentGenerator {
+class OpinionPresentedContentGenerator {
   #displayedNumberOfChars;
   #content;
   #contentExpanded;
@@ -51,4 +51,4 @@ class PresentedContentGenerator {
   }
 }
 
-export default PresentedContentGenerator;
+export default OpinionPresentedContentGenerator;

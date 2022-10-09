@@ -7,7 +7,7 @@ import {
   number,
   node
 } from 'prop-types';
-import Opinion from './opinion/Opinion.jsx';
+import Opinion from './Opinion.jsx';
 
 const OpinionsList = ({ opinions }) => {
   const blockName = 'opinions';
