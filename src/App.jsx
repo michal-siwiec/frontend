@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import './styles/style.scss';
-import TopBar from 'views/topBar/TopBar.jsx';
+import TopBar from 'views/TopBar.jsx';
 import AdvertisingBox from 'views/advertisingBox.jsx';
 import Main from 'views/main/Main.jsx';
 import Newsletter from 'views/Newsletter.jsx';

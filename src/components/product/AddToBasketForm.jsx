@@ -4,7 +4,7 @@ import NumberInput from 'components/inputs/NumberInput.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
 import { useSelector, useDispatch } from 'react-redux';
 import { addProductToBasket } from 'redux_/basket/actionCreators.js';
-import { generateAddedProductPayload, generatePossibleProductQuantity } from './helpers.js';
+import { generateAddedProductPayload, generatePossibleProductQuantity } from 'utils/product.js';
 
 const AddToBasketForm = ({ id, availableQuantity }) => {
   const blockName = 'product';
