@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { OrderContext } from 'contexts/contexts.js';
 import Stepper from 'components/Stepper.jsx';
-import { stepsLabels } from './data.js';
+import { stepsLabels } from 'data/orderHeader.js';
 
 const Header = () => {
   const { step, setStep } = useContext(OrderContext);

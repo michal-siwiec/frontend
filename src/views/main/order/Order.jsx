@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { OrderContext } from 'contexts/contexts.js';
 import FormContainer from 'components/containers/FormContainer.jsx';
-import Header from './header/Header.jsx';
+import Header from './Header.jsx';
 import From from './form/Form.jsx';
 
 const Order = () => {

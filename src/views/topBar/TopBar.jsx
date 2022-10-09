@@ -5,7 +5,7 @@ import { LOGOUT_USER } from 'graphql/mutations/user.js';
 import { STORAGE_URL } from 'utils/environment.js';
 import TextInput from 'components/inputs/TextInput.jsx';
 import Basket from 'views/basket/Basket.jsx';
-import { menuItemsProperties } from './data.js';
+import { menuItemsProperties } from 'data/topBar.js';
 
 const TopBar = () => {
   const blockName = 'top-bar';

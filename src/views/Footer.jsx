@@ -13,7 +13,7 @@ import {
   shopPhone,
   shopRulesText,
   privacyPolicyText
-} from './data.js';
+} from 'data/footer.js';
 
 const Footer = () => {
   const blockName = 'footer';

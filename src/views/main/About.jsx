@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import ShadowedContainer from 'components/containers/ShadowedContainer.jsx';
 import { appearingInSequence } from 'data/animations.js';
-import { description, managers } from './data.js';
+import { description, managers } from 'data/about.js';
 
 const About = () => {
   const blockName = 'about';
