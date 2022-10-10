@@ -1,0 +1,41 @@
+.about {
+  &__info-wrapper {
+    margin-bottom: 50px;
+  }
+
+  &__header {
+    text-align: center;
+    margin: 10px 0 20px;
+  }
+
+  &__renowation-picture {
+    width: 100%;
+    min-height: 500px;
+    background-image: url("#{$storage-url}/images/construction-photos/roof-renowation.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &__info-description {
+    width: 75%;
+    margin: 30px auto 0;
+    text-indent: $default-text-indent;
+  }
+
+  &__text-part {
+    &--bold {
+      font-weight: bold;
+    }
+
+    &--italic {
+      font-style: italic;
+    }
+  }
+
+  &__managers-wrapper {
+    width: 85%;
+    margin: 30px auto;
+
+    @include flex-container;
+  }
+}

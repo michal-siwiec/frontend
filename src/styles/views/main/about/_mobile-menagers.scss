@@ -1,0 +1,59 @@
+.mobile-menagers {
+  width: 100%;
+  min-height: 300px;
+
+  &__menager {
+    display: flex;
+    width: 100%;
+    height: 135px;
+    margin: 80px auto;
+
+    @media screen and (min-width: $md-breakpoint) {
+      margin: 30px auto;
+    }
+
+    &:first-of-type {
+      margin: 0 auto;
+    }
+
+    &:last-of-type {
+      margin: 0 auto 20px;
+    }
+  }
+
+  &__manager-picture {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__manager-details-wrapper {
+    flex-basis: 60%;
+  }
+
+  &__manager-name {
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  &__manager-position {
+    font-weight: bold;
+    text-align: center;
+    font-size: 15px;
+  }
+
+  &__manager-description {
+    max-height: 100px;
+    overflow: scroll;
+    text-align: center;
+  }
+
+  &__manager-picture-wrapper {
+    flex-basis: 40%;
+    margin-right: 10px;
+    max-width: 130px;
+    border-radius: 100%;
+    overflow: hidden;
+  }
+}

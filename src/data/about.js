@@ -27,13 +27,13 @@ export const managers = [
   {
     name: 'Małgorzata Lewandowska',
     picturePath: `${STORAGE_URL}/images/management-staff/malgorzata-lewandowska.png`,
-    description: 'Odpowiedzialna za budowanie oraz utrzymywanie relacji z partnerami biznesowymi',
+    description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, consequatur. Ex blanditiis accusamus nam molestiae officiis totam repellendus labore beatae ullam quas, hic facilis fugit illum tenetur, magni est distinctio.',
     position: 'Prezes zarządu'
   },
   {
     name: 'Łukasz Nowak',
     picturePath: `${STORAGE_URL}/images/management-staff/lukasz-nowak.png`,
-    description: 'Odpowiedzialny za rozwój strategiczny w szczególności na rynku Europejskim',
+    description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, consequatur. Ex blanditiis accusamus nam molestiae officiis totam repellendus labore beatae ullam quas, hic facilis fugit illum tenetur, magni est distinctio.',
     position: 'Dyrektor ds. wzrostu'
   },
   {
@@ -55,11 +55,4 @@ export const mappedDirections = {
   1: 'top-right',
   2: 'bottom-right',
   3: 'bottom-left'
-};
-
-export const mappedDividersColors = {
-  0: 'green',
-  1: 'red',
-  2: 'yellow',
-  3: 'blue'
 };

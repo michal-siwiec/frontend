@@ -4,7 +4,7 @@ import PromotedProducts from './PromotedProducts.jsx';
 import Products from './Products.jsx';
 import Login from './Login.jsx';
 import Register from './Register.jsx';
-import About from './About.jsx';
+import About from './about/About.jsx';
 import Opinions from './opinions/Opinions.jsx';
 import Order from './order/Order.jsx';
 

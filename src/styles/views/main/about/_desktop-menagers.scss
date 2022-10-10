@@ -1,50 +1,9 @@
-.about {
-  &__info-wrapper {
-    margin-bottom: 50px;
-  }
-
-  &__header {
-    text-align: center;
-    margin: 10px 0 20px;
-  }
-
-  &__renowation-picture {
-    width: 100%;
-    min-height: 500px;
-    background-image: url("#{$storage-url}/images/construction-photos/roof-renowation.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
-  &__info-description {
-    width: 75%;
-    margin: 30px auto 0;
-    text-indent: $default-text-indent;
-  }
-
-  &__text-part {
-    &--bold {
-      font-weight: bold;
-    }
-
-    &--italic {
-      font-style: italic;
-    }
-  }
-
-  &__managers-wrapper {
-    width: 75%;
-    margin: 30px auto;
-    min-height: 100px;
-
-    @include flex-container;
-  }
-
+.desktop-menagers {
   &__managers-circle {
     width: 450px;
     height: 450px;
     border-radius: 100%;
-    border: 2px dotted black;
+    border: 2px dotted $light-gray;
     position: relative;
   }
 
@@ -63,11 +22,11 @@
       top: 10%;
       right: calc(0% - 300px);
 
-      .about__manager-details-wrapper {
+      .desktop-menagers__manager-details-wrapper {
         order: 2;
       }
 
-      .about__manager-picture-wrapper {
+      .desktop-menagers__manager-picture-wrapper {
         order: 1;
       }
     }
@@ -76,11 +35,11 @@
       bottom: 10%;
       right: calc(0% - 300px);
 
-      .about__manager-details-wrapper {
+      .desktop-menagers__manager-details-wrapper {
         order: 2;
       }
 
-      .about__manager-picture-wrapper {
+      .desktop-menagers__manager-picture-wrapper {
         order: 1;
       }
     }
@@ -105,26 +64,10 @@
 
   &__divider {
     height: 3px;
-
-    &--green {
-      background-color: $green;
-    }
-
-    &--red {
-      background-color: $red;
-    }
-
-    &--yellow {
-      background-color: $yellow;
-    }
-
-    &--blue {
-      background-color: $blue;
-    }
+    background-color: $light-gray;
   }
 
   &__manager-position {
-    min-height: 30px;
     font-weight: bold;
     text-align: center;
     font-size: 15px;
