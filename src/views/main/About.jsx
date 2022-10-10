@@ -1,7 +1,12 @@
 import React, { Fragment } from 'react';
 import ShadowedContainer from 'components/containers/ShadowedContainer.jsx';
 import { appearingInSequence } from 'data/animations.js';
-import { description, managers } from 'data/about.js';
+import {
+  companyDescription,
+  managers,
+  mappedDirections,
+  mappedDividersColors
+} from 'data/about.js';
 
 const About = () => {
   const blockName = 'about';
@@ -11,42 +16,50 @@ const About = () => {
       <div className={`${blockName}__info-wrapper`}>
         <h2 className={`${blockName}__header`}>O nas</h2>
         <div className={`${blockName}__renowation-picture`} />
-        <div className={`${blockName}__info-description`} dangerouslySetInnerHTML={{ __html: description }} />
+        <div className={`${blockName}__info-description`} dangerouslySetInnerHTML={{ __html: companyDescription }} />
       </div>
-      <div>
-        <h2 className={`${blockName}__header`}>Kadra zarządzająca</h2>
-        <ul>
+      <div className={`${blockName}__managers-wrapper`}>
+        <div className={`${blockName}__managers-circle`}>
           {
-            managers.map(({ name, picturePath }, index) => (
-              <li className={`${blockName}__managers-list-item`}>
-                <ShadowedContainer
-                  classNames={`${blockName}__manager`}
-                  animationAttributes={{
-                    variants: appearingInSequence,
-                    custom: index,
-                    initial: appearingInSequence.hidden,
-                    animate: appearingInSequence.visible
-                  }}
-                >
-                  <Fragment>
-                    <div className={`${blockName}__manager-picture-wrapper`}>
-                      <img
-                        src={picturePath}
-                        alt={`${name} zdjęcie`}
-                        className={`${blockName}__manager-picture`}
-                      />
+            managers.map(({
+              name,
+              picturePath,
+              description,
+              position
+            }, index) => (
+              <ShadowedContainer
+                animationAttributes={{
+                  variants: appearingInSequence,
+                  custom: index,
+                  initial: appearingInSequence.hidden,
+                  animate: appearingInSequence.visible
+                }}
+              >
+                <div className={`${blockName}__manager ${blockName}__manager--${mappedDirections[index]}`}>
+                  <div className={`${blockName}__manager-details-wrapper`}>
+                    <div className={`${blockName}__manager-name`}>
+                      {name}
                     </div>
-                    <div className={`${blockName}__manager-name-wrapper`}>
-                      <span className={`${blockName}__manager-name`}>
-                        {name}
-                      </span>
+                    <div className={`${blockName}__divider ${blockName}__divider--${mappedDividersColors[index]}`} />
+                    <div className={`${blockName}__manager-position`}>
+                      {position}
                     </div>
-                  </Fragment>
-                </ShadowedContainer>
-              </li>
+                    <div className={`${blockName}__manager-description`}>
+                      {description}
+                    </div>
+                  </div>
+                  <div className={`${blockName}__manager-picture-wrapper`}>
+                    <img
+                      src={picturePath}
+                      alt={`${name} zdjęcie`}
+                      className={`${blockName}__manager-picture`}
+                    />
+                  </div>
+                </div>
+              </ShadowedContainer>
             ))
           }
-        </ul>
+        </div>
       </div>
     </div>
   );

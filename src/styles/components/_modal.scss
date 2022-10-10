@@ -2,7 +2,8 @@
   @include flex-container($align-items: start);
 
   margin-top: 150px;
-  outline: none;
+  overflow: scroll;
+  max-height: 500px;
 
   &__content-wrapper {
     flex-basis: 90%;
