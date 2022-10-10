@@ -1,14 +1,22 @@
 .top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
   flex-wrap: wrap;
+  z-index: 4;
+  background-color: $white;
+  box-shadow: $default-box-shadow;
 
   &__menu {
-    flex-basis: 90%;
-    border: 2px solid black;
+    @include flex-container($justify-content: start);
+    flex-basis: 85%;
   }
 
   &__menu-list {
     display: flex;
+    margin-left: 5px;
   }
 
   &__list-item {
@@ -29,16 +37,12 @@
   }
 
   &__search-engine {
-    flex-basis: 70%;
-
     @include flex-container;
-
-    border: 2px solid black;
+    flex-basis: 65%;
   }
 
   &__logo {
     flex-basis: 20%;
-    border: 2px solid black;
   }
 
   &__logo-img {
@@ -46,13 +50,36 @@
     height: auto;
   }
 
-  &__login {
-    flex-basis: 10%;
-    border: 2px solid black;
+  &__authorization {
+    @include flex-container;
+    flex-basis: 15%;
+  }
+
+  &__authorization-action {
+    margin: 0 5px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__basket {
-    flex-basis: 10%;
-    border: 2px solid black;
+    @include flex-container;
+    flex-basis: 15%;
+    padding: 0  0 15px;
+  }
+
+  &__basket-price {
+    font-weight: bold;
+    font-size: 18px;
+    margin-right: 10px;
+  }
+
+  &__basket-icon {
+    font-size: 25px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
