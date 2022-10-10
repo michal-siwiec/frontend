@@ -6,6 +6,8 @@
   display: flex;
   flex-wrap: wrap;
   z-index: 4;
+  max-width: $max-page-width;
+  margin: 0 auto;
   background-color: $white;
   box-shadow: $default-box-shadow;
 
