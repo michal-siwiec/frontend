@@ -12,12 +12,14 @@ const Drawer = ({
   anchor,
   isOpen,
   onClose,
-  children
+  children,
+  className
 }) => (
   <MuiDrawer
     anchor={anchor}
     open={isOpen}
     onClose={onClose}
+    className={`drawer ${className}`}
   >
     {children}
   </MuiDrawer>
@@ -27,11 +29,13 @@ Drawer.propTypes = exact({
   anchor: string,
   isOpen: bool.isRequired,
   onClose: func.isRequired,
-  children: element.isRequired
+  children: element.isRequired,
+  className: string
 }).isRequired;
 
 Drawer.defaultProps = {
-  anchor: 'left'
+  anchor: 'left',
+  className: ''
 };
 
 export default Drawer;

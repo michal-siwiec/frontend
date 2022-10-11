@@ -1,7 +1,11 @@
 import React, { Fragment, useState } from 'react';
-import Logo from './Logo.jsx';
-import HamburgerMenu from './HamburgerMenu.jsx';
+import Logo from './elements/Logo.jsx';
+import HamburgerMenu from './elements/HamburgerMenu.jsx';
 import Drawer from 'components/Drawer.jsx';
+import Authorization from './elements/Authorization.jsx';
+import MenuList from './elements/MenuList.jsx';
+import Basket from './elements/Basket.jsx';
+import SearchEngine from './elements/SearchEngine.jsx';
 
 const MobileContent = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -16,8 +20,14 @@ const MobileContent = () => {
       <Drawer
         isOpen={isDrawerOpen}
         onClose={closeDrawer}
+        className="drawer--top-bar"
       >
-        <h1>sadasda</h1>
+        <Fragment>
+          <Authorization />
+          <MenuList />
+          <Basket />
+          <SearchEngine />
+        </Fragment>
       </Drawer>
     </Fragment>
   );
