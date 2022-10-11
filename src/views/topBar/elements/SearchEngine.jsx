@@ -2,7 +2,7 @@ import React from 'react';
 import TextInput from 'components/inputs/TextInput.jsx';
 
 const SearchEngine = () => {
-  const blockName = 'top-bar';
+  const blockName = 'top-bar-elements';
 
   return (
     <div className={`${blockName}__search-engine`}>

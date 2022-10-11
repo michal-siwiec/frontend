@@ -2,7 +2,7 @@ import React from 'react';
 import { exact, func } from 'prop-types';
 
 const HamburgerMenu = ({ handleOnMouseDown }) => {
-  const blockName = 'top-bar';
+  const blockName = 'top-bar-elements';
 
   return (
     <div className={`${blockName}__hamburger-menu-wrapper`}>

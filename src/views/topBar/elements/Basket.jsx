@@ -9,7 +9,7 @@ const Basket = () => {
   const productsInBasket = useSelector(({ basket: { addedProducts } }) => addedProducts);
   const [isBasketSummaryOpen, setIsBasketSummaryOpen] = useState(false);
   const [isEmptyBasketModalOpen, setIsEmptyBasketModalOpen] = useState(false);
-  const blockName = 'top-bar';
+  const blockName = 'top-bar-elements';
   const isBasketEmpty = isEmpty(productsInBasket);
 
   const openEmptyBasketModal = () => setIsEmptyBasketModalOpen(true);

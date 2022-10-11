@@ -1,5 +1,4 @@
 import React from 'react';
-import clsx from 'clsx';
 import DesktopContent from './DesktopContent.jsx';
 import MobileContent from './MobileContent.jsx';
 import useIsMobile from 'hooks/useIsMobile.jsx';
@@ -10,7 +9,7 @@ const TopBar = () => {
   const isMobile = useIsMobile(widthBreakpoints.lg);
 
   return (
-    <nav className={clsx(blockName, isMobile && `${blockName}--mobile`)}>
+    <nav className={blockName}>
       {
         isMobile
           ? <MobileContent />

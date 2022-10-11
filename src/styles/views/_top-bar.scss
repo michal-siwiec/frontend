@@ -3,29 +3,29 @@
   top: 0;
   left: 0;
   right: 0;
-  display: flex;
-  flex-wrap: wrap;
   z-index: 4;
   max-width: $max-page-width;
   margin: 0 auto;
   background-color: $white;
   box-shadow: $default-box-shadow;
+}
+
+.top-bar-elements {
+  display: flex;
+  flex-wrap: wrap;
 
   &__logo {
-    flex-basis: 25%;
+    flex-basis: 85%;
 
-    .top-bar--mobile & {
-      flex-basis: 85%;
+    @media screen and (min-width: $lg-breakpoint) {
+      flex-basis: 25%;
     }
   }
 
   &__logo-img {
     width: 100%;
+    max-width: 230px;
     height: auto;
-
-    .top-bar--mobile & {
-      max-width: 250px;
-    }
   }
 
   &__hamburger-menu-wrapper {
@@ -50,9 +50,14 @@
 
   &__authorization-action {
     margin: 0 5px;
+  }
+
+  &__authorization-action-link {
+    transition: color $default-hover-animation-time;
 
     &:hover {
       cursor: pointer;
+      color: $gray;
     }
   }
 
@@ -75,11 +80,11 @@
   &__item-link {
     font-weight: 300;
     font-size: 15px;
-    color: $gray;
-    transition: color .3s;
+    color: $black;
+    transition: color $default-hover-animation-time;
 
     &:hover {
-      color: black;
+      color: $gray;
     }
   }
 
@@ -101,6 +106,49 @@
 
     &:hover {
       cursor: pointer;
+    }
+  }
+
+  &--drawer {
+    padding: 0 10px;
+
+    .top-bar-elements__authorization {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .top-bar-elements__menu-list {
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 5px;
+    }
+
+    .top-bar-elements__list-item {
+      flex-basis: 100%;
+      margin: 0;
+    }
+
+    .top-bar-elements__basket {
+      @include flex-container($justify-content: start);
+      flex-basis: 100%;
+    }
+
+    .top-bar-elements__search-engine {
+      @include flex-container($justify-content: start);
+      flex-basis: 100%;
+      max-width: 200px;
+      margin: 0;
+    }
+
+    .text-input--search-engine {
+      margin: 0;
+      flex-basis: 100%;
+    }
+
+    .top-bar-elements__divider {
+      width: 100%;
+      margin: 7.5px 0;
+      border-bottom: .7px dashed $gray;
     }
   }
 }

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { STORAGE_URL } from 'utils/environment.js';
 
 const Logo = () => {
-  const blockName = 'top-bar';
+  const blockName = 'top-bar-elements';
 
   return (
     <div className={`${blockName}__logo`}>

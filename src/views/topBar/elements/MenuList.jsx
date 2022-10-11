@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { menuItemsProperties } from 'data/topBar.js';
 
 const MenuList = () => {
-  const blockName = 'top-bar';
+  const blockName = 'top-bar-elements';
 
   return (
     <div className={`${blockName}__menu`}>

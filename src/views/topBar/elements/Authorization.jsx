@@ -5,7 +5,7 @@ import { LOGOUT_USER } from 'graphql/mutations/user.js';
 import useIsLogged from 'hooks/useIsLogged.jsx';
 
 const Authorization = () => {
-  const blockName = 'top-bar';
+  const blockName = 'top-bar-elements';
   const [logoutUser] = useMutation(LOGOUT_USER);
   const isLogged = useIsLogged();
 
@@ -22,12 +22,12 @@ const Authorization = () => {
         !isLogged ? (
           <Fragment>
             <span className={`${blockName}__authorization-action`}>
-              <Link to="/login">
+              <Link to="/login" className={`${blockName}__authorization-action-link`}>
                 Logowanie
               </Link>
             </span>
             <span className={`${blockName}__authorization-action`}>
-              <Link to="/register">
+              <Link to="/register" className={`${blockName}__authorization-action-link`}>
                 Rejestracja
               </Link>
             </span>
@@ -39,7 +39,9 @@ const Authorization = () => {
             tabIndex={0}
             className={`${blockName}__authorization-action`}
           >
-            Wyloguj
+            <span className={`${blockName}__authorization-action-link`}>
+              Wyloguj
+            </span>
           </span>
         )
       }

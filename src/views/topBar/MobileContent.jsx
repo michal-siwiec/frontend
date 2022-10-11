@@ -8,6 +8,7 @@ import Basket from './elements/Basket.jsx';
 import SearchEngine from './elements/SearchEngine.jsx';
 
 const MobileContent = () => {
+  const blockName = 'top-bar-elements';
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const openDrawer = () => setIsDrawerOpen(true);
@@ -15,19 +16,23 @@ const MobileContent = () => {
 
   return (
     <Fragment>
-      <Logo />
-      <HamburgerMenu handleOnMouseDown={openDrawer} />
+      <div className={blockName}>
+        <Logo />
+        <HamburgerMenu handleOnMouseDown={openDrawer} />
+      </div>
       <Drawer
         isOpen={isDrawerOpen}
         onClose={closeDrawer}
         className="drawer--top-bar"
       >
-        <Fragment>
+        <div className={`${blockName} ${blockName}--drawer`}>
           <Authorization />
+          <div className={`${blockName}__divider`} />
           <MenuList />
+          <div className={`${blockName}__divider`} />
           <Basket />
           <SearchEngine />
-        </Fragment>
+        </div>
       </Drawer>
     </Fragment>
   );
