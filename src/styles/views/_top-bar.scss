@@ -11,9 +11,54 @@
   background-color: $white;
   box-shadow: $default-box-shadow;
 
+  &__logo {
+    flex-basis: 25%;
+
+    .top-bar--mobile & {
+      flex-basis: 85%;
+    }
+  }
+
+  &__logo-img {
+    width: 100%;
+    height: auto;
+
+    .top-bar--mobile & {
+      max-width: 250px;
+    }
+  }
+
+  &__hamburger-menu-wrapper {
+    @include flex-container;
+    flex-basis: 15%;
+  }
+
+  &__hamburger-menu-icon {
+    font-size: 25px;
+  }
+
+  &__search-engine {
+    @include flex-container;
+    flex-basis: 50%;
+  }
+
+  &__authorization {
+    @include flex-container($justify-content: end);
+    flex-basis: 25%;
+    padding-right: 50px;
+  }
+
+  &__authorization-action {
+    margin: 0 5px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
   &__menu {
     @include flex-container($justify-content: start);
-    flex-basis: 85%;
+    flex-basis: 70%;
   }
 
   &__menu-list {
@@ -38,37 +83,11 @@
     }
   }
 
-  &__search-engine {
-    @include flex-container;
-    flex-basis: 65%;
-  }
-
-  &__logo {
-    flex-basis: 20%;
-  }
-
-  &__logo-img {
-    width: 100%;
-    height: auto;
-  }
-
-  &__authorization {
-    @include flex-container;
-    flex-basis: 15%;
-  }
-
-  &__authorization-action {
-    margin: 0 5px;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
   &__basket {
-    @include flex-container;
-    flex-basis: 15%;
+    @include flex-container($justify-content: end);
+    flex-basis: 30%;
     padding: 0  0 15px;
+    padding-right: 50px;
   }
 
   &__basket-price {

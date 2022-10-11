@@ -11,7 +11,11 @@ body {
   color: $default-font-color;
   font-weight: $default-font-weight;
   line-height: $default-line-height;
-  margin-top: 121px;
+  margin-top: 80px;
+
+  @media screen and (min-width: $lg-breakpoint) {
+    margin-top: 130px;
+  }
 }
 
 ul {
