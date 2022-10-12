@@ -52,4 +52,16 @@
     flex-basis: 100%;
     justify-content: center;
   }
+
+  &--basket {
+    .product__img-wrapper {
+      @media screen and (min-width: $xs-breakpoint) {
+        flex-basis: 100%;
+      }
+    }
+
+    .product__info-wrapper {
+      flex-basis: 100%;
+    }
+  }
 }

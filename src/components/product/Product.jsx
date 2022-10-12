@@ -1,5 +1,6 @@
 import React from 'react';
 import { exact, number, string } from 'prop-types';
+import clsx from 'clsx';
 import ShadowedContainer from 'components/containers/ShadowedContainer.jsx';
 import { appearingInSequence } from 'data/animations.js';
 import { formattedPrice } from 'utils/helpers.js';
@@ -23,7 +24,7 @@ const Product = ({
 
   return (
     <ShadowedContainer
-      classNames={blockName}
+      classNames={clsx(blockName, isBasketMode && `${blockName}--basket`)}
       animationAttributes={{
         variants: appearingInSequence,
         custom: index,
