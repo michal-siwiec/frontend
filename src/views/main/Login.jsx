@@ -67,6 +67,7 @@ const Login = () => {
             />
             <TextInput
               placeholder="Hasło"
+              type="password"
               classNames="text-input--login"
               value={password}
               onChange={handlePasswordOnChange}
