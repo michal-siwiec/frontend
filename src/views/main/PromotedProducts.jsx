@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useQuery } from '@apollo/client';
 import { GET_PRODUCTS } from 'graphql/queries/products.js';
 import { loadProducts } from 'redux_/products/actionsCreator.js';
+import LoadingModal from 'components/modals/LoadingModal.jsx';
 import Product from 'components/product/Product.jsx';
 import Pagination from 'components/Pagination.jsx';
 
@@ -24,7 +25,7 @@ const PromotedProducts = () => {
     dispatch(loadProducts(products));
   }, [data]);
 
-  if (loading) return <h1>Loading...</h1>;
+  if (loading) return <LoadingModal info="Trwa pobieranie promowanych produktów..." />;
   if (error) return <h1>Error</h1>;
 
   const { productsDetails: { quantity, products } } = data;

@@ -9,7 +9,7 @@ import {
 import { STORAGE_URL } from 'utils/environment.js';
 
 const Avatar = ({ avatars, classNames }) => {
-  const pathToDefaultAvatar = `${STORAGE_URL}/users/empty-avatar.jpeg`;
+  const pathToDefaultAvatar = `${STORAGE_URL}/images/empty-avatar.jpeg`;
   const pathToDisplayedAvatar = avatars.find(({ main }) => main)?.storagePath || pathToDefaultAvatar;
 
   return (

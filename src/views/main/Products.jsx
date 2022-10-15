@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { GET_PRODUCTS } from 'graphql/queries/products.js';
+import LoadingModal from 'components/modals/LoadingModal.jsx';
 import Product from 'components/product/Product.jsx';
 import Pagination from 'components/Pagination.jsx';
 import translatedCathegoriesNames from 'dictionaries/cathegoriesNames.js';
@@ -22,7 +23,7 @@ const Products = () => {
 
   const handlePaginationOnChange = (pageNumber) => setActivePage(pageNumber - 1);
 
-  if (loading) return <h1>loading...</h1>;
+  if (loading) return <LoadingModal info="Trwa pobieranie produktów..." />;
   if (error) return <h1>Error...</h1>;
 
   const { productsDetails: { quantity, products } } = data;

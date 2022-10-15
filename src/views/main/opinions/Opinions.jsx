@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client';
 import { isEmpty } from 'lodash';
 import { GET_OPINIONS } from 'graphql/queries/opinion.js';
 import useIsLogged from 'hooks/useIsLogged.jsx';
+import LoadingModal from 'components/modals/LoadingModal.jsx';
 import AddingOpinionSuccessModal from 'components/modals/AddingOpinionSuccessModal.jsx';
 import AddingOpinionErrorModal from 'components/modals/AddingOpinionErrorModal.jsx';
 import Pagination from 'components/Pagination.jsx';
@@ -28,8 +29,7 @@ const Opinions = () => {
     { variables: { input: { pagination: { page: activePage, quantityPerPage } } } }
   );
 
-  // Tutaj trzeba zrobić dwa modale
-  if (loading) return <h1>Loading...</h1>;
+  if (loading) return <LoadingModal info="Trwa pobieranie opini..." />;
   if (error) return <h1>error</h1>;
 
   const { opinionsDetails: { allOpinionsQuantity, opinions } } = data;
