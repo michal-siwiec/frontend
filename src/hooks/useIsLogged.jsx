@@ -1,12 +1,13 @@
-import { useQuery } from '@apollo/client';
-import { IS_USER_LOGGED } from 'graphql/queries/user.js';
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 const useIsLogged = () => {
-  const { data } = useQuery(IS_USER_LOGGED);
-  const userID = localStorage.getItem('userID');
-  if (userID && data?.auth?.isLogged) return true;
+  const [isLogged, setIsLogged] = useState(false);
+  const loggedUserId = useSelector((store) => store.user.loggedUserId);
 
-  return false;
+  useEffect(() => setIsLogged(!!loggedUserId), [loggedUserId]);
+
+  return isLogged;
 };
 
 export default useIsLogged;

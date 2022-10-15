@@ -1,7 +1,9 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
+import { useDispatch } from 'react-redux';
 import { LOGIN_USER } from 'graphql/mutations/user.js';
+import { login } from 'redux_/user/actionsCreator.js';
 import ValidationLoginHandler from 'handlers/validationLoginHandler.js';
 import FormContainer from 'components/containers/FormContainer.jsx';
 import TextInput from 'components/inputs/TextInput.jsx';
@@ -10,11 +12,20 @@ import SubmitButton from 'components/SubmitButton.jsx';
 const Login = () => {
   const blockName = 'login';
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('siwiec.michal724@gmail.com');
+  const [password, setPassword] = useState('Ab47901825');
   const [emailErrorMessage, setEmailErrorMessage] = useState('');
   const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
+  const dispatch = useDispatch();
   const [loginUser, { data }] = useMutation(LOGIN_USER);
+
+  const handleEmailOnChange = ({ target: { value } }) => {
+    setEmail(value);
+  };
+
+  const handlePasswordOnChange = ({ target: { value } }) => {
+    setPassword(value);
+  };
 
   const handleLoginOnMouseDown = () => {
     const {
@@ -31,19 +42,13 @@ const Login = () => {
     loginUser({ variables: payload });
   };
 
-  const handleEmailOnChange = ({ target: { value } }) => {
-    setEmail(value);
+  const saveUserIdToStore = () => {
+    if (!data) return;
+
+    dispatch(login(data.user.id));
   };
 
-  const handlePasswordOnChange = ({ target: { value } }) => {
-    setPassword(value);
-  };
-
-  const saveUserIdToLocalStore = () => {
-    localStorage.setItem('userID', data.user.id);
-  };
-
-  if (data?.user) saveUserIdToLocalStore();
+  useEffect(saveUserIdToStore, [data?.user]);
 
   return (
     <div className={blockName}>
