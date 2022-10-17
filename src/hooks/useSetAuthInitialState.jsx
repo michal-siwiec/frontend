@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { IS_USER_LOGGED } from 'graphql/queries/user.js';
 import { checkIfLogged } from 'redux_/user/actionsCreator.js';
 
-const useSetInitialState = () => {
+const useSetAuthInitialState = () => {
   const dispatch = useDispatch();
   const { data, error } = useQuery(IS_USER_LOGGED);
 
@@ -25,4 +25,4 @@ const useSetInitialState = () => {
   useEffect(handleError, [error]);
 };
 
-export default useSetInitialState;
+export default useSetAuthInitialState;

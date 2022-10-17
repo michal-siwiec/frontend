@@ -5,7 +5,7 @@ import React, {
 } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import AvatarsGenerator from 'services/AvatarsGenerator.js';
+import AvatarsGenerator from 'services/avatarsGenerator.js';
 import ValidationRegisterHandler from 'handlers/validationRegisterHandler.js';
 import { REGISTER_USER } from 'graphql/mutations/user.js';
 import FormContainer from 'components/containers/FormContainer.jsx';
