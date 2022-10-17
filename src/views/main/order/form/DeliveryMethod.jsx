@@ -1,35 +1,26 @@
-import React, { Fragment, useState, useContext } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { OrderContext } from 'contexts/contexts.js';
+import { useSelector, useDispatch } from 'react-redux';
+import { setDeliveryMethod } from 'redux_/order/actionsCreator.js';
 import CheckBox from 'components/inputs/CheckBox.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
 
 const DeliveryMethod = () => {
   const blockName = 'delivery-method';
-  const [inPostChecked, setInPostChecked] = useState(true);
-  const [dpdChecked, setDpdChecked] = useState(false);
-  const [pickUpAtThePoint, setPickUpAtThePoint] = useState(false);
-  const [selectedDeliveryMethod, setSelectedDevliveryMethod] = useState('inpost');
   const { setStep } = useContext(OrderContext);
+  const { inPost, dpd, pickUpAtThePoint } = useSelector((store) => store.order.delivery);
+  const dispatch = useDispatch();
 
   const handleInPostOnClick = () => {
-    setInPostChecked(true);
-    setDpdChecked(false);
-    setPickUpAtThePoint(false);
-    setSelectedDevliveryMethod('inpost');
+    dispatch(setDeliveryMethod({ inPost: true, dpd: false, pickUpAtThePoint: false }));
   };
 
   const handleDpdOnClick = () => {
-    setDpdChecked(true);
-    setInPostChecked(false);
-    setPickUpAtThePoint(false);
-    setSelectedDevliveryMethod('dpd');
+    dispatch(setDeliveryMethod({ inPost: false, dpd: true, pickUpAtThePoint: false }));
   };
 
   const handlePickUpAtheThePointOnClick = () => {
-    setPickUpAtThePoint(true);
-    setInPostChecked(false);
-    setDpdChecked(false);
-    setSelectedDevliveryMethod('pickUpAtThePoint');
+    dispatch(setDeliveryMethod({ inPost: false, dpd: false, pickUpAtThePoint: true }));
   };
 
   const handleSubmitOnMouseDown = () => {
@@ -40,7 +31,7 @@ const DeliveryMethod = () => {
     <div className={`order__form-part-container ${blockName}`}>
       <CheckBox
         onClick={handleInPostOnClick}
-        checked={inPostChecked}
+        checked={inPost}
         label={(
           <Fragment>
             <i className={`icon-logo-inpost ${blockName}__icon ${blockName}__icon--inpost`} />
@@ -50,7 +41,7 @@ const DeliveryMethod = () => {
       />
       <CheckBox
         onClick={handleDpdOnClick}
-        checked={dpdChecked}
+        checked={dpd}
         label={(
           <Fragment>
             <i className={`icon-logo-dpd ${blockName}__icon`} />
@@ -66,7 +57,7 @@ const DeliveryMethod = () => {
       <SubmitButton
         classNames="button--client-details"
         onMouseDown={handleSubmitOnMouseDown}
-        value="Zapisz"
+        value="Dalej"
       />
     </div>
   );

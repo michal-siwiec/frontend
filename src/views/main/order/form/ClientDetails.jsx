@@ -1,4 +1,14 @@
 import React, { useState, useContext } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  setName,
+  setSurname,
+  setStreet,
+  setCity,
+  setPostalCode,
+  setEmail,
+  setPhoneNumber
+} from 'redux_/order/actionsCreator.js';
 import { OrderContext } from 'contexts/contexts.js';
 import ValidationClientDetailsHandler from 'handlers/validationClientDetailsHandler.js';
 import TextInput from 'components/inputs/TextInput.jsx';
@@ -6,13 +16,18 @@ import SubmitButton from 'components/SubmitButton.jsx';
 
 const ClientDetails = () => {
   const modifier = 'text-input--personal-details';
-  const [name, setName] = useState('');
-  const [surname, setSurname] = useState('');
-  const [street, setStreet] = useState('');
-  const [city, setCity] = useState('');
-  const [postalCode, setPostalCode] = useState('');
-  const [email, setEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const { setStep } = useContext(OrderContext);
+  const dispatch = useDispatch();
+  const {
+    name,
+    surname,
+    street,
+    city,
+    postalCode,
+    email,
+    phoneNumber
+  } = useSelector((store) => store.order.clientDetails);
+
   const [nameErrorMessage, setNameErrorMessage] = useState('');
   const [surnameErrorMessage, setSurnameErrorMessage] = useState('');
   const [streetErrorMessage, setStreetErrorMessage] = useState('');
@@ -20,35 +35,14 @@ const ClientDetails = () => {
   const [postalCodeErrorMessage, setPostalCodeErrorMessage] = useState('');
   const [emailErrorMessage, setEmailErrorMessage] = useState('');
   const [phoneNumberErrorMessage, setPhoneNumberErrorMessage] = useState('');
-  const { setStep } = useContext(OrderContext);
 
-  const handleNameOnChange = ({ target: { value } }) => {
-    setName(value);
-  };
-
-  const handleSurnameOnChange = ({ target: { value } }) => {
-    setSurname(value);
-  };
-
-  const handleStreetOnChange = ({ target: { value } }) => {
-    setStreet(value);
-  };
-
-  const handleCityOnChange = ({ target: { value } }) => {
-    setCity(value);
-  };
-
-  const handlePostalCodeOnChange = ({ target: { value } }) => {
-    setPostalCode(value);
-  };
-
-  const handleEmailOnChange = ({ target: { value } }) => {
-    setEmail(value);
-  };
-
-  const handlePhoneNumberOnChange = ({ target: { value } }) => {
-    setPhoneNumber(value);
-  };
+  const handleNameOnChange = ({ target: { value } }) => dispatch(setName(value));
+  const handleSurnameOnChange = ({ target: { value } }) => dispatch(setSurname(value));
+  const handleStreetOnChange = ({ target: { value } }) => dispatch(setStreet(value));
+  const handleCityOnChange = ({ target: { value } }) => dispatch(setCity(value));
+  const handlePostalCodeOnChange = ({ target: { value } }) => dispatch(setPostalCode(value));
+  const handleEmailOnChange = ({ target: { value } }) => dispatch(setEmail(value));
+  const handlePhoneNumberOnChange = ({ target: { value } }) => dispatch(setPhoneNumber(value));
 
   const handleSubmitOnMouseDown = () => {
     const {
@@ -138,7 +132,7 @@ const ClientDetails = () => {
       <SubmitButton
         classNames="button--client-details"
         onMouseDown={handleSubmitOnMouseDown}
-        value="Zapisz"
+        value="Dalej"
       />
     </div>
   );

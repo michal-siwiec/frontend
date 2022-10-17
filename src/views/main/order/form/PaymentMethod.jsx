@@ -1,25 +1,22 @@
-import React, { Fragment, useState, useContext } from 'react';
+import React, { Fragment, useContext } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setPaymentMethod } from 'redux_/order/actionsCreator.js';
 import { OrderContext } from 'contexts/contexts.js';
 import CheckBox from 'components/inputs/CheckBox.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
 
 const PaymentMethod = () => {
   const blockName = 'payment-method';
-  const [cashPaymentChecked, setCashPaymentChecked] = useState(true);
-  const [traditionalTransferChecked, setTraditionalTransferChecked] = useState(false);
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('cashPayment');
   const { setStep } = useContext(OrderContext);
+  const { cashPayment, traditionalTransfer } = useSelector((store) => store.order.payment);
+  const dispatch = useDispatch();
 
   const handleCashPaymentOnClick = () => {
-    setCashPaymentChecked(true);
-    setTraditionalTransferChecked(false);
-    setSelectedPaymentMethod('cashPayment');
+    dispatch(setPaymentMethod({ cashPayment: true, traditionalTransfer: false }));
   };
 
   const handleTraditionalPaymentOnClick = () => {
-    setTraditionalTransferChecked(true);
-    setCashPaymentChecked(false);
-    setSelectedPaymentMethod('traditionalPayment');
+    dispatch(setPaymentMethod({ cashPayment: false, traditionalTransfer: true }));
   };
 
   const handleSubmitOnMouseDown = () => {
@@ -30,7 +27,7 @@ const PaymentMethod = () => {
     <div className={`order__form-part-container ${blockName}`}>
       <CheckBox
         onClick={handleCashPaymentOnClick}
-        checked={cashPaymentChecked}
+        checked={cashPayment}
         label={(
           <Fragment>
             <i className={`icon-cash-payment ${blockName}__icon`} />
@@ -40,7 +37,7 @@ const PaymentMethod = () => {
       />
       <CheckBox
         onClick={handleTraditionalPaymentOnClick}
-        checked={traditionalTransferChecked}
+        checked={traditionalTransfer}
         label={(
           <Fragment>
             <i className={`icon-traditional-transfer ${blockName}__icon`} />
@@ -51,7 +48,7 @@ const PaymentMethod = () => {
       <SubmitButton
         classNames="button--client-details"
         onMouseDown={handleSubmitOnMouseDown}
-        value="Zapisz"
+        value="Dalej"
       />
     </div>
   );
