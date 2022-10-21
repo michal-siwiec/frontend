@@ -7,7 +7,7 @@ import Register from './Register.jsx';
 import About from './about/About.jsx';
 import Opinions from './opinions/Opinions.jsx';
 import Order from './order/Order.jsx';
-import ThankYouPage from './ThankYouPage.jsx';
+import ThankYouPage from './thankYouPage/ThankYouPage.jsx';
 import NotFound from './NotFound.jsx';
 
 const Main = () => (

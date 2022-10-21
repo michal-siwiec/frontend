@@ -1,23 +1,12 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { useSelector } from 'react-redux';
-import FileDownloader from 'services/fileDownloader.js';
-import { STORAGE_URL } from 'utils/environment.js';
-import SubmitButton from 'components/SubmitButton.jsx';
 
-const ThankYouPage = () => {
+const TraditionalTransferContent = () => {
   const blockName = 'thank-you-page';
-  const { user: { loggedUserId }, order: { orderID, totalPrice } } = useSelector((store) => store);
-
-  const downloadInvoice = () => {
-    const fileName = `Faktura za zamówienie: ${orderID}`;
-    const pathToFile = `${STORAGE_URL}/users/${loggedUserId}/invoices/${orderID}.pdf`;
-
-    new FileDownloader({ url: pathToFile, outputName: fileName }).call();
-  };
+  const { orderID, totalPrice } = useSelector((store) => store.order);
 
   return (
-    <div className={blockName}>
-      <h1 className={`${blockName}__main-header`}>Dziękujemy za dokonanie zakupu!</h1>
+    <Fragment>
       <h4 className={`${blockName}__secondary-header`}>Prosimy o dokonanie płatności według poniszych danych:</h4>
       <div className={`${blockName}__transfer-info-wrapper`}>
         <ul>
@@ -45,13 +34,8 @@ const ThankYouPage = () => {
           </li>
         </ul>
       </div>
-      <SubmitButton
-        value="Pobierz fakturę w formacie PDF"
-        classNames={`${blockName}__download-invoice-button`}
-        onMouseDown={downloadInvoice}
-      />
-    </div>
+    </Fragment>
   );
 };
 
-export default ThankYouPage;
+export default TraditionalTransferContent;

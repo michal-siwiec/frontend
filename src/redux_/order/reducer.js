@@ -35,7 +35,8 @@ const initialState = {
     traditionalTransfer: true
   },
   orderID: null,
-  totalPrice: 0
+  totalPrice: null,
+  paymentMethod: null
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -79,9 +80,10 @@ const reducer = createReducer(initialState, (builder) => {
       state.payment.traditionalTransfer = traditionalTransfer;
     })
 
-    .addCase(setCompletedOrder, (state, { payload: { order: { id, totalPrice } } }) => {
+    .addCase(setCompletedOrder, (state, { payload: { order: { id, totalPrice, paymentMethod } } }) => {
       state.orderID = id;
       state.totalPrice = totalPrice;
+      state.paymentMethod = paymentMethod;
     });
 });
 
