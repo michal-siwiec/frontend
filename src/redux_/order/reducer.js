@@ -10,7 +10,8 @@ import {
   setEmail,
   setPhoneNumber,
   setDeliveryMethod,
-  setPaymentMethod
+  setPaymentMethod,
+  setCompletedOrder
 } from './actionsCreator.js';
 
 const persistConfig = { key: 'order', storage };
@@ -32,7 +33,9 @@ const initialState = {
   payment: {
     cashPayment: false,
     traditionalTransfer: true
-  }
+  },
+  orderID: null,
+  totalPrice: 0
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -74,6 +77,11 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(setPaymentMethod, (state, { payload: { cashPayment, traditionalTransfer } }) => {
       state.payment.cashPayment = cashPayment;
       state.payment.traditionalTransfer = traditionalTransfer;
+    })
+
+    .addCase(setCompletedOrder, (state, { payload: { order: { id, totalPrice } } }) => {
+      state.orderID = id;
+      state.totalPrice = totalPrice;
     });
 });
 

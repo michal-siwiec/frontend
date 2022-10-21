@@ -9,3 +9,4 @@ export const setEmail = createAction('setEmail');
 export const setPhoneNumber = createAction('setPhoneNumber');
 export const setDeliveryMethod = createAction('setDeliveryMethod');
 export const setPaymentMethod = createAction('setPaymentMethod');
+export const setCompletedOrder = createAction('setCompletedOrder');

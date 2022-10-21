@@ -1,0 +1,41 @@
+.thank-you-page {
+  width: 100%;
+  margin: 0 auto;
+  min-height: 200px;
+  padding: 30px 10px;
+
+  @media screen and (min-width: $md-breakpoint) {
+    width: 800px;
+  }
+
+  &__main-header {
+    line-height: 1.1;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  &__secondary-header {
+    margin-bottom: 25px;
+    text-align: center;
+  }
+
+  &__transfer-info-wrapper {
+    width: 80%;
+    margin: 0 auto 25px;
+  }
+
+  &__transfer-info-label {
+    color: $gray;
+  }
+
+  &__transfer-info-value {
+    color: $black;
+    font-weight: bold;
+    padding-left: 10px;
+  }
+
+  &__download-invoice-button {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
