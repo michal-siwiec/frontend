@@ -1,14 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useMutation } from '@apollo/client';
+import { useNavigate } from 'react-router-dom';
 import { countTotalPrice } from 'utils/helpers.js';
+import { ADD_ORDER } from 'graphql/mutations/order.js';
+import { generateAddOrderPayload } from 'utils/order.js';
 import SubmitButton from 'components/SubmitButton.jsx';
 
 const Summary = () => {
   const blockName = 'summary';
+  const navigate = useNavigate();
   const { addedProducts } = useSelector((store) => store.basket);
+  const [addOrder, { loading, error, data }] = useMutation(
+    ADD_ORDER,
+    { variables: { input: generateAddOrderPayload() } }
+  );
 
   const handleSubmitOnMouseDown = () => {
+    addOrder();
   };
+
+  useEffect(() => {
+    if (!data) return;
+
+    navigate('/thank-you-page');
+  }, [data]);
 
   return (
     <div className={blockName}>
