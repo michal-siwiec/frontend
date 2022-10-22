@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { exact, func, element } from 'prop-types';
+import { useSelector } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import { ADD_OPINION } from 'graphql/mutations/opinion.js';
 import ValidationAddOpinionHandler from 'handlers/validationAddOpinionHandler.js';
@@ -15,6 +16,7 @@ const AddOpinionForm = ({
   refetchOpinions
 }) => {
   const theHighestMark = 5;
+  const userId = useSelector((store) => store.user.loggedUserId);
   const [rating, setRating] = useState(theHighestMark);
   const [opinionValidationError, setOpinionValidationError] = useState('');
   const [addedOpinion, setAddedOpinion] = useState('');
@@ -37,10 +39,7 @@ const AddOpinionForm = ({
     setOpinionValidationError(opinionError);
     if (!validationStatus) return;
 
-    addOpinion(
-      // { variables: { input: { content: addedOpinion, mark: rating, userId: isLogged.userID } } }
-      { variables: { input: { content: addedOpinion, mark: rating, userId: 'a9f3dbb7-b604-47a1-943f-e6ae0cc53b38' } } }
-    );
+    addOpinion({ variables: { input: { content: addedOpinion, mark: rating, userId } } });
   };
 
   const clearForm = () => {
