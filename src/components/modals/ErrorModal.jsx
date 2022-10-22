@@ -1,21 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { exact, string } from 'prop-types';
 import { Modal } from '@mui/material';
 
-const ErrorModal = ({ info }) => {
+const ErrorModal = ({ isOpen, handleOnClose, info }) => {
   const blockName = 'modal';
-  const [isOpen, setIsOpen] = useState(true);
-
-  const closeErrorModalAfterFiveSeconds = () => {
-    const visibilityTime = 5000;
-    setTimeout(() => setIsOpen(false), visibilityTime);
-  };
-
-  useEffect(() => closeErrorModalAfterFiveSeconds(), []);
 
   return (
     <Modal
       open={isOpen}
+      onClose={handleOnClose}
       className={`${blockName} ${blockName}--error`}
     >
       <div className={`${blockName}__content-wrapper`}>

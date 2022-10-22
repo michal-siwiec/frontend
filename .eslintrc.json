@@ -39,7 +39,8 @@
 		"no-confusing-arrow": "off",
 		"import/no-named-default": "off",
 		"no-use-before-define": "off",
-		"import/order": "off"
+		"import/order": "off",
+		"object-curly-newline": "off"
 	},
 	"settings": {
 		"import/resolver": {

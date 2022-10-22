@@ -30,12 +30,14 @@ const Register = () => {
   const [emailErrorMessage, setEmailErrorMessage] = useState('');
   const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
   const [avatarsErrorMessages, setAvatarsErrorMessages] = useState('');
-  const [registerUserError, setRegisterUserError] = useState('');
+  const [registerUserError, setRegisterUserError] = useState(false);
   const fileInput = useRef(null);
   const [registerUser, {
     data: registerUserData,
     loading: registerUserLoading
-  }] = useMutation(REGISTER_USER, { onError: setRegisterUserError });
+  }] = useMutation(REGISTER_USER, {
+    onError: () => { setRegisterUserError(true); }
+  });
 
   const clearForm = () => {
     setAvatars([]);
@@ -118,7 +120,11 @@ const Register = () => {
       />
       {!!registerUserData && <UserRegisteredModal />}
       {!!registerUserLoading && <LoadingModal info="Rejestrujemy użytkownika!" />}
-      { registerUserError && <ErrorModal info="Niestety nie udało się zarejestrować nowego konta." /> }
+      <ErrorModal
+        isOpen={registerUserError}
+        handleOnClose={() => setRegisterUserError(false)}
+        info="Niestety nie udało się zarejestrować nowego konta."
+      />
     </div>
   );
 };

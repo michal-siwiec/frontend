@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { useQuery } from '@apollo/client';
 import { isEmpty } from 'lodash';
 import { GET_OPINIONS } from 'graphql/queries/opinion.js';
@@ -15,28 +15,22 @@ const Opinions = () => {
   const blockName = 'opinions';
   const quantityPerPage = 2;
   const isLogged = useIsLogged();
+  const textareaRef = useRef(null);
   const [activePage, setActivePage] = useState(0);
   const [isOpinionAdded, setIsOpinionAdded] = useState(false);
   const [isAddedOpinionError, setIsAddedOpinionError] = useState(false);
-  const textareaRef = useRef(null);
-  const {
-    loading,
-    error,
-    data,
-    refetch
-  } = useQuery(
+  const { loading, error, data, refetch } = useQuery(
     GET_OPINIONS,
     { variables: { input: { pagination: { page: activePage, quantityPerPage } } } }
   );
+
+  const handlePaginationOnChange = (pageNumber) => setActivePage(pageNumber - 1);
 
   if (loading) return <LoadingModal info="Trwa pobieranie opini!" />;
   if (error) return <h1>error</h1>;
 
   const { opinionsDetails: { allOpinionsQuantity, opinions } } = data;
   const opinionsEmpty = isEmpty(opinions);
-
-  const handlePaginationOnChange = (pageNumber) => setActivePage(pageNumber - 1);
-  const closeAddedOpinionModal = () => setIsOpinionAdded(false);
 
   return (
     <div className={`main__${blockName} ${blockName}`}>
@@ -57,9 +51,13 @@ const Opinions = () => {
       }
       <AddingOpinionSuccessModal
         isOpen={isOpinionAdded}
-        handleOnClose={closeAddedOpinionModal}
+        handleOnClose={() => setIsOpinionAdded(false)}
       />
-      { isAddedOpinionError && <ErrorModal info="Niestety nie udało się dodać nowej opini." /> }
+      <ErrorModal
+        isOpen={isAddedOpinionError}
+        handleOnClose={() => setIsAddedOpinionError(false)}
+        info="Niestety nie udało się dodać nowej opini."
+      />
       <Pagination
         activePage={activePage}
         onChange={handlePaginationOnChange}

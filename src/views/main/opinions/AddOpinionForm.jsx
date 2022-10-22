@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState } from 'react';
 import { exact, func, element } from 'prop-types';
 import { useSelector } from 'react-redux';
 import { useMutation } from '@apollo/client';
@@ -20,7 +20,14 @@ const AddOpinionForm = ({
   const [rating, setRating] = useState(theHighestMark);
   const [opinionValidationError, setOpinionValidationError] = useState('');
   const [addedOpinion, setAddedOpinion] = useState('');
-  const [addOpinion, { data, error }] = useMutation(ADD_OPINION);
+  const [addOpinion] = useMutation(ADD_OPINION, {
+    onCompleted: () => {
+      refetchOpinions();
+      clearForm();
+      setIsOpinionAdded(true);
+    },
+    onError: () => setIsAddedOpinionError(true)
+  });
 
   const handleAddOpinionOnChange = ({ target: { value } }) => {
     setAddedOpinion(value);
@@ -46,15 +53,6 @@ const AddOpinionForm = ({
     setAddedOpinion('');
     setRating(theHighestMark);
   };
-
-  useEffect(() => {
-    if (data) {
-      refetchOpinions();
-      clearForm();
-      setIsOpinionAdded(true);
-    }
-    if (error) return setIsAddedOpinionError(true);
-  }, [data, error]);
 
   return (
     <FormContainer

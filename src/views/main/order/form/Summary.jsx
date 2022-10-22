@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
@@ -15,21 +15,18 @@ const Summary = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { addedProducts } = useSelector((store) => store.basket);
-  const [addOrder, { loading, error, data }] = useMutation(
+  const [orderError, setOrderError] = useState(false);
+  const [addOrder, { loading, data }] = useMutation(
     ADD_ORDER,
-    { variables: { input: generateAddOrderPayload() } }
+    {
+      variables: { input: generateAddOrderPayload() },
+      onCompleted: () => {
+        dispatch(setCompletedOrder(data));
+        navigate('/thank-you-page');
+      },
+      onError: () => setOrderError(true)
+    }
   );
-
-  const handleSubmitOnMouseDown = () => {
-    addOrder();
-  };
-
-  useEffect(() => {
-    if (!data) return;
-
-    dispatch(setCompletedOrder(data));
-    navigate('/thank-you-page');
-  }, [data]);
 
   return (
     <div className={blockName}>
@@ -59,11 +56,15 @@ const Summary = () => {
       </table>
       <SubmitButton
         classNames="button--order"
-        onMouseDown={handleSubmitOnMouseDown}
+        onMouseDown={addOrder}
         value="Kupuje i płacę"
       />
       { loading && <LoadingModal info="Trwa przetwarzanie twojego zamówienia!" /> }
-      { error && <ErrorModal info="Niestety nie udało się złożyć zamówienia." /> }
+      <ErrorModal
+        isOpen={orderError}
+        handleOnClose={() => setOrderError(false)}
+        info="Niestety nie udało się złożyć zamówienia."
+      />
     </div>
   );
 };
