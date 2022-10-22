@@ -1,7 +1,8 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
-import { useDispatch } from 'react-redux';
+import useRedirect from 'hooks/useRedirect.jsx';
 import { LOGIN_USER } from 'graphql/mutations/user.js';
 import { login } from 'redux_/user/actionsCreator.js';
 import ValidationLoginHandler from 'handlers/validationLoginHandler.js';
@@ -11,7 +12,7 @@ import SubmitButton from 'components/SubmitButton.jsx';
 
 const Login = () => {
   const blockName = 'login';
-
+  const { loggedUserId } = useSelector((store) => store.user);
   const [email, setEmail] = useState('siwiec.michal724@gmail.com');
   const [password, setPassword] = useState('Ab47901825');
   const [emailErrorMessage, setEmailErrorMessage] = useState('');
@@ -47,6 +48,8 @@ const Login = () => {
 
     dispatch(login(data));
   }, [data]);
+
+  useRedirect({ path: '/', shouldRedirect: !!loggedUserId });
 
   return (
     <div className={blockName}>

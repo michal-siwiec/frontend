@@ -4,7 +4,9 @@ import React, {
   useRef
 } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { useMutation } from '@apollo/client';
+import useRedirect from 'hooks/useRedirect.jsx';
 import AvatarsGenerator from 'services/avatarsGenerator.js';
 import ValidationRegisterHandler from 'handlers/validationRegisterHandler.js';
 import { REGISTER_USER } from 'graphql/mutations/user.js';
@@ -21,6 +23,7 @@ import ErrorModal from 'components/modals/ErrorModal.jsx';
 
 const Register = () => {
   const blockName = 'register';
+  const { loggedUserId } = useSelector((store) => store.user);
   const [avatars, setAvatars] = useState([]);
   const [email, setEmail] = useState('siwiec.michal724@gmail.com');
   const [password, setPassword] = useState('Ab47901825');
@@ -68,6 +71,8 @@ const Register = () => {
     registerUser({ variables: { input: { email, password, avatars } } });
     clearForm();
   };
+
+  useRedirect({ path: '/', shouldRedirect: !!loggedUserId });
 
   return (
     <div className={blockName}>
