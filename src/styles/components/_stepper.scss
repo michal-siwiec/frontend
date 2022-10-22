@@ -1,0 +1,20 @@
+.stepper {
+  width: 80%;
+  margin: 0 auto;
+
+  .MuiStepLabel-labelContainer {
+    @media screen and (max-width: $xs-breakpoint) {
+      display: none;
+    }
+  }
+
+  .MuiSvgIcon-root,
+  .MuiStepLabel-label {
+    color: $purple-gray;
+
+    &.Mui-active,
+    &.Mui-completed {
+      color: $gray;
+    }
+  }
+}

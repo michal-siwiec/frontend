@@ -8,19 +8,23 @@ import {
 } from 'prop-types';
 import { Stepper as MuiStepper, Step, StepLabel } from '@mui/material';
 
-const Stepper = ({ activeStep, handleStepOnClick, labels }) => (
-  <MuiStepper activeStep={activeStep}>
-    {
-      labels.map((label, index) => (
-        <Step>
-          <StepLabel onClick={() => handleStepOnClick(index)}>
-            {label}
-          </StepLabel>
-        </Step>
-      ))
-    }
-  </MuiStepper>
-);
+const Stepper = ({ activeStep, handleStepOnClick, labels }) => {
+  const blockName = 'stepper';
+
+  return (
+    <MuiStepper className={blockName} activeStep={activeStep}>
+      {
+        labels.map((label, index) => (
+          <Step>
+            <StepLabel onClick={() => handleStepOnClick(index)}>
+              {label}
+            </StepLabel>
+          </Step>
+        ))
+      }
+    </MuiStepper>
+  );
+};
 
 Stepper.propTypes = exact({
   activeStep: number.isRequired,
