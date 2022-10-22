@@ -3,7 +3,7 @@ export const countTotalPrice = (products) => {
 
   return products.reduce((prev, { quantity, attributes: { price } }) => (
     (quantity * price) + prev
-  ), initialValue);
+  ), initialValue).toFixed(2);
 };
 
 export const formatPhoneNumber = (phoneNumber) => {
