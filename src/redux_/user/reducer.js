@@ -1,7 +1,10 @@
 import { createReducer } from '@reduxjs/toolkit';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import { login, logout, checkIfLogged } from './actionsCreator.js';
 
 const initialState = { loggedUserId: null, avatars: [] };
+const persistConfig = { key: 'user', storage };
 
 const reducer = createReducer(initialState, (builder) => {
   builder
@@ -11,10 +14,11 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(logout, (state) => {
       state.loggedUserId = null;
+      state.avatars = [];
     })
     .addCase(checkIfLogged, (state, { payload: userID }) => {
       state.loggedUserId = userID;
     });
 });
 
-export default reducer;
+export default persistReducer(persistConfig, reducer);
