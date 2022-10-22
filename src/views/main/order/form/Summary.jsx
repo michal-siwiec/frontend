@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
@@ -6,13 +6,15 @@ import { setCompletedOrder } from 'redux_/order/actionsCreator.js';
 import { countTotalPrice } from 'utils/helpers.js';
 import { ADD_ORDER } from 'graphql/mutations/order.js';
 import { generateAddOrderPayload } from 'utils/order.js';
+import LoadingModal from 'components/modals/LoadingModal.jsx';
+import ErrorModal from 'components/modals/ErrorModal.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
 
 const Summary = () => {
   const blockName = 'summary';
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { basket: { addedProducts }, orderID } = useSelector((store) => store);
+  const { addedProducts } = useSelector((store) => store.basket);
   const [addOrder, { loading, error, data }] = useMutation(
     ADD_ORDER,
     { variables: { input: generateAddOrderPayload() } }
@@ -60,6 +62,8 @@ const Summary = () => {
         onMouseDown={handleSubmitOnMouseDown}
         value="Kupuje i płacę"
       />
+      { loading && <LoadingModal info="Trwa przetwarzanie twojego zamówienia!" /> }
+      { error && <ErrorModal info="Niestety nie udało się złożyć zamówienia." /> }
     </div>
   );
 };

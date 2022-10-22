@@ -14,7 +14,7 @@ import FileInput from 'components/inputs/FileInput.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
 import LoadingModal from 'components/modals/LoadingModal.jsx';
 import UserRegisteredModal from 'components/modals/UserRegisteredModal.jsx';
-import RegisterUserErrorModal from 'components/modals/RegisterUserErrorModal.jsx';
+import ErrorModal from 'components/modals/ErrorModal.jsx';
 
 // I should transmit form with modifier insead add modifier to each element
 //! Problem with showing error modal after login second time
@@ -112,8 +112,8 @@ const Register = () => {
         )}
       />
       {!!registerUserData && <UserRegisteredModal />}
-      {!!registerUserLoading && <LoadingModal info="Rejestrujemy użytkownika! Proszę czekać..." />}
-      {!!registerUserError && <RegisterUserErrorModal />}
+      {!!registerUserLoading && <LoadingModal info="Rejestrujemy użytkownika!" />}
+      { registerUserError && <ErrorModal info="Niestety nie udało się zarejestrować nowego konta." /> }
     </div>
   );
 };

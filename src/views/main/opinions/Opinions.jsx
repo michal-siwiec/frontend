@@ -1,11 +1,11 @@
-import React, { useState, useRef } from 'react';
+import React, { Fragment, useState, useRef } from 'react';
 import { useQuery } from '@apollo/client';
 import { isEmpty } from 'lodash';
 import { GET_OPINIONS } from 'graphql/queries/opinion.js';
 import useIsLogged from 'hooks/useIsLogged.jsx';
 import LoadingModal from 'components/modals/LoadingModal.jsx';
 import AddingOpinionSuccessModal from 'components/modals/AddingOpinionSuccessModal.jsx';
-import AddingOpinionErrorModal from 'components/modals/AddingOpinionErrorModal.jsx';
+import ErrorModal from 'components/modals/ErrorModal.jsx';
 import Pagination from 'components/Pagination.jsx';
 import OpinionsList from './OpinionsList.jsx';
 import EmptyOpinionsList from './EmptyOpinionsList.jsx';
@@ -29,7 +29,7 @@ const Opinions = () => {
     { variables: { input: { pagination: { page: activePage, quantityPerPage } } } }
   );
 
-  if (loading) return <LoadingModal info="Trwa pobieranie opini..." />;
+  if (loading) return <LoadingModal info="Trwa pobieranie opini!" />;
   if (error) return <h1>error</h1>;
 
   const { opinionsDetails: { allOpinionsQuantity, opinions } } = data;
@@ -37,7 +37,6 @@ const Opinions = () => {
 
   const handlePaginationOnChange = (pageNumber) => setActivePage(pageNumber - 1);
   const closeAddedOpinionModal = () => setIsOpinionAdded(false);
-  const closeAddedOpinionErrorModal = () => setIsAddedOpinionError(false);
 
   return (
     <div className={`main__${blockName} ${blockName}`}>
@@ -60,10 +59,7 @@ const Opinions = () => {
         isOpen={isOpinionAdded}
         handleOnClose={closeAddedOpinionModal}
       />
-      <AddingOpinionErrorModal
-        isOpen={isAddedOpinionError}
-        handleOnClose={closeAddedOpinionErrorModal}
-      />
+      { isAddedOpinionError && <ErrorModal info="Niestety nie udało się dodać nowej opini." /> }
       <Pagination
         activePage={activePage}
         onChange={handlePaginationOnChange}

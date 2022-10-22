@@ -25,7 +25,7 @@ const PromotedProducts = () => {
     dispatch(loadProducts(products));
   }, [data]);
 
-  if (loading) return <LoadingModal info="Trwa pobieranie promowanych produktów..." />;
+  if (loading) return <LoadingModal info="Trwa pobieranie promowanych produktów!" />;
   if (error) return <h1>Error</h1>;
 
   const { productsDetails: { quantity, products } } = data;

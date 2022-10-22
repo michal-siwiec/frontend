@@ -26,6 +26,10 @@ $icon-storage-path: "#{$storage-url}/icons/icomoon";
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-circle-error::before {
+  content: "\e90c";
+}
+
 .icon-hamburger-menu::before {
   content: "\e90b";
 }

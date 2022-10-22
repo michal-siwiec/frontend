@@ -1,6 +1,7 @@
 import React from 'react';
-import { Modal, CircularProgress } from '@mui/material';
 import { exact, string } from 'prop-types';
+import { Modal, CircularProgress } from '@mui/material';
+import VawyDots from 'components/VawyDots.jsx';
 
 const LoadingModal = ({ info }) => {
   const blockName = 'modal';
@@ -11,8 +12,14 @@ const LoadingModal = ({ info }) => {
       className={`${blockName} ${blockName}--loading`}
     >
       <div className={`${blockName}__content-wrapper`}>
-        <h2 className={`${blockName}__header`}>{info}</h2>
         <CircularProgress disableShrink className={`${blockName}__loader`} />
+        <h2 className={`${blockName}__header`}>
+          Prosimy o chwilę cierpliwości
+          <VawyDots dotsCount={4} />
+        </h2>
+        <div className={`${blockName}__info`}>
+          <p>{info}</p>
+        </div>
       </div>
     </Modal>
   );
