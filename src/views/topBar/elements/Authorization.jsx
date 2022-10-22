@@ -5,11 +5,12 @@ import { useMutation } from '@apollo/client';
 import { logout } from 'redux_/user/actionsCreator.js';
 import { LOGOUT_USER } from 'graphql/mutations/user.js';
 import useIsLogged from 'hooks/useIsLogged.jsx';
+import Avatar from 'components/Avatar.jsx';
 
 const Authorization = () => {
   const blockName = 'top-bar-elements';
   const dispatch = useDispatch();
-  const loggedUserId = useSelector((store) => store.user.loggedUserId);
+  const { loggedUserId, avatars } = useSelector((store) => store.user);
   const isLogged = useIsLogged();
   const [logoutUser] = useMutation(LOGOUT_USER);
 
@@ -37,16 +38,17 @@ const Authorization = () => {
             </span>
           </Fragment>
         ) : (
-          <span
-            onMouseDown={handleLogoutUser}
-            role="button"
-            tabIndex={0}
-            className={`${blockName}__authorization-action`}
-          >
-            <span className={`${blockName}__authorization-action-link`}>
+          <div>
+            <Avatar avatars={avatars} classNames={`${blockName}__avatar`} />
+            <span
+              onMouseDown={handleLogoutUser}
+              role="button"
+              tabIndex={0}
+              className={`${blockName}__authorization-action ${blockName}__authorization-action-link`}
+            >
               Wyloguj
             </span>
-          </span>
+          </div>
         )
       }
     </div>

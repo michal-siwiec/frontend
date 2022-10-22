@@ -13,7 +13,11 @@ export const REGISTER_USER = gql`
 export const LOGIN_USER = gql`
   mutation loginUser($input: LoginUserInput!) {
     user: loginUser(input: $input) {
-      id
+      id,
+      avatars {
+        main,
+        storagePath
+      }
     }
   }
 `;

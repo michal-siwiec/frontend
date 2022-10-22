@@ -42,13 +42,11 @@ const Login = () => {
     loginUser({ variables: payload });
   };
 
-  const saveUserIdToStore = () => {
+  useEffect(() => {
     if (!data) return;
 
-    dispatch(login(data.user.id));
-  };
-
-  useEffect(saveUserIdToStore, [data?.user]);
+    dispatch(login(data));
+  }, [data]);
 
   return (
     <div className={blockName}>
