@@ -54,15 +54,7 @@ const ClientDetails = () => {
       emailError,
       phoneError,
       validationStatus
-    } = new ValidationClientDetailsHandler({
-      name,
-      surname,
-      street,
-      city,
-      postalCode,
-      email,
-      phoneNumber
-    }).call();
+    } = new ValidationClientDetailsHandler({ name, surname, street, city, postalCode, email, phoneNumber }).call();
 
     if (!validationStatus) {
       setNameErrorMessage(nameError);

@@ -8,18 +8,7 @@ import Avatar from 'components/Avatar.jsx';
 import { appearingInSequence } from 'data/animations.js';
 import OpinionPresentedContentGenerator from 'services/opinionPresentedContentGenerator.js';
 
-const Opinion = ({
-  opinionsData: {
-    content,
-    mark,
-    updatedAt,
-    user: {
-      email,
-      avatars
-    }
-  },
-  index
-}) => {
+const Opinion = ({ opinionsData: { content, mark, updatedAt, user: { email, avatars } }, index }) => {
   const blockName = 'opinion';
   const displayedNumberOfChars = 25;
   const [contentExpanded, setContentExpanded] = useState(false);
@@ -27,9 +16,7 @@ const Opinion = ({
   const [presentedRestOfContent, setPresentedRestOfContent] = useState();
   const [isTextToLongToDisplay, setIsTextToLongToDisplay] = useState();
 
-  const handleExpandContentOnMouseDown = () => {
-    setContentExpanded(!contentExpanded);
-  };
+  const handleExpandContentOnMouseDown = () => setContentExpanded(!contentExpanded);
 
   useEffect(() => {
     const {

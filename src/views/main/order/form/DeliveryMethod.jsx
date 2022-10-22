@@ -23,9 +23,7 @@ const DeliveryMethod = () => {
     dispatch(setDeliveryMethod({ inPost: false, dpd: false, pickUpAtThePoint: true }));
   };
 
-  const handleSubmitOnMouseDown = () => {
-    setStep(2);
-  };
+  const handleSubmitOnMouseDown = () => setStep(2);
 
   return (
     <div className={`order__form-part-container ${blockName}`}>

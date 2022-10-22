@@ -11,18 +11,15 @@ const MobileContent = () => {
   const blockName = 'top-bar-elements';
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const openDrawer = () => setIsDrawerOpen(true);
-  const closeDrawer = () => setIsDrawerOpen(false);
-
   return (
     <Fragment>
       <div className={blockName}>
         <Logo />
-        <HamburgerMenu handleOnMouseDown={openDrawer} />
+        <HamburgerMenu handleOnMouseDown={setIsDrawerOpen(true)} />
       </div>
       <Drawer
         isOpen={isDrawerOpen}
-        onClose={closeDrawer}
+        onClose={() => setIsDrawerOpen(false)}
         className="drawer--top-bar"
       >
         <div className={`${blockName} ${blockName}--drawer`}>

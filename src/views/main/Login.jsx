@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
@@ -18,22 +18,15 @@ const Login = () => {
   const [emailErrorMessage, setEmailErrorMessage] = useState('');
   const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
   const dispatch = useDispatch();
-  const [loginUser, { data }] = useMutation(LOGIN_USER);
+  const [loginUser, { data }] = useMutation(LOGIN_USER, {
+    onCompleted: () => dispatch(login(data))
+  });
 
-  const handleEmailOnChange = ({ target: { value } }) => {
-    setEmail(value);
-  };
-
-  const handlePasswordOnChange = ({ target: { value } }) => {
-    setPassword(value);
-  };
+  const handleEmailOnChange = ({ target: { value } }) => setEmail(value);
+  const handlePasswordOnChange = ({ target: { value } }) => setPassword(value);
 
   const handleLoginOnMouseDown = () => {
-    const {
-      emailError,
-      passwordError,
-      validationStatus
-    } = new ValidationLoginHandler({ email, password }).call();
+    const { emailError, passwordError, validationStatus } = new ValidationLoginHandler({ email, password }).call();
 
     setEmailErrorMessage(emailError);
     setPasswordErrorMessage(passwordError);
@@ -42,12 +35,6 @@ const Login = () => {
     const payload = { input: { email, password } };
     loginUser({ variables: payload });
   };
-
-  useEffect(() => {
-    if (!data) return;
-
-    dispatch(login(data));
-  }, [data]);
 
   useRedirect({ path: '/', shouldRedirect: !!loggedUserId });
 

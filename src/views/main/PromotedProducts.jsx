@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useQuery } from '@apollo/client';
 import { GET_PRODUCTS } from 'graphql/queries/products.js';
@@ -14,16 +14,13 @@ const PromotedProducts = () => {
   const dispatch = useDispatch();
   const { loading, error, data } = useQuery(
     GET_PRODUCTS,
-    { variables: { input: { promoted: false, pagination: { page: activePage, quantityPerPage } } } }
+    {
+      variables: { input: { promoted: false, pagination: { page: activePage, quantityPerPage } } },
+      onCompleted: () => dispatch(loadProducts(products))
+    }
   );
 
   const handlePaginationOnChange = (pageNumber) => setActivePage(pageNumber - 1);
-
-  useEffect(() => {
-    if (!data) return;
-
-    dispatch(loadProducts(products));
-  }, [data]);
 
   if (loading) return <LoadingModal info="Trwa pobieranie promowanych produktów!" />;
   if (error) return <h1>Error</h1>;

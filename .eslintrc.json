@@ -40,7 +40,8 @@
 		"import/no-named-default": "off",
 		"no-use-before-define": "off",
 		"import/order": "off",
-		"object-curly-newline": "off"
+		"object-curly-newline": "off",
+		"no-return-assign": "off"
 	},
 	"settings": {
 		"import/resolver": {

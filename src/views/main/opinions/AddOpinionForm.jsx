@@ -29,9 +29,7 @@ const AddOpinionForm = ({
     onError: () => setIsAddedOpinionError(true)
   });
 
-  const handleAddOpinionOnChange = ({ target: { value } }) => {
-    setAddedOpinion(value);
-  };
+  const handleAddOpinionOnChange = ({ target: { value } }) => setAddedOpinion(value);
 
   const handleSetRating = ({ target: { value } }) => {
     const numberSystem = 10;

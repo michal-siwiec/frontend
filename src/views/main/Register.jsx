@@ -1,8 +1,4 @@
-import React, {
-  Fragment,
-  useState,
-  useRef
-} from 'react';
+import React, { Fragment, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useMutation } from '@apollo/client';
@@ -18,11 +14,9 @@ import LoadingModal from 'components/modals/LoadingModal.jsx';
 import UserRegisteredModal from 'components/modals/UserRegisteredModal.jsx';
 import ErrorModal from 'components/modals/ErrorModal.jsx';
 
-// I should transmit form with modifier insead add modifier to each element
-//! Problem with showing error modal after login second time
-
 const Register = () => {
   const blockName = 'register';
+  const fileInput = useRef(null);
   const { loggedUserId } = useSelector((store) => store.user);
   const [avatars, setAvatars] = useState([]);
   const [email, setEmail] = useState('siwiec.michal724@gmail.com');
@@ -30,21 +24,16 @@ const Register = () => {
   const [emailErrorMessage, setEmailErrorMessage] = useState('');
   const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
   const [avatarsErrorMessages, setAvatarsErrorMessages] = useState('');
+  const [registerUserSuccess, setRegisterUserSuccess] = useState(false);
   const [registerUserError, setRegisterUserError] = useState(false);
-  const fileInput = useRef(null);
-  const [registerUser, {
-    data: registerUserData,
-    loading: registerUserLoading
-  }] = useMutation(REGISTER_USER, {
-    onError: () => { setRegisterUserError(true); }
-  });
 
-  const clearForm = () => {
-    setAvatars([]);
-    setEmail('');
-    setPassword('');
-    fileInput.current.value = '';
-  };
+  const [registerUser, { loading }] = useMutation(REGISTER_USER, {
+    onError: () => { setRegisterUserError(true); },
+    onCompleted: () => {
+      clearForm();
+      setRegisterUserSuccess(true);
+    }
+  });
 
   const handleEmailOnChange = ({ target: { value } }) => setEmail(value);
   const handlePasswordOnChange = ({ target: { value } }) => setPassword(value);
@@ -71,7 +60,13 @@ const Register = () => {
     if (!validationStatus) return;
 
     registerUser({ variables: { input: { email, password, avatars } } });
-    clearForm();
+  };
+
+  const clearForm = () => {
+    setAvatars([]);
+    setEmail('');
+    setPassword('');
+    fileInput.current.value = '';
   };
 
   useRedirect({ path: '/', shouldRedirect: !!loggedUserId });
@@ -118,8 +113,8 @@ const Register = () => {
           </Fragment>
         )}
       />
-      {!!registerUserData && <UserRegisteredModal />}
-      {!!registerUserLoading && <LoadingModal info="Rejestrujemy użytkownika!" />}
+      { registerUserSuccess && <UserRegisteredModal /> }
+      { loading && <LoadingModal info="Rejestrujemy użytkownika!" /> }
       <ErrorModal
         isOpen={registerUserError}
         handleOnClose={() => setRegisterUserError(false)}

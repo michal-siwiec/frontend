@@ -19,9 +19,7 @@ const PaymentMethod = () => {
     dispatch(setPaymentMethod({ cashPayment: false, traditionalTransfer: true }));
   };
 
-  const handleSubmitOnMouseDown = () => {
-    setStep(3);
-  };
+  const handleSubmitOnMouseDown = () => setStep(3);
 
   return (
     <div className={`order__form-part-container ${blockName}`}>

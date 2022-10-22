@@ -31,25 +31,11 @@ const Footer = () => {
     new FileDownloader({ url, outputName }).call();
   };
 
-  const handleEmailOnMouseDown = () => {
-    window.location = `mailto:${shopMail}`;
-  };
-
-  const handlePhoneOnMouseDown = () => {
-    window.location = `tel:${shopPhone}`;
-  };
-
-  const handleSocialOnMouseDown = (url) => {
-    window.open(url, '_blank');
-  };
-
-  const handlePrivacyPolicyPromptOnHover = (value) => {
-    setPrivacyPolicyTooltipOpen(value);
-  };
-
-  const handleShopRulesPromptOnHover = (value) => {
-    setShopRulesTooltipOpen(value);
-  };
+  const handleEmailOnMouseDown = () => window.location = `mailto:${shopMail}`;
+  const handlePhoneOnMouseDown = () => window.location = `tel:${shopPhone}`;
+  const handleSocialOnMouseDown = (url) => window.open(url, '_blank');
+  const handlePrivacyPolicyPromptOnHover = (value) => setPrivacyPolicyTooltipOpen(value);
+  const handleShopRulesPromptOnHover = (value) => setShopRulesTooltipOpen(value);
 
   return (
     <footer className={blockName}>

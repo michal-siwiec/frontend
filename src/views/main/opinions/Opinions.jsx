@@ -30,12 +30,11 @@ const Opinions = () => {
   if (error) return <h1>error</h1>;
 
   const { opinionsDetails: { allOpinionsQuantity, opinions } } = data;
-  const opinionsEmpty = isEmpty(opinions);
 
   return (
     <div className={`main__${blockName} ${blockName}`}>
       {
-        opinionsEmpty
+        isEmpty(opinions)
           ? <EmptyOpinionsList textAreaRef={textareaRef} />
           : <OpinionsList opinions={opinions} />
       }
