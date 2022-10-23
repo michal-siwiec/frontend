@@ -1,4 +1,5 @@
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { managers } from 'data/about.js';
 
 const MobileMenagers = () => {
@@ -13,7 +14,7 @@ const MobileMenagers = () => {
           description,
           position
         }) => (
-          <div className={`${blockName}__menager`}>
+          <div className={`${blockName}__menager`} key={uuidv4()}>
             <div className={`${blockName}__manager-picture-wrapper`}>
               <img
                 src={picturePath}

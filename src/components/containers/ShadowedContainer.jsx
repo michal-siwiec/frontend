@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  exact,
-  element,
-  string,
-  object
-} from 'prop-types';
+import { exact, element, string, object } from 'prop-types';
 import { motion } from 'framer-motion';
 
 const ShadowedContainer = ({ children, classNames, animationAttributes }) => (

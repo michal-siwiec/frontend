@@ -11,15 +11,15 @@ const DeliveryMethod = () => {
   const { inPost, dpd, pickUpAtThePoint } = useSelector((store) => store.order.delivery);
   const dispatch = useDispatch();
 
-  const handleInPostOnClick = () => {
+  const handleInPostOnChange = () => {
     dispatch(setDeliveryMethod({ inPost: true, dpd: false, pickUpAtThePoint: false }));
   };
 
-  const handleDpdOnClick = () => {
+  const handleDpdOnChange = () => {
     dispatch(setDeliveryMethod({ inPost: false, dpd: true, pickUpAtThePoint: false }));
   };
 
-  const handlePickUpAtheThePointOnClick = () => {
+  const handlePickUpAtheThePointOnChange = () => {
     dispatch(setDeliveryMethod({ inPost: false, dpd: false, pickUpAtThePoint: true }));
   };
 
@@ -28,7 +28,7 @@ const DeliveryMethod = () => {
   return (
     <div className={`order__form-part-container ${blockName}`}>
       <CheckBox
-        onClick={handleInPostOnClick}
+        onChange={handleInPostOnChange}
         checked={inPost}
         label={(
           <Fragment>
@@ -38,7 +38,7 @@ const DeliveryMethod = () => {
         )}
       />
       <CheckBox
-        onClick={handleDpdOnClick}
+        onChange={handleDpdOnChange}
         checked={dpd}
         label={(
           <Fragment>
@@ -48,7 +48,7 @@ const DeliveryMethod = () => {
         )}
       />
       <CheckBox
-        onClick={handlePickUpAtheThePointOnClick}
+        onChange={handlePickUpAtheThePointOnChange}
         checked={pickUpAtThePoint}
         label="Odbiór w punkcie (0,00 zł)"
       />

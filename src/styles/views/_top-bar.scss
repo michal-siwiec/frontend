@@ -5,11 +5,14 @@
   right: 0;
   z-index: 4;
   max-width: $max-page-width;
-  min-height: 130px;
   margin: 0 auto;
   padding: 5px;
   background-color: $white;
   box-shadow: $default-box-shadow;
+
+  @media screen and (min-width: $lg-breakpoint) {
+    min-height: 130px;
+  }
 }
 
 .top-bar-elements {

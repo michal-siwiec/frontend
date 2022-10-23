@@ -1,23 +1,12 @@
 import React from 'react';
-import {
-  exact,
-  func,
-  string,
-  element,
-  oneOfType
-} from 'prop-types';
+import { exact, func, string, element, oneOfType } from 'prop-types';
 
-const CheckBox = ({
-  classNames,
-  onClick,
-  checked,
-  label
-}) => (
+const CheckBox = ({ classNames, onChange, checked, label }) => (
   <div className="checkbox__wrapper">
     <input
       type="checkbox"
       className={`checkbox ${classNames}`}
-      onClick={onClick}
+      onChange={onChange}
       checked={checked}
     />
     {label}
@@ -26,7 +15,7 @@ const CheckBox = ({
 
 CheckBox.propTypes = exact({
   classNames: string,
-  onClick: func.isRequired,
+  onChange: func.isRequired,
   label: oneOfType([element, string]).isRequired
 }).isRequired;
 

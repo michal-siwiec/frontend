@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import { setCompletedOrder } from 'redux_/order/actionsCreator.js';
 import { countTotalPrice } from 'utils/helpers.js';
 import { ADD_ORDER } from 'graphql/mutations/order.js';
@@ -31,28 +32,32 @@ const Summary = () => {
   return (
     <div className={blockName}>
       <table className={`${blockName}__table`}>
-        <tr className={`${blockName}__row`}>
-          <th className={`${blockName}__col`}>Nazwa</th>
-          <th className={`${blockName}__col`}>Cena</th>
-          <th className={`${blockName}__col`}>Ilość</th>
-        </tr>
-        {
-          addedProducts.map(({ quantity, attributes: { name, price } }) => (
-            <tr className={`${blockName}__row`}>
-              <td className={`${blockName}__col`}>{name}</td>
-              <td className={`${blockName}__col`}>{price} zł</td>
-              <td className={`${blockName}__col`}>{quantity}</td>
-            </tr>
-          ))
-        }
-        <tr className={`${blockName}__row`}>
-          <th className={`${blockName}__col ${blockName}__col--sum-label`}>
-            Suma całkowita
-          </th>
-          <td className={`${blockName}__col ${blockName}__col--price`}>
-            {countTotalPrice(addedProducts)} zł
-          </td>
-        </tr>
+        <thead className={`${blockName}__thead`}>
+          <tr className={`${blockName}__row`}>
+            <th className={`${blockName}__col`}>Nazwa</th>
+            <th className={`${blockName}__col`}>Cena</th>
+            <th className={`${blockName}__col`}>Ilość</th>
+          </tr>
+        </thead>
+        <tbody className={`${blockName}__tbody`}>
+          {
+            addedProducts.map(({ quantity, attributes: { name, price } }) => (
+              <tr className={`${blockName}__row`} key={uuidv4()}>
+                <td className={`${blockName}__col`}>{name}</td>
+                <td className={`${blockName}__col`}>{price} zł</td>
+                <td className={`${blockName}__col`}>{quantity}</td>
+              </tr>
+            ))
+          }
+          <tr className={`${blockName}__row`}>
+            <th className={`${blockName}__col ${blockName}__col--sum-label`}>
+              Suma całkowita
+            </th>
+            <td className={`${blockName}__col ${blockName}__col--price`}>
+              {countTotalPrice(addedProducts)} zł
+            </td>
+          </tr>
+        </tbody>
       </table>
       <SubmitButton
         classNames="button--order"

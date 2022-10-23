@@ -1,4 +1,5 @@
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import ShadowedContainer from 'components/containers/ShadowedContainer.jsx';
 import { appearingInSequence } from 'data/animations.js';
 import { managers, mappedDirections } from 'data/about.js';
@@ -22,6 +23,7 @@ const DesktopMenagers = () => {
               initial: appearingInSequence.hidden,
               animate: appearingInSequence.visible
             }}
+            key={uuidv4()}
           >
             <div className={`${blockName}__manager ${blockName}__manager--${mappedDirections[index]}`}>
               <div className={`${blockName}__manager-details-wrapper`}>

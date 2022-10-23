@@ -11,11 +11,11 @@ const PaymentMethod = () => {
   const { cashPayment, traditionalTransfer } = useSelector((store) => store.order.payment);
   const dispatch = useDispatch();
 
-  const handleCashPaymentOnClick = () => {
+  const handleCashPaymentOnChange = () => {
     dispatch(setPaymentMethod({ cashPayment: true, traditionalTransfer: false }));
   };
 
-  const handleTraditionalPaymentOnClick = () => {
+  const handleTraditionalPaymentOnChange = () => {
     dispatch(setPaymentMethod({ cashPayment: false, traditionalTransfer: true }));
   };
 
@@ -24,7 +24,7 @@ const PaymentMethod = () => {
   return (
     <div className={`order__form-part-container ${blockName}`}>
       <CheckBox
-        onClick={handleCashPaymentOnClick}
+        onChange={handleCashPaymentOnChange}
         checked={cashPayment}
         label={(
           <Fragment>
@@ -34,7 +34,7 @@ const PaymentMethod = () => {
         )}
       />
       <CheckBox
-        onClick={handleTraditionalPaymentOnClick}
+        onChange={handleTraditionalPaymentOnChange}
         checked={traditionalTransfer}
         label={(
           <Fragment>

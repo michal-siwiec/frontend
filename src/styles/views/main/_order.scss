@@ -37,6 +37,11 @@
       border-radius: $default-box-border-radious;
     }
 
+    &__thead,
+    &__tbody {
+      flex-basis: 100%;
+    }
+
     &__row {
       flex-basis: 100%;
       display: flex;

@@ -1,9 +1,10 @@
 import React from 'react';
 import { exact, number } from 'prop-types';
+import { v4 as uuidv4 } from 'uuid';
 
 const VawyDots = ({ dotsCount }) => (
   <div className="wave">
-    { [...Array(dotsCount)].map(() => <span className="dot" />) }
+    { [...Array(dotsCount)].map(() => <span className="dot" key={uuidv4()} />) }
   </div>
 );
 

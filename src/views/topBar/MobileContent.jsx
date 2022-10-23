@@ -15,7 +15,7 @@ const MobileContent = () => {
     <Fragment>
       <div className={blockName}>
         <Logo />
-        <HamburgerMenu handleOnMouseDown={setIsDrawerOpen(true)} />
+        <HamburgerMenu handleOnMouseDown={() => setIsDrawerOpen(true)} />
       </div>
       <Drawer
         isOpen={isDrawerOpen}

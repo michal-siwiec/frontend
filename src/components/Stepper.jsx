@@ -1,12 +1,7 @@
 import React from 'react';
-import {
-  exact,
-  func,
-  number,
-  arrayOf,
-  string
-} from 'prop-types';
+import { exact, func, number, arrayOf, string } from 'prop-types';
 import { Stepper as MuiStepper, Step, StepLabel } from '@mui/material';
+import { v4 as uuidv4 } from 'uuid';
 
 const Stepper = ({ activeStep, handleStepOnClick, labels }) => {
   const blockName = 'stepper';
@@ -15,7 +10,7 @@ const Stepper = ({ activeStep, handleStepOnClick, labels }) => {
     <MuiStepper className={blockName} activeStep={activeStep}>
       {
         labels.map((label, index) => (
-          <Step>
+          <Step key={uuidv4()}>
             <StepLabel onClick={() => handleStepOnClick(index)}>
               {label}
             </StepLabel>

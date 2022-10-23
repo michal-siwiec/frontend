@@ -12,6 +12,7 @@ const Opinion = ({ opinionsData: { content, mark, updatedAt, user: { email, avat
   const blockName = 'opinion';
   const displayedNumberOfChars = 25;
   const [contentExpanded, setContentExpanded] = useState(false);
+  // ? Czemu to nie ma initialState
   const [presentedNarrowContent, setPresentedNarrowContent] = useState();
   const [presentedRestOfContent, setPresentedRestOfContent] = useState();
   const [isTextToLongToDisplay, setIsTextToLongToDisplay] = useState();
@@ -53,7 +54,7 @@ const Opinion = ({ opinionsData: { content, mark, updatedAt, user: { email, avat
           <Rating value={mark} readOnly />
         </div>
         <div className={`${blockName}__content-wrapper`}>
-          <p className={`${blockName}__content`}>
+          <div className={`${blockName}__content`}>
             { presentedNarrowContent }
             {
               !isEmpty(presentedRestOfContent) && (
@@ -62,7 +63,7 @@ const Opinion = ({ opinionsData: { content, mark, updatedAt, user: { email, avat
                 </SmoothCollapse>
               )
             }
-          </p>
+          </div>
           {
             isTextToLongToDisplay && (
               <span
