@@ -1,8 +1,13 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import useRedirect from 'hooks/useRedirect.jsx';
 
 const UserPanel = () => {
   const blockName = 'user-panel';
+  const { loggedUserId } = useSelector((store) => store.user);
+
+  useRedirect({ path: '/', shouldRedirect: !loggedUserId });
 
   return (
     <div className={blockName}>

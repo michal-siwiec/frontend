@@ -6,13 +6,12 @@
   &__action-toggler-wrapper {
     flex-basis: 30%;
     min-height: 100px;
-    border: 1px solid black;
   }
 
   &__toggle-action-tile {
     @include flex-container;
     height: 50px;
-    border: 1px solid red;
+    border: 1px solid $black;
   }
 
   &__action-tile-link {
@@ -28,6 +27,27 @@
   &__action-wrapper {
     flex-basis: 70%;
     min-height: 100px;
-    border: 1px solid black;
+  }
+
+  .history {
+    &__header {
+      text-align: center;
+      margin-bottom: 30px;
+      color: $gray;
+    }
+
+    &__table {
+      margin: 0 auto;
+      border: 1px solid $black;
+    }
+
+    &__table-col {
+      padding: 10px;
+      border: 1px solid $black;
+
+      &--thead {
+        font-weight: bold;
+      }
+    }
   }
 }
