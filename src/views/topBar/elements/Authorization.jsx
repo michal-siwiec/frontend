@@ -39,7 +39,9 @@ const Authorization = () => {
           </Fragment>
         ) : (
           <div>
-            <Avatar avatars={avatars} classNames={`${blockName}__avatar`} />
+            <Link to="/user-panel">
+              <Avatar avatars={avatars} classNames={`${blockName}__avatar`} />
+            </Link>
             <span
               onMouseDown={handleLogoutUser}
               role="button"

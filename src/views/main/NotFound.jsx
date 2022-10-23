@@ -8,11 +8,13 @@ const NotFound = () => {
 
   const redirectToMainPageAfterTimeout = () => {
     const remainingTime = 5000;
-
-    setTimeout(() => navigate('/'), remainingTime);
+    return setTimeout(() => navigate('/'), remainingTime);
   };
 
-  useEffect(redirectToMainPageAfterTimeout, []);
+  useEffect(() => {
+    const timeout = redirectToMainPageAfterTimeout();
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
     <ShadowedContainer classNames={blockName}>

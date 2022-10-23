@@ -15,3 +15,4 @@
 29) Find difference between useReducer vs useDispatch and useStore
 30) FIx off in eslint
 31) Let's create custom middleware - https://medium.com/netscape/creating-custom-middleware-in-react-redux-961570459ecb
+32) Czy hook useRediret ma sens?
