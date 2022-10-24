@@ -39,4 +39,12 @@
     flex-basis: 80%;
     margin: 0;
   }
+
+  &--change-password {
+    flex-basis: 100%;
+
+    @media screen and (min-width: $xs-breakpoint) {
+      flex-basis: 60%;
+    }
+  }
 }

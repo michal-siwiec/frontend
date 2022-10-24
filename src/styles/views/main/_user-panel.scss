@@ -104,4 +104,23 @@
       }
     }
   }
+
+  .change-password {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    &__header {
+      flex-basis: 100%;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    &__form {
+      @include flex-container;
+      flex-wrap: wrap;
+      flex-basis: 100%;
+      margin: 0 auto;
+    }
+  }
 }

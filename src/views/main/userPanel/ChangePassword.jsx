@@ -1,5 +1,83 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useMutation } from '@apollo/client';
+import { CHANGE_USER_PASSWORD } from 'graphql/mutations/user.js';
+import ValidationChangePasswordHandler from 'handlers/validationChangePasswordHandler.js';
+import TextInput from 'components/inputs/TextInput.jsx';
+import SubmitButton from 'components/SubmitButton.jsx';
+import LoadingModal from 'components/modals/LoadingModal.jsx';
+import ErrorModal from 'components/modals/ErrorModal.jsx';
 
-const ChangePassword = () => <h1>ChangePassword</h1>;
+const ChangePassword = () => {
+  const blockName = 'change-password';
+  const { loggedUserId } = useSelector((store) => store.user);
+  const [password, setPassword] = useState('');
+  const [passwordConfirmation, setPasswordConfirmation] = useState('');
+  const [passwordValidationError, setPasswordValidationError] = useState('');
+  const [passwordIdentityValidationError, setPasswordIdentityValidationError] = useState('');
+  const [changePasswordError, setChangePasswordError] = useState(false);
+  const [changeUserPassword, { loading }] = useMutation(CHANGE_USER_PASSWORD, {
+    variables: { input: { password, id: loggedUserId } },
+    onError: () => setChangePasswordError(true)
+  });
+
+  const handlePasswordOnChange = ({ target: { value } }) => setPassword(value);
+  const handlePasswordConfirmationOnChange = ({ target: { value } }) => setPasswordConfirmation(value);
+
+  const clearForm = () => {
+    setPassword('');
+    setPasswordConfirmation('');
+  };
+
+  const handleSubmitOnMouseDown = () => {
+    const {
+      passwordError,
+      passwordIdentityError,
+      validationStatus
+    } = new ValidationChangePasswordHandler({ password, passwordConfirmation }).call();
+
+    setPasswordValidationError(passwordError);
+    setPasswordIdentityValidationError(passwordIdentityError);
+    if (!validationStatus) return;
+
+    clearForm();
+    changeUserPassword();
+  };
+
+  return (
+    <div className={blockName}>
+      <h1 className={`${blockName}__header`}>Zmień hasło</h1>
+      <form className={`${blockName}__form`}>
+        <TextInput
+          placeholder="Nowe hasło"
+          classNames="text-input--change-password"
+          type="password"
+          value={password}
+          onChange={handlePasswordOnChange}
+          validationError={passwordValidationError}
+        />
+        <TextInput
+          placeholder="Potwierdź nowe hasło"
+          classNames="text-input--change-password"
+          type="password"
+          value={passwordConfirmation}
+          onChange={handlePasswordConfirmationOnChange}
+          validationError={passwordIdentityValidationError}
+        />
+        <SubmitButton
+          value="Zapisz"
+          classNames="button--change-password"
+          onMouseDown={handleSubmitOnMouseDown}
+        />
+      </form>
+      { loading && <LoadingModal info="Trwa zmiana hasła" /> }
+      <ErrorModal
+        isOpen={changePasswordError}
+        handleOnClose={() => setChangePasswordError(false)}
+        info="Niestety nie udało się zmienić hasła."
+      />
+    </div>
+  );
+};
 
 export default ChangePassword;

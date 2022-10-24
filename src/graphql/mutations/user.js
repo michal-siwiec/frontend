@@ -37,3 +37,11 @@ export const SUBSCRIBE_TO_NEWSLETTER = gql`
     }
   }
 `;
+
+export const CHANGE_USER_PASSWORD = gql`
+  mutation changeUserPassword($input: ChangeUserPasswordInput!) {
+    changeUserPassword(input: $input) {
+      id
+    }
+  }
+`;
