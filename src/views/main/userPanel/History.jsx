@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useQuery } from '@apollo/client';
 import { GET_ORDERS } from 'graphql/queries/order.js';
+import { formatTimestamp } from 'utils/helpers.js';
 import LoadingModal from 'components/modals/LoadingModal.jsx';
 import ErrorModal from 'components/modals/ErrorModal.jsx';
 import Pagination from 'components/Pagination.jsx';
@@ -30,7 +31,7 @@ const History = () => {
           <Fragment>
             <table className={`${blockName}__table`}>
               <thead>
-                <tr>
+                <tr className={`${blockName}__table-row`}>
                   <td className={`${blockName}__table-col ${blockName}__table-col--thead`}>Numer zamówienia</td>
                   <td className={`${blockName}__table-col ${blockName}__table-col--thead`}>Cena całkowita</td>
                   <td className={`${blockName}__table-col ${blockName}__table-col--thead`}>Data zakupu</td>
@@ -39,10 +40,10 @@ const History = () => {
               <tbody>
                 {
                   data.orders.orders.map(({ id, totalPrice, createdAt }) => (
-                    <tr>
+                    <tr className={`${blockName}__table-row`}>
                       <td className={`${blockName}__table-col`}>{id}</td>
                       <td className={`${blockName}__table-col`}>{totalPrice} zł</td>
-                      <td className={`${blockName}__table-col`}>{createdAt}</td>
+                      <td className={`${blockName}__table-col`}>{formatTimestamp(createdAt)}</td>
                     </tr>
                   ))
                 }

@@ -28,3 +28,4 @@ export const cutAfterNChars = ({ string, charsQuantity }) => {
 
 export const formattedPrice = (price) => price.toFixed(2).toString().replace('.', ',');
 export const isTextLonger = ({ string, charsQuantity }) => string.length > charsQuantity;
+export const formatTimestamp = (timeStamp) => new Date(timeStamp).toLocaleString();
