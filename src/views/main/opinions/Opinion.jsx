@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { exact, string, number } from 'prop-types';
 import SmoothCollapse from 'react-smooth-collapse';
 import { isEmpty } from 'lodash';
+import { formatTimestamp } from 'utils/helpers.js';
 import ShadowedContainer from 'components/containers/ShadowedContainer.jsx';
 import Rating from 'components/Rating.jsx';
 import Avatar from 'components/Avatar.jsx';
@@ -49,7 +50,7 @@ const Opinion = ({ opinionsData: { content, mark, updatedAt, user: { email, avat
           />
         </div>
         <div className={`${blockName}__user-email`}>{email}</div>
-        <div className={`${blockName}__updated-at`}>{updatedAt}</div>
+        <div className={`${blockName}__updated-at`}>{formatTimestamp(updatedAt)}</div>
         <div className={`${blockName}__mark`}>
           <Rating value={mark} readOnly />
         </div>

@@ -4,15 +4,15 @@
 4) Better optimalization with useCallback and useMemo
 14) Cancel button with back arrow
 16) Common validation error handling for inputs in scss
-19) Refactor modals - almost each looks like the same and I bad handle open and close Modals
 22) Fix order in imports
-23) About mobile
 24) Each headers should be gray (footer example)
 25) ShadowedBox should have default animation
-26) AboutUs should have better styles
 27) SyncReleatedFIelds - src/views/main/order/form/ClientDetails.jsx ?
 28) Fix checkbox view - should have white color and gray background
-29) Find difference between useReducer vs useDispatch and useStore
 30) FIx off in eslint
 31) Let's create custom middleware - https://medium.com/netscape/creating-custom-middleware-in-react-redux-961570459ecb
 32) Czy hook useRediret ma sens?
+33) Stworz success modal, tak jak Error modal i Loading modal
+34) Solve problem with saving products to store
+35) Reset state after make order
+36) Tooltip that search engine is not ready to use
