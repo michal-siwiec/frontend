@@ -7,3 +7,16 @@ export const IS_USER_LOGGED = gql`
     }
   }
 `;
+
+export const USER_PERSONAL_DETAILS = gql`
+  query($userId: ID!) {
+    user: user(userId: $userId) {
+      name
+      surname
+      phoneNumber
+      city
+      postalCode
+      street
+    }
+  }
+`;
