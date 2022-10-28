@@ -43,7 +43,7 @@ const DeliveryMethod = () => {
         label={(
           <Fragment>
             <i className={`icon-logo-dpd ${blockName}__icon`} />
-            <span className={`${blockName}__icon-label`}>(10,99 zł)</span>
+            <span className={`${blockName}__icon-label`}>(15,99 zł)</span>
           </Fragment>
         )}
       />

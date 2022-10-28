@@ -1,20 +1,8 @@
 import React, { Fragment } from 'react';
 import clsx from 'clsx';
-import {
-  exact,
-  string,
-  func,
-  oneOf
-} from 'prop-types';
+import { exact, string, func, oneOf, bool } from 'prop-types';
 
-const TextInput = ({
-  placeholder,
-  type,
-  classNames,
-  value,
-  onChange,
-  validationError
-}) => (
+const TextInput = ({ placeholder, type, classNames, value, onChange, validationError, isDisabled }) => (
   <Fragment>
     <input
       type={type}
@@ -22,6 +10,7 @@ const TextInput = ({
       className={clsx(`input text-input ${classNames}`, validationError && 'text-input--error')}
       value={value}
       onChange={onChange}
+      disabled={isDisabled}
     />
     {validationError && <div className="input__error">{validationError}</div>}
   </Fragment>
@@ -33,13 +22,15 @@ TextInput.propTypes = exact({
   type: oneOf(['text', 'password']),
   value: string.isRequired,
   onChange: func.isRequired,
-  validationError: string
+  validationError: string,
+  isDisabled: bool
 }).isRequired;
 
 TextInput.defaultProps = {
   classNames: '',
   type: 'text',
-  validationError: ''
+  validationError: '',
+  isDisabled: false
 };
 
 export default TextInput;

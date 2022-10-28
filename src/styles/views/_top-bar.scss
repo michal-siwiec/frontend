@@ -47,6 +47,16 @@
     flex-basis: 50%;
   }
 
+  &__tooltip-wrapper {
+    margin-left: 5px;
+    color: $gray;
+    font-size: 17px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
   &__authorization {
     @include flex-container($justify-content: end);
     flex-basis: 25%;

@@ -1,19 +1,8 @@
 import React, { Fragment } from 'react';
 import { Tooltip as MuiTooltip } from '@mui/material';
-import {
-  exact,
-  string,
-  bool,
-  element
-} from 'prop-types';
+import { exact, string, bool, element } from 'prop-types';
 
-const Tooltip = ({
-  headerText,
-  secondaryText,
-  open,
-  placement,
-  children
-}) => {
+const Tooltip = ({ headerText, secondaryText, open, placement, children }) => {
   const blockName = 'tooltip';
 
   return (

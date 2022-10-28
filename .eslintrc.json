@@ -27,7 +27,7 @@
 		"react/jsx-one-expression-per-line": "off",
 		"jsx-a11y/control-has-associated-label": "off",
 		"jsx-a11y/label-has-associated-control": ["error", { "required": { "some": [ "nesting", "id"  ] } }],
-		"max-len": ["error", { "code":120, "ignorePattern": "Lorem ipsum" }],
+		"max-len": ["error", { "code":170, "ignorePattern": "Lorem ipsum" }],
 		"no-param-reassign": "off",
 		"no-unused-vars": "off",
 		"import/extensions": ["error", "ignorePackages"],
