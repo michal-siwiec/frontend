@@ -26,6 +26,7 @@ const Main = () => (
       <Route path="/order" element={<Order />} />
       <Route path="/thank-you-page" element={<ThankYouPage />} />
       <Route path="/user-panel" element={<UserPanel />}>
+        <Route path="" element={<MyDetails />} />
         <Route path="data" element={<MyDetails />} />
         <Route path="history" element={<History />} />
         <Route path="change-password" element={<ChangePassword />} />
