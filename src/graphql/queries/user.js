@@ -13,6 +13,7 @@ export const USER_PERSONAL_DETAILS = gql`
     user: user(userId: $userId) {
       name
       surname
+      email
       phoneNumber
       city
       postalCode

@@ -1,5 +1,8 @@
 import React, { useState, useContext } from 'react';
+import { useLazyQuery } from '@apollo/client';
+import { USER_PERSONAL_DETAILS } from 'graphql/queries/user.js';
 import { useSelector, useDispatch } from 'react-redux';
+import useIsLogged from 'hooks/useIsLogged.jsx';
 import {
   setName,
   setSurname,
@@ -16,17 +19,13 @@ import SubmitButton from 'components/SubmitButton.jsx';
 
 const ClientDetails = () => {
   const modifier = 'text-input--personal-details';
+  const isLogged = useIsLogged();
   const { setStep } = useContext(OrderContext);
   const dispatch = useDispatch();
   const {
-    name,
-    surname,
-    street,
-    city,
-    postalCode,
-    email,
-    phoneNumber
-  } = useSelector((store) => store.order.clientDetails);
+    user: { loggedUserId },
+    order: { clientDetails: { name, surname, street, city, postalCode, email, phoneNumber } }
+  } = useSelector((store) => store);
 
   const [nameErrorMessage, setNameErrorMessage] = useState('');
   const [surnameErrorMessage, setSurnameErrorMessage] = useState('');
@@ -43,6 +42,27 @@ const ClientDetails = () => {
   const handlePostalCodeOnChange = ({ target: { value } }) => dispatch(setPostalCode(value));
   const handleEmailOnChange = ({ target: { value } }) => dispatch(setEmail(value));
   const handlePhoneNumberOnChange = ({ target: { value } }) => dispatch(setPhoneNumber(value));
+
+  const setDefaultClientDetailsIfNeeded = () => {
+    const { user } = personalDetailsData;
+
+    if (!name) dispatch(setName(user.name));
+    if (!surname) dispatch(setSurname(user.surname));
+    if (!street) dispatch(setStreet(user.street));
+    if (!city) dispatch(setCity(user.city));
+    if (!postalCode) dispatch(setPostalCode(user.postalCode));
+    if (!email) dispatch(setEmail(user.email));
+    if (!phoneNumber) dispatch(setPhoneNumber(user.phoneNumber));
+  };
+
+  const [getUserPersonalDetails, { called, loading, data: personalDetailsData }] = useLazyQuery(
+    USER_PERSONAL_DETAILS,
+    {
+      variables: { userId: loggedUserId },
+      fetchPolicy: 'network-only',
+      onCompleted: setDefaultClientDetailsIfNeeded
+    }
+  );
 
   const handleSubmitOnMouseDown = () => {
     const {
@@ -69,6 +89,8 @@ const ClientDetails = () => {
 
     setStep(1);
   };
+
+  if (isLogged && !called) getUserPersonalDetails();
 
   return (
     <div className="order__form-part-container">
