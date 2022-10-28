@@ -51,4 +51,11 @@
       color: $red;
     }
   }
+
+  &--success {
+    .modal__success-icon {
+      font-size: 30px;
+      color: $green;
+    }
+  }
 }

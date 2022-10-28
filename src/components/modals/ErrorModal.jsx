@@ -1,5 +1,5 @@
 import React from 'react';
-import { exact, string } from 'prop-types';
+import { bool, exact, func, string } from 'prop-types';
 import { Modal } from '@mui/material';
 
 const ErrorModal = ({ isOpen, handleOnClose, info }) => {
@@ -24,6 +24,8 @@ const ErrorModal = ({ isOpen, handleOnClose, info }) => {
 };
 
 ErrorModal.propTypes = exact({
+  isOpen: bool.isRequired,
+  handleOnClose: func.isRequired,
   info: string
 }).isRequired;
 

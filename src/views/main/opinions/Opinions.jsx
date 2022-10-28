@@ -4,7 +4,7 @@ import { isEmpty } from 'lodash';
 import { GET_OPINIONS } from 'graphql/queries/opinion.js';
 import useIsLogged from 'hooks/useIsLogged.jsx';
 import LoadingModal from 'components/modals/LoadingModal.jsx';
-import AddingOpinionSuccessModal from 'components/modals/AddingOpinionSuccessModal.jsx';
+import SuccessModal from 'components/modals/SuccessModal.jsx';
 import ErrorModal from 'components/modals/ErrorModal.jsx';
 import Pagination from 'components/Pagination.jsx';
 import OpinionsList from './OpinionsList.jsx';
@@ -48,9 +48,10 @@ const Opinions = () => {
           />
         )
       }
-      <AddingOpinionSuccessModal
+      <SuccessModal
         isOpen={isOpinionAdded}
         handleOnClose={() => setIsOpinionAdded(false)}
+        info="Dziękujemy za dodanie opini!"
       />
       <ErrorModal
         isOpen={isAddedOpinionError}

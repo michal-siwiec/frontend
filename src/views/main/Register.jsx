@@ -11,7 +11,7 @@ import TextInput from 'components/inputs/TextInput.jsx';
 import FileInput from 'components/inputs/FileInput.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
 import LoadingModal from 'components/modals/LoadingModal.jsx';
-import UserRegisteredModal from 'components/modals/UserRegisteredModal.jsx';
+import SuccessModal from 'components/modals/SuccessModal.jsx';
 import ErrorModal from 'components/modals/ErrorModal.jsx';
 
 const Register = () => {
@@ -113,8 +113,12 @@ const Register = () => {
           </Fragment>
         )}
       />
-      { registerUserSuccess && <UserRegisteredModal /> }
       { loading && <LoadingModal info="Rejestrujemy użytkownika!" /> }
+      <SuccessModal
+        isOpen={registerUserSuccess}
+        handleOnClose={() => setRegisterUserSuccess(false)}
+        info="Twoje konto zostało pomyślnie założone!"
+      />
       <ErrorModal
         isOpen={registerUserError}
         handleOnClose={() => setRegisterUserError(false)}
