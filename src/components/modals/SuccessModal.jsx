@@ -2,7 +2,7 @@ import React from 'react';
 import { exact, string, bool, func } from 'prop-types';
 import { Modal } from '@mui/material';
 
-const SuccessModal = ({ isOpen, handleOnClose, info }) => {
+const SuccessModal = ({ isOpen, handleOnClose, info, children }) => {
   const blockName = 'modal';
 
   return (
@@ -17,6 +17,7 @@ const SuccessModal = ({ isOpen, handleOnClose, info }) => {
         <div className={`${blockName}__info`}>
           <p>{info}</p>
         </div>
+        {children}
       </div>
     </Modal>
   );

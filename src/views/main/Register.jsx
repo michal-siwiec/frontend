@@ -1,8 +1,9 @@
 import React, { Fragment, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import useRedirect from 'hooks/useRedirect.jsx';
+import { login } from 'redux_/user/actionsCreator.js';
 import AvatarsGenerator from 'services/avatarsGenerator.js';
 import ValidationRegisterHandler from 'handlers/validationRegisterHandler.js';
 import { REGISTER_USER } from 'graphql/mutations/user.js';
@@ -16,6 +17,7 @@ import ErrorModal from 'components/modals/ErrorModal.jsx';
 
 const Register = () => {
   const blockName = 'register';
+  const dispatch = useDispatch();
   const fileInput = useRef(null);
   const { loggedUserId } = useSelector((store) => store.user);
   const [avatars, setAvatars] = useState([]);
@@ -27,11 +29,12 @@ const Register = () => {
   const [registerUserSuccess, setRegisterUserSuccess] = useState(false);
   const [registerUserError, setRegisterUserError] = useState(false);
 
-  const [registerUser, { loading }] = useMutation(REGISTER_USER, {
+  const [registerUser, { loading, data }] = useMutation(REGISTER_USER, {
     onError: () => { setRegisterUserError(true); },
     onCompleted: () => {
       clearForm();
       setRegisterUserSuccess(true);
+      // loginUser();
     }
   });
 
@@ -68,6 +71,8 @@ const Register = () => {
     setPassword('');
     fileInput.current.value = '';
   };
+
+  const loginUser = () => dispatch(login(data));
 
   useRedirect({ path: '/', shouldRedirect: !!loggedUserId });
 
@@ -118,7 +123,15 @@ const Register = () => {
         isOpen={registerUserSuccess}
         handleOnClose={() => setRegisterUserSuccess(false)}
         info="Twoje konto zostało pomyślnie założone!"
-      />
+      >
+        <div className="modal__buttons-wrapper">
+          <SubmitButton
+            onMouseDown={loginUser}
+            value="Zaloguj się"
+            classNames="modal__button"
+          />
+        </div>
+      </SuccessModal>
       <ErrorModal
         isOpen={registerUserError}
         handleOnClose={() => setRegisterUserError(false)}

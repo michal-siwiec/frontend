@@ -4,8 +4,10 @@ export const REGISTER_USER = gql`
   mutation registerUser($input: UserInput!) {
     user: registerUser(input: $input) {
       id,
-      email,
-      password
+      avatars {
+        main,
+        storagePath
+      }
     }
   }
 `;
