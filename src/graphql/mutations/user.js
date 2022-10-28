@@ -45,3 +45,11 @@ export const CHANGE_USER_PASSWORD = gql`
     }
   }
 `;
+
+export const UPDATE_USER_DETAILS = gql`
+  mutation updateUserDetails($input: UpdateUserDetailsInput!) {
+    updateUserDetails(input: $input) {
+      id
+    }
+  }
+`;

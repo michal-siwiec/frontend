@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { USER_PERSONAL_DETAILS } from 'graphql/queries/user.js';
+import { UPDATE_USER_DETAILS } from 'graphql/mutations/user.js';
 import ValidationMyDetailsHandler from 'handlers/validationMyDetailsHandler.js';
 import TextInput from 'components/inputs/TextInput.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
+import LoadingModal from 'components/modals/LoadingModal.jsx';
+import ErrorModal from 'components/modals/ErrorModal.jsx';
 
 const MyDetails = () => {
   const blockName = 'my-details';
@@ -21,14 +24,16 @@ const MyDetails = () => {
   const [cityValidationError, setCityValidationError] = useState('');
   const [postalCodeValidationError, setPostalCodeValidationError] = useState('');
   const [streetValidationError, setStreetValidationError] = useState('');
+  const [getPersonalDetailsDataError, setGetPersonalDetailsDataError] = useState(false);
+  const [updateUserDetailsError, setUpdateUserDetailsError] = useState(false);
 
-  const { loading, error, data } = useQuery(
+  const { loading: personalDetailsDataLoading, data: personalDetailsData } = useQuery(
     USER_PERSONAL_DETAILS,
     {
       variables: { userId: loggedUserId },
       fetchPolicy: 'network-only',
       onCompleted: () => {
-        const { user } = data;
+        const { user } = personalDetailsData;
 
         setName(user.name);
         setSurname(user.surname);
@@ -36,9 +41,15 @@ const MyDetails = () => {
         setCity(user.city);
         setPostalCode(user.postalCode);
         setStreet(user.street);
-      }
+      },
+      onError: () => setGetPersonalDetailsDataError(true)
     }
   );
+
+  const [updateUserDetails, { loading: updateUserDetailsLoading }] = useMutation(UPDATE_USER_DETAILS, {
+    variables: { input: { userId: loggedUserId, name, surname, phoneNumber, street, city, postalCode } },
+    onError: () => setUpdateUserDetailsError(true)
+  });
 
   const handleNameOnChange = ({ target: { value } }) => setName(value);
   const handleSurnameNameOnChange = ({ target: { value } }) => setSurname(value);
@@ -66,7 +77,7 @@ const MyDetails = () => {
     setStreetValidationError(streetError);
     if (!validationStatus) return;
 
-    alert('Aktualize dane');
+    updateUserDetails();
   };
 
   return (
@@ -121,6 +132,18 @@ const MyDetails = () => {
           classNames={`${blockName}__input`}
         />
       </div>
+      {updateUserDetailsLoading && <LoadingModal info="Twoje dane są aktualizowane!" />}
+      {personalDetailsDataLoading && <LoadingModal info="Dane osobowe są pobierane!" />}
+      <ErrorModal
+        isOpen={updateUserDetailsError}
+        handleOnClose={() => setUpdateUserDetailsError(false)}
+        info="Niestety nie udało się zaktualizować danych osobowych!"
+      />
+      <ErrorModal
+        isOpen={getPersonalDetailsDataError}
+        handleOnClose={() => setGetPersonalDetailsDataError(false)}
+        info="Niestety nie udało się pobrać danych osobowych!"
+      />
     </div>
   );
 };
