@@ -33,8 +33,8 @@ export const LOGOUT_USER = gql`
 `;
 
 export const SUBSCRIBE_TO_NEWSLETTER = gql`
-  mutation subscribeToNewsletter($email: String!) {
-    subscribeToNewsletter(email: $email) {
+  mutation subscribeUserToNewsletter($input: SubscribeUserToNewsletterInput!) {
+    subscribeUserToNewsletter(input: $input) {
       id
     }
   }

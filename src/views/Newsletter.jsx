@@ -1,8 +1,13 @@
 import React, { Fragment, useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { SUBSCRIBE_TO_NEWSLETTER } from 'graphql/mutations/user.js';
 import ValidationNewsletterHandler from 'handlers/validationNewsletterHandler.js';
 import FormContainer from 'components/containers/FormContainer.jsx';
 import TextInput from 'components/inputs/TextInput.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
+import SuccessModal from 'components/modals/SuccessModal.jsx';
+import LoadingModal from 'components/modals/LoadingModal.jsx';
+import ErrorModal from 'components/modals/ErrorModal.jsx';
 
 const Newsletter = () => {
   const blockName = 'newsletter';
@@ -12,18 +17,18 @@ const Newsletter = () => {
   const [nameErrorMessage, setNameErrorMessage] = useState('');
   const [surnameErrorMessage, setSurnameErrorMessage] = useState('');
   const [emailErrorMessage, setEmailErrorMessage] = useState('');
+  const [subscribingToNewsletterSuccess, setSubscribingToNewsletterSuccess] = useState(false);
+  const [subscribingToNewsletterError, setSubscribingToNewsletterError] = useState(false);
 
-  const handleNameOnChange = ({ target: { value } }) => {
-    setName(value);
-  };
+  const [subscribeToNewsletter, { loading: subscribingToNewsletterLoading }] = useMutation(SUBSCRIBE_TO_NEWSLETTER, {
+    variables: { input: { email, name, surname } },
+    onCompleted: () => setSubscribingToNewsletterSuccess(true),
+    onError: () => setSubscribingToNewsletterError(true)
+  });
 
-  const handleSurnameOnChange = ({ target: { value } }) => {
-    setSurname(value);
-  };
-
-  const handleEmailOnChange = ({ target: { value } }) => {
-    setEmail(value);
-  };
+  const handleNameOnChange = ({ target: { value } }) => setName(value);
+  const handleSurnameOnChange = ({ target: { value } }) => setSurname(value);
+  const handleEmailOnChange = ({ target: { value } }) => setEmail(value);
 
   const handleSaveToNewsletter = () => {
     const {
@@ -38,7 +43,7 @@ const Newsletter = () => {
     setEmailErrorMessage(emailError);
     if (!validationStatus) return;
 
-    surnameErrorMessage(''); // to fix linter - to remove
+    subscribeToNewsletter();
   };
 
   return (
@@ -75,6 +80,17 @@ const Newsletter = () => {
             />
           </Fragment>
         )}
+      />
+      { subscribingToNewsletterLoading && <LoadingModal info="Jesteś zapisywany na newsletter!" /> }
+      <SuccessModal
+        isOpen={subscribingToNewsletterSuccess}
+        handleOnClose={() => setSubscribingToNewsletterSuccess(false)}
+        info="Zostałeś zapisany na newsletter!"
+      />
+      <ErrorModal
+        isOpen={subscribingToNewsletterError}
+        handleOnClose={() => setSubscribingToNewsletterError(false)}
+        info="Niestety nie udało się zapisać na newsletter!"
       />
     </div>
   );
