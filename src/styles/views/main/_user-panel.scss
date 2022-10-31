@@ -171,4 +171,42 @@
       }
     }
   }
+
+  .newsletter {
+    width: 100%;
+    background-color: $white;
+
+    &__header {
+      flex-basis: 100%;
+      text-align: center;
+      margin-bottom: 30px;
+      color: $gray;
+    }
+
+    &__status-header {
+      margin-bottom: 10px;
+    }
+
+    &__content-wrapper {
+      width: 100%;
+      margin: 0 auto;
+
+      @media screen and (min-width: $md-breakpoint) {
+        width: 80%;
+      }
+    }
+
+    &__link-to-newsletter {
+      color: $gray;
+      margin-left: 5px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &__submit-button {
+      margin: 20px 0 0;
+    }
+  }
 }

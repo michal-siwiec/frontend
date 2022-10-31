@@ -1,3 +1,5 @@
+import isEmpty from 'lodash';
+
 export const countTotalPrice = (products) => {
   const initialValue = 0;
 
@@ -24,6 +26,13 @@ export const cutAfterNChars = ({ string, charsQuantity }) => {
   const restOfContent = string.slice(charsQuantity, stringLength);
 
   return { narrowContent, restOfContent };
+};
+
+export const scrollIntoElement = ({ elementSelector, scrollProperties_ }) => {
+  const defaultScrollProperties = { behavior: 'smooth', block: 'start' };
+  const scrollProperties = isEmpty(scrollProperties_) ? defaultScrollProperties : scrollProperties_;
+
+  document.querySelector(elementSelector).scrollIntoView(scrollProperties);
 };
 
 export const formattedPrice = (price) => price.toFixed(2).toString().replace('.', ',');

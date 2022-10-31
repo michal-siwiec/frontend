@@ -88,7 +88,7 @@ const Newsletter = () => {
   if (isLogged && isUserSavedToNewsletter) return null;
 
   return (
-    <div className={blockName}>
+    <div className={blockName} id="newsletter-form">
       <FormContainer
         header="Zapisz się na newsletter aby być na bieżąco!"
         form={(

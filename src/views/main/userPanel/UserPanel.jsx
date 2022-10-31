@@ -27,6 +27,11 @@ const UserPanel = () => {
             Zmień hasło
           </Link>
         </div>
+        <div className={`${blockName}__toggle-action-tile`}>
+          <Link to="newsletter" className={`${blockName}__action-tile-link`}>
+            Newsletter
+          </Link>
+        </div>
       </div>
       <div className={`${blockName}__action-wrapper`}>
         <Outlet />

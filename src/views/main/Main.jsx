@@ -12,6 +12,7 @@ import UserPanel from './userPanel/UserPanel.jsx';
 import MyDetails from './userPanel/MyDetails.jsx';
 import History from './userPanel/History.jsx';
 import ChangePassword from './userPanel/ChangePassword.jsx';
+import Newsletter from 'views/main/userPanel/Newsletter/Newsletter.jsx';
 import NotFound from './NotFound.jsx';
 
 const Main = () => (
@@ -30,6 +31,7 @@ const Main = () => (
         <Route path="data" element={<MyDetails />} />
         <Route path="history" element={<History />} />
         <Route path="change-password" element={<ChangePassword />} />
+        <Route path="newsletter" element={<Newsletter />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
