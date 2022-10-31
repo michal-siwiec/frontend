@@ -102,6 +102,12 @@
         text-align: center;
         border: none;
       }
+
+      &--invoice-download {
+        &:hover {
+          cursor: pointer;
+        }
+      }
     }
   }
 

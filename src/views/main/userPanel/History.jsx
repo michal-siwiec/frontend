@@ -1,8 +1,10 @@
 import React, { Fragment, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useQuery } from '@apollo/client';
+import { STORAGE_URL } from 'utils/environment.js';
 import { GET_ORDERS } from 'graphql/queries/order.js';
 import { formatTimestamp } from 'utils/helpers.js';
+import FileDownloader from 'services/fileDownloader.js';
 import LoadingModal from 'components/modals/LoadingModal.jsx';
 import ErrorModal from 'components/modals/ErrorModal.jsx';
 import Pagination from 'components/Pagination.jsx';
@@ -23,6 +25,13 @@ const History = () => {
 
   const handlePaginationOnChange = (pageNumber) => setActivePage(pageNumber - 1);
 
+  const downloadInvoice = (orderID) => {
+    const fileName = `Faktura za zamówienie: ${orderID}`;
+    const pathToFile = `${STORAGE_URL}/users/${loggedUserId}/invoices/${orderID}.pdf`;
+
+    new FileDownloader({ url: pathToFile, outputName: fileName }).call();
+  };
+
   return (
     <div className={blockName}>
       <h1 className={`${blockName}__header`}>Historia zamówień</h1>
@@ -32,7 +41,9 @@ const History = () => {
             <table className={`${blockName}__table`}>
               <thead>
                 <tr className={`${blockName}__table-row`}>
-                  <td className={`${blockName}__table-col ${blockName}__table-col--thead`}>Numer zamówienia</td>
+                  <td className={`${blockName}__table-col ${blockName}__table-col--thead`}>
+                    Numer zamówienia
+                  </td>
                   <td className={`${blockName}__table-col ${blockName}__table-col--thead`}>Cena całkowita</td>
                   <td className={`${blockName}__table-col ${blockName}__table-col--thead`}>Data zakupu</td>
                 </tr>
@@ -41,7 +52,14 @@ const History = () => {
                 {
                   data.orders.orders.map(({ id, totalPrice, createdAt }) => (
                     <tr className={`${blockName}__table-row`}>
-                      <td className={`${blockName}__table-col`}>{id}</td>
+                      <td
+                        className={`${blockName}__table-col
+                                    ${blockName}__table-col--invoice-download`}
+                        onClick={() => downloadInvoice(id)}
+                        role="presentation"
+                      >
+                        {id}
+                      </td>
                       <td className={`${blockName}__table-col`}>{totalPrice} zł</td>
                       <td className={`${blockName}__table-col`}>{formatTimestamp(createdAt)}</td>
                     </tr>
