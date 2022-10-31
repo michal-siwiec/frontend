@@ -7,13 +7,19 @@ import UnsavedContent from './UnsavedContent.jsx';
 
 const Newsletter = () => {
   const blockName = 'newsletter';
+  const [userEmail, setUserEmail] = useState('');
   const [userSavedToNewsletter, setUserSavedToNewsletter] = useState(false);
   const { loggedUserId } = useSelector((store) => store.user);
 
-  const { data } = useQuery(IS_USER_SAVED_TO_NEWSLETTER, {
+  const { data, refetch } = useQuery(IS_USER_SAVED_TO_NEWSLETTER, {
     variables: { userId: loggedUserId },
     fetchPolicy: 'network-only',
-    onCompleted: () => setUserSavedToNewsletter(data.user.savedToNewsletter)
+    onCompleted: () => {
+      const { savedToNewsletter, email } = data.user;
+
+      setUserEmail(email);
+      setUserSavedToNewsletter(savedToNewsletter);
+    }
   });
 
   return (
@@ -22,7 +28,7 @@ const Newsletter = () => {
       <div className={`${blockName}__content-wrapper`}>
         {
           userSavedToNewsletter
-            ? <SavedContent />
+            ? <SavedContent userEmail={userEmail} refetch={refetch} />
             : <UnsavedContent />
         }
       </div>

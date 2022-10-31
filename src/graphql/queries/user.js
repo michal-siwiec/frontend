@@ -25,7 +25,8 @@ export const USER_PERSONAL_DETAILS = gql`
 export const IS_USER_SAVED_TO_NEWSLETTER = gql`
   query($userId: ID!) {
     user(userId: $userId) {
-      savedToNewsletter
+      savedToNewsletter,
+      email
     }
   }
 `;

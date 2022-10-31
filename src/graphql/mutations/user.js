@@ -40,6 +40,14 @@ export const SUBSCRIBE_TO_NEWSLETTER = gql`
   }
 `;
 
+export const UNSUBSCRIBE_FROM_NEWSLETTER = gql`
+  mutation unsubscribeUserFromNewsletter($email: String!) {
+    unsubscribeUserFromNewsletter(email: $email) {
+      id
+    }
+  }
+`;
+
 export const CHANGE_USER_PASSWORD = gql`
   mutation changeUserPassword($input: ChangeUserPasswordInput!) {
     changeUserPassword(input: $input) {
