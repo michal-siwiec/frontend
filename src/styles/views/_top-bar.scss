@@ -57,6 +57,10 @@
     }
   }
 
+  &__search-engine-tooltip {
+    z-index: 5 !important;
+  }
+
   &__authorization {
     @include flex-container($justify-content: end);
     flex-basis: 25%;

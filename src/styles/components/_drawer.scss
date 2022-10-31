@@ -1,4 +1,8 @@
 .drawer {
+  &.MuiModal-root {
+    z-index: 5;
+  }
+
   &--top-bar {
     .MuiDrawer-paperAnchorLeft {
       width: 270px;

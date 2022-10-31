@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Tooltip as MuiTooltip } from '@mui/material';
 import { exact, string, bool, element } from 'prop-types';
 
-const Tooltip = ({ headerText, secondaryText, open, placement, children }) => {
+const Tooltip = ({ headerText, secondaryText, open, placement, children, classNames }) => {
   const blockName = 'tooltip';
 
   return (
@@ -10,7 +10,7 @@ const Tooltip = ({ headerText, secondaryText, open, placement, children }) => {
       open={open}
       arrow
       placement={placement}
-      classes={{ popper: blockName }}
+      classes={{ popper: `${blockName} ${classNames}` }}
       title={(
         <Fragment>
           <h2 className={`${blockName}__header`}>{headerText}</h2>
@@ -28,12 +28,14 @@ Tooltip.propTypes = exact({
   secondaryText: string,
   open: bool.isRequired,
   placement: string,
+  classNames: string,
   children: element.isRequired
 }).isRequired;
 
 Tooltip.defaultProps = {
   placement: 'top',
-  secondaryText: null
+  secondaryText: null,
+  classNames: ''
 };
 
 export default Tooltip;

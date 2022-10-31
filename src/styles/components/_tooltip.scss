@@ -1,5 +1,7 @@
 .tooltip {
-  z-index: 3 !important;
+  &.MuiTooltip-popper {
+    z-index: 3;
+  }
 
   .MuiTooltip-tooltip {
     padding: 10px;

@@ -29,6 +29,7 @@ const SearchEngine = () => {
           secondaryText={tooltipSecondaryText}
           placement={isMobile ? 'bottom' : 'right'}
           open={isTooltipOpen}
+          classNames={`${blockName}__search-engine-tooltip`}
         >
           <i className={`icon-tooltip-prompt ${blockName}__tooltip-prompt`} />
         </Tooltip>
