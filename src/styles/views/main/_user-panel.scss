@@ -109,6 +109,22 @@
         }
       }
     }
+
+    &__tooltip-wrapper {
+      @include flex-container;
+    }
+
+    &__tooltip-prompt {
+      margin-left: 5px;
+
+      @media screen and (min-width: $xs-breakpoint) {
+        margin-left: 10px;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 
   .change-password {

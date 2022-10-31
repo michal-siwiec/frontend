@@ -1,6 +1,13 @@
 .tooltip {
+  z-index: 3 !important;
+
   .MuiTooltip-tooltip {
     padding: 10px;
+    background-color: $gray;
+
+    .MuiTooltip-arrow::before {
+      background-color: $gray;
+    }
   }
 
   &__header {

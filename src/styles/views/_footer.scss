@@ -71,6 +71,10 @@
 
   &__tooltip-prompt {
     margin-left: 20px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__product-cathegory {

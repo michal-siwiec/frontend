@@ -25,14 +25,15 @@ const Tooltip = ({ headerText, secondaryText, open, placement, children }) => {
 
 Tooltip.propTypes = exact({
   headerText: string.isRequired,
-  secondaryText: string.isRequired,
+  secondaryText: string,
   open: bool.isRequired,
   placement: string,
   children: element.isRequired
 }).isRequired;
 
 Tooltip.defaultProps = {
-  placement: 'top'
+  placement: 'top',
+  secondaryText: null
 };
 
 export default Tooltip;

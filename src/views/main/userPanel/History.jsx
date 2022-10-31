@@ -8,12 +8,15 @@ import FileDownloader from 'services/fileDownloader.js';
 import LoadingModal from 'components/modals/LoadingModal.jsx';
 import ErrorModal from 'components/modals/ErrorModal.jsx';
 import Pagination from 'components/Pagination.jsx';
+import Tooltip from 'components/Tooltip.jsx';
 
 const History = () => {
   const blockName = 'history';
   const quantityPerPage = 5;
   const { loggedUserId } = useSelector((store) => store.user);
   const [activePage, setActivePage] = useState(0);
+  const [downloadInvoiceTooltipOpen, setDownloadInvoiceTooltipOpen] = useState(false);
+
   const [fetchingOrdersError, setFetchingOrdersError] = useState(false);
   const { loading, data } = useQuery(
     GET_ORDERS,
@@ -43,6 +46,18 @@ const History = () => {
                 <tr className={`${blockName}__table-row`}>
                   <td className={`${blockName}__table-col ${blockName}__table-col--thead`}>
                     Numer zamówienia
+                    <div
+                      className={`${blockName}__tooltip-wrapper`}
+                      onMouseEnter={() => setDownloadInvoiceTooltipOpen(true)}
+                      onMouseLeave={() => setDownloadInvoiceTooltipOpen(false)}
+                    >
+                      <Tooltip
+                        open={downloadInvoiceTooltipOpen}
+                        headerText="Pobierz fakturę!"
+                      >
+                        <i className={`icon-tooltip-prompt ${blockName}__tooltip-prompt`} />
+                      </Tooltip>
+                    </div>
                   </td>
                   <td className={`${blockName}__table-col ${blockName}__table-col--thead`}>Cena całkowita</td>
                   <td className={`${blockName}__table-col ${blockName}__table-col--thead`}>Data zakupu</td>
