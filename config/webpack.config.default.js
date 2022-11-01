@@ -1,10 +1,10 @@
+require('webpack');
+if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
-require('dotenv').config()
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.js',
@@ -86,7 +86,10 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'main-[contenthash:6].css'
     }),
-    new Dotenv()
+    new Dotenv({
+      safe: '.env.sample',
+      systemvars: true      
+    })
   ],
   devtool: "eval-cheap-source-map"
 }
