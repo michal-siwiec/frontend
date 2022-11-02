@@ -38,6 +38,12 @@ const Opinions = () => {
           ? <EmptyOpinionsList textAreaRef={textareaRef} />
           : <OpinionsList opinions={opinions} />
       }
+      <Pagination
+        activePage={activePage}
+        onChange={handlePaginationOnChange}
+        itemsQuantity={allOpinionsQuantity}
+        quantityPerPage={quantityPerPage}
+      />
       {
         isLogged && (
           <AddOpinionForm
@@ -57,12 +63,6 @@ const Opinions = () => {
         isOpen={isAddedOpinionError}
         handleOnClose={() => setIsAddedOpinionError(false)}
         info="Niestety nie udało się dodać nowej opini."
-      />
-      <Pagination
-        activePage={activePage}
-        onChange={handlePaginationOnChange}
-        itemsQuantity={allOpinionsQuantity}
-        quantityPerPage={quantityPerPage}
       />
     </div>
   );

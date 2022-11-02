@@ -17,7 +17,6 @@ import {
 
 const Footer = () => {
   const blockName = 'footer';
-
   const [privacyPolicyTooltipOpen, setPrivacyPolicyTooltipOpen] = useState(false);
   const [shopRulesTooltipOpen, setShopRulesTooltipOpen] = useState(false);
 
