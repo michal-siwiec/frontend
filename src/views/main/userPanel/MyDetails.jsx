@@ -69,6 +69,8 @@ const MyDetails = () => {
       validationStatus
     } = new ValidationMyDetailsHandler({ name, surname, phoneNumber, city, postalCode, street }).call();
 
+    console.log('nameError', nameError, 'surnameError', surnameError, 'phoneNumberError', phoneNumberError, 'cityError', cityError, 'postalCodeError', postalCodeError, 'streetError', streetError, 'validationStatus', validationStatus)
+
     setNameValidationError(nameError);
     setSurnameValidationError(surnameError);
     setPhoneNumberValidationError(phoneNumberError);
