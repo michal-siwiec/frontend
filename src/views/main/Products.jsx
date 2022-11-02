@@ -1,35 +1,34 @@
 import React, { useState, useEffect } from 'react';
+import { exact, bool } from 'prop-types';
 import { useSearchParams, useLocation } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
+import useScrollIntoElement from 'hooks/useScrollIntoElement.jsx';
 import { GET_PRODUCTS } from 'graphql/queries/products.js';
-import { scrollIntoElement } from 'utils/helpers.js';
+import { generateHeaderCaption } from 'utils/product.js';
 import LoadingModal from 'components/modals/LoadingModal.jsx';
 import Product from 'components/product/Product.jsx';
 import Pagination from 'components/Pagination.jsx';
-import translatedCathegoriesNames from 'dictionaries/cathegoriesNames.js';
 
-const Products = () => {
-  const location = useLocation();
+const Products = ({ arePromoted }) => {
   const [searchParams] = useSearchParams();
-  const productType = searchParams.get('type');
+  const location = useLocation();
   const blockName = 'products';
   const quantityPerPage = 5;
-  const headerCaption = productType
-    ? `Produkty z kategori "${translatedCathegoriesNames[productType]}"`
-    : 'Wszystkie produkty';
+  const productType = searchParams.get('type');
+  const headerCaption = generateHeaderCaption({ arePromoted, productType });
   const [activePage, setActivePage] = useState(0);
   const { loading, error, data } = useQuery(
     GET_PRODUCTS,
-    { variables: { input: { type: productType, pagination: { page: activePage, quantityPerPage } } } }
+    {
+      variables: {
+        input: { promoted: arePromoted, type: productType, pagination: { page: activePage, quantityPerPage } }
+      }
+    }
   );
 
+  useScrollIntoElement({ data, locationKey: location.key, elementSelector: '.main .products__header' });
+
   const handlePaginationOnChange = (pageNumber) => setActivePage(pageNumber - 1);
-
-  useEffect(() => {
-    if (!data) return;
-
-    scrollIntoElement({ elementSelector: '.main .products__header' });
-  }, [location.key, data]);
 
   if (loading) return <LoadingModal info="Trwa pobieranie produktów!" />;
   if (error) return <h1>Error...</h1>;
@@ -60,5 +59,8 @@ const Products = () => {
     </div>
   );
 };
+
+Products.propTypes = exact({ arePromoted: bool }).isRequired;
+Products.defaultProps = { arePromoted: false };
 
 export default Products;
