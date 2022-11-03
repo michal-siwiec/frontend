@@ -12,13 +12,13 @@ const Authorization = () => {
   const dispatch = useDispatch();
   const { loggedUserId, avatars } = useSelector((store) => store.user);
   const isLogged = useIsLogged();
-  const [logoutUser] = useMutation(LOGOUT_USER);
+  const [logoutUser] = useMutation(LOGOUT_USER, {
+    onCompleted: () => dispatch(logout())
+  });
 
   const handleLogoutUser = () => {
     const payload = { input: { id: loggedUserId } };
-
     logoutUser({ variables: payload });
-    dispatch(logout());
   };
 
   return (
