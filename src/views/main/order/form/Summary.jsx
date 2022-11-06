@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { setCompletedOrder } from 'redux_/order/actionsCreator.js';
+import { clearBasket } from 'redux_/basket/actionCreators.js';
 import { countTotalPrice } from 'utils/helpers.js';
 import { ADD_ORDER } from 'graphql/mutations/order.js';
 import { generateAddOrderPayload } from 'utils/order.js';
@@ -24,6 +25,7 @@ const Summary = () => {
       onCompleted: () => {
         dispatch(setCompletedOrder(data));
         navigate('/thank-you-page');
+        dispatch(clearBasket());
       },
       onError: () => setOrderError(true)
     }
