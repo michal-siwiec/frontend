@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useLazyQuery, useMutation } from '@apollo/client';
-import { IS_USER_SAVED_TO_NEWSLETTER } from 'graphql/queries/user.js';
+import { USER_PERSONAL_DETAILS, IS_USER_SAVED_TO_NEWSLETTER } from 'graphql/queries/user.js';
 import { SUBSCRIBE_TO_NEWSLETTER } from 'graphql/mutations/user.js';
 import useIsLogged from 'hooks/useIsLogged.jsx';
 import ValidationNewsletterHandler from 'handlers/validationNewsletterHandler.js';
@@ -25,6 +25,20 @@ const Newsletter = () => {
   const [subscribingToNewsletterSuccess, setSubscribingToNewsletterSuccess] = useState(false);
   const [subscribingToNewsletterError, setSubscribingToNewsletterError] = useState(false);
   const [isUserSavedToNewsletter, setIsUserSavedToNewsletter] = useState(false);
+
+  const [getPersonalDetails, { data: getPersonalDetailsData }] = useLazyQuery(
+    USER_PERSONAL_DETAILS,
+    {
+      variables: { userId: loggedUserId },
+      onCompleted: () => {
+        const { user: userData } = getPersonalDetailsData;
+
+        setName(userData.name);
+        setSurname(userData.surname);
+        setEmail(userData.email);
+      }
+    }
+  );
 
   const [checkIfSavedToNewsletter, {
     called: checkIfSavedToNewsletterCalled,
@@ -80,9 +94,10 @@ const Newsletter = () => {
   };
 
   useEffect(() => {
-    if (!isLogged || checkIfSavedToNewsletterCalled) return;
+    if (!isLogged) return clearForm();
 
-    checkIfSavedToNewsletter();
+    getPersonalDetails();
+    if (!checkIfSavedToNewsletterCalled) checkIfSavedToNewsletter();
   }, [isLogged]);
 
   if (isLogged && isUserSavedToNewsletter) return null;
