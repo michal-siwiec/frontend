@@ -14,3 +14,4 @@
 32) Czy hook useRediret ma sens?
 34) Solve problem with saving products to store
 35) Reset state after make order
+36) Po dodaniu do koszyka musze zresetowac ilosc produktow wybrancyh

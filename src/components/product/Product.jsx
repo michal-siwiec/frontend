@@ -7,18 +7,9 @@ import { formattedPrice } from 'utils/helpers.js';
 import AddToBasketForm from './AddToBasketForm.jsx';
 import SelectedQuantityPresenter from './SelectedQuantityPresenter.jsx';
 
-const Product = ({
-  product: {
-    id,
-    name,
-    price,
-    availableQuantity,
-    picturePath
-  },
-  index,
-  mode
-}) => {
+const Product = ({ product, index, mode }) => {
   const blockName = 'product';
+  const { id, name, price, picturePath } = product;
   const isMainMode = mode === 'main';
   const isBasketMode = mode === 'basket';
 
@@ -45,7 +36,7 @@ const Product = ({
         <p className={`${blockName}__description`}>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, consequatur. Ex blanditiis accusamus nam molestiae officiis totam repellendus labore beatae ullam quas, hic facilis fugit illum tenetur, magni est distinctio.
         </p>
-        { isMainMode && <AddToBasketForm id={id} availableQuantity={availableQuantity} /> }
+        { isMainMode && <AddToBasketForm product={product} /> }
         { isBasketMode && <SelectedQuantityPresenter id={id} /> }
       </div>
     </ShadowedContainer>
