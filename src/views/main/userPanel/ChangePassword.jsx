@@ -5,6 +5,7 @@ import { CHANGE_USER_PASSWORD } from 'graphql/mutations/user.js';
 import ValidationChangePasswordHandler from 'handlers/validationChangePasswordHandler.js';
 import TextInput from 'components/inputs/TextInput.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
+import SuccessModal from 'components/modals/SuccessModal.jsx';
 import LoadingModal from 'components/modals/LoadingModal.jsx';
 import ErrorModal from 'components/modals/ErrorModal.jsx';
 
@@ -15,10 +16,12 @@ const ChangePassword = () => {
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [passwordValidationError, setPasswordValidationError] = useState('');
   const [passwordIdentityValidationError, setPasswordIdentityValidationError] = useState('');
+  const [changePasswordSuccess, setChangePasswordSuccess] = useState(false);
   const [changePasswordError, setChangePasswordError] = useState(false);
   const [changeUserPassword, { loading }] = useMutation(CHANGE_USER_PASSWORD, {
     variables: { input: { password, id: loggedUserId } },
-    onError: () => setChangePasswordError(true)
+    onError: () => setChangePasswordError(true),
+    onCompleted: () => setChangePasswordSuccess(true)
   });
 
   const handlePasswordOnChange = ({ target: { value } }) => setPassword(value);
@@ -70,6 +73,11 @@ const ChangePassword = () => {
           onMouseDown={handleSubmitOnMouseDown}
         />
       </form>
+      <SuccessModal
+        isOpen={changePasswordSuccess}
+        handleOnClose={() => setChangePasswordSuccess(false)}
+        info="Hasło zostało zmienione!"
+      />
       <LoadingModal
         isOpen={loading}
         info="Trwa zmiana hasła"
