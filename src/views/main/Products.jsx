@@ -30,7 +30,7 @@ const Products = ({ arePromoted }) => {
 
   const handlePaginationOnChange = (pageNumber) => setActivePage(pageNumber - 1);
 
-  if (loading) return <LoadingModal info="Trwa pobieranie produktów!" />;
+  if (loading) return <LoadingModal isOpen={loading} info="Trwa pobieranie produktów!" />;
   if (error) return <h1>Error...</h1>;
 
   const { productsDetails: { quantity, products } } = data;

@@ -137,7 +137,10 @@ const Newsletter = () => {
           </Fragment>
         )}
       />
-      { subscribingToNewsletterLoading && <LoadingModal info="Jesteś zapisywany na newsletter!" /> }
+      <LoadingModal
+        isOpen={subscribingToNewsletterLoading}
+        info="Jesteś zapisywany na newsletter!"
+      />
       <SuccessModal
         isOpen={subscribingToNewsletterSuccess}
         handleOnClose={() => setSubscribingToNewsletterSuccess(false)}

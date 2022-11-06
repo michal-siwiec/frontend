@@ -118,7 +118,10 @@ const Register = () => {
           </Fragment>
         )}
       />
-      { loading && <LoadingModal info="Rejestrujemy użytkownika!" /> }
+      <LoadingModal
+        isOpen={loading}
+        info="Rejestrujemy użytkownika!"
+      />
       <SuccessModal
         isOpen={registerUserSuccess}
         handleOnClose={() => setRegisterUserSuccess(false)}

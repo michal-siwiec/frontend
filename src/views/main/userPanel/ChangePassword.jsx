@@ -70,7 +70,10 @@ const ChangePassword = () => {
           onMouseDown={handleSubmitOnMouseDown}
         />
       </form>
-      { loading && <LoadingModal info="Trwa zmiana hasła" /> }
+      <LoadingModal
+        isOpen={loading}
+        info="Trwa zmiana hasła"
+      />
       <ErrorModal
         isOpen={changePasswordError}
         handleOnClose={() => setChangePasswordError(false)}

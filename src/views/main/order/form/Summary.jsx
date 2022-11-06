@@ -66,7 +66,10 @@ const Summary = () => {
         onMouseDown={addOrder}
         value="Kupuje i płacę"
       />
-      { loading && <LoadingModal info="Trwa przetwarzanie twojego zamówienia!" /> }
+      <LoadingModal
+        isOpen={loading}
+        info="Trwa przetwarzanie twojego zamówienia!"
+      />
       <ErrorModal
         isOpen={orderError}
         handleOnClose={() => setOrderError(false)}

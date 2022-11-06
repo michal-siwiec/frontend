@@ -91,7 +91,10 @@ const History = () => {
           </Fragment>
         )
       }
-      { loading && <LoadingModal info="Trwa pobieranie historii twoich zamówień" /> }
+      <LoadingModal
+        isOpen={loading}
+        info="Trwa pobieranie historii twoich zamówień"
+      />
       <ErrorModal
         isOpen={fetchingOrdersError}
         handleOnClose={() => setFetchingOrdersError(false)}

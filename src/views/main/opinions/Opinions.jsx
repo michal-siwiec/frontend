@@ -26,7 +26,7 @@ const Opinions = () => {
 
   const handlePaginationOnChange = (pageNumber) => setActivePage(pageNumber - 1);
 
-  if (loading) return <LoadingModal info="Trwa pobieranie opini!" />;
+  if (loading) return <LoadingModal isOpen={loading} info="Trwa pobieranie opini!" />;
   if (error) return <h1>error</h1>;
 
   const { opinionsDetails: { allOpinionsQuantity, opinions } } = data;

@@ -135,13 +135,19 @@ const MyDetails = () => {
           classNames={`${blockName}__input`}
         />
       </div>
+      <LoadingModal
+        isOpen={updateUserDetailsLoading}
+        info="Twoje dane są aktualizowane!"
+      />
+      <LoadingModal
+        isOpen={personalDetailsDataLoading}
+        info="Dane osobowe są pobierane!"
+      />
       <SuccessModal
         isOpen={updateUserDetailsSuccess}
         handleOnClose={() => setUpdateUserDetailsSuccess(false)}
         info="Dane osobowe zostały zaktualizowane!"
       />
-      {updateUserDetailsLoading && <LoadingModal info="Twoje dane są aktualizowane!" />}
-      {personalDetailsDataLoading && <LoadingModal info="Dane osobowe są pobierane!" />}
       <ErrorModal
         isOpen={updateUserDetailsError}
         handleOnClose={() => setUpdateUserDetailsError(false)}
