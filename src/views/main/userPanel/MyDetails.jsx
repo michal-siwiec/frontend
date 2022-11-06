@@ -6,6 +6,7 @@ import { UPDATE_USER_DETAILS } from 'graphql/mutations/user.js';
 import ValidationMyDetailsHandler from 'handlers/validationMyDetailsHandler.js';
 import TextInput from 'components/inputs/TextInput.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
+import SuccessModal from 'components/modals/SuccessModal.jsx';
 import LoadingModal from 'components/modals/LoadingModal.jsx';
 import ErrorModal from 'components/modals/ErrorModal.jsx';
 
@@ -25,6 +26,7 @@ const MyDetails = () => {
   const [postalCodeValidationError, setPostalCodeValidationError] = useState('');
   const [streetValidationError, setStreetValidationError] = useState('');
   const [getPersonalDetailsDataError, setGetPersonalDetailsDataError] = useState(false);
+  const [updateUserDetailsSuccess, setUpdateUserDetailsSuccess] = useState(false);
   const [updateUserDetailsError, setUpdateUserDetailsError] = useState(false);
 
   const { loading: personalDetailsDataLoading, data: personalDetailsData } = useQuery(
@@ -48,7 +50,8 @@ const MyDetails = () => {
 
   const [updateUserDetails, { loading: updateUserDetailsLoading }] = useMutation(UPDATE_USER_DETAILS, {
     variables: { input: { userId: loggedUserId, name, surname, phoneNumber, street, city, postalCode } },
-    onError: () => setUpdateUserDetailsError(true)
+    onError: () => setUpdateUserDetailsError(true),
+    onCompleted: () => setUpdateUserDetailsSuccess(true)
   });
 
   const handleNameOnChange = ({ target: { value } }) => setName(value);
@@ -132,6 +135,11 @@ const MyDetails = () => {
           classNames={`${blockName}__input`}
         />
       </div>
+      <SuccessModal
+        isOpen={updateUserDetailsSuccess}
+        handleOnClose={() => setUpdateUserDetailsSuccess(false)}
+        info="Dane osobowe zostały zaktualizowane!"
+      />
       {updateUserDetailsLoading && <LoadingModal info="Twoje dane są aktualizowane!" />}
       {personalDetailsDataLoading && <LoadingModal info="Dane osobowe są pobierane!" />}
       <ErrorModal

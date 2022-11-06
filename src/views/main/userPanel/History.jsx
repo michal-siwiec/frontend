@@ -16,8 +16,8 @@ const History = () => {
   const { loggedUserId } = useSelector((store) => store.user);
   const [activePage, setActivePage] = useState(0);
   const [downloadInvoiceTooltipOpen, setDownloadInvoiceTooltipOpen] = useState(false);
-
   const [fetchingOrdersError, setFetchingOrdersError] = useState(false);
+
   const { loading, data } = useQuery(
     GET_ORDERS,
     {
