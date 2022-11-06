@@ -35,12 +35,12 @@ const MyDetails = () => {
       onCompleted: () => {
         const { user } = personalDetailsData;
 
-        setName(user.name);
-        setSurname(user.surname);
-        setPhoneNumber(user.phoneNumber);
-        setCity(user.city);
-        setPostalCode(user.postalCode);
-        setStreet(user.street);
+        setName(user.name || '');
+        setSurname(user.surname || '');
+        setPhoneNumber(user.phoneNumber || '');
+        setCity(user.city || '');
+        setPostalCode(user.postalCode || '');
+        setStreet(user.street || '');
       },
       onError: () => setGetPersonalDetailsDataError(true)
     }
