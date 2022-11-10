@@ -33,9 +33,9 @@ const Newsletter = () => {
       onCompleted: () => {
         const { user: userData } = getPersonalDetailsData;
 
-        setName(userData.name);
-        setSurname(userData.surname);
-        setEmail(userData.email);
+        setName(userData.name || '');
+        setSurname(userData.surname || '');
+        setEmail(userData.email || '');
       }
     }
   );
