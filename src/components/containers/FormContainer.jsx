@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  exact,
-  oneOfType,
-  string,
-  element
-} from 'prop-types';
+import { exact, oneOfType, string, element } from 'prop-types';
 
 const FormContainer = ({ header, form, classNames }) => {
   const blockName = 'form-container';

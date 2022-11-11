@@ -12,7 +12,7 @@
     "prod-build": "npx webpack --config ./config/webpack.config.production.js",
     "js-lint": "npx eslint 'src/**/*.js' 'src/**/*.jsx'",
     "css-lint": "npx stylelint '**/*.css' '**/*.scss' --custom-syntax postcss-less",
-    "react-test": "jest --env=jsdom",
+    "react-test": "jest --env=jsdom --config jest.config.js",
     "postinstall": "npm run prod-build"
   },
   "keywords": [],
