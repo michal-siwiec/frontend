@@ -12,6 +12,14 @@ export const REGISTER_USER = gql`
   }
 `;
 
+export const REMOVE_ACCOUNT = gql`
+  mutation removeAccount($userId: ID!) {
+    user: removeUser(userId: $userId) {
+      id
+    }
+  }
+`;
+
 export const LOGIN_USER = gql`
   mutation loginUser($input: LoginUserInput!) {
     user: loginUser(input: $input) {
