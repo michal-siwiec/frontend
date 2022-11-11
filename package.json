@@ -13,6 +13,8 @@
     "js-lint": "npx eslint 'src/**/*.js' 'src/**/*.jsx'",
     "css-lint": "npx stylelint '**/*.css' '**/*.scss' --custom-syntax postcss-less",
     "react-test": "jest --env=jsdom --config jest.config.js",
+    "e2e-test": "npx cypress run",
+    "open-e2e-test": "npx cypress open",
     "postinstall": "npm run prod-build"
   },
   "keywords": [],
@@ -29,6 +31,7 @@
     "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.5.1",
+    "cypress": "^11.0.1",
     "dotenv-webpack": "^7.1.0",
     "eslint": "^8.13.0",
     "eslint-config-airbnb": "^19.0.4",
