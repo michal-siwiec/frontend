@@ -61,6 +61,7 @@ const Footer = () => {
               onMouseDown={handlePrivacyPolicyOnMouseDown}
               role="link"
               tabIndex={0}
+              data-cy="policy-privacy-label"
             >
               Polityka prywatności
             </span>
@@ -72,8 +73,9 @@ const Footer = () => {
                 open={privacyPolicyTooltipOpen}
                 headerText="Polityka prywatności"
                 secondaryText={privacyPolicyText}
+                id="policy-privacy-tooltip"
               >
-                <i className={`icon-tooltip-prompt ${blockName}__tooltip-prompt`} />
+                <i className={`icon-tooltip-prompt ${blockName}__tooltip-prompt`} data-cy="policy-privacy-prompt" />
               </Tooltip>
             </div>
           </div>
@@ -86,6 +88,7 @@ const Footer = () => {
               onMouseDown={handleShopRulesOnMouseDown}
               role="link"
               tabIndex={0}
+              data-cy="shop-regulation-label"
             >
               Regulamin sklepu
             </span>
@@ -97,8 +100,9 @@ const Footer = () => {
                 open={shopRulesTooltipOpen}
                 headerText="Regulamin sklepu"
                 secondaryText={shopRulesText}
+                id="shop-regulation-tooltip"
               >
-                <i className={`icon-tooltip-prompt ${blockName}__tooltip-prompt`} />
+                <i className={`icon-tooltip-prompt ${blockName}__tooltip-prompt`} data-cy="shop-regulation-prompt" />
               </Tooltip>
             </div>
           </div>
@@ -114,10 +118,11 @@ const Footer = () => {
           }
         >
           {
-            productsCategories.map(({ name, path }) => (
+            productsCategories.map(({ name, path, dataCy }) => (
               <div
                 className={`${blockName}__product-cathegory`}
                 key={`${blockName}-product-cathegory-${name}`}
+                data-cy={dataCy}
               >
                 <Link to={path}>
                   <span className={`${blockName}__content-element`}>
@@ -140,6 +145,7 @@ const Footer = () => {
                 onMouseDown={handleEmailOnMouseDown}
                 role="button"
                 tabIndex={0}
+                data-cy="email-contact-label"
               >
                 {` ${shopMail}`}
               </span>
@@ -153,6 +159,7 @@ const Footer = () => {
                 onMouseDown={handlePhoneOnMouseDown}
                 role="button"
                 tabIndex={0}
+                data-cy="phone-contact-label"
               >
                 {` ${formatPhoneNumber(shopPhone)}`}
               </span>
@@ -170,7 +177,7 @@ const Footer = () => {
           }
         >
           {
-            socials.map(({ iconClass, url }) => (
+            socials.map(({ iconClass, url, dataCy }) => (
               <div
                 className={`${blockName}__social`}
                 key={`${iconClass}-wrapper`}
@@ -180,6 +187,7 @@ const Footer = () => {
                   onMouseDown={() => handleSocialOnMouseDown(url)}
                   role="link"
                   tabIndex={0}
+                  data-cy={dataCy}
                 />
               </div>
             ))

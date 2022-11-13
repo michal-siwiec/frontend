@@ -37,7 +37,9 @@ const Products = ({ arePromoted }) => {
 
   return (
     <div className={`main__${blockName} ${blockName}`}>
-      <h2 className={`${blockName}__header`}>{headerCaption}</h2>
+      <h2 className={`${blockName}__header`} data-cy="products-header">
+        {headerCaption}
+      </h2>
       <div className={`${blockName}__list`}>
         {
           products.map((product, index) => (

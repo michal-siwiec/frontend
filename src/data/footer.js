@@ -3,56 +3,66 @@ import { STORAGE_URL } from 'utils/environment.js';
 export const productsCategories = [
   {
     name: 'Narzędzia',
-    path: '/products?type=tools'
+    path: '/products?type=tools',
+    dataCy: 'toolsCathegoryLabel'
   },
   {
     name: 'Chemia budowlana',
-    path: '/products?type=constructionChemicals'
+    path: '/products?type=constructionChemicals',
+    dataCy: 'constructionChemicalsCathegoryLabel'
   },
   {
     name: 'Schody',
-    path: '/products?type=stairway'
+    path: '/products?type=stairway',
+    dataCy: 'stairwayCathegoryLabel'
   },
   {
     name: 'Strefa dachu',
-    path: '/products?type=roofZone'
+    path: '/products?type=roofZone',
+    dataCy: 'roofZoneCathegoryLabel'
   },
   {
     name: 'Strefa fundamentu',
-    path: '/products?type=foundationZone'
+    path: '/products?type=foundationZone',
+    dataCy: 'foundationZoneCathegoryLabel'
   }
 ];
 
 export const privacyPolicy = {
-  outputName: 'polityka_prywatności.pdf',
-  url: `${STORAGE_URL}/documents/regulamin_sklepu.pdf`
+  outputName: 'polityka_prywatnosci.pdf',
+  url: `${STORAGE_URL}/documents/polityka_prywatnosci.pdf`
 };
 
 export const shopRules = {
   outputName: 'regulamin_sklepu.pdf',
-  url: `${STORAGE_URL}/documents/polityka_prywatnosci.pdf`
+  url: `${STORAGE_URL}/documents/regulamin_sklepu.pdf`
 };
 
 export const socials = [
   {
     iconClass: 'icon-facebook',
-    url: 'https://www.facebook.com/'
+    url: 'https://www.facebook.com/',
+    dataCy: 'facebook-icon'
   },
   {
     iconClass: 'icon-instagram',
-    url: 'https://www.instagram.com/'
+    url: 'https://www.instagram.com/',
+    dataCy: 'instagram-icon'
   },
   {
     iconClass: 'icon-youtube',
-    url: 'https://www.youtube.com/'
+    url: 'https://www.youtube.com/',
+    dataCy: 'youtube-icon'
   },
   {
     iconClass: 'icon-twitter',
-    url: 'https://twitter.com/?lang=pl'
+    url: 'https://twitter.com/?lang=pl',
+    dataCy: 'twitter-icon'
   },
   {
     iconClass: 'icon-tiktok',
-    url: 'https://www.tiktok.com/pl-PL/'
+    url: 'https://www.tiktok.com/pl-PL/',
+    dataCy: 'tiktok-icon'
   }
 ];
 
