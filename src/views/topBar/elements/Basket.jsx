@@ -19,8 +19,8 @@ const Basket = () => {
   const handleBasketOnMouseDown = () => isBasketEmpty ? openEmptyBasketModal() : openBasketSummary();
 
   return (
-    <div className={`${blockName}__basket`}>
-      <span className={`${blockName}__basket-price`}>
+    <div className={`${blockName}__basket`} data-cy="topbar-basket">
+      <span className={`${blockName}__basket-price`} data-cy="topbar-basket-price">
         {countTotalPrice(productsInBasket)} zł
       </span>
       <i
@@ -28,6 +28,7 @@ const Basket = () => {
         onMouseDown={handleBasketOnMouseDown}
         role="button"
         tabIndex={0}
+        data-cy="topbar-basket-icon"
       />
       <EmptyBasketModal
         open={isEmptyBasketModalOpen}

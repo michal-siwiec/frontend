@@ -1,0 +1,8 @@
+{
+  "data":{
+     "auth":{
+        "userId":"86df4d0c-6787-4d38-9b12-1ad2da39d8f0",
+        "__typename":"IsUserLoggedObject"
+     }
+  }
+}

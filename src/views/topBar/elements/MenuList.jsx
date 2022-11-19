@@ -6,13 +6,14 @@ const MenuList = () => {
   const blockName = 'top-bar-elements';
 
   return (
-    <div className={`${blockName}__menu`}>
+    <div className={`${blockName}__menu`} data-cy="topbar-menu-list">
       <ul className={`${blockName}__menu-list`}>
         {
-          menuItemsProperties.map(({ path, name }) => (
+          menuItemsProperties.map(({ path, name, dataCy }) => (
             <li
               className={`${blockName}__list-item`}
               key={`${blockName}__item-link-${name}`}
+              data-cy={dataCy}
             >
               <Link to={path} className={`${blockName}__item-link`}>
                 {name}

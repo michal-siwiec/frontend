@@ -22,7 +22,7 @@ const MobileContent = () => {
         onClose={() => setIsDrawerOpen(false)}
         className="drawer--top-bar"
       >
-        <div className={`${blockName} ${blockName}--drawer`}>
+        <div className={`${blockName} ${blockName}--drawer`} data-cy="menu-drawer">
           <Authorization />
           <div className={`${blockName}__divider`} />
           <MenuList />

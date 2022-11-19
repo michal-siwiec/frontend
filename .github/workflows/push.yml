@@ -27,5 +27,5 @@ jobs:
       run: npm run js-lint
     - name: Start react tests
       run: npm run react-test
-    - name: Start e2e tests
-      run: npm run e2e-test
+    # - name: Start e2e tests
+    #   run: npm run e2e-test

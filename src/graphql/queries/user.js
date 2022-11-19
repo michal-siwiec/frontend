@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const IS_USER_LOGGED = gql`
-  query {
+  query IsUserLogged {
     auth: isUserLogged {
       userId
     }
@@ -9,7 +9,7 @@ export const IS_USER_LOGGED = gql`
 `;
 
 export const USER_PERSONAL_DETAILS = gql`
-  query($userId: ID!) {
+  query ($userId: ID!) {
     user: user(userId: $userId) {
       name
       surname
@@ -23,7 +23,7 @@ export const USER_PERSONAL_DETAILS = gql`
 `;
 
 export const IS_USER_SAVED_TO_NEWSLETTER = gql`
-  query($userId: ID!) {
+  query ($userId: ID!) {
     user(userId: $userId) {
       savedToNewsletter,
       email

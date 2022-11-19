@@ -70,6 +70,7 @@ const Login = () => {
               onMouseDown={handleLoginOnMouseDown}
               classNames="button--login"
               value="Zaloguj się"
+              dataCy="login-submit-btn"
             />
           </Fragment>
         )}

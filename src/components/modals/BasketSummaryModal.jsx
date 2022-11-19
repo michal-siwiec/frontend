@@ -21,6 +21,7 @@ const BasketSummaryModal = ({ open, handleOnClose }) => {
       className={blockName}
       open={open}
       onClose={handleOnClose}
+      id="basket-with-products-modal"
     >
       <div className={`${blockName}__content-wrapper`}>
         <h1 className={`${blockName}__header`}>Twój koszyk</h1>

@@ -18,6 +18,7 @@ const EmptyBasketModal = ({ open, handleOnClose }) => {
       className={blockName}
       open={open}
       onClose={handleOnClose}
+      id="empty-basket-modal"
     >
       <div className={`${blockName}__content-wrapper`}>
         <div className={`${blockName}__header`}>

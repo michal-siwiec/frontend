@@ -1,0 +1,50 @@
+{
+   "data":{
+      "productsDetails":{
+         "quantity":5,
+         "products":[
+            {
+               "id":"3b77f534-065d-4187-951a-e47a7effe84a",
+               "name":"Taśma kalenicowa",
+               "price":55.0,
+               "availableQuantity":125,
+               "picturePath":"https://olx-development.s3.eu-central-1.amazonaws.com/images/products/roof_+accessories/tasma_kalenicowa.jpeg",
+               "__typename":"ProductObject"
+            },
+            {
+               "id":"58edbf81-924f-41b0-a94b-6653e5bd81ed",
+               "name":"Tynk akrylowy",
+               "price":120.99,
+               "availableQuantity":10,
+               "picturePath":"https://olx-development.s3.eu-central-1.amazonaws.com/images/products/constuction_chemicals/tynk+akrylowy.jpeg",
+               "__typename":"ProductObject"
+            },
+            {
+               "id":"a6df41ce-b447-4350-9444-f58272418e7e",
+               "name":"Bloczek Termalika",
+               "price":124.99,
+               "availableQuantity":1000,
+               "picturePath":"https://olx-development.s3.eu-central-1.amazonaws.com/images/products/foundation_materials/bloczke_termalika.jpeg",
+               "__typename":"ProductObject"
+            },
+            {
+               "id":"2a68c2d5-35a6-43fa-b8e3-7a3ec4b4cf12",
+               "name":"Mocownik łaty kominiarskiej",
+               "price":150.0,
+               "availableQuantity":100,
+               "picturePath":"https://olx-development.s3.eu-central-1.amazonaws.com/images/products/roof_+accessories/mocownik_laty_kominiarskiej.jpeg",
+               "__typename":"ProductObject"
+            },
+            {
+               "id":"7a6ac329-e564-496f-90a6-24673339546b",
+               "name":"Klej do styropianu",
+               "price":150.99,
+               "availableQuantity":10,
+               "picturePath":"https://olx-development.s3.eu-central-1.amazonaws.com/images/products/constuction_chemicals/klej_do_styropianu.jpeg",
+               "__typename":"ProductObject"
+            }
+         ],
+         "__typename":"ProductsWithQuantityObject"
+      }
+   }
+}

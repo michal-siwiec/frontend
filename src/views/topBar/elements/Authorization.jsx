@@ -22,24 +22,32 @@ const Authorization = () => {
   };
 
   return (
-    <div className={`${blockName}__authorization`}>
+    <div className={`${blockName}__authorization`} data-cy="topbar-authorization">
       {
         !isLogged ? (
           <Fragment>
             <span className={`${blockName}__authorization-action`}>
-              <Link to="/login" className={`${blockName}__authorization-action-link`}>
+              <Link
+                to="/login"
+                className={`${blockName}__authorization-action-link`}
+                data-cy="topbar-login-label"
+              >
                 Logowanie
               </Link>
             </span>
             <span className={`${blockName}__authorization-action`}>
-              <Link to="/register" className={`${blockName}__authorization-action-link`}>
+              <Link
+                to="/register"
+                className={`${blockName}__authorization-action-link`}
+                data-cy="topbar-register-label"
+              >
                 Rejestracja
               </Link>
             </span>
           </Fragment>
         ) : (
           <div>
-            <Link to="/user-panel">
+            <Link to="/user-panel" data-cy="topbar-avatar">
               <Avatar avatars={avatars} classNames={`${blockName}__avatar`} />
             </Link>
             <span
@@ -47,6 +55,7 @@ const Authorization = () => {
               role="button"
               tabIndex={0}
               className={`${blockName}__authorization-action ${blockName}__authorization-action-link`}
+              data-cy="topbar-logout-label"
             >
               Wyloguj
             </span>

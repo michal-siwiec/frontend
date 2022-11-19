@@ -22,6 +22,7 @@ const Product = ({ product, index, mode }) => {
         initial: appearingInSequence.hidden,
         animate: appearingInSequence.visible
       }}
+      dataCy={`product-${index}`}
     >
       <div className={`${blockName}__img-wrapper`}>
         <img

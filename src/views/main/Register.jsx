@@ -114,6 +114,7 @@ const Register = () => {
               classNames="button--register"
               onMouseDown={handleSubmit}
               value="Załóż konto"
+              dataCy="register-submit-btn"
             />
           </Fragment>
         )}

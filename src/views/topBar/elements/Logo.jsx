@@ -6,7 +6,7 @@ const Logo = () => {
   const blockName = 'top-bar-elements';
 
   return (
-    <div className={`${blockName}__logo`}>
+    <div className={`${blockName}__logo`} data-cy="topbar-logo">
       <Link to="/">
         <img
           src={`${STORAGE_URL}/images/logo.svg`}

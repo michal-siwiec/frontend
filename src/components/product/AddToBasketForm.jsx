@@ -39,6 +39,7 @@ const AddToBasketForm = ({ product }) => {
       <SubmitButton
         onMouseDown={handleAddToBasketOnMouseDown}
         value="Dodaj do koszyka"
+        dataCy="add-to-basket-submit"
       />
     </div>
   );
