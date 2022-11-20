@@ -13,8 +13,8 @@ const MobileMenagers = () => {
           picturePath,
           description,
           position
-        }) => (
-          <div className={`${blockName}__menager`} key={uuidv4()}>
+        }, index) => (
+          <div className={`${blockName}__menager`} key={uuidv4()} data-cy={`manager-${index}`}>
             <div className={`${blockName}__manager-picture-wrapper`}>
               <img
                 src={picturePath}
