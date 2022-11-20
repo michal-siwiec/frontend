@@ -9,7 +9,7 @@ export const IS_USER_LOGGED = gql`
 `;
 
 export const USER_PERSONAL_DETAILS = gql`
-  query ($userId: ID!) {
+  query User ($userId: ID!) {
     user: user(userId: $userId) {
       name
       surname
@@ -23,7 +23,7 @@ export const USER_PERSONAL_DETAILS = gql`
 `;
 
 export const IS_USER_SAVED_TO_NEWSLETTER = gql`
-  query ($userId: ID!) {
+  query IsUserSavedToNewsletter ($userId: ID!) {
     user(userId: $userId) {
       savedToNewsletter,
       email

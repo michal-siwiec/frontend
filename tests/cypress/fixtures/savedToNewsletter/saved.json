@@ -1,0 +1,9 @@
+{
+  "data":{
+     "user":{
+        "savedToNewsletter":true,
+        "email":"siwiec.michal724@gmail.com",
+        "__typename":"UserObject"
+     }
+  }
+}

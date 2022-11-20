@@ -114,6 +114,7 @@ const Newsletter = () => {
               value={name}
               onChange={handleNameOnChange}
               validationError={nameErrorMessage}
+              dataCy="newsletter-name"
             />
             <TextInput
               placeholder="Nazwisko"
@@ -121,6 +122,7 @@ const Newsletter = () => {
               value={surname}
               onChange={handleSurnameOnChange}
               validationError={surnameErrorMessage}
+              dataCy="newsletter-surname"
             />
             <TextInput
               placeholder="Adres email"
@@ -128,11 +130,13 @@ const Newsletter = () => {
               value={email}
               onChange={handleEmailOnChange}
               validationError={emailErrorMessage}
+              dataCy="newsletter-email"
             />
             <SubmitButton
               onMouseDown={handleSaveToNewsletter}
               value="Zapisz"
               classNames="button--newsletter"
+              dataCy="newsletter-submit-button"
             />
           </Fragment>
         )}

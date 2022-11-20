@@ -1,2 +1,1 @@
-import './commands.js';
-import './graphql-test-utils.js';
+import './commands/index.js';

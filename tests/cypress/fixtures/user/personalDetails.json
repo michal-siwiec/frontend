@@ -1,0 +1,14 @@
+{
+  "data":{
+     "user":{
+        "name":null,
+        "surname":"Siwiec",
+        "email":"siwiec.michal724@gmail.com",
+        "phoneNumber":null,
+        "city":null,
+        "postalCode":null,
+        "street":null,
+        "__typename":"UserObject"
+     }
+  }
+}

@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 import widthBreakpoints from '../../../src/data/widthBreakpoints.js';
-import { mockResponse } from '../support/graphql-test-utils.js';
+import { mockResponse } from '../support/utils/graphql.js';
 
 describe('topbar', () => {
   context('elements presence', () => {
@@ -60,9 +60,7 @@ describe('topbar', () => {
     });
   });
 
-  context.only('links', () => {
-    // beforeEach(() => cy.visit('/'));
-
+  context('links', () => {
     it('redirects to products page after click in products label', () => {
       cy.getBySelector('products-label').click();
       cy.url().should('eq', 'http://localhost:3003/products');
@@ -78,7 +76,7 @@ describe('topbar', () => {
       cy.url().should('eq', 'http://localhost:3003/opinions');
     });
 
-    context.only('authorization', () => {
+    context('authorization', () => {
       context('when user is not logged', () => {
         beforeEach(() => cy.visit('/'));
 
@@ -102,10 +100,10 @@ describe('topbar', () => {
       context('when user is logged', () => {
         beforeEach(() => {
           cy.intercept('POST', '/graphql', (request) => {
-            mockResponse({ request, operationName: 'IsUserLogged', fixturePath: 'isUserLogged.json' });
+            mockResponse({ request, operationName: 'IsUserLogged', fixturePath: 'isUserLogged/logged.json' });
           });
 
-          cy.visit('/')
+          cy.visit('/');
         });
 
         it('does not find login label', () => {
