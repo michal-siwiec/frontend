@@ -46,13 +46,13 @@ const ClientDetails = () => {
   const setDefaultClientDetailsIfNeeded = () => {
     const { user } = personalDetailsData;
 
-    if (!name) dispatch(setName(user.name));
-    if (!surname) dispatch(setSurname(user.surname));
-    if (!street) dispatch(setStreet(user.street));
-    if (!city) dispatch(setCity(user.city));
-    if (!postalCode) dispatch(setPostalCode(user.postalCode));
-    if (!email) dispatch(setEmail(user.email));
-    if (!phoneNumber) dispatch(setPhoneNumber(user.phoneNumber));
+    if (!name) dispatch(setName(user.name || ''));
+    if (!surname) dispatch(setSurname(user.surname || ''));
+    if (!street) dispatch(setStreet(user.street || ''));
+    if (!city) dispatch(setCity(user.city || ''));
+    if (!postalCode) dispatch(setPostalCode(user.postalCode || ''));
+    if (!email) dispatch(setEmail(user.email || ''));
+    if (!phoneNumber) dispatch(setPhoneNumber(user.phoneNumber || ''));
   };
 
   const [getUserPersonalDetails, { called, loading, data: personalDetailsData }] = useLazyQuery(
