@@ -8,7 +8,7 @@ describe('newsletter', () => {
       beforeEach(() => {
         cy.intercept('POST', '/graphql', (request) => {
           mockResponse({ request, operationName: 'IsUserLogged', fixturePath: 'isUserLogged/notLogged.json' });
-          mockResponse({ request, operationName: 'ProductsDetails', fixturePath: 'promotedProducts.json' });
+          mockResponse({ request, operationName: 'ProductsDetails', fixturePath: 'products/promoted.json' });
         });
   
         cy.visit('/');
@@ -25,7 +25,7 @@ describe('newsletter', () => {
         beforeEach(() => {
           cy.intercept('POST', '/graphql', (request) => {
             mockResponse({ request, operationName: 'IsUserLogged', fixturePath: 'isUserLogged/logged.json' });
-            mockResponse({ request, operationName: 'ProductsDetails', fixturePath: 'promotedProducts.json' });
+            mockResponse({ request, operationName: 'ProductsDetails', fixturePath: 'products/promoted.json' });
             mockResponse({
               request,
               operationName: 'IsUserSavedToNewsletter',
@@ -46,7 +46,7 @@ describe('newsletter', () => {
         beforeEach(() => {
           cy.intercept('POST', '/graphql', (request) => {
             mockResponse({ request, operationName: 'IsUserLogged', fixturePath: 'isUserLogged/logged.json' });
-            mockResponse({ request, operationName: 'ProductsDetails', fixturePath: 'promotedProducts.json' });
+            mockResponse({ request, operationName: 'ProductsDetails', fixturePath: 'products/promoted.json' });
             mockResponse({
               request,
               operationName: 'IsUserSavedToNewsletter',
@@ -132,7 +132,7 @@ describe('newsletter', () => {
         cy.visit('/');
       });
   
-      it.only('shows loading and success modal after submit form', () => {
+      it('shows loading and success modal after submit form', () => {
         cy.fillNewsletterForm();
         cy.checkPresenceOfLoadingAndSuccessModals({
           loadingModalInfo: 'Jesteś zapisywany na newsletter!',

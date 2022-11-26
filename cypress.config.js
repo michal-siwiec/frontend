@@ -9,6 +9,6 @@ module.exports = defineConfig({
     trashAssetsBeforeRuns: true,
     fixturesFolder: "tests/cypress/fixtures",
     screenshotsFolder: "tests/cypress/screenshots",
-    videosFolder: "tests/cypress/videos",
+    videosFolder: "tests/cypress/videos"
   }
 });

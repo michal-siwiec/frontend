@@ -145,7 +145,7 @@ describe('topbar', () => {
     context('not empty basket', () => {
       beforeEach(() => {
         cy.intercept('POST', '/graphql', (request) => {
-          mockResponse({ request, operationName: 'ProductsDetails', fixturePath: 'promotedProducts.json' });
+          mockResponse({ request, operationName: 'ProductsDetails', fixturePath: 'products/promoted.json' });
         });
 
         cy.visit('/');

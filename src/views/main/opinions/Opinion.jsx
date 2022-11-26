@@ -41,6 +41,7 @@ const Opinion = ({ opinionsData: { content, mark, updatedAt, user: { email, avat
         initial: appearingInSequence.hidden,
         animate: appearingInSequence.visible
       }}
+      dataCy={`opinion-${index}`}
     >
       <Fragment>
         <div className={`${blockName}__picture-wrapper`}>

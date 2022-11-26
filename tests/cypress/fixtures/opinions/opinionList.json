@@ -1,0 +1,36 @@
+{
+   "data":{
+      "opinionsDetails":{
+         "opinions":[
+            {
+               "content":"Wspanialy sklep, ale nie dziala logowanie!",
+               "mark":5,
+               "updatedAt":"2022-11-20T20:20:02Z",
+               "user":{
+                  "email":"siwiec.michal724@gmail.com",
+                  "avatars":[
+                     
+                  ],
+                  "__typename":"UserObject"
+               },
+               "__typename":"OpinionObject"
+            },
+            {
+               "content":"Nothing",
+               "mark":4,
+               "updatedAt":"2022-11-20T20:20:42Z",
+               "user":{
+                  "email":"siwiec.michal724@gmail.com",
+                  "avatars":[
+                     
+                  ],
+                  "__typename":"UserObject"
+               },
+               "__typename":"OpinionObject"
+            }
+         ],
+         "allOpinionsQuantity":3,
+         "__typename":"OpinionsWithAllQuantityObject"
+      }
+   }
+}

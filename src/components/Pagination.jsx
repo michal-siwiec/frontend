@@ -2,12 +2,7 @@ import React from 'react';
 import { exact, func, number } from 'prop-types';
 import { default as ReactJSPagination } from 'react-js-pagination';
 
-const Pagination = ({
-  activePage,
-  onChange,
-  itemsQuantity,
-  quantityPerPage
-}) => {
+const Pagination = ({ activePage, onChange, itemsQuantity, quantityPerPage }) => {
   const blockName = 'pagination';
   const isOnlyOnePage = itemsQuantity <= quantityPerPage;
 

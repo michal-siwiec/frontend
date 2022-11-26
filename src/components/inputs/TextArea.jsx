@@ -12,7 +12,8 @@ const TextArea = ({
   onChange,
   placeholder,
   textareaRef,
-  validationError
+  validationError,
+  dataCy
 }) => (
   <Fragment>
     <textarea
@@ -21,6 +22,7 @@ const TextArea = ({
       onChange={onChange}
       placeholder={placeholder}
       ref={textareaRef}
+      data-cy={dataCy}
     />
     {validationError && <div className="text-area__error">{validationError}</div>}
   </Fragment>
@@ -32,13 +34,15 @@ TextArea.propTypes = exact({
   onChange: func.isRequired,
   placeholder: string,
   validationError: string,
-  textareaRef: element.isRequired
+  textareaRef: element.isRequired,
+  dataCy: string
 }).isRequired;
 
 TextArea.defaultProps = {
   classNames: '',
   placeholder: '',
-  validationError: ''
+  validationError: '',
+  dataCy: ''
 };
 
 export default TextArea;

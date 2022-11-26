@@ -1,0 +1,11 @@
+{
+  "data":{
+     "opinionsDetails":{
+        "opinions":[
+           
+        ],
+        "allOpinionsQuantity":0,
+        "__typename":"OpinionsWithAllQuantityObject"
+     }
+  }
+}
