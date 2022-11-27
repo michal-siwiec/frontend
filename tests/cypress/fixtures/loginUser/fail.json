@@ -1,0 +1,13 @@
+{
+  "errors":[
+     {
+        "message":"undefined method `id' for",
+        "backtrace":[
+           ""
+        ]
+     }
+  ],
+  "data":{
+     
+  }
+}

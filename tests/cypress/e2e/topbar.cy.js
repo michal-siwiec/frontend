@@ -63,17 +63,17 @@ describe('topbar', () => {
   context('links', () => {
     it('redirects to products page after click in products label', () => {
       cy.getBySelector('products-label').click();
-      cy.url().should('eq', 'http://localhost:3003/products');
+      cy.checkURL('products');
     });
 
     it('redirects to about page after click in about label', () => {
       cy.getBySelector('about-label').click();
-      cy.url().should('eq', 'http://localhost:3003/about');
+      cy.checkURL('about');
     });
 
     it('redirects to products page after click in products label', () => {
       cy.getBySelector('opinions-label').click();
-      cy.url().should('eq', 'http://localhost:3003/opinions');
+      cy.checkURL('opinions');
     });
 
     context('authorization', () => {
@@ -83,13 +83,13 @@ describe('topbar', () => {
         it('redirects to login page after click in Login label', () => {
           cy.getBySelector('topbar-login-label').click();
           cy.getBySelector('login-submit-btn').should('exist');
-          cy.url().should('eq', 'http://localhost:3003/login');
+          cy.checkURL('login');
         });
     
         it('redirects to register page after click in Login label', () => {
           cy.getBySelector('topbar-register-label').click();
           cy.getBySelector('register-submit-btn').should('exist');
-          cy.url().should('eq', 'http://localhost:3003/register');
+          cy.checkURL('register');
         });
 
         it('does not find logout label', () => {
@@ -116,13 +116,13 @@ describe('topbar', () => {
 
         it('redirects to user panel after click in avatar', () => {
           cy.getBySelector('topbar-avatar').click();
-          cy.url().should('eq', 'http://localhost:3003/user-panel');
+          cy.checkURL('user-panel');
         });
 
         it('redirect to home page after click in logout label', () => {
           cy.getBySelector('topbar-avatar').click();
           cy.getBySelector('topbar-logout-label').click();
-          cy.url().should('eq', 'http://localhost:3003/');
+          cy.checkURL();
         });
       });
     });

@@ -13,8 +13,8 @@ import SubmitButton from 'components/SubmitButton.jsx';
 const Login = () => {
   const blockName = 'login';
   const { loggedUserId } = useSelector((store) => store.user);
-  const [email, setEmail] = useState('siwiec.michal724@gmail.com');
-  const [password, setPassword] = useState('Ab47901825');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [emailErrorMessage, setEmailErrorMessage] = useState('');
   const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
   const dispatch = useDispatch();
@@ -44,7 +44,12 @@ const Login = () => {
         header={(
           <Fragment>
             <Link to="/login">
-              <span className={`${blockName}__active-link`}>Logowanie </span>
+              <span
+                className={`${blockName}__active-link`}
+                data-cy="login-header"
+              >
+                {'Logowanie '}
+              </span>
             </Link>
             <Link to="/register">Rejestracja</Link>
           </Fragment>
@@ -57,6 +62,7 @@ const Login = () => {
               value={email}
               onChange={handleEmailOnChange}
               validationError={emailErrorMessage}
+              dataCy="login-email-input"
             />
             <TextInput
               placeholder="Hasło"
@@ -65,6 +71,7 @@ const Login = () => {
               value={password}
               onChange={handlePasswordOnChange}
               validationError={passwordErrorMessage}
+              dataCy="login-password-input"
             />
             <SubmitButton
               onMouseDown={handleLoginOnMouseDown}

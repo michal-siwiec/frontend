@@ -68,27 +68,27 @@ describe('footer', () => {
     context('redirects', () => {
       it('redirects to /products?type=tools', () => {
         cy.getBySelector('toolsCathegoryLabel').click();
-        cy.url().should('eq', 'http://localhost:3003/products?type=tools')
+        cy.checkURL('products?type=tools');
       });
 
       it('redirects to /products?type=constructionChemicals', () => {
         cy.getBySelector('constructionChemicalsCathegoryLabel').click();
-        cy.url().should('eq', 'http://localhost:3003/products?type=constructionChemicals')
+        cy.checkURL('products?type=constructionChemicals');
       });
 
       it('redirects to /products?type=stairway', () => {
         cy.getBySelector('stairwayCathegoryLabel').click();
-        cy.url().should('eq', 'http://localhost:3003/products?type=stairway')
+        cy.checkURL('products?type=stairway');
       });
 
       it('redirects to /products?type=roofZone', () => {
         cy.getBySelector('roofZoneCathegoryLabel').click();
-        cy.url().should('eq', 'http://localhost:3003/products?type=roofZone')
+        cy.checkURL('products?type=roofZone');
       });
 
       it('redirects to /products?type=foundationZone', () => {
         cy.getBySelector('foundationZoneCathegoryLabel').click();
-        cy.url().should('eq', 'http://localhost:3003/products?type=foundationZone')
+        cy.checkURL('products?type=foundationZone');
       });
     }); 
   });
