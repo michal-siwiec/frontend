@@ -9,14 +9,11 @@ env:
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [12.x]
     steps:
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Setup Node 12.x
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 12.x
     - name: Upload repository
       uses: actions/checkout@v3
     - name: Install dependencies
@@ -27,5 +24,3 @@ jobs:
       run: npm run js-lint
     - name: Start react tests
       run: npm run react-test
-    # - name: Start e2e tests
-    #   run: npm run e2e-test
