@@ -9,6 +9,8 @@ import ValidationLoginHandler from 'handlers/validationLoginHandler.js';
 import FormContainer from 'components/containers/FormContainer.jsx';
 import TextInput from 'components/inputs/TextInput.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
+import LoadingModal from 'components/modals/LoadingModal.jsx';
+import ErrorModal from 'components/modals/ErrorModal.jsx';
 
 const Login = () => {
   const blockName = 'login';
@@ -17,9 +19,15 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [emailErrorMessage, setEmailErrorMessage] = useState('');
   const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
+  const [loginFail, setLoginFail] = useState(false);
   const dispatch = useDispatch();
-  const [loginUser, { data }] = useMutation(LOGIN_USER, {
-    onCompleted: () => dispatch(login(data))
+  const [loginUser, { loading, data }] = useMutation(LOGIN_USER, {
+    onCompleted: () => {
+      dispatch(login(data));
+    },
+    onError: () => {
+      setLoginFail(true);
+    }
   });
 
   const handleEmailOnChange = ({ target: { value } }) => setEmail(value);
@@ -81,6 +89,15 @@ const Login = () => {
             />
           </Fragment>
         )}
+      />
+      <LoadingModal
+        isOpen={loading}
+        info="Trwa logowanie użytkownika!"
+      />
+      <ErrorModal
+        isOpen={loginFail}
+        handleOnClose={() => setLoginFail(false)}
+        info="Niestety nie udało się zalogować!"
       />
     </div>
   );
