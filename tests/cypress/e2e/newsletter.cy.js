@@ -136,7 +136,7 @@ describe('newsletter', () => {
         cy.fillNewsletterForm();
         cy.checkPresenceOfLoadingAndSuccessModals({
           loadingModalInfo: 'Jesteś zapisywany na newsletter!',
-          errorModalInfo: 'Zostałeś zapisany na newsletter!'
+          successModalInfo: 'Zostałeś zapisany na newsletter!'
         });
       });
     });

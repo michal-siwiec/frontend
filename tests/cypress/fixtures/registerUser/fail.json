@@ -1,0 +1,11 @@
+{
+  "errors":[
+     {
+        "message":"Validation failed: Email is already taken!",
+        "backtrace":[""]
+     }
+  ],
+  "data":{
+     
+  }
+}

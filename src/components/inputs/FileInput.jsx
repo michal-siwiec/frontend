@@ -1,18 +1,8 @@
 import React, { Fragment } from 'react';
-import {
-  exact,
-  func,
-  element,
-  string
-} from 'prop-types';
+import { exact, func, element, string } from 'prop-types';
 import clsx from 'clsx';
 
-const FileInput = ({
-  onChange,
-  innerRef,
-  classNames,
-  validationError
-}) => (
+const FileInput = ({ onChange, innerRef, classNames, validationError, dataCy }) => (
   <Fragment>
     <input
       type="file"
@@ -20,6 +10,7 @@ const FileInput = ({
       onChange={onChange}
       ref={innerRef}
       multiple
+      data-cy={dataCy}
     />
     {validationError && <div className="input__error">{validationError}</div>}
   </Fragment>
@@ -29,11 +20,13 @@ FileInput.propTypes = exact({
   onChange: func.isRequired,
   innerRef: element.isRequired,
   classNames: string,
-  validationError: string.isRequired
+  validationError: string.isRequired,
+  dataCy: string
 }).isRequired;
 
 FileInput.defaultProps = {
-  classNames: ''
+  classNames: '',
+  dataCy: ''
 };
 
 export default FileInput;

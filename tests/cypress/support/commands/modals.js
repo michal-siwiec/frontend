@@ -1,8 +1,8 @@
 import { DEFAULT_REQUEST_DELAY } from '../constants.js';
 
-Cypress.Commands.add('checkPresenceOfLoadingAndSuccessModals', ({ loadingModalInfo, errorModalInfo }) => {
+Cypress.Commands.add('checkPresenceOfLoadingAndSuccessModals', ({ loadingModalInfo, successModalInfo }) => {
   cy.checkLoadingModalPresence(loadingModalInfo);
-  cy.checkSuccessModalPresence(errorModalInfo);
+  cy.checkSuccessModalPresence(successModalInfo);
 });
 
 Cypress.Commands.add('checkPresenceOfLoadingAndErrorModals', ({ loadingModalInfo, errorModalInfo }) => {

@@ -16,9 +16,9 @@ export const aliasMutation = (req, operationName) => {
   }
 };
 
-export const mockResponse = ({ request, operationName, fixturePath }) => {
+export const mockResponse = ({ request, operationName, fixturePath, statusCode = 200 }) => {
   if (hasOperationName(request, operationName)) {
-    request.reply({ fixture: fixturePath, statusCode: 200 });
+    request.reply({ fixture: fixturePath, statusCode });
   }
 };
 

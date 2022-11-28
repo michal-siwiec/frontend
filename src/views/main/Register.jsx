@@ -21,8 +21,8 @@ const Register = () => {
   const fileInput = useRef(null);
   const { loggedUserId } = useSelector((store) => store.user);
   const [avatars, setAvatars] = useState([]);
-  const [email, setEmail] = useState('siwiec.michal724@gmail.com');
-  const [password, setPassword] = useState('Ab47901825');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [emailErrorMessage, setEmailErrorMessage] = useState('');
   const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
   const [avatarsErrorMessages, setAvatarsErrorMessages] = useState('');
@@ -95,6 +95,7 @@ const Register = () => {
               onChange={handleEmailOnChange}
               value={email}
               validationError={emailErrorMessage}
+              dataCy="register-email-input"
             />
             <TextInput
               placeholder="Password"
@@ -103,12 +104,14 @@ const Register = () => {
               onChange={handlePasswordOnChange}
               value={password}
               validationError={passwordErrorMessage}
+              dataCy="register-password-input"
             />
             <FileInput
               classNames="file-input--register"
               onChange={handleFileOnChange}
               innerRef={fileInput}
               validationError={avatarsErrorMessages}
+              dataCy="register-file-input"
             />
             <SubmitButton
               classNames="button--register"

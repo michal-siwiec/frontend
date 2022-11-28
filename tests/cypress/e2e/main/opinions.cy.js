@@ -117,7 +117,7 @@ describe('opinions', () => {
           cy.fillFormToAddOpinion();
           cy.checkPresenceOfLoadingAndSuccessModals({
             loadingModalInfo: 'Twoja opinia jest dodawana!',
-            errorModalInfo: 'Dziękujemy za dodanie opini!'
+            successModalInfo: 'Dziękujemy za dodanie opini!'
           });
         });
       });

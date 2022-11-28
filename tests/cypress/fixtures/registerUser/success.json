@@ -1,0 +1,11 @@
+{
+  "data":{
+     "user":{
+        "id":"197be4e5-f592-4522-984b-4549dceaf341",
+        "avatars":[
+           
+        ],
+        "__typename":"UserObject"
+     }
+  }
+}
