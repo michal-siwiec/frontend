@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  exact,
-  arrayOf,
-  shape,
-  bool,
-  string
-} from 'prop-types';
+import { exact, arrayOf, shape, bool, string } from 'prop-types';
 import { STORAGE_URL } from 'utils/environment.js';
 
 const Avatar = ({ avatars, classNames }) => {

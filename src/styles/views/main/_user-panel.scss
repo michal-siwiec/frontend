@@ -224,4 +224,55 @@
       margin: 5px 10px 30px;
     }
   }
+
+  .avatars {
+    width: 100%;
+
+    .present-avatars {
+      &__header {
+        flex-basis: 100%;
+        text-align: left;
+        margin-bottom: 45px;
+        color: $gray;
+      }
+
+      &__avatars-list-wrapper {
+        margin-bottom: 35px;
+      }
+
+      &__avatars-list {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      &__list-item-wrapper {
+        width: 100px;
+        height: 100px;
+        margin: 0 15px;
+        overflow: hidden;
+        border-radius: 100%;
+
+        &:first-of-type {
+          margin-left: 0;
+        }
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        &--selected {
+          box-shadow: $strong-box-shadow;
+        }
+      }
+
+      &__list-item {
+        width: 100%;
+        height: 100%;
+      }
+
+      &__submit-button {
+        max-width: 450px;
+      }
+    }
+  }
 }

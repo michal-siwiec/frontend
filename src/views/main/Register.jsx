@@ -21,8 +21,8 @@ const Register = () => {
   const fileInput = useRef(null);
   const { loggedUserId } = useSelector((store) => store.user);
   const [avatars, setAvatars] = useState([]);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('siwiec.michal724@gmail.com');
+  const [password, setPassword] = useState('Ab47901825');
   const [emailErrorMessage, setEmailErrorMessage] = useState('');
   const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
   const [avatarsErrorMessages, setAvatarsErrorMessages] = useState('');

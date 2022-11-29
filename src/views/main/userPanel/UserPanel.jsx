@@ -37,6 +37,11 @@ const UserPanel = () => {
             Usuń konto
           </Link>
         </div>
+        <div className={`${blockName}__toggle-action-tile`}>
+          <Link to="avatars" className={`${blockName}__action-tile-link`}>
+            Avatar
+          </Link>
+        </div>
       </div>
       <div className={`${blockName}__action-wrapper`}>
         <Outlet />
