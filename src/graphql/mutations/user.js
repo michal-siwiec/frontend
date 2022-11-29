@@ -71,3 +71,14 @@ export const UPDATE_USER_DETAILS = gql`
     }
   }
 `;
+
+export const UPDATE_USER_AVATARS = gql`
+  mutation updateUserAvatars($input: UpdateUserInput!) {
+    user: updateUser(input: $input) {
+      avatars {
+        main,
+        storagePath
+      }
+    }
+  }
+`;

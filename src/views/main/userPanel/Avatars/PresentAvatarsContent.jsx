@@ -1,16 +1,37 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useMutation } from '@apollo/client';
 import { exact, arrayOf, shape, string } from 'prop-types';
 import clsx from 'clsx';
 import { sortByMainField, generateTooltipHeaderText, generateTooltipSecondaryText } from 'utils/userPanelAvatars.js';
+import { UPDATE_USER_AVATARS } from 'graphql/mutations/user.js';
+import { updateAvatars } from 'redux_/user/actionsCreator.js';
 import Tooltip from 'components/Tooltip.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
+import LoadingModal from 'components/modals/LoadingModal.jsx';
+import SuccessModal from 'components/modals/SuccessModal.jsx';
+import ErrorModal from 'components/modals/ErrorModal.jsx';
 
 const PresentAvatarsContent = ({ avatars }) => {
   const blockName = 'present-avatars';
   const avatarsCopy = JSON.parse(JSON.stringify(avatars));
+  const { loggedUserId } = useSelector((store) => store.user);
+  const dispatch = useDispatch();
   const tooltipOpeningInitialState = Array(avatars.length).fill(false);
   const [tooltipOpeningState, setTooltipOpeningState] = useState(tooltipOpeningInitialState);
   const [selectedAvatar, setSelectedAvatar] = useState(0);
+  const [avatarsToUpdate, setAvatarsToUpdate] = useState(avatarsCopy);
+  const [updatingAvatarSuccess, setUpdatingAvatarSuccess] = useState(false);
+  const [updatingAvatarError, setUpdatingAvatarError] = useState(false);
+
+  const [updateUserAvatars, { loading, data }] = useMutation(UPDATE_USER_AVATARS, {
+    variables: { input: { userId: loggedUserId, avatars: avatarsToUpdate } },
+    onError: () => setUpdatingAvatarError(true),
+    onCompleted: () => {
+      setUpdatingAvatarSuccess(true);
+      dispatch(updateAvatars(data));
+    }
+  });
 
   const toggleTooltipsVisible = (index) => {
     const tooltipOpeningNewState = [...tooltipOpeningState];
@@ -19,11 +40,14 @@ const PresentAvatarsContent = ({ avatars }) => {
     setTooltipOpeningState(tooltipOpeningNewState);
   };
 
-  const handleSubmitOnMouseDown = () => {
-    const newAvatarsSelection = JSON.parse(JSON.stringify(avatars));
-    newAvatarsSelection.forEach((avatar, avatarIndex) => {
-      avatar.main = avatarIndex === selectedAvatar;
-    });
+  const handleAvatarOnClick = (index) => {
+    const newAvatarsSelection = avatarsCopy.map((avatar, avatarIndex) => ({
+      main: avatarIndex === selectedAvatar,
+      storagePath: avatar.storagePath
+    }));
+
+    setSelectedAvatar(index);
+    setAvatarsToUpdate(newAvatarsSelection);
   };
 
   return (
@@ -44,7 +68,7 @@ const PresentAvatarsContent = ({ avatars }) => {
                   )}
                   onMouseEnter={() => toggleTooltipsVisible(index)}
                   onMouseLeave={() => toggleTooltipsVisible(index)}
-                  onMouseDown={() => setSelectedAvatar(index)}
+                  onMouseDown={() => handleAvatarOnClick(index)}
                   role="button"
                   tabIndex={0}
                 >
@@ -66,9 +90,23 @@ const PresentAvatarsContent = ({ avatars }) => {
         </ul>
       </div>
       <SubmitButton
-        onMouseDown={handleSubmitOnMouseDown}
+        onMouseDown={updateUserAvatars}
         value="Zaktualizuj avatary"
         classNames={`${blockName}__submit-button`}
+      />
+      <LoadingModal
+        isOpen={loading}
+        info="Trwa zaktualizacja avatarów!"
+      />
+      <SuccessModal
+        isOpen={updatingAvatarSuccess}
+        handleOnClose={() => setUpdatingAvatarSuccess(false)}
+        info="Avatary zostały pomyślnie zaktualizowane!"
+      />
+      <ErrorModal
+        isOpen={updatingAvatarError}
+        handleOnClose={() => setUpdatingAvatarError(false)}
+        info="Niestety nie udało się zaktualizować avatarów."
       />
     </div>
   );
