@@ -19,7 +19,7 @@ const ChangePassword = () => {
   const [changePasswordSuccess, setChangePasswordSuccess] = useState(false);
   const [changePasswordError, setChangePasswordError] = useState(false);
   const [changeUserPassword, { loading }] = useMutation(CHANGE_USER_PASSWORD, {
-    variables: { input: { password, id: loggedUserId } },
+    variables: { input: { password, userId: loggedUserId } },
     onError: () => setChangePasswordError(true),
     onCompleted: () => setChangePasswordSuccess(true)
   });
