@@ -5,8 +5,8 @@ on:
     branches:
       - 'feature/**'
     paths:
-      - '**.js'
-      - '**.jsx'
+      - '**/**.js'
+      - '**/**.jsx'
 env:
   API_GRAPHQL_ROOT: ${{ secrets.API_GRAPHQL_ROOT }}
   API_ROOT: ${{ secrets.API_ROOT }}
