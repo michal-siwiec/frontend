@@ -8,42 +8,48 @@ env:
   API_WS_ROOT: ${{ secrets.API_WS_ROOT }}
   STORAGE_URL: ${{ secrets.STORAGE_URL }}
 jobs:
-  css-lint:
+  test-job:
     runs-on: ubuntu-latest
     steps:
-    - name: Setup Node 12.x
-      uses: actions/setup-node@v3
-      with:
-        node-version: 12.x
-    - name: Upload repository
-      uses: actions/checkout@v3
-    - name: Install dependencies
-      run: npm install
-    - name: Start css linter
-      run: npm run css-lint
-  js-lint:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Setup Node 12.x
-      uses: actions/setup-node@v3
-      with:
-        node-version: 12.x
-    - name: Upload repository
-      uses: actions/checkout@v3
-    - name: Install dependencies
-      run: npm install
-    - name: Start js linter
-      run: npm run js-lint
-  react-test:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Setup Node 12.x
-      uses: actions/setup-node@v3
-      with:
-        node-version: 12.x
-    - name: Upload repository
-      uses: actions/checkout@v3
-    - name: Install dependencies
-      run: npm install
-    - name: Start react tests
-      run: npm run react-test
+    - name: Print some info
+      run: echo "sdasdasd"
+
+  # css-lint:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - name: Setup Node 12.x
+  #     uses: actions/setup-node@v3
+  #     with:
+  #       node-version: 12.x
+  #   - name: Upload repository
+  #     uses: actions/checkout@v3
+  #   - name: Install dependencies
+  #     run: npm install
+  #   - name: Start css linter
+  #     run: npm run css-lint
+  # js-lint:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - name: Setup Node 12.x
+  #     uses: actions/setup-node@v3
+  #     with:
+  #       node-version: 12.x
+  #   - name: Upload repository
+  #     uses: actions/checkout@v3
+  #   - name: Install dependencies
+  #     run: npm install
+  #   - name: Start js linter
+  #     run: npm run js-lint
+  # react-test:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - name: Setup Node 12.x
+  #     uses: actions/setup-node@v3
+  #     with:
+  #       node-version: 12.x
+  #   - name: Upload repository
+  #     uses: actions/checkout@v3
+  #   - name: Install dependencies
+  #     run: npm install
+  #   - name: Start react tests
+  #     run: npm run react-test
