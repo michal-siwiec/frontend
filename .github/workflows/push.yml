@@ -3,8 +3,10 @@ on:
   pull_request:
     types: [opened, closed]
     branches:
-      - master
-      - feature/**
+      - 'feature/**'
+    paths:
+      - '**.js'
+      - '**.jsx'
 env:
   API_GRAPHQL_ROOT: ${{ secrets.API_GRAPHQL_ROOT }}
   API_ROOT: ${{ secrets.API_ROOT }}
