@@ -1,55 +1,49 @@
 name: Run lint and tests
 on:
-  pull_request_target:
-    types: [opened]
+  pull_request_review_comment:
+    types: [created]
 env:
   API_GRAPHQL_ROOT: ${{ secrets.API_GRAPHQL_ROOT }}
   API_ROOT: ${{ secrets.API_ROOT }}
   API_WS_ROOT: ${{ secrets.API_WS_ROOT }}
   STORAGE_URL: ${{ secrets.STORAGE_URL }}
 jobs:
-  test-job:
+  css-lint:
     runs-on: ubuntu-latest
     steps:
-    - name: Print some info
-      run: echo "sdasdasd"
-
-  # css-lint:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - name: Setup Node 12.x
-  #     uses: actions/setup-node@v3
-  #     with:
-  #       node-version: 12.x
-  #   - name: Upload repository
-  #     uses: actions/checkout@v3
-  #   - name: Install dependencies
-  #     run: npm install
-  #   - name: Start css linter
-  #     run: npm run css-lint
-  # js-lint:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - name: Setup Node 12.x
-  #     uses: actions/setup-node@v3
-  #     with:
-  #       node-version: 12.x
-  #   - name: Upload repository
-  #     uses: actions/checkout@v3
-  #   - name: Install dependencies
-  #     run: npm install
-  #   - name: Start js linter
-  #     run: npm run js-lint
-  # react-test:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - name: Setup Node 12.x
-  #     uses: actions/setup-node@v3
-  #     with:
-  #       node-version: 12.x
-  #   - name: Upload repository
-  #     uses: actions/checkout@v3
-  #   - name: Install dependencies
-  #     run: npm install
-  #   - name: Start react tests
-  #     run: npm run react-test
+    - name: Setup Node 12.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: 12.x
+    - name: Upload repository
+      uses: actions/checkout@v3
+    - name: Install dependencies
+      run: npm install
+    - name: Start css linter
+      run: npm run css-lint
+  js-lint:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup Node 12.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: 12.x
+    - name: Upload repository
+      uses: actions/checkout@v3
+    - name: Install dependencies
+      run: npm install
+    - name: Start js linter
+      run: npm run js-lint
+  react-test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup Node 12.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: 12.x
+    - name: Upload repository
+      uses: actions/checkout@v3
+    - name: Install dependencies
+      run: npm install
+    - name: Start react tests
+      run: npm run react-test
