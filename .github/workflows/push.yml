@@ -1,6 +1,5 @@
 name: Run lint and tests
 on:
-  push:
   pull_request_target:
     types: [opened, closed]
 env:
