@@ -7,7 +7,7 @@ const useIsLogged = () => {
 
   useEffect(() => setIsLogged(!!loggedUserId), [loggedUserId]);
 
-  return true;
+  return false;
 };
 
 export default useIsLogged;
