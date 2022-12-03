@@ -1,12 +1,10 @@
 name: Run lint and tests
 on:
-  pull_request:
-    types: [opened, closed]
+  push:
     branches:
       - 'feature/**'
     paths:
-      - '**/**.js'
-      - '**/**.jsx'
+      - 'src/hooks/useIsLogged.jsx'
 env:
   API_GRAPHQL_ROOT: ${{ secrets.API_GRAPHQL_ROOT }}
   API_ROOT: ${{ secrets.API_ROOT }}
