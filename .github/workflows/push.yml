@@ -1,7 +1,6 @@
 name: Run lint and tests
 on:
-  issues:
-    types: [opened]
+  - issues
 env:
   API_GRAPHQL_ROOT: ${{ secrets.API_GRAPHQL_ROOT }}
   API_ROOT: ${{ secrets.API_ROOT }}
