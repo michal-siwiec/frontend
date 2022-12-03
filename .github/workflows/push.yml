@@ -1,8 +1,7 @@
 name: Run lint and tests
 on:
   pull_request_target:
-    types:
-      - opened
+    types: [opened]
 env:
   API_GRAPHQL_ROOT: ${{ secrets.API_GRAPHQL_ROOT }}
   API_ROOT: ${{ secrets.API_ROOT }}
