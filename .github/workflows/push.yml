@@ -1,8 +1,10 @@
 name: Run lint and tests
 on:
-  push:
-  issues:
-    types: [opened]
+  pull_request:
+    types: [opened, closed]
+    branches:
+      - master
+      - feature/**
 env:
   API_GRAPHQL_ROOT: ${{ secrets.API_GRAPHQL_ROOT }}
   API_ROOT: ${{ secrets.API_ROOT }}
