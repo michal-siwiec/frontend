@@ -15,7 +15,7 @@ const useIsMobile = (mobileBreakPoint_ = widthBreakpoints.md) => {
     return () => window.removeEventListener('resize', setMobility);
   }, []);
 
-  return isMobile;
+  return false;
 };
 
 export default useIsMobile;
