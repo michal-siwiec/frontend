@@ -28,7 +28,8 @@ cp .env.sample .env
 
 To start app use:
 ```bash
-npm run start
+npm run start # to run frontent app
+rails s -p 3333 # to run backend - app https://github.com/michalSiwiec/budoman-backend
 ```
 
 ## Code quality
