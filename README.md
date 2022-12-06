@@ -15,12 +15,13 @@ This is developed using:
 
 - Node.js 12.6.0
 
-## Installation
+## Setup
 
 Use the package manager [npm](https://www.npmjs.com/) to install dependencies.
 
 ```bash
 npm install
+cp .env.sample .env
 ```
 
 ## Usage
