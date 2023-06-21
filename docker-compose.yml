@@ -1,0 +1,13 @@
+version: 1.0.0
+services:
+  app:
+    image: michsiw439/budoman-front:1.0.0
+    container_name: budoman-front-app
+    ports:
+      - 3003:3003
+    env_file:
+      - .env
+    networks:
+      - budoman-front
+networks:
+  budoman-front:

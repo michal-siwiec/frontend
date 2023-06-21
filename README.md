@@ -15,21 +15,14 @@ This is developed using:
 
 - Node.js 12.6.0
 
-## Setup
-
-Use the package manager [npm](https://www.npmjs.com/) to install dependencies.
-
-```bash
-npm install
-cp .env.sample .env
-```
-
-## Usage
+## Application setup
+1. Make sure that you have filled .env file
+2. Make sure that you have Docker installed on your local machine
+3. Run the following command to start the application:
 
 To start app use:
 ```bash
-npm run start # to run frontent app
-rails s -p 3333 # to run backend - app https://github.com/michalSiwiec/budoman-backend
+docker-compose up # app should be available on 3003 port
 ```
 
 ## Code quality
