@@ -3,8 +3,14 @@ services:
   app:
     image: michsiw439/budoman-front:1.0.0
     container_name: budoman-front-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SSH_PUB_KEY: ${SSH_PUB_KEY}
     ports:
       - 3003:3003
+      - 2223:22
     env_file:
       - .env
     networks:

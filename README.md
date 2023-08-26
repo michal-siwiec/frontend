@@ -22,31 +22,15 @@ This is developed using:
 
 To start app use:
 ```bash
-docker-compose up # app should be available on 3003 port
+SSH_PUB_KEY=$(cat ~/.ssh/id_rsa.pub) docker-compose build # Build images (perform only once)
+docker-compose up # App should be available on port 3003
 ```
 
 ## Code quality
-
-I use linters for js && scss files. To run linters:
-
 ```bash
-npm run js-lint
-npm run css-lint
+npm run js-lint # to launch linter for js files
+npm run css-lint # to launch linter for css files
+npm run react-test # to launch react unit tests
+npm run e2e-test # to launch e2e tests in CLI
+npm run open-e2e-test # to launch e2e tests in browser
 ```
-
-## Tests
-
-### Unit
-```bash
-npm run react-test
-```
-
-### e2e
-```bash
-npm run e2e-test # to run CLI
-npm run open-e2e-test # to run in browser
-```
-
-### CI-CD
-
-I use github actions to test and automatically deploy code to production server. After each commit linters and tests are called automatically.
