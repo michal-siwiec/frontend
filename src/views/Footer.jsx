@@ -1,33 +1,30 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import FileDownloader from 'services/fileDownloader.js';
-import { formatPhoneNumber } from 'utils/helpers.js';
-import { STORAGE_URL } from 'utils/environment.js';
+import LiveHelpIcon from '@mui/icons-material/LiveHelp';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import TwitterIcon from '@mui/icons-material/Twitter';
 import Tooltip from 'components/Tooltip.jsx';
-import {
-  productsCategories,
-  privacyPolicy,
-  shopRules,
-  socials,
-  shopMail,
-  shopPhone,
-  shopRulesText,
-  privacyPolicyText
-} from 'data/footer.js';
+import useFetchUrl from 'hooks/useFetchUrl.jsx';
+import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem.js';
+import { formatPhoneNumber } from 'utils/helpers.js';
+import { productsCategories, shopRulesText, privacyPolicyText } from 'data/footer.js';
+import { shopMail, shopPhone } from 'data/contactData.js';
 
 const Footer = () => {
   const blockName = 'footer';
+  const logoURL = useFetchUrl({ key: 'images/logo.svg' });
+
   const [privacyPolicyTooltipOpen, setPrivacyPolicyTooltipOpen] = useState(false);
   const [shopRulesTooltipOpen, setShopRulesTooltipOpen] = useState(false);
 
   const handlePrivacyPolicyOnMouseDown = () => {
-    const { url, outputName } = privacyPolicy;
-    new FileDownloader({ url, outputName }).call();
+    fetchFileOnLocalFileSystem({ key: 'documents/polityka_prywatnosci.pdf', fileName: 'Polityka prywatności.pdf' });
   };
 
   const handleShopRulesOnMouseDown = () => {
-    const { url, outputName } = shopRules;
-    new FileDownloader({ url, outputName }).call();
+    fetchFileOnLocalFileSystem({ key: 'documents/regulamin_sklepu.pdf', fileName: 'Regulamin sklepu.pdf' });
   };
 
   const handleEmailOnMouseDown = () => window.location = `mailto:${shopMail}`;
@@ -42,7 +39,7 @@ const Footer = () => {
         <h4 className={`${blockName}__part-header`}>
           <Link to="/">
             <img
-              src={`${STORAGE_URL}/images/logo.svg`}
+              src={logoURL}
               alt="Budoman-logo"
               className={`${blockName}__logo-img`}
             />
@@ -75,7 +72,7 @@ const Footer = () => {
                 secondaryText={privacyPolicyText}
                 id="policy-privacy-tooltip"
               >
-                <i className={`icon-tooltip-prompt ${blockName}__tooltip-prompt`} data-cy="policy-privacy-prompt" />
+                <LiveHelpIcon className={`${blockName}__tooltip-prompt`} data-cy="policy-privacy-prompt" />
               </Tooltip>
             </div>
           </div>
@@ -102,7 +99,7 @@ const Footer = () => {
                 secondaryText={shopRulesText}
                 id="shop-regulation-tooltip"
               >
-                <i className={`icon-tooltip-prompt ${blockName}__tooltip-prompt`} data-cy="shop-regulation-prompt" />
+                <LiveHelpIcon className={`${blockName}__tooltip-prompt`} data-cy="shop-regulation-prompt" />
               </Tooltip>
             </div>
           </div>
@@ -176,22 +173,45 @@ const Footer = () => {
              ${blockName}__stretchable-container`
           }
         >
-          {
-            socials.map(({ iconClass, url, dataCy }) => (
-              <div
-                className={`${blockName}__social`}
-                key={`${iconClass}-wrapper`}
-              >
-                <i
-                  className={`${iconClass} ${blockName}__content-element ${`${blockName}__social-icon`}`}
-                  onMouseDown={() => handleSocialOnMouseDown(url)}
-                  role="link"
-                  tabIndex={0}
-                  data-cy={dataCy}
-                />
-              </div>
-            ))
-          }
+          <div className={`${blockName}__social`} key="icon-facebook-wrapper">
+            <FacebookIcon
+              className={`${blockName}__content-element ${blockName}__social-icon`}
+              onMouseDown={() => handleSocialOnMouseDown('https://www.facebook.com/')}
+              role="link"
+              tabIndex={0}
+              data-cy="facebook-icon"
+            />
+          </div>
+
+          <div className={`${blockName}__social`} key="icon-instagram-wrapper">
+            <InstagramIcon
+              className={`${blockName}__content-element ${blockName}__social-icon`}
+              onMouseDown={() => handleSocialOnMouseDown('https://www.instagram.com/')}
+              role="link"
+              tabIndex={0}
+              data-cy="instagram-icon"
+            />
+          </div>
+
+          <div className={`${blockName}__social`} key="youtube-icon-wrapper">
+            <YouTubeIcon
+              className={`${blockName}__content-element ${blockName}__social-icon`}
+              onMouseDown={() => handleSocialOnMouseDown('https://www.youtube.com/')}
+              role="link"
+              tabIndex={0}
+              data-cy="youtube-icon"
+            />
+          </div>
+
+          <div className={`${blockName}__social`} key="icon-twitter-wrapper">
+            <TwitterIcon
+              className={`${blockName}__content-element ${blockName}__social-icon`}
+              onMouseDown={() => handleSocialOnMouseDown('https://www.youtube.com/')}
+              role="link"
+              tabIndex={0}
+              data-cy="twitter-icon"
+            />
+          </div>
         </div>
       </div>
       <div className={`${blockName}__copyright`}>

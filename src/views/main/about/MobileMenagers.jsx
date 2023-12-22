@@ -1,23 +1,29 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import useFetchUrl from 'hooks/useFetchUrl.jsx';
 import { managers } from 'data/about.js';
 
 const MobileMenagers = () => {
   const blockName = 'mobile-menagers';
+  const managersPictureURL = [];
+
+  managers.forEach(({ pictureKey }) => {
+    const url = useFetchUrl({ key: pictureKey });
+    managersPictureURL.push(url);
+  });
 
   return (
     <div className={blockName}>
       {
         managers.map(({
           name,
-          picturePath,
           description,
           position
         }, index) => (
           <div className={`${blockName}__menager`} key={uuidv4()} data-cy={`manager-${index}`}>
             <div className={`${blockName}__manager-picture-wrapper`}>
               <img
-                src={picturePath}
+                src={managersPictureURL[index]}
                 alt={`${name} zdjęcie`}
                 className={`${blockName}__manager-picture`}
               />

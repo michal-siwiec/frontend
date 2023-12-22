@@ -1,6 +1,7 @@
 import React from 'react';
 import { exact, number, string } from 'prop-types';
 import clsx from 'clsx';
+import useFetchUrl from 'hooks/useFetchUrl.jsx';
 import ShadowedContainer from 'components/containers/ShadowedContainer.jsx';
 import { appearingInSequence } from 'data/animations.js';
 import { formattedPrice } from 'utils/helpers.js';
@@ -9,9 +10,11 @@ import SelectedQuantityPresenter from './SelectedQuantityPresenter.jsx';
 
 const Product = ({ product, index, mode }) => {
   const blockName = 'product';
-  const { id, name, price, picturePath } = product;
+  const { id, name, price, pictureBucket, pictureKey } = product;
   const isMainMode = mode === 'main';
   const isBasketMode = mode === 'basket';
+
+  const pictureURL = useFetchUrl({ bucket: pictureBucket, key: pictureKey });
 
   return (
     <ShadowedContainer
@@ -26,7 +29,7 @@ const Product = ({ product, index, mode }) => {
     >
       <div className={`${blockName}__img-wrapper`}>
         <img
-          src={picturePath}
+          src={pictureURL}
           alt="Zdjęcie produktu"
           className={`${blockName}__img`}
         />

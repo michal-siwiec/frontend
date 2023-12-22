@@ -1,15 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { STORAGE_URL } from 'utils/environment.js';
+import useFetchUrl from 'hooks/useFetchUrl.jsx';
 
 const Logo = () => {
   const blockName = 'top-bar-elements';
+  const logoURL = useFetchUrl({ key: 'images/logo.svg' });
 
   return (
     <div className={`${blockName}__logo`} data-cy="topbar-logo">
       <Link to="/">
         <img
-          src={`${STORAGE_URL}/images/logo.svg`}
+          src={logoURL}
           alt="Budoman logo"
           className={`${blockName}__logo-img`}
         />

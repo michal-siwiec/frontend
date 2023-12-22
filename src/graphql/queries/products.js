@@ -9,7 +9,8 @@ export const GET_PRODUCTS = gql`
         name
         price
         availableQuantity
-        picturePath
+        pictureKey
+        pictureBucket
       }
     }
   }

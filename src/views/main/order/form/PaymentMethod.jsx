@@ -2,6 +2,8 @@ import React, { Fragment, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setPaymentMethod } from 'redux_/order/actionsCreator.js';
 import { OrderContext } from 'contexts/contexts.js';
+import PaymentIcon from '@mui/icons-material/Payment';
+import PaidIcon from '@mui/icons-material/Paid';
 import CheckBox from 'components/inputs/CheckBox.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
 
@@ -28,7 +30,7 @@ const PaymentMethod = () => {
         checked={cashPayment}
         label={(
           <Fragment>
-            <i className={`icon-cash-payment ${blockName}__icon`} />
+            <PaidIcon className={`${blockName}__icon`} />
             <span className={`${blockName}__icon-label`}>Płatność przy odbiorze</span>
           </Fragment>
         )}
@@ -38,7 +40,7 @@ const PaymentMethod = () => {
         checked={traditionalTransfer}
         label={(
           <Fragment>
-            <i className={`icon-traditional-transfer ${blockName}__icon`} />
+            <PaymentIcon className={`${blockName}__icon`} />
             <span className={`${blockName}__icon-label`}>Przelew tradycyjny</span>
           </Fragment>
         )}

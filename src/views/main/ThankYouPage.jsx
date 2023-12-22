@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import { useSelector } from 'react-redux';
-import FileDownloader from 'services/fileDownloader.js';
-import { STORAGE_URL } from 'utils/environment.js';
+import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem.js';
 import SubmitButton from 'components/SubmitButton.jsx';
 
 const ThankYouPage = () => {
@@ -10,10 +9,10 @@ const ThankYouPage = () => {
   const isTraditionalTransfer = paymentMethod === 'traditional_transfer';
 
   const downloadInvoice = () => {
+    const key = `users/${loggedUserId}/invoices/${orderID}.pdf`;
     const fileName = `Faktura za zamówienie: ${orderID}`;
-    const pathToFile = `${STORAGE_URL}/users/${loggedUserId}/invoices/${orderID}.pdf`;
 
-    new FileDownloader({ url: pathToFile, outputName: fileName }).call();
+    fetchFileOnLocalFileSystem({ key, fileName });
   };
 
   return (

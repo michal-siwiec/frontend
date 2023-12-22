@@ -1,10 +1,10 @@
 import React, { Fragment, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useQuery } from '@apollo/client';
-import { STORAGE_URL } from 'utils/environment.js';
 import { GET_ORDERS } from 'graphql/queries/order.js';
 import { formatTimestamp } from 'utils/helpers.js';
-import FileDownloader from 'services/fileDownloader.js';
+import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem.js';
+import LiveHelpIcon from '@mui/icons-material/LiveHelp';
 import LoadingModal from 'components/modals/LoadingModal.jsx';
 import ErrorModal from 'components/modals/ErrorModal.jsx';
 import Pagination from 'components/Pagination.jsx';
@@ -29,10 +29,10 @@ const History = () => {
   const handlePaginationOnChange = (pageNumber) => setActivePage(pageNumber - 1);
 
   const downloadInvoice = (orderID) => {
+    const key = `users/${loggedUserId}/invoices/${orderID}.pdf`;
     const fileName = `Faktura za zamówienie: ${orderID}`;
-    const pathToFile = `${STORAGE_URL}/users/${loggedUserId}/invoices/${orderID}.pdf`;
 
-    new FileDownloader({ url: pathToFile, outputName: fileName }).call();
+    fetchFileOnLocalFileSystem({ key, fileName });
   };
 
   return (
@@ -55,7 +55,7 @@ const History = () => {
                         open={downloadInvoiceTooltipOpen}
                         headerText="Pobierz fakturę!"
                       >
-                        <i className={`icon-tooltip-prompt ${blockName}__tooltip-prompt`} />
+                        <LiveHelpIcon className={`${blockName}__tooltip-prompt`} />
                       </Tooltip>
                     </div>
                   </td>
