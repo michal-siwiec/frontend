@@ -6,7 +6,8 @@ export const REGISTER_USER = gql`
       id,
       avatars {
         main,
-        storagePath
+        key,
+        bucket
       }
     }
   }
@@ -26,7 +27,8 @@ export const LOGIN_USER = gql`
       id,
       avatars {
         main,
-        storagePath
+        key,
+        bucket
       }
     }
   }
@@ -77,7 +79,8 @@ export const UPDATE_USER_AVATARS = gql`
     user: updateUser(input: $input) {
       avatars {
         main,
-        storagePath
+        key,
+        bucket
       }
     }
   }

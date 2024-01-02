@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import useIsMobile from 'hooks/useIsMobile.jsx';
 import { tooltipSecondaryText } from 'data/searchEngine.js';
+import LiveHelpIcon from '@mui/icons-material/LiveHelp';
 import TextInput from 'components/inputs/TextInput.jsx';
 import Tooltip from 'components/Tooltip.jsx';
 
@@ -33,7 +34,7 @@ const SearchEngine = () => {
           classNames={`${blockName}__search-engine-tooltip`}
           id="search-engine-tooltip"
         >
-          <i className={`icon-tooltip-prompt ${blockName}__tooltip-prompt`} data-cy="search-engine-prompt" />
+          <LiveHelpIcon className={`${blockName}__tooltip-prompt`} data-cy="search-engine-prompt" />
         </Tooltip>
       </span>
     </div>

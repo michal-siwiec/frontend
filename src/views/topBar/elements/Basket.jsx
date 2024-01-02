@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { isEmpty } from 'lodash';
 import { countTotalPrice } from 'utils/helpers.js';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import EmptyBasketModal from 'components/modals/EmptyBasketModal.jsx';
 import BasketSummaryModal from 'components/modals/BasketSummaryModal.jsx';
 
@@ -23,8 +24,8 @@ const Basket = () => {
       <span className={`${blockName}__basket-price`} data-cy="topbar-basket-price">
         {countTotalPrice(productsInBasket)} zł
       </span>
-      <i
-        className={`${blockName}__basket-icon icon-shop-basket`}
+      <ShoppingBasketIcon
+        className={`${blockName}__basket-icon`}
         onMouseDown={handleBasketOnMouseDown}
         role="button"
         tabIndex={0}

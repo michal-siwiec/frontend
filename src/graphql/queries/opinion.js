@@ -11,7 +11,8 @@ export const GET_OPINIONS = gql`
           email
           avatars {
             main
-            storagePath
+            key
+            bucket
           }
         }
       }

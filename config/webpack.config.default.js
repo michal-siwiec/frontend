@@ -25,10 +25,7 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           'css-loader',
           {
-            loader: 'sass-loader',
-            options: {
-              additionalData: "$storage-url: '" + process.env.STORAGE_URL + "';"
-            }
+            loader: 'sass-loader'
           }
         ]
       },

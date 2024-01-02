@@ -13,6 +13,8 @@ services:
       - 2223:22
     env_file:
       - .env
+    volumes:
+      - .:/budoman-front
     networks:
       - budoman-front
 networks:

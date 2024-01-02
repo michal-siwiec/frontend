@@ -2,6 +2,9 @@ import React, { Fragment, useContext } from 'react';
 import { OrderContext } from 'contexts/contexts.js';
 import { useSelector, useDispatch } from 'react-redux';
 import { setDeliveryMethod } from 'redux_/order/actionsCreator.js';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import PostAddIcon from '@mui/icons-material/PostAdd';
+import ApprovalIcon from '@mui/icons-material/Approval';
 import CheckBox from 'components/inputs/CheckBox.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
 
@@ -32,8 +35,8 @@ const DeliveryMethod = () => {
         checked={inPost}
         label={(
           <Fragment>
-            <i className={`icon-logo-inpost ${blockName}__icon ${blockName}__icon--inpost`} />
-            <span className={`${blockName}__icon-label`}>(10,99 zł)</span>
+            <LocalShippingIcon className={`${blockName}__icon ${blockName}__icon--inpost`} />
+            <span className={`${blockName}__icon-label`}>Inpost (10,99 zł)</span>
           </Fragment>
         )}
       />
@@ -42,15 +45,20 @@ const DeliveryMethod = () => {
         checked={dpd}
         label={(
           <Fragment>
-            <i className={`icon-logo-dpd ${blockName}__icon`} />
-            <span className={`${blockName}__icon-label`}>(15,99 zł)</span>
+            <PostAddIcon className={`${blockName}__icon`} />
+            <span className={`${blockName}__icon-label`}>DPD (15,99 zł)</span>
           </Fragment>
         )}
       />
       <CheckBox
         onChange={handlePickUpAtheThePointOnChange}
         checked={pickUpAtThePoint}
-        label="Odbiór w punkcie (0,00 zł)"
+        label={(
+          <Fragment>
+            <ApprovalIcon className={`${blockName}__icon`} />
+            <span className={`${blockName}__icon-label`}>Odbiór w punkcie (0,00 zł)</span>
+          </Fragment>
+        )}
       />
       <SubmitButton
         classNames="button--client-details"
