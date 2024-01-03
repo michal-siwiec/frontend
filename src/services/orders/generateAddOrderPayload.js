@@ -1,7 +1,7 @@
 import { findKey, snakeCase } from 'lodash';
 import { store } from 'redux_/store.js';
 
-export const generateAddOrderPayload = () => {
+const generateAddOrderPayload = () => {
   const {
     basket: { addedProducts },
     order: { clientDetails, delivery, payment },
@@ -20,3 +20,5 @@ export const generateAddOrderPayload = () => {
     productsOrder
   };
 };
+
+export default generateAddOrderPayload;

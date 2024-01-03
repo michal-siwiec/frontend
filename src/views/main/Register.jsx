@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import useRedirect from 'hooks/useRedirect.jsx';
 import { login } from 'redux_/user/actionsCreator.js';
-import AvatarsGenerator from 'services/avatarsGenerator.js';
-import ValidationRegisterHandler from 'handlers/validationRegisterHandler.js';
+import AvatarsGenerator from 'services/users/avatarsGenerator.js';
+import handleRegisterValidation from 'services/users/handleRegisterValidation.js';
 import { REGISTER_USER } from 'graphql/mutations/user.js';
 import FormContainer from 'components/containers/FormContainer.jsx';
 import TextInput from 'components/inputs/TextInput.jsx';
@@ -55,7 +55,7 @@ const Register = () => {
       passwordError,
       avatarError,
       validationStatus
-    } = new ValidationRegisterHandler({ email, password, avatars }).call();
+    } = handleRegisterValidation({ email, password, avatars });
 
     setEmailErrorMessage(emailError);
     setPasswordErrorMessage(passwordError);

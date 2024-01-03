@@ -4,7 +4,7 @@ import HamburgerMenu from './elements/HamburgerMenu.jsx';
 import Drawer from 'components/Drawer.jsx';
 import Authorization from './elements/Authorization.jsx';
 import MenuList from './elements/MenuList.jsx';
-import Basket from './elements/Basket.jsx';
+import Basket from 'views/topBar/elements/basket/Basket.jsx';
 import SearchEngine from './elements/SearchEngine.jsx';
 
 const MobileContent = () => {

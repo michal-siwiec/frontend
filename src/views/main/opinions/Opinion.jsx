@@ -7,7 +7,7 @@ import ShadowedContainer from 'components/containers/ShadowedContainer.jsx';
 import Rating from 'components/Rating.jsx';
 import Avatar from 'components/Avatar.jsx';
 import { appearingInSequence } from 'data/animations.js';
-import OpinionPresentedContentGenerator from 'services/opinionPresentedContentGenerator.js';
+import OpinionPresentedContentGenerator from 'services/opinions/opinionPresentedContentGenerator.js';
 
 const Opinion = ({ opinionsData: { content, mark, updatedAt, user: { email, avatars } }, index }) => {
   const blockName = 'opinion';

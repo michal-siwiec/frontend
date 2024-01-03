@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useQuery, useMutation } from '@apollo/client';
 import { USER_PERSONAL_DETAILS } from 'graphql/queries/user.js';
 import { UPDATE_USER_DETAILS } from 'graphql/mutations/user.js';
-import ValidationMyDetailsHandler from 'handlers/validationMyDetailsHandler.js';
+import handleMyDetailsValidation from 'services/users/handleMyDetailsValidation.js';
 import TextInput from 'components/inputs/TextInput.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
 import SuccessModal from 'components/modals/SuccessModal.jsx';
@@ -70,7 +70,7 @@ const MyDetails = () => {
       postalCodeError,
       streetError,
       validationStatus
-    } = new ValidationMyDetailsHandler({ name, surname, phoneNumber, city, postalCode, street }).call();
+    } = handleMyDetailsValidation({ name, surname, phoneNumber, city, postalCode, street });
 
     setNameValidationError(nameError);
     setSurnameValidationError(surnameError);

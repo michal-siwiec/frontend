@@ -8,8 +8,7 @@ const AWS_REGION = process.env.AWS_REGION;
 const AWS_ACCESS_KEY_ID = process.env.AWS_ACCESS_KEY_ID;
 const AWS_SECRET_ACCESS_KEY = process.env.AWS_SECRET_ACCESS_KEY;
 
-// TODO: Change to common variable - not function
-const isProductionEnv = () => process.env.NODE_ENV === 'production';
+const isProductionEnv = process.env.NODE_ENV === 'production';
 
 export {
   API_GRAPHQL_ROOT,
