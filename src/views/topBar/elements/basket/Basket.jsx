@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import { isEmpty } from 'lodash';
 import { countTotalPrice } from 'utils/helpers.js';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import EmptyBasketModal from 'components/modals/EmptyBasketModal.jsx';
-import BasketSummaryModal from 'components/modals/BasketSummaryModal.jsx';
+import EmptyBasketModal from 'views/topBar/elements/basket/EmptyBasketModal.jsx';
+import BasketSummaryModal from 'views/topBar/elements/basket/BasketSummaryModal.jsx';
 
 const Basket = () => {
   const productsInBasket = useSelector(({ basket: { addedProducts } }) => addedProducts);

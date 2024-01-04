@@ -1,6 +1,6 @@
 import { isEmpty } from 'lodash';
 
-export const addProduct = ({ addedProducts, payload }) => {
+const addProductToBasket = ({ addedProducts, payload }) => {
   const { id: productID, quantity } = payload;
   const productInBasket = addedProducts.find(({ id }) => id === productID);
   const isProductAlreadyAddedToBasket = !isEmpty(productInBasket);
@@ -8,3 +8,5 @@ export const addProduct = ({ addedProducts, payload }) => {
   if (isProductAlreadyAddedToBasket) productInBasket.quantity += quantity;
   else addedProducts.push(payload);
 };
+
+export default addProductToBasket;

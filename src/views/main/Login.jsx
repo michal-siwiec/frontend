@@ -5,7 +5,7 @@ import { useMutation } from '@apollo/client';
 import useRedirect from 'hooks/useRedirect.jsx';
 import { LOGIN_USER } from 'graphql/mutations/user.js';
 import { login } from 'redux_/user/actionsCreator.js';
-import ValidationLoginHandler from 'handlers/validationLoginHandler.js';
+import handleLoginValidation from 'services/users/handleLoginValidation.js';
 import FormContainer from 'components/containers/FormContainer.jsx';
 import TextInput from 'components/inputs/TextInput.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
@@ -34,7 +34,7 @@ const Login = () => {
   const handlePasswordOnChange = ({ target: { value } }) => setPassword(value);
 
   const handleLoginOnMouseDown = () => {
-    const { emailError, passwordError, validationStatus } = new ValidationLoginHandler({ email, password }).call();
+    const { emailError, passwordError, validationStatus } = handleLoginValidation({ email, password });
 
     setEmailErrorMessage(emailError);
     setPasswordErrorMessage(passwordError);

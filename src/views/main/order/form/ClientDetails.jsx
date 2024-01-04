@@ -13,7 +13,7 @@ import {
   setPhoneNumber
 } from 'redux_/order/actionsCreator.js';
 import { OrderContext } from 'contexts/contexts.js';
-import ValidationClientDetailsHandler from 'handlers/validationClientDetailsHandler.js';
+import handleClientDetailsValidation from 'services/users/handleClientDetailsValidation.js';
 import TextInput from 'components/inputs/TextInput.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
 
@@ -74,7 +74,7 @@ const ClientDetails = () => {
       emailError,
       phoneError,
       validationStatus
-    } = new ValidationClientDetailsHandler({ name, surname, street, city, postalCode, email, phoneNumber }).call();
+    } = handleClientDetailsValidation({ name, surname, street, city, postalCode, email, phoneNumber });
 
     if (!validationStatus) {
       setNameErrorMessage(nameError);

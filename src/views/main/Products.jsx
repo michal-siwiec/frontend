@@ -4,7 +4,7 @@ import { useSearchParams, useLocation } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import useScrollIntoElement from 'hooks/useScrollIntoElement.jsx';
 import { GET_PRODUCTS } from 'graphql/queries/products.js';
-import { generateHeaderCaption } from 'utils/product.js';
+import generateHeaderCaption from 'services/products/generateHeaderCaption.js';
 import LoadingModal from 'components/modals/LoadingModal.jsx';
 import Product from 'components/product/Product.jsx';
 import Pagination from 'components/Pagination.jsx';

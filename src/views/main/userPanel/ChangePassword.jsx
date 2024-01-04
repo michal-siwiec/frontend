@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import { CHANGE_USER_PASSWORD } from 'graphql/mutations/user.js';
-import ValidationChangePasswordHandler from 'handlers/validationChangePasswordHandler.js';
+import handleChangePasswordValidation from 'services/users/handleChangePasswordValidation.js';
 import TextInput from 'components/inputs/TextInput.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
 import SuccessModal from 'components/modals/SuccessModal.jsx';
@@ -37,7 +37,7 @@ const ChangePassword = () => {
       passwordError,
       passwordIdentityError,
       validationStatus
-    } = new ValidationChangePasswordHandler({ password, passwordConfirmation }).call();
+    } = handleChangePasswordValidation({ password, passwordConfirmation });
 
     setPasswordValidationError(passwordError);
     setPasswordIdentityValidationError(passwordIdentityError);
