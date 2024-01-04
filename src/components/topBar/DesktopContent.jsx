@@ -1,5 +1,5 @@
 import React from 'react';
-import Basket from 'views/topBar/elements/basket/Basket.jsx';
+import Basket from 'components/topBar/elements/basket/Basket.jsx';
 import Logo from './elements/Logo.jsx';
 import SearchEngine from './elements/SearchEngine.jsx';
 import Authorization from './elements/Authorization.jsx';

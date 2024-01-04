@@ -1,22 +1,22 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Products from './Products.jsx';
-import Login from './Login.jsx';
-import Register from './Register.jsx';
-import About from './about/About.jsx';
-import Opinions from './opinions/Opinions.jsx';
-import Order from './order/Order.jsx';
-import ThankYouPage from './ThankYouPage.jsx';
-import UserPanel from './userPanel/UserPanel.jsx';
-import MyDetails from './userPanel/MyDetails.jsx';
-import History from './userPanel/History.jsx';
-import ChangePassword from './userPanel/ChangePassword.jsx';
-import Newsletter from './userPanel/Newsletter/Newsletter.jsx';
-import RemoveAccount from './userPanel/RemoveAccount.jsx';
-import Avatars from './userPanel/Avatars/Avatars.jsx';
-import NotFound from './NotFound.jsx';
+import Login from 'views/Login.jsx';
+import Register from 'views/Register.jsx';
+import About from 'views/about/About.jsx';
+import Opinions from 'views/opinions/Opinions.jsx';
+import Order from 'views/order/Order.jsx';
+import ThankYouPage from 'views/ThankYouPage.jsx';
+import UserPanel from 'views/userPanel/UserPanel.jsx';
+import MyDetails from 'views/userPanel/MyDetails.jsx';
+import History from 'views/userPanel/History.jsx';
+import ChangePassword from 'views/userPanel/ChangePassword.jsx';
+import Newsletter from 'views/userPanel/Newsletter/Newsletter.jsx';
+import RemoveAccount from 'views/userPanel/RemoveAccount.jsx';
+import Avatars from 'views/userPanel/Avatars/Avatars.jsx';
+import NotFound from 'views/NotFound.jsx';
 
-const Main = () => (
+const AppRouter = () => (
   <div className="main">
     <Routes>
       <Route path="/" element={<Products arePromoted />} />
@@ -41,4 +41,4 @@ const Main = () => (
   </div>
 );
 
-export default Main;
+export default AppRouter;

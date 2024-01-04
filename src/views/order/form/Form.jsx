@@ -1,9 +1,9 @@
 import React, { Fragment, useContext } from 'react';
 import { OrderContext } from 'contexts/contexts.js';
-import ClientDetails from './ClientDetails.jsx';
-import DeliveryMethod from './DeliveryMethod.jsx';
-import PaymentMethod from './PaymentMethod.jsx';
-import Summary from './Summary.jsx';
+import ClientDetails from 'views/order/form/steps/ClientDetails.jsx';
+import DeliveryMethod from 'views/order/form/steps/DeliveryMethod.jsx';
+import PaymentMethod from 'views/order/form/steps/PaymentMethod.jsx';
+import Summary from 'views/order/form/steps/Summary.jsx';
 
 const Form = () => {
   const { step } = useContext(OrderContext);
