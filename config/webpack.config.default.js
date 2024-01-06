@@ -25,10 +25,7 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           'css-loader',
           {
-            loader: 'sass-loader',
-            options: {
-              additionalData: "$storage-url: '" + process.env.STORAGE_URL + "';"
-            }
+            loader: 'sass-loader'
           }
         ]
       },
@@ -61,10 +58,9 @@ module.exports = {
             services: path.resolve(__dirname, '../', 'src/services'),
             utils: path.resolve(__dirname, '../', 'src/utils'),
             validators: path.resolve(__dirname, '../', 'src/validators'),
-            views: path.resolve(__dirname, '../', 'src/views'),
+            pages: path.resolve(__dirname, '../', 'src/pages'),
             contexts: path.resolve(__dirname, '../', 'src/contexts'),
-            dictionaries: path.resolve(__dirname, '../', 'src/dictionaries'),
-            handlers: path.resolve(__dirname, '../', 'src/handlers')
+            layouts: path.resolve(__dirname, '../', 'src/layouts')
           }
         },
         options: {

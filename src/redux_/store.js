@@ -6,7 +6,7 @@ import { isProductionEnv } from 'utils/environment.js';
 
 export const store = configureStore({
   reducer: rootReducer,
-  devTools: !isProductionEnv(),
+  devTools: !isProductionEnv,
   middleware: [thunk]
 });
 

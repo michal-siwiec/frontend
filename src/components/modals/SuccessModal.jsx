@@ -1,6 +1,7 @@
 import React from 'react';
 import { exact, string, bool, func } from 'prop-types';
 import { Modal } from '@mui/material';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const SuccessModal = ({ isOpen, handleOnClose, info, children }) => {
   const blockName = 'modal';
@@ -12,7 +13,7 @@ const SuccessModal = ({ isOpen, handleOnClose, info, children }) => {
       className={`${blockName} ${blockName}--success`}
     >
       <div className={`${blockName}__content-wrapper`}>
-        <i className={`${blockName}__success-icon icon-check-solid`} />
+        <CheckCircleIcon className={`${blockName}__success-icon`} />
         <h2 className={`${blockName}__header`}>Dziękujemy!</h2>
         <div className={`${blockName}__info`}>
           <p>{info}</p>

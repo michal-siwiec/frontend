@@ -1,17 +1,21 @@
 import React from 'react';
 import { exact, arrayOf, shape, bool, string } from 'prop-types';
-import { STORAGE_URL } from 'utils/environment.js';
+import { isEmpty } from 'lodash';
+import useFetchUrl from 'hooks/useFetchUrl.jsx';
 
 const Avatar = ({ avatars, classNames }) => {
-  const pathToDefaultAvatar = `${STORAGE_URL}/images/empty-avatar.jpeg`;
-  const pathToDisplayedAvatar = avatars.find(({ main }) => main)?.storagePath || pathToDefaultAvatar;
+  let avatarURL = null;
+
+  if (isEmpty(avatars)) {
+    const defaultAvatarKey = 'images/empty-avatar.jpeg';
+    avatarURL = useFetchUrl({ key: defaultAvatarKey });
+  } else {
+    const { bucket, key } = avatars.find(({ main }) => main);
+    avatarURL = useFetchUrl({ bucket, key });
+  }
 
   return (
-    <img
-      src={pathToDisplayedAvatar}
-      alt="avatar"
-      className={classNames}
-    />
+    <img src={avatarURL} alt="avatar" className={classNames} />
   );
 };
 

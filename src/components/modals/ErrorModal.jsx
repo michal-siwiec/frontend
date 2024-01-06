@@ -1,6 +1,7 @@
 import React from 'react';
 import { bool, exact, func, string } from 'prop-types';
 import { Modal } from '@mui/material';
+import ErrorIcon from '@mui/icons-material/Error';
 
 const ErrorModal = ({ isOpen, handleOnClose, info }) => {
   const blockName = 'modal';
@@ -12,7 +13,7 @@ const ErrorModal = ({ isOpen, handleOnClose, info }) => {
       className={`${blockName} ${blockName}--error`}
     >
       <div className={`${blockName}__content-wrapper`}>
-        <i className={`${blockName}__error-icon icon-circle-error`} />
+        <ErrorIcon className={`${blockName}__error-icon`} />
         <h2 className={`${blockName}__header`}>Wystąpił niespodziewany problem!</h2>
         <div className={`${blockName}__info`}>
           <p>{info}</p>

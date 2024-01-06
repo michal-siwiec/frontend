@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 import './styles/style.scss';
 import useSetAuthInitialState from 'hooks/useSetAuthInitialState.jsx';
-import TopBar from 'views/topBar/TopBar.jsx';
-import AdvertisingBox from 'views/advertisingBox.jsx';
-import Main from 'views/main/Main.jsx';
-import Newsletter from 'views/Newsletter.jsx';
-import Footer from 'views/Footer.jsx';
+import TopBar from 'layouts/topBar/TopBar.jsx';
+import AdvertisingBox from 'layouts/AdvertisingBox.jsx';
+import AppRouter from 'pages/AppRouter.jsx';
+import Newsletter from 'layouts/Newsletter.jsx';
+import Footer from 'layouts/Footer.jsx';
 
 const App = () => {
   useSetAuthInitialState();
@@ -14,7 +14,7 @@ const App = () => {
     <Fragment>
       <TopBar />
       <AdvertisingBox />
-      <Main />
+      <AppRouter />
       <Newsletter />
       <Footer />
     </Fragment>

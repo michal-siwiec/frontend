@@ -5,7 +5,6 @@ env:
   API_GRAPHQL_ROOT: ${{ secrets.API_GRAPHQL_ROOT }}
   API_ROOT: ${{ secrets.API_ROOT }}
   API_WS_ROOT: ${{ secrets.API_WS_ROOT }}
-  STORAGE_URL: ${{ secrets.STORAGE_URL }}
 jobs:
   run-scripts:
     runs-on: ubuntu-latest

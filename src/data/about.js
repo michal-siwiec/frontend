@@ -1,5 +1,3 @@
-import { STORAGE_URL } from 'utils/environment.js';
-
 /* eslint-disable max-len */
 export const companyDescription = `
   Początki sklepu budowlanego <span class="about__text-part about__text-part--bold">BUDOMAN</span>,
@@ -26,25 +24,25 @@ export const companyDescription = `
 export const managers = [
   {
     name: 'Małgorzata Lewandowska',
-    picturePath: `${STORAGE_URL}/images/management-staff/malgorzata-lewandowska.png`,
+    pictureKey: 'images/management-staff/malgorzata-lewandowska.png',
     description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, consequatur. Ex blanditiis accusamus nam molestiae officiis totam repellendus labore beatae ullam quas, hic facilis fugit illum tenetur, magni est distinctio.',
     position: 'Prezes zarządu'
   },
   {
     name: 'Łukasz Nowak',
-    picturePath: `${STORAGE_URL}/images/management-staff/lukasz-nowak.png`,
+    pictureKey: 'images/management-staff/lukasz-nowak.png',
     description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, consequatur. Ex blanditiis accusamus nam molestiae officiis totam repellendus labore beatae ullam quas, hic facilis fugit illum tenetur, magni est distinctio.',
     position: 'Dyrektor ds. wzrostu'
   },
   {
     name: 'Aleksander Winny',
-    picturePath: `${STORAGE_URL}/images/management-staff/aleksander-winny.png`,
+    pictureKey: 'images/management-staff/aleksander-winny.png',
     description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, consequatur. Ex blanditiis accusamus nam molestiae officiis totam repellendus labore beatae ullam quas, hic facilis fugit illum tenetur, magni est distinctio.',
     position: 'Menager magazynu'
   },
   {
     name: 'Paweł Niegodziwy',
-    picturePath: `${STORAGE_URL}/images/management-staff/paweł-niegodziwy.png`,
+    pictureKey: 'images/management-staff/paweł-niegodziwy.png',
     description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, consequatur. Ex blanditiis accusamus nam molestiae officiis totam repellendus labore beatae ullam quas, hic facilis fugit illum tenetur, magni est distinctio.',
     position: 'Starszy sprzedawca'
   }
