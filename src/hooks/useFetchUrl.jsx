@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { getSignedUrl } from 'services/s3Service.js';
+import { AWS_BUCKET } from 'utils/environment.js';
 
-const useFetchUrl = ({ bucket = 'budoman-development', key }) => {
+const useFetchUrl = ({ bucket = AWS_BUCKET, key }) => {
   const [objectURL, setObjectURL] = useState(null);
 
   useEffect(() => {

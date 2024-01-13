@@ -1,5 +1,5 @@
 import { S3 } from 'aws-sdk';
-import { AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION } from 'utils/environment.js';
+import { AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION, AWS_BUCKET } from 'utils/environment.js';
 
 const s3 = new S3({
   accessKeyId: AWS_ACCESS_KEY_ID,
@@ -7,6 +7,5 @@ const s3 = new S3({
   region: AWS_REGION
 });
 
-// TODO: Default value for Bucket
-export const getSignedUrl = ({ bucket, key }) => s3.getSignedUrl('getObject', { Bucket: bucket, Key: key });
-export const getObject = async ({ bucket, key, responseHandler }) => s3.getObject({ Bucket: bucket, Key: key }, responseHandler);
+export const getSignedUrl = ({ bucket = AWS_BUCKET, key }) => s3.getSignedUrl('getObject', { Bucket: bucket, Key: key });
+export const getObject = async ({ bucket = AWS_BUCKET, key, responseHandler }) => s3.getObject({ Bucket: bucket, Key: key }, responseHandler);
