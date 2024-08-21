@@ -71,7 +71,6 @@ const History = () => {
                         className={`${blockName}__table-col
                                     ${blockName}__table-col--invoice-download`}
                         onClick={() => downloadInvoice(id)}
-                        role="presentation"
                       >
                         {id}
                       </td>

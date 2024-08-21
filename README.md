@@ -2,7 +2,7 @@
 
 ## About project
 
-Budoman-front is a frontend part-creating microservice for construction shop.
+Budoman-front is a frontend application representing construction shop.
 This is developed using:
 
 - [React](https://reactjs.org/) (17.0.2)
@@ -33,4 +33,10 @@ npm run css-lint # to launch linter for css files
 npm run react-test # to launch react unit tests
 npm run e2e-test # to launch e2e tests in CLI
 npm run open-e2e-test # to launch e2e tests in browser
+```
+
+## Deploy
+To make a deploy on PROD env use:
+```bash
+bin/deploy.sh
 ```
