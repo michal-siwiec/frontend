@@ -15,6 +15,7 @@ services:
       - .env
     volumes:
       - .:/budoman-front
+      - /budoman-front/node_modules
     networks:
       - budoman-front
 networks:
