@@ -8,14 +8,12 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --config ./config/webpack.config.development.js",
-    "dev-build": "npx webpack --config ./config/webpack.config.development.js",
     "prod-build": "npx webpack --config ./config/webpack.config.production.js",
     "js-lint": "npx eslint 'src/**/*.js' 'src/**/*.jsx'",
     "css-lint": "npx stylelint '**/*.css' '**/*.scss' --custom-syntax postcss-less",
     "react-test": "jest --env=jsdom --config jest.config.js",
     "e2e-test": "npx cypress run",
-    "open-e2e-test": "npx cypress open",
-    "postinstall": "npm run prod-build"
+    "open-e2e-test": "npx cypress open"
   },
   "keywords": [],
   "author": "",
@@ -32,7 +30,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.5.1",
     "cypress": "^11.0.1",
-    "dotenv-webpack": "^7.1.0",
+    "dotenv-webpack": "^8.1.0",
     "eslint": "^8.13.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-import-resolver-webpack": "^0.13.2",

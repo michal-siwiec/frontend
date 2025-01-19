@@ -2,9 +2,7 @@ name: Test code quality
 on:
   push
 env:
-  API_GRAPHQL_ROOT: ${{ secrets.API_GRAPHQL_ROOT }}
-  API_ROOT: ${{ secrets.API_ROOT }}
-  API_WS_ROOT: ${{ secrets.API_WS_ROOT }}
+  API_URL: ${{ secrets.API_URL }}
 jobs:
   run-scripts:
     runs-on: ubuntu-latest

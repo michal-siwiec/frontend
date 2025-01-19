@@ -1,5 +1,4 @@
 require('webpack');
-if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -83,8 +82,8 @@ module.exports = {
       filename: 'main-[contenthash:6].css'
     }),
     new Dotenv({
-      safe: '.env.sample',
-      systemvars: true      
+      path: path.resolve(__dirname, '../.env'),
+      systemvars: true
     })
   ],
   devtool: "eval-cheap-source-map"
