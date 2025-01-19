@@ -6,7 +6,7 @@ REMOTE_PATH="/var/www/budoman-frontend/"
 SSH_KEY="~/.ssh/aws_budoman"
 
 echo "Deploying files to $REMOTE_USER@$REMOTE_HOST..."
-rsync -av --exclude 'node_modules' -e "ssh -i $SSH_KEY" . $REMOTE_USER@$REMOTE_HOST:/var/www/budoman-frontend
+rsync -av --exclude 'node_modules' --exclude '.env' -e "ssh -i $SSH_KEY" . $REMOTE_USER@$REMOTE_HOST:/var/www/budoman-frontend
 
 echo "Installing dependencies, building application and restarting the server..."
 ssh -i "$SSH_KEY" "$REMOTE_USER@$REMOTE_HOST" << EOF
