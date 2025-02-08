@@ -14,7 +14,7 @@ ssh -i "$SSH_KEY" "$REMOTE_USER@$REMOTE_HOST" << EOF
   cd /var/www/budoman-frontend
   npm install
   npm run prod-build
-  pm2 restart src/server.js
+  pm2 restart budoman-frontend || pm2 start src/server.js --name budoman-frontend
   sudo systemctl restart nginx
 EOF
 echo "Deployment completed successfully!"
