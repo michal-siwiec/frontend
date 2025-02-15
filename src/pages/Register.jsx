@@ -95,6 +95,7 @@ const Register = () => {
               onChange={handleEmailOnChange}
               value={email}
               validationError={emailErrorMessage}
+              type="email"
               dataCy="register-email-input"
             />
             <TextInput

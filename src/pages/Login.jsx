@@ -70,6 +70,7 @@ const Login = () => {
               value={email}
               onChange={handleEmailOnChange}
               validationError={emailErrorMessage}
+              type="email"
               dataCy="login-email-input"
             />
             <TextInput

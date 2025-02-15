@@ -206,7 +206,7 @@ const Footer = () => {
           <div className={`${blockName}__social`} key="icon-twitter-wrapper">
             <TwitterIcon
               className={`${blockName}__content-element ${blockName}__social-icon`}
-              onMouseDown={() => handleSocialOnMouseDown('https://www.youtube.com/')}
+              onMouseDown={() => handleSocialOnMouseDown('https://x.com/?lang=en')}
               role="link"
               tabIndex={0}
               data-cy="twitter-icon"
