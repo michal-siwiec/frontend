@@ -96,6 +96,7 @@ const Register = () => {
               value={email}
               validationError={emailErrorMessage}
               type="email"
+              autocomplete="email"
               dataCy="register-email-input"
             />
             <TextInput

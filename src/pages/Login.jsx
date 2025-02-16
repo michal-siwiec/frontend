@@ -71,6 +71,7 @@ const Login = () => {
               onChange={handleEmailOnChange}
               validationError={emailErrorMessage}
               type="email"
+              autocomplete="email"
               dataCy="login-email-input"
             />
             <TextInput

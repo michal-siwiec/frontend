@@ -128,6 +128,8 @@ const Newsletter = () => {
               placeholder="Adres email"
               classNames="text-input--newsletter"
               value={email}
+              type="email"
+              autocomplete="email"
               onChange={handleEmailOnChange}
               validationError={emailErrorMessage}
               dataCy="newsletter-email"
