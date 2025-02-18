@@ -29,14 +29,12 @@ const MyDetails = () => {
   const [updateUserDetailsSuccess, setUpdateUserDetailsSuccess] = useState(false);
   const [updateUserDetailsError, setUpdateUserDetailsError] = useState(false);
 
-  const { loading: personalDetailsDataLoading, data: personalDetailsData } = useQuery(
+  const { loading: personalDetailsDataLoading } = useQuery(
     USER_PERSONAL_DETAILS,
     {
       variables: { userId: loggedUserId },
       fetchPolicy: 'network-only',
-      onCompleted: () => {
-        const { user } = personalDetailsData;
-
+      onCompleted: ({ user }) => {
         setName(user.name || '');
         setSurname(user.surname || '');
         setPhoneNumber(user.phoneNumber || '');
