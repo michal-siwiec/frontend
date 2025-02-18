@@ -2,7 +2,7 @@ export default {
   name: 'Imię ma niepoprawny format!',
   surname: 'Nazwisko ma niepoprawny format!',
   email: 'Email ma niepoprawny format!',
-  password: 'Hasło ma niepoprawny format!',
+  password: 'Hasło powinno mieć minimum 8 znaków, zawierać małą i dużą literę oraz cyfrę!',
   passwordIdentity: 'Hasła nie są identyczne!',
   avatar: 'Dozwolone formaty to: png, svg, jpeg',
   opinion: 'Opinia ma niepoprawny format!',
