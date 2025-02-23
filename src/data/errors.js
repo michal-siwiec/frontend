@@ -1,0 +1,6 @@
+// TODO: Merge validationErrors here
+
+export const ERROR_CODES = {
+  USER_NOT_FOUND: 'USER_NOT_FOUND',
+  INVALID_CREDENTIALS: 'INVALID_CREDENTIALS'
+};
