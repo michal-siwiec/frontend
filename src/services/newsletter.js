@@ -2,7 +2,7 @@ import regexps from 'data/regexps.js';
 import { validateByRegexp } from 'utils/helpers.js';
 import { VALIDATION_ERROR_MESSAGES } from 'data/errors.js';
 
-const handleSaveToNewsletterValidation = ({ name, surname, email }) => {
+export const handleSaveToNewsletterValidation = ({ name, surname, email }) => {
   const isNameValid = validateByRegexp({ regexp: regexps.name, subject: name });
   const isSurnameValid = validateByRegexp({ regexp: regexps.surname, subject: surname });
   const isEmailValid = validateByRegexp({ regexp: regexps.email, subject: email });
@@ -15,4 +15,3 @@ const handleSaveToNewsletterValidation = ({ name, surname, email }) => {
   };
 };
 
-export default handleSaveToNewsletterValidation;
