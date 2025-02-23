@@ -1,7 +1,7 @@
 import validateByRegexp from 'services/validations/validateByRegexp.js';
 import validateAvatars from 'services/validations/validateAvatars.js';
 import formRegexp from 'data/formRegexp.js';
-import validationErrors from 'data/validationErrors.js';
+import { VALIDATION_ERROR_MESSAGES } from 'data/errors.js';
 
 const handleRegisterValidation = ({ email, password, avatars }) => {
   const isEmailValid = validateByRegexp({ regexp: formRegexp.email, subject: email });
@@ -9,9 +9,9 @@ const handleRegisterValidation = ({ email, password, avatars }) => {
   const isAvatarValid = validateAvatars({ avatars });
 
   return {
-    emailError: !isEmailValid && validationErrors.email,
-    passwordError: !isPasswordValid && validationErrors.password,
-    avatarError: !isAvatarValid && validationErrors.avatar,
+    emailError: !isEmailValid && VALIDATION_ERROR_MESSAGES.email,
+    passwordError: !isPasswordValid && VALIDATION_ERROR_MESSAGES.password,
+    avatarError: !isAvatarValid && VALIDATION_ERROR_MESSAGES.avatar,
     validationStatus: isEmailValid && isPasswordValid && isAvatarValid
   };
 };

@@ -1,11 +1,11 @@
 import validateOpinion from 'services/validations/validateOpinion.js';
-import validationErrors from 'data/validationErrors.js';
+import { VALIDATION_ERROR_MESSAGES } from 'data/errors.js';
 
 const handleAddOpinionValidation = ({ opinion }) => {
   const isOpinionValid = validateOpinion({ opinion });
 
   return {
-    opinionError: !isOpinionValid && validationErrors.opinion,
+    opinionError: !isOpinionValid && VALIDATION_ERROR_MESSAGES.opinion,
     validationStatus: isOpinionValid
   };
 };

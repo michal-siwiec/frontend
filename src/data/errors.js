@@ -1,6 +1,21 @@
-// TODO: Merge validationErrors here
+// TODO: validateByRegexp can be common method inside utils.js
+// TODO: data/formRegexp.js could be common - regexps.js
 
 export const ERROR_CODES = {
   USER_NOT_FOUND: 'USER_NOT_FOUND',
   INVALID_CREDENTIALS: 'INVALID_CREDENTIALS'
 };
+
+export const VALIDATION_ERROR_MESSAGES = {
+  name: 'Imię ma niepoprawny format!',
+  surname: 'Nazwisko ma niepoprawny format!',
+  email: 'Email ma niepoprawny format!',
+  password: 'Hasło powinno mieć minimum 8 znaków, zawierać małą i dużą literę oraz cyfrę!',
+  passwordIdentity: 'Hasła nie są identyczne!',
+  avatar: 'Dozwolone formaty to: png, svg, jpeg',
+  opinion: 'Opinia ma niepoprawny format!',
+  street: 'Ulica ma niepoprawny format!',
+  city: 'Miasto ma niepoprawny format!',
+  postalCode: 'Kod pocztowy ma niepoprawny format!',
+  phone: 'Telefon ma niepoprawny format!' 
+}
