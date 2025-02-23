@@ -4,8 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import useRedirect from 'hooks/useRedirect.jsx';
 import { login } from 'redux_/user/actionsCreator.js';
-import AvatarsGenerator from 'services/users/avatarsGenerator.js';
-import handleRegisterValidation from 'services/users/handleRegisterValidation.js';
+import { handleRegisterValidation, generateAvatars } from 'services/user.js';
 import { REGISTER_USER } from 'graphql/mutations/user.js';
 import FormContainer from 'components/containers/FormContainer.jsx';
 import TextInput from 'components/inputs/TextInput.jsx';
@@ -42,7 +41,7 @@ const Register = () => {
   const handlePasswordOnChange = ({ target: { value } }) => setPassword(value);
 
   const handleFileOnChange = async ({ target: { files } }) => {
-    const generatedAvatars = await new AvatarsGenerator(files).call();
+    const generatedAvatars = await generateAvatars(files);
 
     setAvatars(generatedAvatars);
   };

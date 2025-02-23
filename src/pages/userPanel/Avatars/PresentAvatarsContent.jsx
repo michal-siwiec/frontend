@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import { exact, arrayOf, shape, string } from 'prop-types';
 import clsx from 'clsx';
-import { sortByMainField } from 'services/users/sortAvatars.js';
-import { generateTooltipHeaderText, generateTooltipSecondaryText } from 'services/users/generateTooltipTexts.js';
+import { sortAvatarByMainField } from 'services/user.js';
+import { generateTooltipHeaderText, generateTooltipSecondaryText } from 'services/user.js';
 import { UPDATE_USER_AVATARS } from 'graphql/mutations/user.js';
 import { updateAvatars } from 'redux_/user/actionsCreator.js';
 import Tooltip from 'components/Tooltip.jsx';
@@ -57,7 +57,7 @@ const PresentAvatarsContent = ({ avatars }) => {
       <div className={`${blockName}__avatars-list-wrapper`}>
         <ul className={`${blockName}__avatars-list`}>
           {
-            avatarsCopy.sort(sortByMainField).map((avatar, index) => {
+            avatarsCopy.sort(sortAvatarByMainField).map((avatar, index) => {
               const tooltipHeaderText = generateTooltipHeaderText({ index, selectedAvatar });
               const tooltipSecondaryText = generateTooltipSecondaryText({ index, selectedAvatar });
 

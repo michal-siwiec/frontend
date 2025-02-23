@@ -6,7 +6,7 @@ import useRedirect from 'hooks/useRedirect.jsx';
 import { ERROR_CODES } from 'data/errors.js';
 import { LOGIN_USER } from 'graphql/mutations/user.js';
 import { login } from 'redux_/user/actionsCreator.js';
-import handleLoginValidation from 'services/users/handleLoginValidation.js';
+import { handleLoginValidation } from 'services/user.js';
 import FormContainer from 'components/containers/FormContainer.jsx';
 import TextInput from 'components/inputs/TextInput.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
