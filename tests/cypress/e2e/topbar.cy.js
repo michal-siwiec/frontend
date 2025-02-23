@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import widthBreakpoints from '../../../src/data/widthBreakpoints.js';
+import { WIDTH_BREAKPOINTS } from '../../../src/data/breakpoints.js';
 import { mockResponse } from '../support/utils/graphql.js';
 
 describe('topbar', () => {
@@ -9,7 +9,7 @@ describe('topbar', () => {
 
     context('mobile', () => {
       beforeEach(() => {
-        cy.viewport(widthBreakpoints.md, 750);
+        cy.viewport(WIDTH_BREAKPOINTS.md, 750);
       });
 
       context('before click in hamburger menu', () => {
