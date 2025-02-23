@@ -1,5 +1,3 @@
-// TODO: Remove it - src/services/validations/validatePasswordEquality.js
-
 export default {
   surname: /^[\w ]+$/,
   street: /^[\w ]+$/,

@@ -1,7 +1,6 @@
 import regexps from 'data/regexps.js';
 import { validateByRegexp } from 'utils/helpers.js';
 import { VALIDATION_ERROR_MESSAGES } from 'data/errors.js';
-import validateAvatars from 'services/validations/validateAvatars.js';
 
 const handleRegisterValidation = ({ email, password, avatars }) => {
   const isEmailValid = validateByRegexp({ regexp: regexps.email, subject: email });
@@ -14,6 +13,21 @@ const handleRegisterValidation = ({ email, password, avatars }) => {
     avatarError: !isAvatarValid && VALIDATION_ERROR_MESSAGES.avatar,
     validationStatus: isEmailValid && isPasswordValid && isAvatarValid
   };
+};
+
+const validateAvatars = ({ avatars }) => {
+  const allowedFileFormats = ['image/png', 'image/svg+xml', 'image/jpeg'];
+  let eachAvatarsHasValidFormat = true;
+
+  avatars.forEach(({ fileType }) => {
+    const hasAllowedFormat = allowedFileFormats.includes(fileType);
+
+    if (!hasAllowedFormat) {
+      eachAvatarsHasValidFormat = false;
+    }
+  });
+
+  return eachAvatarsHasValidFormat;
 };
 
 export default handleRegisterValidation;

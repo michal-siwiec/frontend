@@ -1,8 +1,8 @@
-import validateOpinion from 'services/validations/validateOpinion.js';
+import { isEmpty } from 'lodash';
 import { VALIDATION_ERROR_MESSAGES } from 'data/errors.js';
 
 const handleAddOpinionValidation = ({ opinion }) => {
-  const isOpinionValid = validateOpinion({ opinion });
+  const isOpinionValid = !isEmpty(opinion);
 
   return {
     opinionError: !isOpinionValid && VALIDATION_ERROR_MESSAGES.opinion,
