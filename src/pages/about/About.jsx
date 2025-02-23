@@ -3,7 +3,7 @@ import DesktopMenagers from './DesktopMenagers.jsx';
 import MobileMenagers from './MobileMenagers.jsx';
 import useIsMobile from 'hooks/useIsMobile.jsx';
 import useFetchUrl from 'hooks/useFetchUrl.jsx';
-import { companyDescription } from 'data/about.js';
+import { COMPANY_DESCRIPTION } from 'data/uiElements.js';
 import { WIDTH_BREAKPOINTS } from 'data/breakpoints.js';
 
 const About = () => {
@@ -19,7 +19,7 @@ const About = () => {
           style={{ backgroundImage: `url(${backgroundPictureURL})` }}
           className={`${blockName}__renowation-picture`}
         />
-        <div className={`${blockName}__info-description`} dangerouslySetInnerHTML={{ __html: companyDescription }} />
+        <div className={`${blockName}__info-description`} dangerouslySetInnerHTML={{ __html: COMPANY_DESCRIPTION }} />
       </div>
       <div className={`${blockName}__managers-wrapper`}>
         { isMobile ? <MobileMenagers /> : <DesktopMenagers /> }

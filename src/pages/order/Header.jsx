@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { OrderContext } from 'contexts/contexts.js';
 import Stepper from 'components/Stepper.jsx';
-import { stepsLabels } from 'data/orderHeader.js';
+import { STEP_LABELS } from 'data/uiElements.js';
 
 const Header = () => {
   const { step, setStep } = useContext(OrderContext);
@@ -14,7 +14,7 @@ const Header = () => {
     <Stepper
       activeStep={step}
       handleStepOnClick={handleStepOnClick}
-      labels={stepsLabels}
+      labels={STEP_LABELS}
     />
   );
 };

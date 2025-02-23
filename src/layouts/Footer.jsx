@@ -9,8 +9,8 @@ import Tooltip from 'components/Tooltip.jsx';
 import useFetchUrl from 'hooks/useFetchUrl.jsx';
 import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem.js';
 import { formatPhoneNumber } from 'utils/helpers.js';
-import { productsCategories, shopRulesText, privacyPolicyText } from 'data/footer.js';
-import { shopMail, shopPhone } from 'data/contactData.js';
+import { FOOTER_MENU_ROUTING } from 'data/routing.js';
+import { SHOP_RULES_TEXT, PRIVACY_POLICY_TEXT, SHOP_MAIL, SHOP_PHONE } from 'data/uiElements.js';
 
 const Footer = () => {
   const blockName = 'footer';
@@ -27,8 +27,8 @@ const Footer = () => {
     fetchFileOnLocalFileSystem({ key: 'documents/regulamin_sklepu.pdf', fileName: 'Regulamin sklepu.pdf' });
   };
 
-  const handleEmailOnMouseDown = () => window.location = `mailto:${shopMail}`;
-  const handlePhoneOnMouseDown = () => window.location = `tel:${shopPhone}`;
+  const handleEmailOnMouseDown = () => window.location = `mailto:${SHOP_MAIL}`;
+  const handlePhoneOnMouseDown = () => window.location = `tel:${SHOP_PHONE}`;
   const handleSocialOnMouseDown = (url) => window.open(url, '_blank');
   const handlePrivacyPolicyPromptOnHover = (value) => setPrivacyPolicyTooltipOpen(value);
   const handleShopRulesPromptOnHover = (value) => setShopRulesTooltipOpen(value);
@@ -69,7 +69,7 @@ const Footer = () => {
               <Tooltip
                 open={privacyPolicyTooltipOpen}
                 headerText="Polityka prywatności"
-                secondaryText={privacyPolicyText}
+                secondaryText={PRIVACY_POLICY_TEXT}
                 id="policy-privacy-tooltip"
               >
                 <LiveHelpIcon className={`${blockName}__tooltip-prompt`} data-cy="policy-privacy-prompt" />
@@ -96,7 +96,7 @@ const Footer = () => {
               <Tooltip
                 open={shopRulesTooltipOpen}
                 headerText="Regulamin sklepu"
-                secondaryText={shopRulesText}
+                secondaryText={SHOP_RULES_TEXT}
                 id="shop-regulation-tooltip"
               >
                 <LiveHelpIcon className={`${blockName}__tooltip-prompt`} data-cy="shop-regulation-prompt" />
@@ -115,7 +115,7 @@ const Footer = () => {
           }
         >
           {
-            productsCategories.map(({ name, path, dataCy }) => (
+            FOOTER_MENU_ROUTING.map(({ name, path, dataCy }) => (
               <div
                 className={`${blockName}__product-cathegory`}
                 key={`${blockName}-product-cathegory-${name}`}
@@ -144,7 +144,7 @@ const Footer = () => {
                 tabIndex={0}
                 data-cy="email-contact-label"
               >
-                {` ${shopMail}`}
+                {` ${SHOP_MAIL}`}
               </span>
             </span>
           </div>
@@ -158,7 +158,7 @@ const Footer = () => {
                 tabIndex={0}
                 data-cy="phone-contact-label"
               >
-                {` ${formatPhoneNumber(shopPhone)}`}
+                {` ${formatPhoneNumber(SHOP_PHONE)}`}
               </span>
             </span>
           </div>
