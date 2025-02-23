@@ -1,4 +1,3 @@
-// TODO: validateByRegexp can be common method inside utils.js
 // TODO: data/formRegexp.js could be common - regexps.js
 
 export const ERROR_CODES = {

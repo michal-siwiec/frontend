@@ -1,4 +1,4 @@
-import validateByRegexp from 'services/validations/validateByRegexp.js';
+import { validateByRegexp } from 'utils/helpers.js';
 import formRegexp from 'data/formRegexp.js';
 import { VALIDATION_ERROR_MESSAGES } from 'data/errors.js';
 
