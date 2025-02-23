@@ -1,11 +1,11 @@
+import regexps from 'data/regexps.js';
 import { validateByRegexp } from 'utils/helpers.js';
-import validateAvatars from 'services/validations/validateAvatars.js';
-import formRegexp from 'data/formRegexp.js';
 import { VALIDATION_ERROR_MESSAGES } from 'data/errors.js';
+import validateAvatars from 'services/validations/validateAvatars.js';
 
 const handleRegisterValidation = ({ email, password, avatars }) => {
-  const isEmailValid = validateByRegexp({ regexp: formRegexp.email, subject: email });
-  const isPasswordValid = validateByRegexp({ regexp: formRegexp.password, subject: password });
+  const isEmailValid = validateByRegexp({ regexp: regexps.email, subject: email });
+  const isPasswordValid = validateByRegexp({ regexp: regexps.password, subject: password });
   const isAvatarValid = validateAvatars({ avatars });
 
   return {

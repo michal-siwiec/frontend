@@ -1,5 +1,3 @@
-// TODO: data/formRegexp.js could be common - regexps.js
-
 export const ERROR_CODES = {
   USER_NOT_FOUND: 'USER_NOT_FOUND',
   INVALID_CREDENTIALS: 'INVALID_CREDENTIALS'

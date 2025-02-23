@@ -1,14 +1,14 @@
+import regexps from 'data/regexps.js';
 import { validateByRegexp } from 'utils/helpers.js';
-import formRegexp from 'data/formRegexp.js';
 import { VALIDATION_ERROR_MESSAGES } from 'data/errors.js';
 
 const handleMyDetailsValidation = ({ name, surname, phoneNumber, city, postalCode, street }) => {
-  const isNameValid = validateByRegexp({ regexp: formRegexp.name, subject: name });
-  const isSurnameValid = validateByRegexp({ regexp: formRegexp.surname, subject: surname });
-  const isPhoneNumberValid = validateByRegexp({ regexp: formRegexp.phoneNumber, subject: phoneNumber });
-  const isCityValid = validateByRegexp({ regexp: formRegexp.city, subject: city });
-  const isPostalCodeValid = validateByRegexp({ regexp: formRegexp.postalCode, subject: postalCode });
-  const isStreetValid = validateByRegexp({ regexp: formRegexp.street, subject: street });
+  const isNameValid = validateByRegexp({ regexp: regexps.name, subject: name });
+  const isSurnameValid = validateByRegexp({ regexp: regexps.surname, subject: surname });
+  const isPhoneNumberValid = validateByRegexp({ regexp: regexps.phoneNumber, subject: phoneNumber });
+  const isCityValid = validateByRegexp({ regexp: regexps.city, subject: city });
+  const isPostalCodeValid = validateByRegexp({ regexp: regexps.postalCode, subject: postalCode });
+  const isStreetValid = validateByRegexp({ regexp: regexps.street, subject: street });
 
   return {
     nameError: !isNameValid && VALIDATION_ERROR_MESSAGES.name,

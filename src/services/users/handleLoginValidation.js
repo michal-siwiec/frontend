@@ -1,10 +1,10 @@
+import regexps from 'data/regexps.js';
 import { validateByRegexp } from 'utils/helpers.js';
-import formRegexp from 'data/formRegexp.js';
 import { VALIDATION_ERROR_MESSAGES } from 'data/errors.js';
 
 const handleLoginValidation = ({ email, password }) => {
-  const isValidEmail = validateByRegexp({ regexp: formRegexp.email, subject: email });
-  const isValidPassword = validateByRegexp({ regexp: formRegexp.password, subject: password });
+  const isValidEmail = validateByRegexp({ regexp: regexps.email, subject: email });
+  const isValidPassword = validateByRegexp({ regexp: regexps.password, subject: password });
 
   return {
     emailError: !isValidEmail && VALIDATION_ERROR_MESSAGES.email,
