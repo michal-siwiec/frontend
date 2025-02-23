@@ -7,7 +7,7 @@ import ShadowedContainer from 'components/containers/ShadowedContainer.jsx';
 import Rating from 'components/Rating.jsx';
 import Avatar from 'components/Avatar.jsx';
 import { APPEARING_IN_SEQUENCE } from 'data/animations.js';
-import OpinionPresentedContentGenerator from 'services/opinions/opinionPresentedContentGenerator.js';
+import { generateOpinionContent } from 'services/opinions.js';
 
 const Opinion = ({ opinionsData: { content, mark, updatedAt, user: { email, avatars } }, index }) => {
   const blockName = 'opinion';
@@ -25,7 +25,7 @@ const Opinion = ({ opinionsData: { content, mark, updatedAt, user: { email, avat
       narrowContent,
       restOfContent,
       textToLongToDisplay
-    } = new OpinionPresentedContentGenerator({ displayedNumberOfChars, content, contentExpanded }).call();
+    } = generateOpinionContent({ displayedNumberOfChars, content, contentExpanded });
 
     setPresentedNarrowContent(narrowContent);
     setPresentedRestOfContent(restOfContent);
