@@ -1,4 +1,4 @@
-export default {
+export const WIDTH_BREAKPOINTS = {
   xs: 567,
   md: 768,
   lg: 992,

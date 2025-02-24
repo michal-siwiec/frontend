@@ -3,7 +3,7 @@ import { exact, func, element } from 'prop-types';
 import { useSelector } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import { ADD_OPINION } from 'graphql/mutations/opinion.js';
-import handleAddOpinionValidation from 'services/opinions/handleAddOpinionValidation.js';
+import { handleAddOpinionValidation } from 'services/opinions.js';
 import FormContainer from 'components/containers/FormContainer.jsx';
 import Rating from 'components/Rating.jsx';
 import TextArea from 'components/inputs/TextArea.jsx';

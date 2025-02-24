@@ -1,13 +1,13 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import useFetchUrl from 'hooks/useFetchUrl.jsx';
-import { managers } from 'data/about.js';
+import { MANAGERS } from 'data/uiElements.js';
 
 const MobileMenagers = () => {
   const blockName = 'mobile-menagers';
   const managersPictureURL = [];
 
-  managers.forEach(({ pictureKey }) => {
+  MANAGERS.forEach(({ pictureKey }) => {
     const url = useFetchUrl({ key: pictureKey });
     managersPictureURL.push(url);
   });
@@ -15,7 +15,7 @@ const MobileMenagers = () => {
   return (
     <div className={blockName}>
       {
-        managers.map(({
+        MANAGERS.map(({
           name,
           description,
           position

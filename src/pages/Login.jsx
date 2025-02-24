@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import useRedirect from 'hooks/useRedirect.jsx';
+import { ERROR_CODES } from 'data/errors.js';
 import { LOGIN_USER } from 'graphql/mutations/user.js';
 import { login } from 'redux_/user/actionsCreator.js';
-import handleLoginValidation from 'services/users/handleLoginValidation.js';
+import { handleLoginValidation } from 'services/user.js';
 import FormContainer from 'components/containers/FormContainer.jsx';
 import TextInput from 'components/inputs/TextInput.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
@@ -14,18 +15,34 @@ import ErrorModal from 'components/modals/ErrorModal.jsx';
 
 const Login = () => {
   const blockName = 'login';
+  const dispatch = useDispatch();
   const { loggedUserId } = useSelector((store) => store.user);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailErrorMessage, setEmailErrorMessage] = useState('');
   const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
   const [loginFail, setLoginFail] = useState(false);
-  const dispatch = useDispatch();
-  const [loginUser, { loading, data }] = useMutation(LOGIN_USER, {
+  const [loginFailMessage, setLoginFailMessage] = useState('');
+
+  const [loginUser, { loading, data, error }] = useMutation(LOGIN_USER, {
     onCompleted: () => {
       dispatch(login(data));
     },
     onError: () => {
+      if (error.networkError?.statusCode === 500) {
+        setLoginFailMessage('Niestety nie udało się zalogować!');
+      } else {
+        const { extensions: { error_code: errorCode } } = error.graphQLErrors[0];
+
+        if (errorCode === ERROR_CODES.USER_NOT_FOUND) {
+          setLoginFailMessage('Użytkownik o takim adresie email nie istnieje!');
+        } else if (errorCode === ERROR_CODES.INVALID_CREDENTIALS) {
+          setLoginFailMessage('Niepoprawne hasło!');
+        } else {
+          setLoginFailMessage('Niestety nie udało się zalogować!');
+        }
+      }
+
       setLoginFail(true);
     }
   });
@@ -35,13 +52,16 @@ const Login = () => {
 
   const handleLoginOnMouseDown = () => {
     const { emailError, passwordError, validationStatus } = handleLoginValidation({ email, password });
-
     setEmailErrorMessage(emailError);
     setPasswordErrorMessage(passwordError);
     if (!validationStatus) return;
 
-    const payload = { input: { email, password } };
-    loginUser({ variables: payload });
+    loginUser({ variables: { input: { email, password } } });
+  };
+
+  const handleModalClose = () => {
+    setLoginFail(false);
+    setLoginFailMessage('');
   };
 
   useRedirect({ path: '/', shouldRedirect: !!loggedUserId });
@@ -70,6 +90,8 @@ const Login = () => {
               value={email}
               onChange={handleEmailOnChange}
               validationError={emailErrorMessage}
+              type="email"
+              autocomplete="email"
               dataCy="login-email-input"
             />
             <TextInput
@@ -96,8 +118,8 @@ const Login = () => {
       />
       <ErrorModal
         isOpen={loginFail}
-        handleOnClose={() => setLoginFail(false)}
-        info="Niestety nie udało się zalogować!"
+        handleOnClose={handleModalClose}
+        info={loginFailMessage}
       />
     </div>
   );

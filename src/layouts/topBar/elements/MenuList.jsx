@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { menuItemsProperties } from 'data/topBar.js';
+import { TOP_BAR_MENU_ROUTING } from 'data/routing.js';
 
 const MenuList = () => {
   const blockName = 'top-bar-elements';
@@ -9,7 +9,7 @@ const MenuList = () => {
     <div className={`${blockName}__menu`} data-cy="topbar-menu-list">
       <ul className={`${blockName}__menu-list`}>
         {
-          menuItemsProperties.map(({ path, name, dataCy }) => (
+          TOP_BAR_MENU_ROUTING.map(({ path, name, dataCy }) => (
             <li
               className={`${blockName}__list-item`}
               key={`${blockName}__item-link-${name}`}

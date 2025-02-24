@@ -3,7 +3,7 @@ import { exact, number, string } from 'prop-types';
 import clsx from 'clsx';
 import useFetchUrl from 'hooks/useFetchUrl.jsx';
 import ShadowedContainer from 'components/containers/ShadowedContainer.jsx';
-import { appearingInSequence } from 'data/animations.js';
+import { APPEARING_IN_SEQUENCE } from 'data/animations.js';
 import { formattedPrice } from 'utils/helpers.js';
 import AddToBasketForm from './AddToBasketForm.jsx';
 import SelectedQuantityPresenter from './SelectedQuantityPresenter.jsx';
@@ -20,10 +20,10 @@ const Product = ({ product, index, mode }) => {
     <ShadowedContainer
       classNames={clsx(blockName, isBasketMode && `${blockName}--basket`)}
       animationAttributes={{
-        variants: appearingInSequence,
+        variants: APPEARING_IN_SEQUENCE,
         custom: index,
-        initial: appearingInSequence.hidden,
-        animate: appearingInSequence.visible
+        initial: APPEARING_IN_SEQUENCE.hidden,
+        animate: APPEARING_IN_SEQUENCE.visible
       }}
       dataCy={`product-${index}`}
     >

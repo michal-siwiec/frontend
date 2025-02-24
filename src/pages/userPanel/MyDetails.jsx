@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useQuery, useMutation } from '@apollo/client';
 import { USER_PERSONAL_DETAILS } from 'graphql/queries/user.js';
 import { UPDATE_USER_DETAILS } from 'graphql/mutations/user.js';
-import handleMyDetailsValidation from 'services/users/handleMyDetailsValidation.js';
+import { handleMyDetailsValidation } from 'services/user.js';
 import TextInput from 'components/inputs/TextInput.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
 import SuccessModal from 'components/modals/SuccessModal.jsx';
@@ -29,14 +29,12 @@ const MyDetails = () => {
   const [updateUserDetailsSuccess, setUpdateUserDetailsSuccess] = useState(false);
   const [updateUserDetailsError, setUpdateUserDetailsError] = useState(false);
 
-  const { loading: personalDetailsDataLoading, data: personalDetailsData } = useQuery(
+  const { loading: personalDetailsDataLoading } = useQuery(
     USER_PERSONAL_DETAILS,
     {
       variables: { userId: loggedUserId },
       fetchPolicy: 'network-only',
-      onCompleted: () => {
-        const { user } = personalDetailsData;
-
+      onCompleted: ({ user }) => {
         setName(user.name || '');
         setSurname(user.surname || '');
         setPhoneNumber(user.phoneNumber || '');

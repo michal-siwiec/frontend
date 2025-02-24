@@ -13,7 +13,7 @@ import {
   setPhoneNumber
 } from 'redux_/order/actionsCreator.js';
 import { OrderContext } from 'contexts/contexts.js';
-import handleClientDetailsValidation from 'services/users/handleClientDetailsValidation.js';
+import { handleClientDetailsValidation } from 'services/user.js';
 import TextInput from 'components/inputs/TextInput.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
 

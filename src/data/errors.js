@@ -1,8 +1,13 @@
-export default {
+export const ERROR_CODES = {
+  USER_NOT_FOUND: 'USER_NOT_FOUND',
+  INVALID_CREDENTIALS: 'INVALID_CREDENTIALS'
+};
+
+export const VALIDATION_ERROR_MESSAGES = {
   name: 'Imię ma niepoprawny format!',
   surname: 'Nazwisko ma niepoprawny format!',
   email: 'Email ma niepoprawny format!',
-  password: 'Hasło ma niepoprawny format!',
+  password: 'Hasło powinno mieć minimum 8 znaków, zawierać małą i dużą literę oraz cyfrę!',
   passwordIdentity: 'Hasła nie są identyczne!',
   avatar: 'Dozwolone formaty to: png, svg, jpeg',
   opinion: 'Opinia ma niepoprawny format!',

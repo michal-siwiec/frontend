@@ -12,10 +12,6 @@ class OpinionPresentedContentGenerator {
   }
 
   call() {
-    return this.#response();
-  }
-
-  #response() {
     const { narrowContent, restOfContent } = this.#cutString();
 
     return {

@@ -145,6 +145,16 @@
       flex-basis: 100%;
       margin: 0 auto;
     }
+
+    .input__error {
+      flex-basis: 100%;
+      padding: 0 10px;
+
+      @media screen and (min-width: $xs-breakpoint) {
+        flex-basis: 60%;
+        padding: 0;
+      }
+    }
   }
 
   .my-details {
