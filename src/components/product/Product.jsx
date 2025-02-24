@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import useFetchUrl from 'hooks/useFetchUrl.jsx';
 import ShadowedContainer from 'components/containers/ShadowedContainer.jsx';
 import { APPEARING_IN_SEQUENCE } from 'data/animations.js';
-import { formattedPrice } from 'utils/helpers.js';
+import { formatPrice } from 'utils/helpers.js';
 import AddToBasketForm from './AddToBasketForm.jsx';
 import SelectedQuantityPresenter from './SelectedQuantityPresenter.jsx';
 
@@ -36,7 +36,7 @@ const Product = ({ product, index, mode }) => {
       </div>
       <div className={`${blockName}__info-wrapper`}>
         <h2 className={`${blockName}__name`}>{name}</h2>
-        <h3 className={`${blockName}__price`}>{formattedPrice(price)} zł</h3>
+        <h3 className={`${blockName}__price`}>{formatPrice(price)} zł</h3>
         <p className={`${blockName}__description`}>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, consequatur. Ex blanditiis accusamus nam molestiae officiis totam repellendus labore beatae ullam quas, hic facilis fugit illum tenetur, magni est distinctio.
         </p>

@@ -1,5 +1,5 @@
 import FileSaver from 'file-saver';
-import { getObject } from 'services/s3Service.js';
+import { getObject } from 'services/s3.js';
 import { AWS_BUCKET } from 'utils/environment.js';
 
 const fetchFileOnLocalFileSystem = ({ bucket = AWS_BUCKET, key, fileName, fileType = 'application/pdf' }) => {
@@ -7,11 +7,8 @@ const fetchFileOnLocalFileSystem = ({ bucket = AWS_BUCKET, key, fileName, fileTy
     bucket,
     key,
     responseHandler: (error, data) => {
-      if (error) {
-        // TODO: Better loggin error - as well to Rollbar
-        console.error('Error fetching file:', error);
-        return;
-      }
+      // TODO: Log error to Rollbar
+      if (error) return;
 
       const blob = new Blob([data.Body], { type: fileType });
       FileSaver.saveAs(blob, fileName);

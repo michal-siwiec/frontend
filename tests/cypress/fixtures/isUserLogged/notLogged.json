@@ -1,8 +1,0 @@
-{
-  "data":{
-     "auth":{
-        "userId":null,
-        "__typename":"IsUserLoggedObject"
-     }
-  }
-}

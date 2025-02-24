@@ -1,2 +1,0 @@
-export const DEFAULT_REQUEST_DELAY = 3000;
-export const APPEARING_ELEMENT_TIME = 300;
