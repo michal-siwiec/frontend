@@ -1,4 +1,4 @@
-import { CATEGORY_NAMES } from 'data/uiElements';
+import { CATEGORY_NAMES } from 'data/uiElements.js';
 
 export const generateAddedProductPayload = ({ product, selectedQuantity }) => {
   const NUMBER_SYSTEM = 10;

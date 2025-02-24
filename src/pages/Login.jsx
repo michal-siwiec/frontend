@@ -32,11 +32,11 @@ const Login = () => {
       if (error.networkError?.statusCode === 500) {
         setLoginFailMessage('Niestety nie udało się zalogować!');
       } else {
-        const { extensions: { error_code } } = error.graphQLErrors[0];
+        const { extensions: { error_code: errorCode } } = error.graphQLErrors[0];
 
-        if (error_code === ERROR_CODES.USER_NOT_FOUND) {
+        if (errorCode === ERROR_CODES.USER_NOT_FOUND) {
           setLoginFailMessage('Użytkownik o takim adresie email nie istnieje!');
-        } else if (error_code === ERROR_CODES.INVALID_CREDENTIALS) {
+        } else if (errorCode === ERROR_CODES.INVALID_CREDENTIALS) {
           setLoginFailMessage('Niepoprawne hasło!');
         } else {
           setLoginFailMessage('Niestety nie udało się zalogować!');

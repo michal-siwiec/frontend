@@ -6,8 +6,8 @@ export const STEP_LABELS = ['Dane odbiorcy', 'Sposób dostawy', 'Metoda płatno�
 
 // Footer
 /* eslint-disable max-len */
-export const SHOP_RULES_TEXT = `Regulamin sklepu internetowego to zbiór zasad i norm, regulujących procesy związane z dokonywanymi na stronie sklepu transakcjami. Również w regulaminie znajdziemy informację określające zasady komunikacji sklepu z klientem oraz odwrotnej możliwości. Często są tu zawarte również informacje o przesyłkach i płatnościach.`;
-export const PRIVACY_POLICY_TEXT = `Polityka prywatności – dokument umieszczany na witrynie internetowej w celu poinformowania użytkowników o tym, jakie dane osobowe są o nich zbierane i jak będą wykorzystywane.`;
+export const SHOP_RULES_TEXT = 'Regulamin sklepu internetowego to zbiór zasad i norm, regulujących procesy związane z dokonywanymi na stronie sklepu transakcjami. Również w regulaminie znajdziemy informację określające zasady komunikacji sklepu z klientem oraz odwrotnej możliwości. Często są tu zawarte również informacje o przesyłkach i płatnościach.';
+export const PRIVACY_POLICY_TEXT = 'Polityka prywatności – dokument umieszczany na witrynie internetowej w celu poinformowania użytkowników o tym, jakie dane osobowe są o nich zbierane i jak będą wykorzystywane.';
 /* eslint-enable max-len */
 
 // Contact data

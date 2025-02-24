@@ -14,5 +14,5 @@ export const VALIDATION_ERROR_MESSAGES = {
   street: 'Ulica ma niepoprawny format!',
   city: 'Miasto ma niepoprawny format!',
   postalCode: 'Kod pocztowy ma niepoprawny format!',
-  phone: 'Telefon ma niepoprawny format!' 
-}
+  phone: 'Telefon ma niepoprawny format!'
+};

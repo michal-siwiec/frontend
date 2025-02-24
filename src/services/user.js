@@ -1,7 +1,6 @@
 import regexps from 'data/regexps.js';
-import { validateByRegexp } from 'utils/helpers.js';
+import { validateByRegexp, areTheSame } from 'utils/helpers.js';
 import { VALIDATION_ERROR_MESSAGES } from 'data/errors.js';
-import { areTheSame } from 'utils/helpers.js';
 import AvatarsGenerator from 'services/users/avatarsGenerator.js';
 
 export const generateTooltipHeaderText = ({ index, selectedAvatar }) => selectedAvatar === index
@@ -113,6 +112,4 @@ const validateAvatars = ({ avatars }) => {
   return eachAvatarsHasValidFormat;
 };
 
-export const generateAvatars = async (files) => {
-  return await new AvatarsGenerator(files).call();
-};
+export const generateAvatars = async (files) => new AvatarsGenerator(files).call();

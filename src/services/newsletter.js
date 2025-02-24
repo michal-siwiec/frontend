@@ -14,4 +14,3 @@ export const handleSaveToNewsletterValidation = ({ name, surname, email }) => {
     validationStatus: isNameValid && isSurnameValid && isEmailValid
   };
 };
-
