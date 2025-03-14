@@ -35,7 +35,7 @@ export const scrollIntoElement = ({ elementSelector, scrollProperties_ }) => {
   document.querySelector(elementSelector).scrollIntoView(scrollProperties);
 };
 
-export const formattedPrice = (price) => price.toFixed(2).toString().replace('.', ',');
+export const formatPrice = (price) => price.toFixed(2).toString().replace('.', ',');
 export const isTextLonger = ({ string, charsQuantity }) => string.length > charsQuantity;
 export const formatTimestamp = (timeStamp) => new Date(timeStamp).toLocaleString();
 export const validateByRegexp = ({ regexp, subject }) => regexp.test(subject);

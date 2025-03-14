@@ -11,7 +11,7 @@ class AvatarsGenerator {
 
   async call() {
     for (const [index, file] of Object.entries(this.#files)) {
-      this.#process({ file, index });
+      await this.#process({ file, index });
     }
 
     return this.#avatars;
