@@ -1,19 +1,22 @@
 name: Test code quality
-on:
-  push
+on: push
 env:
   API_URL: ${{ secrets.API_URL }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
+  AWS_REGION: ${{ secrets.AWS_REGION }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 jobs:
-  run-scripts:
+  run-tests:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        script: ['css-lint', 'js-lint']
+        script: ['css-lint', 'js-lint', 'js-tests']
     steps:
-    - name: Setup Node 12.x
+    - name: Setup Node 16.0
       uses: actions/setup-node@v3
       with:
-        node-version: 12.x
+        node-version: 16.0
     - name: Upload repository
       uses: actions/checkout@v3
     - name: Install dependencies
