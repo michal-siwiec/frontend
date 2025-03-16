@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        script: ['lint:css', 'lint:js', 'test:unit-jest']
+        script: ['lint:css', 'lint:js', 'test:unit-jest', 'test:unit-rtl']
     steps:
     - name: Setup Node 16.0
       uses: actions/setup-node@v3
