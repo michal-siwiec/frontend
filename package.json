@@ -8,13 +8,11 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --config ./config/webpack.config.development.js",
-    "prod-build": "npx webpack --config ./config/webpack.config.production.js",
-    "js-lint": "npx eslint 'src/**/*.js' 'src/**/*.jsx'",
-    "css-lint": "npx stylelint '**/*.css' '**/*.scss' --custom-syntax postcss-less",
-    "js-tests": "jest",
-    "react-test": "jest --env=jsdom --config jest.config.js",
-    "e2e-test": "npx cypress run",
-    "open-e2e-test": "npx cypress open"
+    "lint:css": "npx stylelint '**/*.css' '**/*.scss' --custom-syntax postcss-less",
+    "lint:js": "npx eslint 'src/**/*.js' 'src/**/*.jsx'",
+    "test:unit-jest": "jest tests/unit --testPathIgnorePatterns rtl.test.js",
+    "test:unit-rtl": "jest tests/unit --testMatch '**/*.rtl.test.js'",
+    "prod-build": "npx webpack --config ./config/webpack.config.production.js"
   },
   "keywords": [],
   "author": "",
