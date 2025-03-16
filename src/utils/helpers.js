@@ -37,6 +37,6 @@ export const scrollIntoElement = ({ elementSelector, scrollProperties_ }) => {
 
 export const formatPrice = (price) => price.toFixed(2).toString().replace('.', ',');
 export const isTextLonger = ({ string, charsQuantity }) => string.length > charsQuantity;
-export const formatTimestamp = (timeStamp) => new Date(timeStamp).toLocaleString();
+export const formatTimestamp = (timeStamp) => new Date(timeStamp).toLocaleString('pl-PL', { timeZone: 'Europe/Warsaw' });
 export const validateByRegexp = ({ regexp, subject }) => regexp.test(subject);
 export const areTheSame = ({ val1, val2 }) => val1 === val2;

@@ -87,7 +87,7 @@ describe('formatTimestamp', () => {
   test('should format timestamp properly', () => {
     const formattedTimestamp = formatTimestamp('2022-06-16 22:16:04');
 
-    expect(formattedTimestamp).toBe('6/16/2022, 10:16:04 PM');
+    expect(formattedTimestamp).toBe('16.06.2022, 22:16:04');
   });
 });
 
