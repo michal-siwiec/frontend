@@ -22,6 +22,7 @@ SubmitButton.propTypes = exact({
 
 SubmitButton.defaultProps = {
   classNames: '',
+  onMouseDown: () => {},
   dataCy: ''
 };
 
