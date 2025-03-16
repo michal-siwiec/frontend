@@ -10,8 +10,8 @@
     "start": "webpack-dev-server --config ./config/webpack.config.development.js",
     "lint:css": "npx stylelint '**/*.css' '**/*.scss' --custom-syntax postcss-less",
     "lint:js": "npx eslint 'src/**/*.js' 'src/**/*.jsx'",
-    "test:unit-jest": "jest tests/unit --testPathIgnorePatterns rtl.test.js",
-    "test:unit-rtl": "jest tests/unit --testMatch '**/*.rtl.test.js'",
+    "test:unit:jest": "jest tests/unit --testPathIgnorePatterns rtl.test.js",
+    "test:unit:rtl": "jest tests/unit --testMatch '**/*.rtl.test.js'",
     "prod-build": "npx webpack --config ./config/webpack.config.production.js"
   },
   "keywords": [],
@@ -25,6 +25,7 @@
     "@babel/preset-typescript": "^7.16.7",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^12.0.0",
+    "@testing-library/user-event": "^14.6.1",
     "@types/react-dom": "^17.0.11",
     "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0",
