@@ -19,6 +19,7 @@ const Avatar = ({ avatars, classNames }) => {
   );
 };
 
+// TODO: Proptypes doesn't contain "bucket" and it seems to be wrong hole...
 Avatar.propTypes = exact({
   avatars: arrayOf(
     shape({
