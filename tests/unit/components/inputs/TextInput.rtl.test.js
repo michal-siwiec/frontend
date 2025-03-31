@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import TextInput from 'components/inputs/TextInput';
 
-describe('TextInput component', () => {
+describe('TextInput', () => {
   const mockOnChange = jest.fn();
 
   const setup = (props = {}) => {
