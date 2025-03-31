@@ -26,7 +26,7 @@ describe('FileInput component', () => {
 
   it('shows validation error if provided', () => {
     const errorText = 'This field is required.';
-    const { container } = render(<FileInput onChange={mockOnChange} innerRef={mockRef} dataCy='file-input' validationError={errorText} />);
+    render(<FileInput onChange={mockOnChange} innerRef={mockRef} dataCy='file-input' validationError={errorText} />);
 
     expect(screen.getByText(errorText)).toBeInTheDocument();
     expect(screen.getByText(errorText)).toHaveClass('input__error');
