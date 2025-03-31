@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import LoadingModal from 'components/modals/LoadingModal';
 
-describe('LoadingModal component', () => {
+describe('LoadingModal', () => {
   const setup = (props = {}) => {
     return render(
       <LoadingModal
