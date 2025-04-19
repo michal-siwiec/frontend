@@ -1,24 +1,21 @@
-import React from 'react';
 import { render } from '@testing-library/react';
-// import { BrowserRouter } from 'react-router-dom';
-import { Provider as ReduxProvider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
+import rootReducer from 'redux_/rootReducer.js';
 import { ApolloProvider } from '@apollo/client';
-import { store, persistor } from 'redux_/store.js';
-import client from 'graphql/client.js';
+import Client from 'graphql/client.js';
 
-// TODO: Uncomment BrowserRouter
-
-const renderWithProviders = (ui, { ...renderOptions } = {}) => {
+const renderWithProviders = (
+  ui,
+  {
+    preloadedState = {},
+    store = configureStore({ reducer: rootReducer, preloadedState }),
+    ...renderOptions
+  } = {}
+) => {
   return render(
-    <ApolloProvider client={client}>
-      <ReduxProvider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          {/* <BrowserRouter> */}
-            {ui}
-          {/* </BrowserRouter> */}
-        </PersistGate>
-      </ReduxProvider>
+    <ApolloProvider client={Client}>
+      <Provider store={store}>{ui}</Provider>
     </ApolloProvider>,
     renderOptions
   );
