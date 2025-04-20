@@ -67,6 +67,7 @@
     "@mui/material": "^5.2.6",
     "@mui/styled-engine-sc": "^5.1.0",
     "@reduxjs/toolkit": "^1.8.2",
+    "@testing-library/react-hooks": "^8.0.1",
     "aws-sdk": "^2.1048.0",
     "browser-sync": "^2.27.7",
     "clsx": "^1.2.1",
