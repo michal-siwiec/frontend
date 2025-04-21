@@ -6,7 +6,7 @@ describe('Rating Component', () => {
   it('renders without crashing', () => {
     render(<Rating value={3} onChange={() => {}} />);
     const radios = screen.getAllByRole('radio');
-    const checkedRadios = radios.filter(button => button.checked);
+    const checkedRadios = radios.filter((button) => button.checked);
 
     expect(checkedRadios).toHaveLength(1);
     expect(checkedRadios[0]).toHaveAttribute('value', '3');
@@ -24,7 +24,7 @@ describe('Rating Component', () => {
 
   it('does not call onChange when readOnly is true', () => {
     const handleChange = jest.fn();
-    render(<Rating value={3} readOnly={true} onChange={handleChange} />);
+    render(<Rating value={3} readOnly onChange={handleChange} />);
     const radioButtons = screen.getAllByRole('img');
     fireEvent.click(radioButtons[0]);
 

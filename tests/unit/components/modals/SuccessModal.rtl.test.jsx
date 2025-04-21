@@ -1,22 +1,22 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import SuccessModal from 'components/modals/SuccessModal';
+import SuccessModal from 'components/modals/SuccessModal.jsx';
 
 describe('SuccessModal', () => {
   const handleOnClose = jest.fn();
 
-  const setup = (props = {}) => {
-    return render(
+  const setup = (props = {}) => (
+    render(
       <SuccessModal
-        isOpen={true}
+        isOpen
         handleOnClose={handleOnClose}
         info="Success info message"
         {...props}
       >
         <div>Test Child</div>
       </SuccessModal>
-    );
-  };
+    )
+  );
 
   it('renders modal with correct content when open', () => {
     setup();
@@ -27,7 +27,7 @@ describe('SuccessModal', () => {
   });
 
   it('does not render when isOpen is false', () => {
-    setup({ isOpen: false, info: "Should not show", children: <div>Hidden child</div> });
+    setup({ isOpen: false, info: 'Should not show', children: <div>Hidden child</div> });
 
     expect(screen.queryByText(/Dziękujemy!/i)).not.toBeInTheDocument();
     expect(screen.queryByText(/Should not show/i)).not.toBeInTheDocument();

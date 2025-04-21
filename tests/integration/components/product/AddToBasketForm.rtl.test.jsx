@@ -1,6 +1,6 @@
 import React from 'react';
 import { screen, fireEvent } from '@testing-library/react';
-import renderWithProviders from '../../helpers/renderWithProviders.js'; // TODO - fix path
+import renderWithProviders from '../../helpers/renderWithProviders.jsx'; // TODO - fix path
 import AddToBasketForm from 'components/product/AddToBasketForm.jsx';
 
 describe('AddToBasketForm', () => {

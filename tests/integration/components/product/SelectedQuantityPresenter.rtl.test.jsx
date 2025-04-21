@@ -1,11 +1,11 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-import renderWithProviders from '../../helpers/renderWithProviders.js'; // TODO - fix path
+import renderWithProviders from '../../helpers/renderWithProviders.jsx'; // TODO - fix path
 import SelectedQuantityPresenter from 'components/product/SelectedQuantityPresenter.jsx';
 
 describe('SelectedQuantityPresenter', () => {
   it('renders component successfully', () => {
-    const preloadedState = { basket: { addedProducts: [{ id: '088fc480-ce29-4d10-852a-971d60a01e59', quantity: 3 }] }};
+    const preloadedState = { basket: { addedProducts: [{ id: '088fc480-ce29-4d10-852a-971d60a01e59', quantity: 3 }] } };
     renderWithProviders(<SelectedQuantityPresenter id="088fc480-ce29-4d10-852a-971d60a01e59" />, { preloadedState });
 
     const input = screen.getByDisplayValue('3');

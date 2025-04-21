@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import useIsMobile from 'hooks/useIsMobile';
+import useIsMobile from 'hooks/useIsMobile.jsx';
 import { WIDTH_BREAKPOINTS } from 'data/breakpoints.js';
 
 describe('useIsMobile', () => {

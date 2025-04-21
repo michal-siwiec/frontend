@@ -14,13 +14,13 @@ describe('Drawer component', () => {
 
   it('renders children when open', () => {
     render(<Drawer {...defaultProps} />);
-    
+
     expect(screen.getByText('Hello from Drawer')).toBeInTheDocument();
   });
 
   it('does not render children when closed', () => {
     render(<Drawer {...defaultProps} isOpen={false} />);
-    
+
     expect(screen.queryByText('Hello from Drawer')).not.toBeInTheDocument();
   });
 

@@ -7,7 +7,7 @@ describe('FileInput component', () => {
   const mockRef = React.createRef();
 
   it('renders component properly', () => {
-    const { container } = render(<FileInput onChange={mockOnChange} innerRef={mockRef} dataCy='file-input' />);
+    const { container } = render(<FileInput onChange={mockOnChange} innerRef={mockRef} dataCy="file-input" />);
 
     const input = container.querySelector('[data-cy="file-input"]');
     expect(input).toBeInTheDocument();
@@ -15,7 +15,7 @@ describe('FileInput component', () => {
   });
 
   it('calls onChange handler when file is selected', () => {
-    const { container } = render(<FileInput onChange={mockOnChange} innerRef={mockRef} dataCy='file-input' />);
+    const { container } = render(<FileInput onChange={mockOnChange} innerRef={mockRef} dataCy="file-input" />);
 
     const file = new File(['hello'], 'hello.png', { type: 'image/png' });
     const input = container.querySelector('[data-cy="file-input"]');
@@ -26,7 +26,7 @@ describe('FileInput component', () => {
 
   it('shows validation error if provided', () => {
     const errorText = 'This field is required.';
-    render(<FileInput onChange={mockOnChange} innerRef={mockRef} dataCy='file-input' validationError={errorText} />);
+    render(<FileInput onChange={mockOnChange} innerRef={mockRef} dataCy="file-input" validationError={errorText} />);
 
     expect(screen.getByText(errorText)).toBeInTheDocument();
     expect(screen.getByText(errorText)).toHaveClass('input__error');

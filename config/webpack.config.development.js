@@ -8,9 +8,9 @@ module.exports = {
     port: 3003,
     open: true,
     historyApiFallback: true,
-    static:  {
+    static: {
       directory: path.join(__dirname, '../dist'),
       publicPath: '/'
     }
   }
-}
+};

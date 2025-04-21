@@ -48,7 +48,7 @@ describe('CheckBox', () => {
       <CheckBox
         label="Toggle"
         onChange={() => {}}
-        checked={true}
+        checked
       />
     );
 

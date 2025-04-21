@@ -1,13 +1,13 @@
 import React from 'react';
 import { render, screen, within, fireEvent } from '@testing-library/react';
-import Pagination from '../../../src/components/Pagination';
+import Pagination from '../../../src/components/Pagination.jsx'; // TODO: Fix path
 
 describe('Pagination Component', () => {
   const defaultProps = {
     activePage: 0,
     onChange: jest.fn(),
     itemsQuantity: 80,
-    quantityPerPage: 10,
+    quantityPerPage: 10
   };
 
   it('should not render if all items fit on one page', () => {
@@ -28,7 +28,7 @@ describe('Pagination Component', () => {
     expect(screen.queryByRole('navigation')).toBeInTheDocument();
   });
 
-  it("should show proper elements on UI if items exceed quantityPerPage", () => {
+  it('should show proper elements on UI if items exceed quantityPerPage', () => {
     render(<Pagination {...defaultProps} />);
 
     const nav = screen.getByRole('navigation');

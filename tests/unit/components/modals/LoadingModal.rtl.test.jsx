@@ -1,17 +1,17 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import LoadingModal from 'components/modals/LoadingModal';
+import LoadingModal from 'components/modals/LoadingModal.jsx';
 
 describe('LoadingModal', () => {
-  const setup = (props = {}) => {
-    return render(
+  const setup = (props = {}) => (
+    render(
       <LoadingModal
-        isOpen={true}
+        isOpen
         info="Test loading info"
         {...props}
       />
-    );
-  };
+    )
+  );
 
   it('renders modal when isOpen is true', () => {
     setup();

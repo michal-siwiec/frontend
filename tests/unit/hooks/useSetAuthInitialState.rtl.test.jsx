@@ -1,12 +1,12 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { waitFor } from '@testing-library/react';
-import createProvidersWrapper from '../helpers/createProvidersWrapper.js'; // TODO: Fix path
-import useSetAuthInitialState from 'hooks/useSetAuthInitialState';
+import createProvidersWrapper from '../helpers/createProvidersWrapper.jsx'; // TODO: Fix path
+import useSetAuthInitialState from 'hooks/useSetAuthInitialState.jsx';
 import { useQuery } from '@apollo/client';
 
 jest.mock('@apollo/client', () => ({
   ...jest.requireActual('@apollo/client'),
-  useQuery: jest.fn(),
+  useQuery: jest.fn()
 }));
 
 describe('useSetAuthInitialState', () => {
@@ -35,10 +35,10 @@ describe('useSetAuthInitialState', () => {
       onError();
       return { loading: false, error: new Error('Something went wrong!') };
     });
-  
+
     const { wrapper, store } = createProvidersWrapper();
     renderHook(() => useSetAuthInitialState(), { wrapper });
-  
+
     await waitFor(() => {
       expect(store.getState().user.loggedUserId).toBe(null);
     });

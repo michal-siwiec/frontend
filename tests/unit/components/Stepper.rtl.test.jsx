@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Stepper from 'components/Stepper';
+import Stepper from 'components/Stepper.jsx';
 
 describe('Stepper Component', () => {
   const labels = ['Step 1', 'Step 2', 'Step 3'];
@@ -9,7 +9,7 @@ describe('Stepper Component', () => {
   it('renders the stepper with given labels', () => {
     render(<Stepper activeStep={0} handleStepOnClick={jest.fn()} labels={labels} />);
 
-    labels.forEach(label => {
+    labels.forEach((label) => {
       expect(screen.getByText(label)).toBeInTheDocument();
     });
   });

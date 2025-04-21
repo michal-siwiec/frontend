@@ -1,11 +1,11 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-import renderWithProviders from '../../helpers/renderWithProviders.js'; // TODO - fix path
+import renderWithProviders from '../../helpers/renderWithProviders.jsx'; // TODO - fix path
 import Product from 'components/product/Product.jsx';
 
 jest.mock('hooks/useFetchUrl', () => ({
   __esModule: true,
-  default: () => 'https://example.com/mock-image.jpg',
+  default: () => 'https://example.com/mock-image.jpg'
 }));
 
 const product = {
@@ -14,7 +14,7 @@ const product = {
   picture: 'images/products/foundation_materials/powłoka_przeciwwilgociowa.jpeg',
   pictureBucket: 'budoman-development',
   price: 599.99,
-  availableQuantity: 3,
+  availableQuantity: 3
 };
 
 describe('Product', () => {

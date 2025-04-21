@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import NumberInput from 'components/inputs/NumberInput';
+import NumberInput from 'components/inputs/NumberInput.jsx';
 
 describe('NumberInput component', () => {
   const mockOnChange = jest.fn();
@@ -26,7 +26,7 @@ describe('NumberInput component', () => {
   });
 
   it('respects the disabled prop', () => {
-    render(<NumberInput max={10} value="5" onChange={mockOnChange} disabled={true} />);
+    render(<NumberInput max={10} value="5" onChange={mockOnChange} disabled />);
 
     const input = screen.getByDisplayValue('5');
 

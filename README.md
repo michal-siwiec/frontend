@@ -8,7 +8,6 @@ This is developed using:
 - [React](https://reactjs.org/) (17.0.2)
 - [Graphql](https://graphql.org/) (16.2.0)
 - [Redux](https://redux.js.org/) (4.2.0)
-- [Cypress](https://docs.cypress.io/guides/overview/why-cypress) (11.0.1)
 - [RTL](https://testing-library.com/docs/react-testing-library/intro/) (12.0.0)
 
 ## Requirements

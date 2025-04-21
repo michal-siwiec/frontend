@@ -1,20 +1,20 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Tooltip from 'components/Tooltip';
+import Tooltip from 'components/Tooltip.jsx';
 
 describe('Tooltip Component', () => {
   it('renders without crashing', () => {
     render(
-      <Tooltip open={true} headerText="Test Header">
-        <button>Hover me</button>
+      <Tooltip open headerText="Test Header">
+        <button type="button">Hover me</button>
       </Tooltip>
     );
   });
 
   it('displays content when open', () => {
     render(
-      <Tooltip open={true} headerText="Test Header" secondaryText="Test Secondary">
-        <button>Hover me</button>
+      <Tooltip open headerText="Test Header" secondaryText="Test Secondary">
+        <button type="button">Hover me</button>
       </Tooltip>
     );
 
@@ -26,7 +26,7 @@ describe('Tooltip Component', () => {
   it('does not show content when is close', () => {
     render(
       <Tooltip open={false} headerText="Test Header" secondaryText="Test Secondary">
-        <button>Hover me</button>
+        <button type="button">Hover me</button>
       </Tooltip>
     );
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import ErrorModal from 'components/modals/ErrorModal';
+import ErrorModal from 'components/modals/ErrorModal.jsx';
 
 describe('ErrorModal', () => {
   const mockClose = jest.fn();
@@ -8,7 +8,7 @@ describe('ErrorModal', () => {
   const setup = (props = {}) => {
     render(
       <ErrorModal
-        isOpen={true}
+        isOpen
         handleOnClose={mockClose}
         info="Something went wrong"
         {...props}
@@ -25,7 +25,7 @@ describe('ErrorModal', () => {
   });
 
   it('does not render anything when isOpen is false', () => {
-    setup({ isOpen: false })
+    setup({ isOpen: false });
 
     expect(screen.queryByText(/Wystąpił niespodziewany problem/i)).not.toBeInTheDocument();
     expect(screen.queryByText('Za utrudnienia przepraszamy')).not.toBeInTheDocument();

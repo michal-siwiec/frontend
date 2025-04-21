@@ -7,14 +7,13 @@ describe('generateAddOrderPayload', () => {
       basket: {
         addedProducts: [
           { id: 'a9758911-6438-4b0b-abf4-a6193940503f', quantity: 2 },
-          { id: '70347f38-31e5-4944-bde0-65973140de2a', quantity: 5 },
-        ],
+          { id: '70347f38-31e5-4944-bde0-65973140de2a', quantity: 5 }
+        ]
       },
       order: {
         clientDetails: {
           name: 'Michal',
           surname: 'Siwiec',
-          street: 'Beskidzka',
           city: 'Gliwice',
           postalCode: '44-100',
           street: 'Gruszczynskiego',
@@ -29,11 +28,11 @@ describe('generateAddOrderPayload', () => {
         payment: {
           cashPayment: true,
           traditionalTransfer: false
-        },
+        }
       },
       user: {
         loggedUserId: '2e785e4-93d5-42f4-aea1-8196b26a4f49'
-      },
+      }
     });
 
     const result = generateAddOrderPayload();
@@ -41,7 +40,6 @@ describe('generateAddOrderPayload', () => {
     expect(result).toEqual({
       name: 'Michal',
       surname: 'Siwiec',
-      street: 'Beskidzka',
       city: 'Gliwice',
       postalCode: '44-100',
       street: 'Gruszczynskiego',
@@ -52,7 +50,7 @@ describe('generateAddOrderPayload', () => {
       userId: '2e785e4-93d5-42f4-aea1-8196b26a4f49',
       productsOrder: [
         { productId: 'a9758911-6438-4b0b-abf4-a6193940503f', productQuantity: 2 },
-        { productId: '70347f38-31e5-4944-bde0-65973140de2a', productQuantity: 5 },
+        { productId: '70347f38-31e5-4944-bde0-65973140de2a', productQuantity: 5 }
       ]
     });
   });

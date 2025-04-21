@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import TextInput from 'components/inputs/TextInput';
+import TextInput from 'components/inputs/TextInput.jsx';
 
 describe('TextInput', () => {
   const mockOnChange = jest.fn();
