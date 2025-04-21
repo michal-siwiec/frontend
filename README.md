@@ -28,11 +28,11 @@ docker-compose up # App should be available on port 3003
 
 ## Code quality
 ```bash
-npm run js-lint # to launch linter for js files
-npm run css-lint # to launch linter for css files
-npm run react-test # to launch react unit tests
-npm run e2e-test # to launch e2e tests in CLI
-npm run open-e2e-test # to launch e2e tests in browser
+npm run lint:css # to launch linter for css files
+npm run lint:js # to launch linter for js files
+npm run test:unit:jest # to launch unit tests written with JEST
+npm run test:unit:rtl # to launch unit tests written with RTL
+npm run test:integration # to launch integration tests written with RTL
 ```
 
 ## Deploy
