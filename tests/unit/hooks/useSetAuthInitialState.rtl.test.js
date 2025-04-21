@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { ApolloProvider } from '@apollo/client';
 import { configureStore } from '@reduxjs/toolkit';
 import rootReducer from 'redux_/rootReducer.js';
-import Client from 'graphql/Client.js';
+import Client from 'graphql/client.js';
 import useSetAuthInitialState from 'hooks/useSetAuthInitialState';
 import { useQuery } from '@apollo/client';
 
