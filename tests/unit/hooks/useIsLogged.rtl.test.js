@@ -5,17 +5,17 @@ import createProvidersWrapper from '../helpers/createProvidersWrapper.js'; // TO
 describe('useIsLogged', () => {
   it('returns true if loggedUserId exists in store', () => {
     const preloadedState = { user: { loggedUserId: '088fc480-ce29-4d10-852a-971d60a01e59' } };
-    const wrapper = createProvidersWrapper(preloadedState);
-    const { result } = renderHook(() => useIsLogged(), { wrapper });
+    const { wrapper } = createProvidersWrapper(preloadedState);
+    const { result: { current } } = renderHook(() => useIsLogged(), { wrapper });
 
-    expect(result.current).toBe(true);
+    expect(current).toBe(true);
   });
 
   it('returns false if loggedUserId is null in store', () => {
     const preloadedState = { user: { loggedUserId: null } };
-    const wrapper = createProvidersWrapper(preloadedState);
-    const { result } = renderHook(() => useIsLogged(), { wrapper });
+    const { wrapper } = createProvidersWrapper(preloadedState);
+    const { result: { current } } = renderHook(() => useIsLogged(), { wrapper });
 
-    expect(result.current).toBe(false);
+    expect(current).toBe(false);
   });
 });

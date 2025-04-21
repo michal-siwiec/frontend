@@ -1,10 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { waitFor } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { ApolloProvider } from '@apollo/client';
-import { configureStore } from '@reduxjs/toolkit';
-import rootReducer from 'redux_/rootReducer.js';
-import Client from 'graphql/client.js';
+import createProvidersWrapper from '../helpers/createProvidersWrapper.js'; // TODO: Fix path
 import useSetAuthInitialState from 'hooks/useSetAuthInitialState';
 import { useQuery } from '@apollo/client';
 
@@ -26,13 +22,7 @@ describe('useSetAuthInitialState', () => {
       return { loading: false, error: undefined, data: result };
     });
 
-    const store = configureStore({ reducer: rootReducer });
-    const wrapper = ({ children }) => (
-      <ApolloProvider client={Client}>
-        <Provider store={store}>{children}</Provider>
-      </ApolloProvider>
-    );
-
+    const { wrapper, store } = createProvidersWrapper();
     renderHook(() => useSetAuthInitialState(), { wrapper });
 
     await waitFor(() => {
@@ -46,13 +36,7 @@ describe('useSetAuthInitialState', () => {
       return { loading: false, error: new Error('Something went wrong!') };
     });
   
-    const store = configureStore({ reducer: rootReducer });
-    const wrapper = ({ children }) => (
-      <ApolloProvider client={Client}>
-        <Provider store={store}>{children}</Provider>
-      </ApolloProvider>
-    );
-  
+    const { wrapper, store } = createProvidersWrapper();
     renderHook(() => useSetAuthInitialState(), { wrapper });
   
     await waitFor(() => {

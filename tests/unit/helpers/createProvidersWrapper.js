@@ -8,11 +8,13 @@ import Client from 'graphql/client.js';
 
 const createProvidersWrapper = (preloadedState = {}) => {
   const store = configureStore({ reducer: rootReducer, preloadedState });
-  return ({ children }) => (
+  const wrapper = ({ children }) => (
     <ApolloProvider client={Client}>
       <Provider store={store}>{children}</Provider>
     </ApolloProvider>
   );
+
+  return { store, wrapper };
 };
 
 export default createProvidersWrapper;
