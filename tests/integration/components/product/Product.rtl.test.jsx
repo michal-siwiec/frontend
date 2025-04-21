@@ -1,6 +1,6 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-import renderWithProviders from '../../helpers/renderWithProviders.jsx'; // TODO - fix path
+import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
 import Product from 'components/product/Product.jsx';
 
 jest.mock('hooks/useFetchUrl', () => ({
