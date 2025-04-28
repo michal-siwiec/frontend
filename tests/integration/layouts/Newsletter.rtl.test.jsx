@@ -145,4 +145,57 @@ describe('Newsletter', () => {
       expect(screen.getByText('Zapisz')).toBeInTheDocument();
     });
   });
+
+  it('fills form with user data when user is logged and data are configured or them', async () => {
+    const loggedUserId = '0c1069c7-8e77-4749-bc4b-e308c6679d1c';
+    const preloadedState = { user: { loggedUserId } };
+
+    const mocks = [
+      {
+        request: {
+          query: USER_PERSONAL_DETAILS,
+          variables: { userId: loggedUserId },
+        },
+        result: {
+          data: {
+            user: {
+              __typename: 'UserObject',
+              id: loggedUserId,
+              name: 'Michal',
+              surname: 'Siwiec',
+              email: 'siwiec.michal724@gmail.com',
+              phoneNumber: '724131140',
+              city: 'Gliwice',
+              postalCode: '44-100',
+              street: 'Zwycięstwa'
+            },
+          },
+        },
+      },
+      {
+        request: {
+          query: IS_USER_SAVED_TO_NEWSLETTER,
+          variables: { userId: loggedUserId },
+        },
+        result: {
+          data: {
+            user: {
+              __typename: 'UserObject',
+              id: loggedUserId,
+              savedToNewsletter: false,
+              email: 'siwiec.michal724@gmail.com'
+            },
+          },
+        },
+      }
+    ];
+
+    renderComponent({ mocks, preloadedState });
+
+    await waitFor(() => {
+      expect(screen.getByPlaceholderText('Imię')).toHaveValue('Michal');
+      expect(screen.getByPlaceholderText('Nazwisko')).toHaveValue('Siwiec');
+      expect(screen.getByPlaceholderText('Adres email')).toHaveValue('siwiec.michal724@gmail.com');
+    });
+  });
 });
