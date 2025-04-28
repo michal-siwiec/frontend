@@ -1,5 +1,6 @@
 import React from 'react';
 import { screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { MockedProvider } from '@apollo/client/testing';
 import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
 import Newsletter from 'layouts/Newsletter.jsx';
@@ -196,6 +197,67 @@ describe('Newsletter', () => {
       expect(screen.getByPlaceholderText('Imię')).toHaveValue('Michal');
       expect(screen.getByPlaceholderText('Nazwisko')).toHaveValue('Siwiec');
       expect(screen.getByPlaceholderText('Adres email')).toHaveValue('siwiec.michal724@gmail.com');
+    });
+  });
+
+  it('fills inputs with entered values', async () => {
+    const loggedUserId = '0c1069c7-8e77-4749-bc4b-e308c6679d1c';
+    const preloadedState = { user: { loggedUserId } };
+    const mocks = [
+      {
+        request: {
+          query: USER_PERSONAL_DETAILS,
+          variables: { userId: loggedUserId },
+        },
+        result: {
+          data: {
+            user: {
+              __typename: 'UserObject',
+              id: loggedUserId,
+              name: null,
+              surname: null,
+              email: null,
+              phoneNumber: null,
+              city: null,
+              postalCode: null,
+              street: null
+            },
+          },
+        },
+      },
+      {
+        request: {
+          query: IS_USER_SAVED_TO_NEWSLETTER,
+          variables: { userId: loggedUserId },
+        },
+        result: {
+          data: {
+            user: {
+              __typename: 'UserObject',
+              id: loggedUserId,
+              savedToNewsletter: false,
+              email: null
+            },
+          },
+        },
+      }
+    ];
+
+    renderComponent({ mocks, preloadedState });
+
+    await waitFor(async () => {
+      const user = userEvent.setup();
+      const nameField = screen.getByPlaceholderText('Imię');
+      const surnameField = screen.getByPlaceholderText('Nazwisko');
+      const emailField = screen.getByPlaceholderText('Adres email');
+
+      await user.type(nameField, 'Janusz');
+      await user.type(surnameField, 'Kolwaski');
+      await user.type(emailField, 'janusz.kowalski@gmail.com');
+
+      expect(nameField).toHaveValue('Janusz');
+      expect(surnameField).toHaveValue('Kolwaski');
+      expect(emailField).toHaveValue('janusz.kowalski@gmail.com');
     });
   });
 });
