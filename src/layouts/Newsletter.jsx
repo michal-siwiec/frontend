@@ -48,7 +48,9 @@ const Newsletter = () => {
     {
       variables: { userId: loggedUserId },
       fetchPolicy: 'network-only',
-      onCompleted: (data) => setIsUserSavedToNewsletter(data.user.savedToNewsletter),
+      onCompleted: (data) => {
+        setIsUserSavedToNewsletter(data.user.savedToNewsletter)
+      },
       onError: () => setIsUserSavedToNewsletter(false)
     }
   );

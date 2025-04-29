@@ -4,7 +4,9 @@ import userEvent from '@testing-library/user-event';
 import { MockedProvider } from '@apollo/client/testing';
 import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
 import Newsletter from 'layouts/Newsletter.jsx';
-import { USER_PERSONAL_DETAILS, IS_USER_SAVED_TO_NEWSLETTER } from 'graphql/queries/user';
+import { USER_PERSONAL_DETAILS, IS_USER_SAVED_TO_NEWSLETTER } from 'graphql/queries/user.js';
+import { SUBSCRIBE_TO_NEWSLETTER } from 'graphql/mutations/user.js';
+import { VALIDATION_ERROR_MESSAGES } from 'data/errors.js';
 
 const renderComponent = ({ mocks, preloadedState }) => (
   renderWithProviders(
@@ -258,6 +260,121 @@ describe('Newsletter', () => {
       expect(nameField).toHaveValue('Janusz');
       expect(surnameField).toHaveValue('Kolwaski');
       expect(emailField).toHaveValue('janusz.kowalski@gmail.com');
+    });
+  });
+
+  it.only('validates entered values to fields', async () => {
+    const loggedUserId = '0c1069c7-8e77-4749-bc4b-e308c6679d1c';
+    const preloadedState = { user: { loggedUserId } };
+    const mocks = [
+      {
+        request: {
+          query: USER_PERSONAL_DETAILS,
+          variables: { userId: loggedUserId },
+        },
+        result: {
+          data: {
+            user: {
+              __typename: 'UserObject',
+              id: loggedUserId,
+              name: null,
+              surname: null,
+              email: null,
+              phoneNumber: null,
+              city: null,
+              postalCode: null,
+              street: null
+            },
+          },
+        },
+      },
+      {
+        request: {
+          query: IS_USER_SAVED_TO_NEWSLETTER,
+          variables: { userId: loggedUserId },
+        },
+        result: {
+          data: {
+            user: {
+              __typename: 'UserObject',
+              id: loggedUserId,
+              savedToNewsletter: false,
+              email: null
+            },
+          },
+        },
+      },
+      {
+        request: {
+          query: SUBSCRIBE_TO_NEWSLETTER,
+          variables: {
+            input: {
+              email: 'janusz.kowalski@gmail.com',
+              name: 'Janusz',
+              surname: 'Kowalski',
+            },
+          },
+        },
+        result: {
+          data: {
+            subscribeUserToNewsletter: {
+              id: loggedUserId,
+              __typename: 'UserObject',
+            },
+          },
+        },
+      },
+      {
+        request: {
+          query: IS_USER_SAVED_TO_NEWSLETTER,
+          variables: { userId: loggedUserId },
+        },
+        result: {
+          data: {
+            user: {
+              __typename: 'UserObject',
+              id: loggedUserId,
+              savedToNewsletter: true,
+              email: 'janusz.kowalski@gmail.com'
+            },
+          },
+        },
+      },
+    ];
+
+    renderComponent({ mocks, preloadedState });
+
+    await waitFor(async () => {
+      const user = userEvent.setup();
+      const nameField = screen.getByPlaceholderText('Imię');
+      const surnameField = screen.getByPlaceholderText('Nazwisko');
+      const emailField = screen.getByPlaceholderText('Adres email');
+      const submitButton = screen.getByText('Zapisz');
+
+      expect(screen.queryByText(VALIDATION_ERROR_MESSAGES.name)).not.toBeInTheDocument();
+      expect(screen.queryByText(VALIDATION_ERROR_MESSAGES.surname)).not.toBeInTheDocument();
+      expect(screen.queryByText(VALIDATION_ERROR_MESSAGES.email)).not.toBeInTheDocument();
+
+      await user.type(nameField, 'janusz.kowalski@gmail.com');
+      await user.type(surnameField, '2321#');
+      await user.type(emailField, 'Janusz');
+      await userEvent.click(submitButton);
+
+      expect(screen.getByText(VALIDATION_ERROR_MESSAGES.name)).toBeInTheDocument();
+      expect(screen.getByText(VALIDATION_ERROR_MESSAGES.surname)).toBeInTheDocument();
+      expect(screen.getByText(VALIDATION_ERROR_MESSAGES.email)).toBeInTheDocument();
+
+      await user.clear(nameField);
+      await user.type(nameField, 'Janusz');
+      await user.clear(surnameField);
+      await user.type(surnameField, 'Kowalski');
+      await user.clear(emailField);
+      await user.type(emailField, 'janusz.kowalski@gmail.com');
+      await userEvent.click(submitButton);
+
+      expect(screen.queryByText(VALIDATION_ERROR_MESSAGES.name)).not.toBeInTheDocument();
+      expect(screen.queryByText(VALIDATION_ERROR_MESSAGES.surname)).not.toBeInTheDocument();
+      expect(screen.queryByText(VALIDATION_ERROR_MESSAGES.email)).not.toBeInTheDocument();
     });
   });
 });
