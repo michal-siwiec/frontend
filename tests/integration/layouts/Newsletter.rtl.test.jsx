@@ -15,7 +15,7 @@ const renderComponent = ({ mocks, preloadedState }) => (
     </MockedProvider>,
     { preloadedState }
   )
-)
+);
 
 describe('Newsletter', () => {
   it('does not render component when user is logged and already saved to newsletter', async () => {
@@ -26,7 +26,7 @@ describe('Newsletter', () => {
       {
         request: {
           query: USER_PERSONAL_DETAILS,
-          variables: { userId: loggedUserId },
+          variables: { userId: loggedUserId }
         },
         result: {
           data: {
@@ -40,14 +40,14 @@ describe('Newsletter', () => {
               city: 'Gliwice',
               postalCode: '44-100',
               street: 'Zwycięstwa'
-            },
-          },
-        },
+            }
+          }
+        }
       },
       {
         request: {
           query: IS_USER_SAVED_TO_NEWSLETTER,
-          variables: { userId: loggedUserId },
+          variables: { userId: loggedUserId }
         },
         result: {
           data: {
@@ -56,9 +56,9 @@ describe('Newsletter', () => {
               id: loggedUserId,
               savedToNewsletter: true,
               email: 'siwiec.michal724@gmail.com'
-            },
-          },
-        },
+            }
+          }
+        }
       }
     ];
 
@@ -103,7 +103,7 @@ describe('Newsletter', () => {
       {
         request: {
           query: USER_PERSONAL_DETAILS,
-          variables: { userId: loggedUserId },
+          variables: { userId: loggedUserId }
         },
         result: {
           data: {
@@ -117,14 +117,14 @@ describe('Newsletter', () => {
               city: 'Gliwice',
               postalCode: '44-100',
               street: 'Zwycięstwa'
-            },
-          },
-        },
+            }
+          }
+        }
       },
       {
         request: {
           query: IS_USER_SAVED_TO_NEWSLETTER,
-          variables: { userId: loggedUserId },
+          variables: { userId: loggedUserId }
         },
         result: {
           data: {
@@ -133,9 +133,9 @@ describe('Newsletter', () => {
               id: loggedUserId,
               savedToNewsletter: false,
               email: 'siwiec.michal724@gmail.com'
-            },
-          },
-        },
+            }
+          }
+        }
       }
     ];
 
@@ -157,7 +157,7 @@ describe('Newsletter', () => {
       {
         request: {
           query: USER_PERSONAL_DETAILS,
-          variables: { userId: loggedUserId },
+          variables: { userId: loggedUserId }
         },
         result: {
           data: {
@@ -171,14 +171,14 @@ describe('Newsletter', () => {
               city: 'Gliwice',
               postalCode: '44-100',
               street: 'Zwycięstwa'
-            },
-          },
-        },
+            }
+          }
+        }
       },
       {
         request: {
           query: IS_USER_SAVED_TO_NEWSLETTER,
-          variables: { userId: loggedUserId },
+          variables: { userId: loggedUserId }
         },
         result: {
           data: {
@@ -187,9 +187,9 @@ describe('Newsletter', () => {
               id: loggedUserId,
               savedToNewsletter: false,
               email: 'siwiec.michal724@gmail.com'
-            },
-          },
-        },
+            }
+          }
+        }
       }
     ];
 
@@ -209,7 +209,7 @@ describe('Newsletter', () => {
       {
         request: {
           query: USER_PERSONAL_DETAILS,
-          variables: { userId: loggedUserId },
+          variables: { userId: loggedUserId }
         },
         result: {
           data: {
@@ -223,14 +223,14 @@ describe('Newsletter', () => {
               city: null,
               postalCode: null,
               street: null
-            },
-          },
-        },
+            }
+          }
+        }
       },
       {
         request: {
           query: IS_USER_SAVED_TO_NEWSLETTER,
-          variables: { userId: loggedUserId },
+          variables: { userId: loggedUserId }
         },
         result: {
           data: {
@@ -239,9 +239,9 @@ describe('Newsletter', () => {
               id: loggedUserId,
               savedToNewsletter: false,
               email: null
-            },
-          },
-        },
+            }
+          }
+        }
       }
     ];
 
@@ -263,14 +263,14 @@ describe('Newsletter', () => {
     });
   });
 
-  it.only('validates entered values to fields', async () => {
+  it('validates entered values to fields', async () => {
     const loggedUserId = '0c1069c7-8e77-4749-bc4b-e308c6679d1c';
     const preloadedState = { user: { loggedUserId } };
     const mocks = [
       {
         request: {
           query: USER_PERSONAL_DETAILS,
-          variables: { userId: loggedUserId },
+          variables: { userId: loggedUserId }
         },
         result: {
           data: {
@@ -284,14 +284,14 @@ describe('Newsletter', () => {
               city: null,
               postalCode: null,
               street: null
-            },
-          },
-        },
+            }
+          }
+        }
       },
       {
         request: {
           query: IS_USER_SAVED_TO_NEWSLETTER,
-          variables: { userId: loggedUserId },
+          variables: { userId: loggedUserId }
         },
         result: {
           data: {
@@ -300,9 +300,9 @@ describe('Newsletter', () => {
               id: loggedUserId,
               savedToNewsletter: false,
               email: null
-            },
-          },
-        },
+            }
+          }
+        }
       },
       {
         request: {
@@ -311,23 +311,23 @@ describe('Newsletter', () => {
             input: {
               email: 'janusz.kowalski@gmail.com',
               name: 'Janusz',
-              surname: 'Kowalski',
-            },
-          },
+              surname: 'Kowalski'
+            }
+          }
         },
         result: {
           data: {
             subscribeUserToNewsletter: {
               id: loggedUserId,
-              __typename: 'UserObject',
-            },
-          },
-        },
+              __typename: 'UserObject'
+            }
+          }
+        }
       },
       {
         request: {
           query: IS_USER_SAVED_TO_NEWSLETTER,
-          variables: { userId: loggedUserId },
+          variables: { userId: loggedUserId }
         },
         result: {
           data: {
@@ -336,10 +336,10 @@ describe('Newsletter', () => {
               id: loggedUserId,
               savedToNewsletter: true,
               email: 'janusz.kowalski@gmail.com'
-            },
-          },
-        },
-      },
+            }
+          }
+        }
+      }
     ];
 
     renderComponent({ mocks, preloadedState });
