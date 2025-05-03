@@ -149,7 +149,7 @@ describe('Newsletter', () => {
     });
   });
 
-  it('fills form with user data when user is logged and data are configured or them', async () => {
+  it('fills form with user data when user is logged and data are configured for them', async () => {
     const loggedUserId = '0c1069c7-8e77-4749-bc4b-e308c6679d1c';
     const preloadedState = { user: { loggedUserId } };
 
@@ -376,5 +376,108 @@ describe('Newsletter', () => {
       expect(screen.queryByText(VALIDATION_ERROR_MESSAGES.surname)).not.toBeInTheDocument();
       expect(screen.queryByText(VALIDATION_ERROR_MESSAGES.email)).not.toBeInTheDocument();
     });
+  });
+
+  it('shows loading modal when subscribing is pending', async () => {
+    const loggedUserId = '0c1069c7-8e77-4749-bc4b-e308c6679d1c';
+    const preloadedState = { user: { loggedUserId } };
+    const mocks = [
+      {
+        request: {
+          query: USER_PERSONAL_DETAILS,
+          variables: { userId: loggedUserId }
+        },
+        result: {
+          data: {
+            user: {
+              __typename: 'UserObject',
+              id: loggedUserId,
+              name: null,
+              surname: null,
+              email: null,
+              phoneNumber: null,
+              city: null,
+              postalCode: null,
+              street: null
+            }
+          }
+        }
+      },
+      {
+        request: {
+          query: IS_USER_SAVED_TO_NEWSLETTER,
+          variables: { userId: loggedUserId }
+        },
+        result: {
+          data: {
+            user: {
+              __typename: 'UserObject',
+              id: loggedUserId,
+              savedToNewsletter: false,
+              email: null
+            }
+          }
+        }
+      },
+      {
+        request: {
+          query: SUBSCRIBE_TO_NEWSLETTER,
+          variables: {
+            input: {
+              email: 'janusz.kowalski@gmail.com',
+              name: 'Janusz',
+              surname: 'Kowalski'
+            }
+          }
+        },
+        result: {
+          data: {
+            subscribeUserToNewsletter: {
+              id: loggedUserId,
+              __typename: 'UserObject'
+            }
+          }
+        },
+        delay: 1000
+      },
+      {
+        request: {
+          query: IS_USER_SAVED_TO_NEWSLETTER,
+          variables: { userId: loggedUserId }
+        },
+        result: {
+          data: {
+            user: {
+              __typename: 'UserObject',
+              id: loggedUserId,
+              savedToNewsletter: true,
+              email: 'janusz.kowalski@gmail.com'
+            }
+          }
+        }
+      }
+    ];
+
+    renderComponent({ mocks, preloadedState });
+
+    const user = userEvent.setup();
+    await user.type(screen.getByPlaceholderText('Imię'), 'Janusz');
+    await user.type(screen.getByPlaceholderText('Nazwisko'), 'Kowalski');
+    await user.type(screen.getByPlaceholderText('Adres email'), 'janusz.kowalski@gmail.com');
+    await userEvent.click(screen.getByText('Zapisz'));
+
+    await waitFor(async () => {
+      expect(screen.queryByText('Prosimy o chwilę cierpliwości')).toBeInTheDocument();
+    });
+  });
+
+  // TODO
+  it('shows success modal when subscribing is successfull', async () => {
+
+  });
+
+  // TODO
+  it('shows error modal when subscribing is not successfull', async () => {
+
   });
 });
