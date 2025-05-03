@@ -563,8 +563,73 @@ describe('Newsletter', () => {
     });
   });
 
-  // TODO
   it('shows error modal when subscribing is not successfull', async () => {
+    const loggedUserId = '0c1069c7-8e77-4749-bc4b-e308c6679d1c';
+    const preloadedState = { user: { loggedUserId } };
+    const mocks = [
+      {
+        request: {
+          query: USER_PERSONAL_DETAILS,
+          variables: { userId: loggedUserId }
+        },
+        result: {
+          data: {
+            user: {
+              __typename: 'UserObject',
+              id: loggedUserId,
+              name: null,
+              surname: null,
+              email: null,
+              phoneNumber: null,
+              city: null,
+              postalCode: null,
+              street: null
+            }
+          }
+        }
+      },
+      {
+        request: {
+          query: IS_USER_SAVED_TO_NEWSLETTER,
+          variables: { userId: loggedUserId }
+        },
+        result: {
+          data: {
+            user: {
+              __typename: 'UserObject',
+              id: loggedUserId,
+              savedToNewsletter: false,
+              email: null
+            }
+          }
+        }
+      },
+      {
+        request: {
+          query: SUBSCRIBE_TO_NEWSLETTER,
+          variables: {
+            input: {
+              email: 'janusz.kowalski@gmail.com',
+              name: 'Janusz',
+              surname: 'Kowalski'
+            }
+          }
+        },
+        error: new Error('Unknown error!')
+      }
+    ];
 
+    renderComponent({ mocks, preloadedState });
+
+    const user = userEvent.setup();
+    await user.type(screen.getByPlaceholderText('Imię'), 'Janusz');
+    await user.type(screen.getByPlaceholderText('Nazwisko'), 'Kowalski');
+    await user.type(screen.getByPlaceholderText('Adres email'), 'janusz.kowalski@gmail.com');
+    await userEvent.click(screen.getByText('Zapisz'));
+
+    await waitFor(async () => {
+      expect(screen.queryByText('Wystąpił niespodziewany problem!')).toBeInTheDocument();
+      expect(screen.queryByText('Za utrudnienia przepraszamy')).toBeInTheDocument();
+    });
   });
 });
