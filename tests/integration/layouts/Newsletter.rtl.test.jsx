@@ -18,10 +18,15 @@ const renderComponent = ({ mocks, preloadedState }) => (
 );
 
 describe('Newsletter', () => {
-  it('does not render component when user is logged and already saved to newsletter', async () => {
-    const loggedUserId = '0c1069c7-8e77-4749-bc4b-e308c6679d1c';
-    const preloadedState = { user: { loggedUserId } };
+  let loggedUserId;
+  let preloadedState;
 
+  beforeEach(() => {
+    loggedUserId = '0c1069c7-8e77-4749-bc4b-e308c6679d1c';
+    preloadedState = { user: { loggedUserId } };
+  });
+
+  it('does not render component when user is logged and already saved to newsletter', async () => {
     const mocks = [
       {
         request: {
@@ -73,7 +78,7 @@ describe('Newsletter', () => {
   });
 
   it('render component when user is not logged', async () => {
-    const preloadedState = { user: { loggedUserId: null } };
+    preloadedState = { user: { loggedUserId: null } };
 
     renderComponent({ mocks: [], preloadedState });
 
@@ -97,8 +102,6 @@ describe('Newsletter', () => {
   });
 
   it('render component when user is not saved to newsletter', async () => {
-    const loggedUserId = '0c1069c7-8e77-4749-bc4b-e308c6679d1c';
-    const preloadedState = { user: { loggedUserId } };
     const mocks = [
       {
         request: {
@@ -150,9 +153,6 @@ describe('Newsletter', () => {
   });
 
   it('fills form with user data when user is logged and data are configured for them', async () => {
-    const loggedUserId = '0c1069c7-8e77-4749-bc4b-e308c6679d1c';
-    const preloadedState = { user: { loggedUserId } };
-
     const mocks = [
       {
         request: {
@@ -203,8 +203,6 @@ describe('Newsletter', () => {
   });
 
   it('fills inputs with entered values', async () => {
-    const loggedUserId = '0c1069c7-8e77-4749-bc4b-e308c6679d1c';
-    const preloadedState = { user: { loggedUserId } };
     const mocks = [
       {
         request: {
@@ -264,8 +262,6 @@ describe('Newsletter', () => {
   });
 
   it('validates entered values to fields', async () => {
-    const loggedUserId = '0c1069c7-8e77-4749-bc4b-e308c6679d1c';
-    const preloadedState = { user: { loggedUserId } };
     const mocks = [
       {
         request: {
@@ -379,8 +375,6 @@ describe('Newsletter', () => {
   });
 
   it('shows loading modal when subscribing is pending', async () => {
-    const loggedUserId = '0c1069c7-8e77-4749-bc4b-e308c6679d1c';
-    const preloadedState = { user: { loggedUserId } };
     const mocks = [
       {
         request: {
@@ -472,8 +466,6 @@ describe('Newsletter', () => {
   });
 
   it('shows success modal when subscribing is successfull', async () => {
-    const loggedUserId = '0c1069c7-8e77-4749-bc4b-e308c6679d1c';
-    const preloadedState = { user: { loggedUserId } };
     const mocks = [
       {
         request: {
@@ -564,8 +556,6 @@ describe('Newsletter', () => {
   });
 
   it('shows error modal when subscribing is not successfull', async () => {
-    const loggedUserId = '0c1069c7-8e77-4749-bc4b-e308c6679d1c';
-    const preloadedState = { user: { loggedUserId } };
     const mocks = [
       {
         request: {
