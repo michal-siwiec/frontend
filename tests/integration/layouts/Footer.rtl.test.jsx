@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import Footer from 'layouts/Footer.jsx';
-import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem';
+import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem.js';
 
 jest.mock('services/fetchFileOnLocalFileSystem', () => jest.fn());
 

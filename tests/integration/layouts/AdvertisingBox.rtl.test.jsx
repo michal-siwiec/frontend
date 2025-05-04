@@ -13,7 +13,7 @@ const setScreenWidth = (width) => {
 };
 
 jest.mock('services/s3.js', () => ({
-  getSignedUrl: jest.fn(),
+  getSignedUrl: jest.fn()
 }));
 
 describe('AdvertisingBox', () => {
@@ -39,11 +39,11 @@ describe('AdvertisingBox', () => {
 
     const backgroundImageDiv = document.querySelector('.advertising-box__background--picture');
     expect(backgroundImageDiv).toHaveStyle({
-      backgroundImage: 'url(https://images/construction-photos/paver.jpeg)',
+      backgroundImage: 'url(https://images/construction-photos/paver.jpeg)'
     });
 
     expect(s3.getSignedUrl).toHaveBeenCalledWith({
-      key: 'images/construction-photos/paver.jpeg',
+      key: 'images/construction-photos/paver.jpeg'
     });
   });
 

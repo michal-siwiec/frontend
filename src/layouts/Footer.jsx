@@ -123,9 +123,9 @@ const Footer = () => {
           <div className={`${blockName}__contact-data`}>
             <span>
               Email:
-                <a href={`mailto:${SHOP_MAIL}`} className={`${blockName}__content-element`}>
-                  {` ${SHOP_MAIL}`}
-                </a>
+              <a href={`mailto:${SHOP_MAIL}`} className={`${blockName}__content-element`}>
+                {` ${SHOP_MAIL}`}
+              </a>
             </span>
           </div>
           <div className={`${blockName}__contact-data`}>
