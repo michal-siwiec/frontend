@@ -19,20 +19,6 @@ const Footer = () => {
   const [privacyPolicyTooltipOpen, setPrivacyPolicyTooltipOpen] = useState(false);
   const [shopRulesTooltipOpen, setShopRulesTooltipOpen] = useState(false);
 
-  const handlePrivacyPolicyOnMouseDown = () => {
-    fetchFileOnLocalFileSystem({ key: 'documents/polityka_prywatnosci.pdf', fileName: 'Polityka prywatności.pdf' });
-  };
-
-  const handleShopRulesOnMouseDown = () => {
-    fetchFileOnLocalFileSystem({ key: 'documents/regulamin_sklepu.pdf', fileName: 'Regulamin sklepu.pdf' });
-  };
-
-  const handleEmailOnMouseDown = () => window.location = `mailto:${SHOP_MAIL}`;
-  const handlePhoneOnMouseDown = () => window.location = `tel:${SHOP_PHONE}`;
-  const handleSocialOnMouseDown = (url) => window.open(url, '_blank');
-  const handlePrivacyPolicyPromptOnHover = (value) => setPrivacyPolicyTooltipOpen(value);
-  const handleShopRulesPromptOnHover = (value) => setShopRulesTooltipOpen(value);
-
   return (
     <footer className={blockName}>
       <div className={`${blockName}__part`}>
@@ -55,7 +41,7 @@ const Footer = () => {
                 `${blockName}__content-element
                  ${blockName}__content-element--tooltip-label`
               }
-              onMouseDown={handlePrivacyPolicyOnMouseDown}
+              onMouseDown={() => fetchFileOnLocalFileSystem({ key: 'documents/polityka_prywatnosci.pdf', fileName: 'Polityka prywatności.pdf' })}
               role="link"
               tabIndex={0}
               data-cy="policy-privacy-label"
@@ -63,8 +49,8 @@ const Footer = () => {
               Polityka prywatności
             </span>
             <div
-              onMouseEnter={() => handlePrivacyPolicyPromptOnHover(true)}
-              onMouseLeave={() => handlePrivacyPolicyPromptOnHover(false)}
+              onMouseEnter={() => setPrivacyPolicyTooltipOpen(true)}
+              onMouseLeave={() => setPrivacyPolicyTooltipOpen(false)}
             >
               <Tooltip
                 open={privacyPolicyTooltipOpen}
@@ -72,7 +58,7 @@ const Footer = () => {
                 secondaryText={PRIVACY_POLICY_TEXT}
                 id="policy-privacy-tooltip"
               >
-                <LiveHelpIcon className={`${blockName}__tooltip-prompt`} data-cy="policy-privacy-prompt" />
+                <LiveHelpIcon className={`${blockName}__tooltip-prompt`} data-testid="policy-privacy-prompt" />
               </Tooltip>
             </div>
           </div>
@@ -82,7 +68,7 @@ const Footer = () => {
                 `${blockName}__content-element
                  ${blockName}__content-element--tooltip-label`
               }
-              onMouseDown={handleShopRulesOnMouseDown}
+              onMouseDown={() => fetchFileOnLocalFileSystem({ key: 'documents/regulamin_sklepu.pdf', fileName: 'Regulamin sklepu.pdf' })}
               role="link"
               tabIndex={0}
               data-cy="shop-regulation-label"
@@ -90,8 +76,8 @@ const Footer = () => {
               Regulamin sklepu
             </span>
             <div
-              onMouseEnter={() => handleShopRulesPromptOnHover(true)}
-              onMouseLeave={() => handleShopRulesPromptOnHover(false)}
+              onMouseEnter={() => setShopRulesTooltipOpen(true)}
+              onMouseLeave={() => setShopRulesTooltipOpen(false)}
             >
               <Tooltip
                 open={shopRulesTooltipOpen}
@@ -99,7 +85,7 @@ const Footer = () => {
                 secondaryText={SHOP_RULES_TEXT}
                 id="shop-regulation-tooltip"
               >
-                <LiveHelpIcon className={`${blockName}__tooltip-prompt`} data-cy="shop-regulation-prompt" />
+                <LiveHelpIcon className={`${blockName}__tooltip-prompt`} data-testid="shop-regulation-prompt" />
               </Tooltip>
             </div>
           </div>
@@ -162,43 +148,27 @@ const Footer = () => {
           }
         >
           <div className={`${blockName}__social`} key="icon-facebook-wrapper">
-            <FacebookIcon
-              className={`${blockName}__content-element ${blockName}__social-icon`}
-              onMouseDown={() => handleSocialOnMouseDown('https://www.facebook.com/')}
-              role="link"
-              tabIndex={0}
-              data-cy="facebook-icon"
-            />
+            <a href="https://www.facebook.com/" target="blank" data-testid="facebook-link">
+              <FacebookIcon className={`${blockName}__content-element ${blockName}__social-icon`} />
+            </a>
           </div>
 
           <div className={`${blockName}__social`} key="icon-instagram-wrapper">
-            <InstagramIcon
-              className={`${blockName}__content-element ${blockName}__social-icon`}
-              onMouseDown={() => handleSocialOnMouseDown('https://www.instagram.com/')}
-              role="link"
-              tabIndex={0}
-              data-cy="instagram-icon"
-            />
+            <a href="https://www.instagram.com/" target="blank" data-testid="instagram-link">
+              <InstagramIcon className={`${blockName}__content-element ${blockName}__social-icon`} />
+            </a>
           </div>
 
           <div className={`${blockName}__social`} key="youtube-icon-wrapper">
-            <YouTubeIcon
-              className={`${blockName}__content-element ${blockName}__social-icon`}
-              onMouseDown={() => handleSocialOnMouseDown('https://www.youtube.com/')}
-              role="link"
-              tabIndex={0}
-              data-cy="youtube-icon"
-            />
+            <a href="https://www.youtube.com/" target="blank" data-testid="youtube-link">
+              <YouTubeIcon className={`${blockName}__content-element ${blockName}__social-icon`} />
+            </a>
           </div>
 
           <div className={`${blockName}__social`} key="icon-twitter-wrapper">
-            <TwitterIcon
-              className={`${blockName}__content-element ${blockName}__social-icon`}
-              onMouseDown={() => handleSocialOnMouseDown('https://x.com/?lang=en')}
-              role="link"
-              tabIndex={0}
-              data-cy="twitter-icon"
-            />
+            <a href="https://x.com/?lang=en" target="blank" data-testid="twitter-link">
+              <TwitterIcon className={`${blockName}__content-element ${blockName}__social-icon`} />
+            </a>
           </div>
         </div>
       </div>

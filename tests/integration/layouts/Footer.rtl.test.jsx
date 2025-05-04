@@ -2,33 +2,11 @@ import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import Footer from 'layouts/Footer.jsx';
+import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem';
 
-// ✅ Mock only the low-level AWS-related dependencies
-// jest.mock('services/s3', () => ({
-//   getSignedUrl: jest.fn(() => 'mocked-logo-url'),
-//   getObject: jest.fn(({ responseHandler }) => {
-//     responseHandler(null, { Body: new Uint8Array([1, 2, 3]) });
-//   }),
-// }));
-
-// // ✅ Mock file-saver to avoid actual download
-// jest.mock('file-saver', () => ({
-//   saveAs: jest.fn(),
-// }));
-
-// // ✅ Required for email/phone click simulation
-// const setupWindowLocation = () => {
-//   delete window.location;
-//   window.location = { assign: jest.fn(), href: '', replace: jest.fn() };
-// };
+jest.mock('services/fetchFileOnLocalFileSystem', () => jest.fn());
 
 describe('Footer Integration Test (with low-level mocks)', () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-    // setupWindowLocation();
-    // window.open = jest.fn(); // mock social media tab opening
-  });
-
   const renderFooter = () => {
     render(
       <MemoryRouter>
@@ -80,67 +58,56 @@ describe('Footer Integration Test (with low-level mocks)', () => {
     expect(screen.getByText('724 131 140')).toHaveAttribute('href', 'tel:724131140');
   });
 
+  it('should open social media pages after clicking in logos', () => {
+    renderFooter();
 
-  // it('clicking on privacy policy triggers PDF fetch', () => {
-  //   renderFooter();
-  //   fireEvent.mouseDown(screen.getByTestId('policy-privacy-label'));
-  //   expect(require('services/s3').getObject).toHaveBeenCalledWith(
-  //     expect.objectContaining({
-  //       key: 'documents/polityka_prywatnosci.pdf',
-  //     })
-  //   );
-  // });
+    expect(screen.getByTestId('facebook-link')).toHaveAttribute('href', 'https://www.facebook.com/');
+    expect(screen.getByTestId('instagram-link')).toHaveAttribute('href', 'https://www.instagram.com/');
+    expect(screen.getByTestId('youtube-link')).toHaveAttribute('href', 'https://www.youtube.com/');
+    expect(screen.getByTestId('twitter-link')).toHaveAttribute('href', 'https://x.com/?lang=en');
+  });
 
-  // it('clicking on shop rules triggers PDF fetch', () => {
-  //   renderFooter();
-  //   fireEvent.mouseDown(screen.getByTestId('shop-regulation-label'));
-  //   expect(require('services/s3').getObject).toHaveBeenCalledWith(
-  //     expect.objectContaining({
-  //       key: 'documents/regulamin_sklepu.pdf',
-  //     })
-  //   );
-  // });
+  it("fetches privacy policy document after click in 'Polityka prywatności'", () => {
+    renderFooter();
 
-  // it('hovering on privacy policy prompt shows and hides tooltip', async () => {
-  //   renderFooter();
-  //   const icon = screen.getByTestId('policy-privacy-prompt');
-  //   fireEvent.mouseEnter(icon);
-  //   expect(await screen.findByText(/Polityka prywatności/i)).toBeVisible();
-  //   fireEvent.mouseLeave(icon);
-  //   await waitFor(() =>
-  //     expect(screen.getByText(/Polityka prywatności/i)).not.toBeVisible()
-  //   );
-  // });
+    fireEvent.mouseDown(screen.getByText('Polityka prywatności'));
 
-  // it('email click triggers mailto link', () => {
-  //   renderFooter();
-  //   fireEvent.mouseDown(screen.getByTestId('email-contact-label'));
-  //   expect(window.location).toEqual(expect.objectContaining({
-  //     href: expect.stringContaining('mailto:')
-  //   }));
-  // });
+    expect(fetchFileOnLocalFileSystem).toHaveBeenCalledWith({ key: 'documents/polityka_prywatnosci.pdf', fileName: 'Polityka prywatności.pdf' });
+  });
 
-  // it('phone click triggers tel link', () => {
-  //   renderFooter();
-  //   fireEvent.mouseDown(screen.getByTestId('phone-contact-label'));
-  //   expect(window.location).toEqual(expect.objectContaining({
-  //     href: expect.stringContaining('tel:')
-  //   }));
-  // });
+  it("fetches shop rules document after click in 'Regulamin sklepu'", () => {
+    renderFooter();
 
-  // it('social icons open correct URLs in new tab', () => {
-  //   renderFooter();
+    fireEvent.mouseDown(screen.getByText('Regulamin sklepu'));
 
-  //   fireEvent.mouseDown(screen.getByTestId('facebook-icon'));
-  //   expect(window.open).toHaveBeenCalledWith('https://www.facebook.com/', '_blank');
+    expect(fetchFileOnLocalFileSystem).toHaveBeenCalledWith({ key: 'documents/regulamin_sklepu.pdf', fileName: 'Regulamin sklepu.pdf' });
+  });
 
-  //   fireEvent.mouseDown(screen.getByTestId('instagram-icon'));
-  //   expect(window.open).toHaveBeenCalledWith('https://www.instagram.com/', '_blank');
+  it('shows and hides privacy policy tooltip', async () => {
+    renderFooter();
 
-  //   fireEvent.mouseDown(screen.getByTestId('youtube-icon'));
-  //   expect(window.open).toHaveBeenCalledWith('https://www.youtube.com/', '_blank');
+    await waitFor(() => {
+      fireEvent.mouseEnter(screen.getByTestId('policy-privacy-prompt'));
+      expect(screen.queryByText(/Polityka prywatności – dokument umieszczany na witrynie internetowej/)).toBeInTheDocument();
+    });
 
-  //   fireEvent.mouseDown(screen.getByTestId('twitter-icon'));
-  //   expect(window.open).toHaveBeenCalledWith('https://x.com/?lang=en', '_blank');
-  // });
+    await waitFor(() => {
+      fireEvent.mouseLeave(screen.getByTestId('policy-privacy-prompt'));
+      expect(screen.queryByText(/Polityka prywatności – dokument umieszczany na witrynie internetowej/)).not.toBeInTheDocument();
+    });
+  });
+
+  it('shows and hides shop rules tooltip', async () => {
+    renderFooter();
+
+    await waitFor(() => {
+      fireEvent.mouseEnter(screen.getByTestId('shop-regulation-prompt'));
+      expect(screen.queryByText(/Regulamin sklepu internetowego to zbiór zasad i norm, regulujących procesy/)).toBeInTheDocument();
+    });
+
+    await waitFor(() => {
+      fireEvent.mouseLeave(screen.getByTestId('shop-regulation-prompt'));
+      expect(screen.queryByText(/Regulamin sklepu internetowego to zbiór zasad i norm, regulujących procesy/)).not.toBeInTheDocument();
+    });
+  });
 });
