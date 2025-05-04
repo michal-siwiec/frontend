@@ -137,29 +137,17 @@ const Footer = () => {
           <div className={`${blockName}__contact-data`}>
             <span>
               Email:
-              <span
-                className={`${blockName}__content-element`}
-                onMouseDown={handleEmailOnMouseDown}
-                role="button"
-                tabIndex={0}
-                data-cy="email-contact-label"
-              >
-                {` ${SHOP_MAIL}`}
-              </span>
+                <a href={`mailto:${SHOP_MAIL}`} className={`${blockName}__content-element`}>
+                  {` ${SHOP_MAIL}`}
+                </a>
             </span>
           </div>
           <div className={`${blockName}__contact-data`}>
             <span>
               Telefon:
-              <span
-                className={`${blockName}__content-element`}
-                onMouseDown={handlePhoneOnMouseDown}
-                role="button"
-                tabIndex={0}
-                data-cy="phone-contact-label"
-              >
+              <a href={`tel:${SHOP_PHONE}`} className={`${blockName}__content-element`}>
                 {` ${formatPhoneNumber(SHOP_PHONE)}`}
-              </span>
+              </a>
             </span>
           </div>
         </div>
