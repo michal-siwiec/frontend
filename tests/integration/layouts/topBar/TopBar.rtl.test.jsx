@@ -18,7 +18,7 @@ describe('TopBar', () => {
         <TopBar />
       </MemoryRouter>
     );
-    
+
     expect(screen.queryByText('Logowanie')).not.toBeInTheDocument();
     expect(screen.queryByText('Rejestracja')).not.toBeInTheDocument();
   });
