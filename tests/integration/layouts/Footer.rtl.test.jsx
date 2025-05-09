@@ -6,10 +6,10 @@ import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem.js';
 
 jest.mock('services/fetchFileOnLocalFileSystem', () => jest.fn());
 
-describe('Footer Integration Test (with low-level mocks)', () => {
+describe('Footer', () => {
   const renderFooter = () => {
     render(
-      <MemoryRouter>
+      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <Footer />
       </MemoryRouter>
     );
