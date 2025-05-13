@@ -1,16 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
 import AdvertisingBox from 'layouts/AdvertisingBox.jsx';
 import * as s3 from 'services/s3.js';
 import { WIDTH_BREAKPOINTS } from 'data/breakpoints.js';
-
-const setScreenWidth = (width) => {
-  act(() => {
-    window.innerWidth = width;
-    window.dispatchEvent(new Event('resize'));
-  });
-};
+import { resizeWindow } from 'tests/helpers/domUtils.js';
 
 jest.mock('services/s3.js', () => ({
   getSignedUrl: jest.fn()
@@ -22,7 +15,7 @@ describe('AdvertisingBox', () => {
   });
 
   it('renders proper content', () => {
-    setScreenWidth(WIDTH_BREAKPOINTS.xl);
+    resizeWindow(WIDTH_BREAKPOINTS.xl);
     s3.getSignedUrl.mockReturnValue('https://images/construction-photos/paver.jpeg');
 
     render(<AdvertisingBox />);
@@ -32,7 +25,7 @@ describe('AdvertisingBox', () => {
   });
 
   it('renders desktop image when screen is wide', () => {
-    setScreenWidth(WIDTH_BREAKPOINTS.xl + 1);
+    resizeWindow(WIDTH_BREAKPOINTS.xl + 1);
     s3.getSignedUrl.mockReturnValue('https://images/construction-photos/paver.jpeg');
 
     render(<AdvertisingBox />);
@@ -48,7 +41,7 @@ describe('AdvertisingBox', () => {
   });
 
   it('renders mobile image when screen is narrow', () => {
-    setScreenWidth(WIDTH_BREAKPOINTS.xl - 1);
+    resizeWindow(WIDTH_BREAKPOINTS.xl - 1);
     s3.getSignedUrl.mockReturnValue('https://images/construction-photos/building-house.jpeg');
 
     render(<AdvertisingBox />);
