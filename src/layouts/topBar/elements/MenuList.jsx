@@ -6,15 +6,11 @@ const MenuList = () => {
   const blockName = 'top-bar-elements';
 
   return (
-    <div className={`${blockName}__menu`} data-cy="topbar-menu-list">
+    <div className={`${blockName}__menu`}>
       <ul className={`${blockName}__menu-list`}>
         {
-          TOP_BAR_MENU_ROUTING.map(({ path, name, dataCy }) => (
-            <li
-              className={`${blockName}__list-item`}
-              key={`${blockName}__item-link-${name}`}
-              data-cy={dataCy}
-            >
+          TOP_BAR_MENU_ROUTING.map(({ path, name }) => (
+            <li className={`${blockName}__list-item`} key={`${blockName}__item-link-${name}`}>
               <Link to={path} className={`${blockName}__item-link`}>
                 {name}
               </Link>
