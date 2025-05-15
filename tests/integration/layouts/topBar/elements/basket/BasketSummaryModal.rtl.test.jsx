@@ -1,7 +1,7 @@
 import React from 'react';
 import { screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import renderWithProviders from 'tests/integration/helpers/renderWithProviders';
+import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
 import BasketSummaryModal from 'layouts/topBar/elements/basket/BasketSummaryModal.jsx';
 
 const mockNavigate = jest.fn();
@@ -11,7 +11,7 @@ jest.mock('react-router-dom', () => {
 
   return {
     ...actual,
-    useNavigate: () => mockNavigate,
+    useNavigate: () => mockNavigate
   };
 });
 
@@ -55,7 +55,7 @@ describe('BasketSummaryModal', () => {
     // TODO
     renderWithProviders(
       <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <BasketSummaryModal open={true} handleOnClose={handleOnClose} />
+        <BasketSummaryModal open handleOnClose={handleOnClose} />
       </MemoryRouter>,
       { preloadedState }
     );
