@@ -7,7 +7,7 @@ const Logo = () => {
   const logoURL = useFetchUrl({ key: 'images/logo.svg' });
 
   return (
-    <div className={`${blockName}__logo`} data-cy="topbar-logo">
+    <div className={`${blockName}__logo`}>
       <Link to="/">
         <img
           src={logoURL}
