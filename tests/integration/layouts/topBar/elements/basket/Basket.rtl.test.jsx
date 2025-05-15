@@ -25,7 +25,7 @@ describe('Basket', () => {
           }
         ]
       }
-    }
+    };
 
     renderWithProviders(
       <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
@@ -82,7 +82,7 @@ describe('Basket', () => {
           }
         ]
       }
-    }
+    };
 
     renderWithProviders(
       <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
