@@ -6,7 +6,7 @@ const HamburgerMenu = ({ handleOnMouseDown }) => {
   const blockName = 'top-bar-elements';
 
   return (
-    <div className={`${blockName}__hamburger-menu-wrapper`} data-cy="topbar-hamburger-menu">
+    <div className={`${blockName}__hamburger-menu-wrapper`}>
       <MenuIcon
         className={`${blockName}__hamburger-menu-icon icon-hamburger-menu`}
         onMouseDown={handleOnMouseDown}
