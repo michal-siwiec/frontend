@@ -44,11 +44,11 @@ describe('Authorization', () => {
           data: {
             user: {
               __typename: 'UserObject',
-              id: '1e976dcb-cacc-4d1a-874a-ea97699ac706',
+              id: '1e976dcb-cacc-4d1a-874a-ea97699ac706'
             }
           }
         }
-      },
+      }
     ];
 
     renderWithProviders(
