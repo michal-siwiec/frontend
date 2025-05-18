@@ -5,7 +5,9 @@ import SubmitButton from 'components/SubmitButton.jsx';
 
 const ThankYouPage = () => {
   const blockName = 'thank-you-page';
-  const { user: { loggedUserId }, order: { orderID, paymentMethod, totalPrice } } = useSelector((store) => store);
+  const { loggedUserId } = useSelector((store) => store.user);
+  const { orderID, paymentMethod, totalPrice } = useSelector((store) => store.order);
+
   const isTraditionalTransfer = paymentMethod === 'traditional_transfer';
 
   const downloadInvoice = () => {
