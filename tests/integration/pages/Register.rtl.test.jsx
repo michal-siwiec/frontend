@@ -1,0 +1,88 @@
+import React from 'react';
+import { Routes, Route, MemoryRouter } from 'react-router-dom';
+import { screen, fireEvent, waitFor } from '@testing-library/react';
+import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
+import Register from 'pages/Register.jsx';
+
+describe('Register page', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('redirect to / path when user is logged', () => {
+    renderWithProviders(
+      <MemoryRouter initialEntries={['/register']} future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+        <Routes>
+          <Route path="/" element={<div>Home Page</div>} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </MemoryRouter>,
+      { preloadedState: { user: { loggedUserId: 'da97aa73-f0e4-4a17-9157-9f17454c73f3' } } }
+    );
+
+    expect(screen.getByText('Home Page')).toBeInTheDocument();
+    expect(screen.queryByText('Logowanie')).not.toBeInTheDocument();
+    expect(screen.queryByText('Rejestracja')).not.toBeInTheDocument();
+    expect(screen.queryByPlaceholderText('Email')).not.toBeInTheDocument();
+    expect(screen.queryByPlaceholderText('Password')).not.toBeInTheDocument();
+    expect(screen.queryByPlaceholderText('Password')).not.toBeInTheDocument();
+    expect(screen.queryByTestId('register-file-input')).not.toBeInTheDocument();
+    expect(screen.queryByText('Załóż konto')).not.toBeInTheDocument();
+    expect(screen.queryByText('Rejestrujemy użytkownika!')).not.toBeInTheDocument();
+    expect(screen.queryByText('Twoje konto zostało pomyślnie założone!')).not.toBeInTheDocument();
+    expect(screen.queryByText('Niestety nie udało się zarejestrować nowego konta.')).not.toBeInTheDocument();
+  });
+
+  it('renders component successfully when user is not logged', async () => {
+    renderWithProviders(
+      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}> // TODO: Fix it
+        <Register />
+      </MemoryRouter>,
+      { preloadedState: { user: { loggedUserId: null } } }
+    );
+
+    const loginLink = screen.getByRole('link', { name: 'Logowanie' });
+    const registerLink = screen.getByRole('link', { name: 'Rejestracja' });
+
+    expect(loginLink).toHaveAttribute('href', '/login');
+    expect(registerLink).toHaveAttribute('href', '/register');
+
+    expect(screen.getByPlaceholderText('Email')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('Password')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('Password')).toBeInTheDocument();
+    expect(screen.getByTestId('register-file-input')).toBeInTheDocument();
+    expect(screen.getByText('Załóż konto')).toBeInTheDocument();
+    expect(screen.queryByText('Rejestrujemy użytkownika!')).not.toBeInTheDocument();
+    expect(screen.queryByText('Twoje konto zostało pomyślnie założone!')).not.toBeInTheDocument();
+    expect(screen.queryByText('Niestety nie udało się zarejestrować nowego konta.')).not.toBeInTheDocument();
+  });
+
+  it('properly fills input with values', async () => {
+    renderWithProviders(
+      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}> // TODO: Fix it
+        <Register />
+      </MemoryRouter>,
+      { preloadedState: { user: { loggedUserId: null } } }
+    );
+
+    const emailField = screen.getByPlaceholderText('Email');
+    const passwordField = screen.getByPlaceholderText('Password');
+    const fileField = screen.getByTestId('register-file-input');
+
+    fireEvent.change(emailField, { target: { value: 'siwiec.michal724@gmail.com' } });
+    fireEvent.change(passwordField, { target: { value: 'Some password' } });
+
+    await waitFor(() => {
+      fireEvent.change(fileField, { target: { files: [new File(['avatar content'], 'avatar.png', { type: 'image/png' })] } });
+    });
+
+    expect(emailField).toHaveValue('siwiec.michal724@gmail.com');
+    expect(passwordField).toHaveValue('Some password');
+
+    await waitFor(() => {
+      expect(fileField.files).toHaveLength(1);
+      expect(fileField.files[0].name).toBe('avatar.png');
+      expect(fileField.files[0]).toBeInstanceOf(File);
+    });
+  });
+});

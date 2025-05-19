@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { exact, func, element, string } from 'prop-types';
 import clsx from 'clsx';
 
-const FileInput = ({ onChange, innerRef, classNames, validationError, dataCy }) => (
+const FileInput = ({ onChange, innerRef, classNames, validationError, dataTestID }) => (
   <Fragment>
     <input
       type="file"
@@ -10,7 +10,7 @@ const FileInput = ({ onChange, innerRef, classNames, validationError, dataCy }) 
       onChange={onChange}
       ref={innerRef}
       multiple
-      data-cy={dataCy}
+      data-testid={dataTestID}
     />
     {validationError && <div className="input__error">{validationError}</div>}
   </Fragment>
@@ -21,12 +21,12 @@ FileInput.propTypes = exact({
   innerRef: element.isRequired,
   classNames: string,
   validationError: string.isRequired,
-  dataCy: string
+  dataTestID: string
 }).isRequired;
 
 FileInput.defaultProps = {
   classNames: '',
-  dataCy: ''
+  dataTestID: ''
 };
 
 export default FileInput;

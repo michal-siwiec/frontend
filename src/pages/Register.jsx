@@ -112,7 +112,7 @@ const Register = () => {
               onChange={handleFileOnChange}
               innerRef={fileInput}
               validationError={avatarsErrorMessages}
-              dataCy="register-file-input"
+              dataTestID="register-file-input"
             />
             <SubmitButton
               classNames="button--register"
