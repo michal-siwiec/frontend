@@ -1,7 +1,9 @@
 import React from 'react';
 import { Routes, Route, MemoryRouter } from 'react-router-dom';
 import { screen, fireEvent, waitFor } from '@testing-library/react';
+import { MockedProvider } from '@apollo/client/testing';
 import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
+import { REGISTER_USER } from 'graphql/mutations/user.js';
 import Register from 'pages/Register.jsx';
 
 describe('Register page', () => {
@@ -35,7 +37,8 @@ describe('Register page', () => {
 
   it('renders component successfully when user is not logged', async () => {
     renderWithProviders(
-      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}> // TODO: Fix it
+      // TODO: Fix it
+      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <Register />
       </MemoryRouter>,
       { preloadedState: { user: { loggedUserId: null } } }
@@ -59,7 +62,8 @@ describe('Register page', () => {
 
   it('properly fills input with values', async () => {
     renderWithProviders(
-      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}> // TODO: Fix it
+      // TODO: Fix it
+      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <Register />
       </MemoryRouter>,
       { preloadedState: { user: { loggedUserId: null } } }
@@ -88,7 +92,8 @@ describe('Register page', () => {
 
   it('shows validation error messages', async () => {
     renderWithProviders(
-      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}> // TODO: Fix it
+      // TODO: Fix it
+      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <Register />
       </MemoryRouter>,
       { preloadedState: { user: { loggedUserId: null } } }
@@ -112,5 +117,158 @@ describe('Register page', () => {
     expect(screen.getByText('Email ma niepoprawny format!')).toBeInTheDocument();
     expect(screen.getByText('Hasło powinno mieć minimum 8 znaków, zawierać małą i dużą literę oraz cyfrę!')).toBeInTheDocument();
     expect(screen.getByText('Dozwolone formaty to: png, svg, jpeg')).toBeInTheDocument();
+  });
+
+  it('clears form after registration completed successfully', async () => {
+    const mocks = [
+      {
+        request: {
+          query: REGISTER_USER,
+          variables: { input: { email: 'siwiec.michal724@gmail.com', password: 'qwertY12', avatars: [] } }
+        },
+        result: {
+          data: {
+            user: {
+              __typename: 'UserObject',
+              id: 'da97aa73-f0e4-4a17-9157-9f17454c73f3',
+              avatars: []
+            }
+          }
+        }
+      }
+    ];
+
+    renderWithProviders(
+      // TODO: Fix it
+      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+        <MockedProvider mocks={mocks} addTypename={false}>
+          <Register />
+        </MockedProvider>
+      </MemoryRouter>,
+      { preloadedState: { user: { loggedUserId: null } } }
+    );
+
+    fireEvent.change(screen.getByPlaceholderText('Email'), { target: { value: 'siwiec.michal724@gmail.com' } });
+    fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'qwertY12' } });
+    fireEvent.mouseDown(screen.getByText('Załóż konto'));
+
+    await waitFor(() => {
+      expect(screen.getByPlaceholderText('Email')).toHaveValue('');
+      expect(screen.getByPlaceholderText('Password')).toHaveValue('');
+      expect(screen.getByTestId('register-file-input').files).toHaveLength(0);
+    });
+  });
+
+  it('shows success modal after registration completed successfully', async () => {
+    const mocks = [
+      {
+        request: {
+          query: REGISTER_USER,
+          variables: { input: { email: 'siwiec.michal724@gmail.com', password: 'qwertY12', avatars: [] } }
+        },
+        result: {
+          data: {
+            user: {
+              __typename: 'UserObject',
+              id: 'da97aa73-f0e4-4a17-9157-9f17454c73f3',
+              avatars: []
+            }
+          }
+        }
+      }
+    ];
+
+    renderWithProviders(
+      // TODO: Fix it
+      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+        <MockedProvider mocks={mocks} addTypename={false}>
+          <Register />
+        </MockedProvider>
+      </MemoryRouter>,
+      { preloadedState: { user: { loggedUserId: null } } }
+    );
+
+    expect(screen.queryByText('Twoje konto zostało pomyślnie założone!')).not.toBeInTheDocument();
+
+    fireEvent.change(screen.getByPlaceholderText('Email'), { target: { value: 'siwiec.michal724@gmail.com' } });
+    fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'qwertY12' } });
+    fireEvent.mouseDown(screen.getByText('Załóż konto'));
+
+    await waitFor(() => {
+      expect(screen.getByText('Twoje konto zostało pomyślnie założone!')).toBeInTheDocument();
+    });
+  });
+
+  it('shows loading modal whiles registration', async () => {
+    const mocks = [
+      {
+        request: {
+          query: REGISTER_USER,
+          variables: { input: { email: 'siwiec.michal724@gmail.com', password: 'qwertY12', avatars: [] } }
+        },
+        result: {
+          data: {
+            user: {
+              __typename: 'UserObject',
+              id: 'da97aa73-f0e4-4a17-9157-9f17454c73f3',
+              avatars: []
+            }
+          }
+        },
+        delay: 1000
+      }
+    ];
+
+    renderWithProviders(
+      // TODO: Fix it
+      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+        <MockedProvider mocks={mocks} addTypename={false}>
+          <Register />
+        </MockedProvider>
+      </MemoryRouter>,
+      { preloadedState: { user: { loggedUserId: null } } }
+    );
+
+    fireEvent.change(screen.getByPlaceholderText('Email'), { target: { value: 'siwiec.michal724@gmail.com' } });
+    fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'qwertY12' } });
+    fireEvent.mouseDown(screen.getByText('Załóż konto'));
+
+    await waitFor(() => {
+      expect(screen.queryByText('Twoje konto zostało pomyślnie założone!')).not.toBeInTheDocument();
+      expect(screen.queryByText('Niestety nie udało się zarejestrować nowego konta.')).not.toBeInTheDocument();
+      expect(screen.getByText('Rejestrujemy użytkownika!')).toBeInTheDocument();
+    });
+  });
+
+  it('shows error modal after registration process failed', async () => {
+    const mocks = [
+      {
+        request: {
+          query: REGISTER_USER,
+          variables: { input: { email: 'siwiec.michal724@gmail.com', password: 'qwertY12', avatars: [] } }
+        },
+        error: new Error('Unknown error!')
+      }
+    ];
+
+    renderWithProviders(
+      // TODO: Fix it
+      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+        <MockedProvider mocks={mocks} addTypename={false}>
+          <Register />
+        </MockedProvider>
+      </MemoryRouter>,
+      { preloadedState: { user: { loggedUserId: null } } }
+    );
+
+    fireEvent.change(screen.getByPlaceholderText('Email'), { target: { value: 'siwiec.michal724@gmail.com' } });
+    fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'qwertY12' } });
+    fireEvent.mouseDown(screen.getByText('Załóż konto'));
+
+    await waitFor(() => {
+      expect(screen.queryByText('Twoje konto zostało pomyślnie założone!')).not.toBeInTheDocument();
+      expect(screen.queryByText('Rejestrujemy użytkownika!')).not.toBeInTheDocument();
+      expect(screen.getByText('Niestety nie udało się zarejestrować nowego konta.')).toBeInTheDocument();
+    });
   });
 });

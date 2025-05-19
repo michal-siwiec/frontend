@@ -33,7 +33,6 @@ const Register = () => {
     onCompleted: () => {
       clearForm();
       setRegisterUserSuccess(true);
-      // loginUser();
     }
   });
 
