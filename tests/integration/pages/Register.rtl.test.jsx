@@ -85,4 +85,32 @@ describe('Register page', () => {
       expect(fileField.files[0]).toBeInstanceOf(File);
     });
   });
+
+  it('shows validation error messages', async () => {
+    renderWithProviders(
+      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}> // TODO: Fix it
+        <Register />
+      </MemoryRouter>,
+      { preloadedState: { user: { loggedUserId: null } } }
+    );
+
+    fireEvent.change(screen.getByPlaceholderText('Email'), { target: { value: 'siwiec.michal724gmail.com' } });
+    fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'ax34@@' } });
+
+    await waitFor(() => {
+      fireEvent.change(screen.getByTestId('register-file-input'), { target: { files: [new File(['%PDF-1.4\n%...'], 'invoice.pdf', { type: 'application/pdf' })] } });
+    });
+
+    await waitFor(() => {
+      expect(screen.queryByText('Email ma niepoprawny format!')).not.toBeInTheDocument();
+      expect(screen.queryByText('Hasło powinno mieć minimum 8 znaków, zawierać małą i dużą literę oraz cyfrę!')).not.toBeInTheDocument();
+      expect(screen.queryByText('Dozwolone formaty to: png, svg, jpeg')).not.toBeInTheDocument();
+    });
+
+    fireEvent.mouseDown(screen.getByText('Załóż konto'));
+
+    expect(screen.getByText('Email ma niepoprawny format!')).toBeInTheDocument();
+    expect(screen.getByText('Hasło powinno mieć minimum 8 znaków, zawierać małą i dużą literę oraz cyfrę!')).toBeInTheDocument();
+    expect(screen.getByText('Dozwolone formaty to: png, svg, jpeg')).toBeInTheDocument();
+  });
 });
