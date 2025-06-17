@@ -1,53 +1,98 @@
 {
-	"env": {
-		"browser": true,
-		"es2021": true
-	},
-	"extends": [
-		"plugin:react/recommended",
-		"airbnb"
-	],
-	"parserOptions": {
-		"ecmaFeatures": {
-			"jsx": true
-		},
-		"ecmaVersion": "latest",
-		"sourceType": "module"
-	},
-	"plugins": [
-		"react"
-	],
-	"rules": {
-		"react/jsx-fragments": 0,
-		"react/function-component-definition": 0,
-		"comma-dangle": ["error", "never"],
-		"arrow-parens": ["error", "always"],
-		"lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
-		"import/prefer-default-export": "off",
-		"react/jsx-one-expression-per-line": "off",
-		"jsx-a11y/control-has-associated-label": "off",
-		"jsx-a11y/label-has-associated-control": ["error", { "required": { "some": [ "nesting", "id"  ] } }],
-		"max-len": ["error", { "code":170, "ignorePattern": "Lorem ipsum" }],
-		"no-param-reassign": "off",
-		"no-unused-vars": "off",
-		"import/extensions": ["error", "ignorePackages"],
-		"consistent-return": "off",
-		"react/jsx-props-no-spreading": "off",
-		"class-methods-use-this": "off",
-		"no-unused-expressions": ["error", { "allowTernary": true }],
-		"react/jsx-no-constructed-context-values": "off",
-		"no-confusing-arrow": "off",
-		"import/no-named-default": "off",
-		"no-use-before-define": "off",
-		"import/order": "off",
-		"object-curly-newline": "off",
-		"no-return-assign": "off"
-	},
-	"settings": {
-		"import/resolver": {
-			"node": {
-        "paths": ["./src"]
-      }
-		}
-	}
+  "env":{
+     "browser":true,
+     "es2021":true,
+     "jest":true
+  },
+  "extends":[
+     "plugin:react/recommended",
+     "airbnb"
+  ],
+  "parserOptions":{
+     "ecmaFeatures":{
+        "jsx":true
+     },
+     "ecmaVersion":"latest",
+     "sourceType":"module"
+  },
+  "plugins":[
+     "react"
+  ],
+  "rules":{
+     "react/jsx-fragments":0,
+     "react/function-component-definition":0,
+     "comma-dangle":[
+        "error",
+        "never"
+     ],
+     "arrow-parens":[
+        "error",
+        "always"
+     ],
+     "lines-between-class-members":[
+        "error",
+        "always",
+        {
+           "exceptAfterSingleLine":true
+        }
+     ],
+     "import/prefer-default-export":"off",
+     "react/jsx-one-expression-per-line":"off",
+     "jsx-a11y/control-has-associated-label":"off",
+     "jsx-a11y/label-has-associated-control":[
+        "error",
+        {
+           "required":{
+              "some":[
+                 "nesting",
+                 "id"
+              ]
+           }
+        }
+     ],
+     "max-len":[
+        "error",
+        {
+           "code":170,
+           "ignorePattern":"Lorem ipsum"
+        }
+     ],
+     "no-param-reassign":"off",
+     "no-unused-vars":"off",
+     "import/extensions":[
+        "error",
+        "ignorePackages"
+     ],
+     "consistent-return":"off",
+     "react/jsx-props-no-spreading":"off",
+     "class-methods-use-this":"off",
+     "no-unused-expressions":[
+        "error",
+        {
+           "allowTernary":true
+        }
+     ],
+     "react/jsx-no-constructed-context-values":"off",
+     "no-confusing-arrow":"off",
+     "import/no-named-default":"off",
+     "no-use-before-define":"off",
+     "import/order":"off",
+     "object-curly-newline":"off",
+     "no-return-assign":"off"
+  },
+  "settings":{
+     "import/resolver":{
+        "node":{
+           "paths":[
+              "./src"
+           ]
+        },
+        "alias": {
+          "map": [
+            ["tests", "./tests"]
+          ],
+          "extensions": [".js", ".jsx", ".ts", ".tsx"]
+        }
+     }
+  }
 }

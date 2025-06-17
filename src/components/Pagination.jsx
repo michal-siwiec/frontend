@@ -9,7 +9,7 @@ const Pagination = ({ activePage, onChange, itemsQuantity, quantityPerPage }) =>
   if (isOnlyOnePage) return null;
 
   return (
-    <div className={blockName}>
+    <div className={blockName} role="navigation">
       <ReactJSPagination
         activePage={activePage + 1}
         itemsCountPerPage={quantityPerPage}

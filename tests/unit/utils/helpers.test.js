@@ -85,9 +85,11 @@ describe('isTextLonger', () => {
 
 describe('formatTimestamp', () => {
   test('should format timestamp properly', () => {
-    const formattedTimestamp = formatTimestamp('2022-06-16 22:16:04');
+    // Replace if needed because problem with interprating whitespaces on various envs
+    const formattedTimestamp = formatTimestamp('2022-06-16 22:16:04').replace(/\s/g, '');
+    const expectedTimestamp = '6/16/2022, 10:16:04 PM'.replace(/\s/g, '');
 
-    expect(formattedTimestamp).toBe('6/16/2022, 10:16:04 PM');
+    expect(formattedTimestamp).toEqual(expectedTimestamp);
   });
 });
 

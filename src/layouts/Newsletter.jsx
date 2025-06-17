@@ -26,33 +26,29 @@ const Newsletter = () => {
   const [subscribingToNewsletterError, setSubscribingToNewsletterError] = useState(false);
   const [isUserSavedToNewsletter, setIsUserSavedToNewsletter] = useState(false);
 
-  const [getPersonalDetails, { data: getPersonalDetailsData }] = useLazyQuery(
+  const [getPersonalDetails] = useLazyQuery(
     USER_PERSONAL_DETAILS,
     {
       variables: { userId: loggedUserId },
-      onCompleted: () => {
-        const { user: userData } = getPersonalDetailsData;
+      onCompleted: (data) => {
+        const { user: { name: userName, surname: userSurname, email: userEmail } } = data;
 
-        setName(userData.name || '');
-        setSurname(userData.surname || '');
-        setEmail(userData.email || '');
+        setName(userName || '');
+        setSurname(userSurname || '');
+        setEmail(userEmail || '');
       }
     }
   );
 
   const [checkIfSavedToNewsletter, {
     called: checkIfSavedToNewsletterCalled,
-    data: checkIfSavedToNewsletterData,
     refetch: checkIfSavedToNewsletterRefetch
   }] = useLazyQuery(
     IS_USER_SAVED_TO_NEWSLETTER,
     {
       variables: { userId: loggedUserId },
       fetchPolicy: 'network-only',
-      onCompleted: () => {
-        const { user: { savedToNewsletter } } = checkIfSavedToNewsletterData;
-        setIsUserSavedToNewsletter(savedToNewsletter);
-      },
+      onCompleted: (data) => setIsUserSavedToNewsletter(data.user.savedToNewsletter),
       onError: () => setIsUserSavedToNewsletter(false)
     }
   );

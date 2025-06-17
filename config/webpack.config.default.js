@@ -3,7 +3,7 @@ const path = require('path');
 const Dotenv = require('dotenv-webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -14,10 +14,6 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: '/\.txt$/',
-        use: 'raw-loader'
-      },
       {
         test: /\.(scss|sass)$/i,
         use: [
@@ -47,11 +43,11 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
         resolve: {
-          extensions: [".js", ".jsx"],
+          extensions: ['.js', '.jsx'],
           alias: {
             components: path.resolve(__dirname, '../', 'src/components'),
             data: path.resolve(__dirname, '../', 'src/data'),
-            graphql: path.resolve(__dirname, '../' ,'src/graphql'),
+            graphql: path.resolve(__dirname, '../', 'src/graphql'),
             hooks: path.resolve(__dirname, '../', 'src/hooks'),
             redux_: path.resolve(__dirname, '../', 'src/redux_'),
             services: path.resolve(__dirname, '../', 'src/services'),
@@ -86,5 +82,5 @@ module.exports = {
       systemvars: true
     })
   ],
-  devtool: "eval-cheap-source-map"
-}
+  devtool: 'eval-cheap-source-map'
+};

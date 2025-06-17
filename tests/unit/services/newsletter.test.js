@@ -1,7 +1,9 @@
 import { handleSaveToNewsletterValidation } from 'services/newsletter.js';
 
 describe('handleSaveToNewsletterValidation', () => {
-  let name, surname, email;
+  let name;
+  let surname;
+  let email;
 
   beforeEach(() => {
     name = 'Michal';

@@ -5,8 +5,8 @@ import { checkIfLogged } from 'redux_/user/actionsCreator.js';
 
 const useSetAuthInitialState = () => {
   const dispatch = useDispatch();
-  const { data } = useQuery(IS_USER_LOGGED, {
-    onCompleted: () => dispatch(checkIfLogged(data.auth.userId)),
+  useQuery(IS_USER_LOGGED, {
+    onCompleted: (data) => dispatch(checkIfLogged(data.auth.userId)),
     onError: () => dispatch(checkIfLogged(null))
   });
 };

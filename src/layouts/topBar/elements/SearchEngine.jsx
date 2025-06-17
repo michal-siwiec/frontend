@@ -19,7 +19,6 @@ const SearchEngine = () => {
         disabled
         onChange={() => {}}
         isDisabled
-        dataCy="topbar-search-engine"
       />
       <span
         onMouseEnter={() => setIsTooltipOpen(true)}
@@ -34,7 +33,7 @@ const SearchEngine = () => {
           classNames={`${blockName}__search-engine-tooltip`}
           id="search-engine-tooltip"
         >
-          <LiveHelpIcon className={`${blockName}__tooltip-prompt`} data-cy="search-engine-prompt" />
+          <LiveHelpIcon className={`${blockName}__tooltip-prompt`} data-testid="search-engine-prompt" />
         </Tooltip>
       </span>
     </div>

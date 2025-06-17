@@ -4,7 +4,7 @@ import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem.js';
 
 describe('fetchFileOnLocalFileSystem', () => {
   beforeEach(() => {
-    jest.clearAllMocks(); 
+    jest.clearAllMocks();
   });
 
   it('calls getObject with success response', () => {
@@ -18,7 +18,7 @@ describe('fetchFileOnLocalFileSystem', () => {
       responseHandler(null, { Body: binaryData });
     });
 
-    const saveAsSpy = jest.spyOn(FileSaver, 'saveAs')
+    const saveAsSpy = jest.spyOn(FileSaver, 'saveAs');
     fetchFileOnLocalFileSystem({ key: 'testKey', fileName: 'Polityka prywatnosci.pdf' });
 
     const saveAsSpyBlobArg = saveAsSpy.mock.calls[0][0];
@@ -35,7 +35,7 @@ describe('fetchFileOnLocalFileSystem', () => {
       responseHandler(new Error('Some S3 error'), null);
     });
 
-    const saveAsSpy = jest.spyOn(FileSaver, 'saveAs')
+    const saveAsSpy = jest.spyOn(FileSaver, 'saveAs');
     fetchFileOnLocalFileSystem({ bucket: 'testBucket', key: 'testKey', fileName: 'Polityka prywatnosci.pdf' });
 
     expect(getObjectSpy).toHaveBeenCalledTimes(1);
