@@ -1,4 +1,3 @@
-import React from 'react';
 import { exact, number, string } from 'prop-types';
 import clsx from 'clsx';
 import useFetchUrl from 'hooks/useFetchUrl.jsx';
@@ -25,7 +24,6 @@ const Product = ({ product, index, mode }) => {
         initial: APPEARING_IN_SEQUENCE.hidden,
         animate: APPEARING_IN_SEQUENCE.visible
       }}
-      dataCy={`product-${index}`}
     >
       <div className={`${blockName}__img-wrapper`}>
         <img

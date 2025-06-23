@@ -1,7 +1,5 @@
-import React from 'react';
-import { Routes, Route, MemoryRouter } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { screen, fireEvent, waitFor } from '@testing-library/react';
-import { MockedProvider } from '@apollo/client/testing';
 import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
 import { REGISTER_USER } from 'graphql/mutations/user.js';
 import Register from 'pages/Register.jsx';
@@ -13,13 +11,14 @@ describe('Register page', () => {
 
   it('redirect to / path when user is logged', () => {
     renderWithProviders(
-      <MemoryRouter initialEntries={['/register']} future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <Routes>
-          <Route path="/" element={<div>Home Page</div>} />
-          <Route path="/register" element={<Register />} />
-        </Routes>
-      </MemoryRouter>,
-      { preloadedState: { user: { loggedUserId: 'da97aa73-f0e4-4a17-9157-9f17454c73f3' } } }
+      <Routes>
+        <Route path="/" element={<div>Home Page</div>} />
+        <Route path="/register" element={<Register />} />
+      </Routes>,
+      {
+        preloadedState: { user: { loggedUserId: 'da97aa73-f0e4-4a17-9157-9f17454c73f3' } },
+        initialEntries: ['/register']
+      }
     );
 
     expect(screen.getByText('Home Page')).toBeInTheDocument();
@@ -36,13 +35,7 @@ describe('Register page', () => {
   });
 
   it('renders component successfully when user is not logged', async () => {
-    renderWithProviders(
-      // TODO: Fix it
-      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <Register />
-      </MemoryRouter>,
-      { preloadedState: { user: { loggedUserId: null } } }
-    );
+    renderWithProviders(<Register />, { preloadedState: { user: { loggedUserId: null } } });
 
     const loginLink = screen.getByRole('link', { name: 'Logowanie' });
     const registerLink = screen.getByRole('link', { name: 'Rejestracja' });
@@ -61,13 +54,7 @@ describe('Register page', () => {
   });
 
   it('properly fills input with values', async () => {
-    renderWithProviders(
-      // TODO: Fix it
-      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <Register />
-      </MemoryRouter>,
-      { preloadedState: { user: { loggedUserId: null } } }
-    );
+    renderWithProviders(<Register />, { preloadedState: { user: { loggedUserId: null } } });
 
     const emailField = screen.getByPlaceholderText('Email');
     const passwordField = screen.getByPlaceholderText('Password');
@@ -91,13 +78,7 @@ describe('Register page', () => {
   });
 
   it('shows validation error messages', async () => {
-    renderWithProviders(
-      // TODO: Fix it
-      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <Register />
-      </MemoryRouter>,
-      { preloadedState: { user: { loggedUserId: null } } }
-    );
+    renderWithProviders(<Register />, { preloadedState: { user: { loggedUserId: null } } });
 
     fireEvent.change(screen.getByPlaceholderText('Email'), { target: { value: 'siwiec.michal724gmail.com' } });
     fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'ax34@@' } });
@@ -138,15 +119,7 @@ describe('Register page', () => {
       }
     ];
 
-    renderWithProviders(
-      // TODO: Fix it
-      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <MockedProvider mocks={mocks} addTypename={false}>
-          <Register />
-        </MockedProvider>
-      </MemoryRouter>,
-      { preloadedState: { user: { loggedUserId: null } } }
-    );
+    renderWithProviders(<Register />, { preloadedState: { user: { loggedUserId: null } }, mocks });
 
     fireEvent.change(screen.getByPlaceholderText('Email'), { target: { value: 'siwiec.michal724@gmail.com' } });
     fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'qwertY12' } });
@@ -178,15 +151,7 @@ describe('Register page', () => {
       }
     ];
 
-    renderWithProviders(
-      // TODO: Fix it
-      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <MockedProvider mocks={mocks} addTypename={false}>
-          <Register />
-        </MockedProvider>
-      </MemoryRouter>,
-      { preloadedState: { user: { loggedUserId: null } } }
-    );
+    renderWithProviders(<Register />, { preloadedState: { user: { loggedUserId: null } }, mocks });
 
     expect(screen.queryByText('Twoje konto zostało pomyślnie założone!')).not.toBeInTheDocument();
 
@@ -219,15 +184,7 @@ describe('Register page', () => {
       }
     ];
 
-    renderWithProviders(
-      // TODO: Fix it
-      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <MockedProvider mocks={mocks} addTypename={false}>
-          <Register />
-        </MockedProvider>
-      </MemoryRouter>,
-      { preloadedState: { user: { loggedUserId: null } } }
-    );
+    renderWithProviders(<Register />, { preloadedState: { user: { loggedUserId: null } }, mocks });
 
     fireEvent.change(screen.getByPlaceholderText('Email'), { target: { value: 'siwiec.michal724@gmail.com' } });
     fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'qwertY12' } });
@@ -251,15 +208,7 @@ describe('Register page', () => {
       }
     ];
 
-    renderWithProviders(
-      // TODO: Fix it
-      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <MockedProvider mocks={mocks} addTypename={false}>
-          <Register />
-        </MockedProvider>
-      </MemoryRouter>,
-      { preloadedState: { user: { loggedUserId: null } } }
-    );
+    renderWithProviders(<Register />, { preloadedState: { user: { loggedUserId: null } }, mocks });
 
     fireEvent.change(screen.getByPlaceholderText('Email'), { target: { value: 'siwiec.michal724@gmail.com' } });
     fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'qwertY12' } });

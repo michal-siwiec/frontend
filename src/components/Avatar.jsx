@@ -1,4 +1,3 @@
-import React from 'react';
 import { exact, arrayOf, shape, bool, string } from 'prop-types';
 import { isEmpty } from 'lodash';
 import useFetchUrl from 'hooks/useFetchUrl.jsx';
@@ -19,7 +18,6 @@ const Avatar = ({ avatars, classNames }) => {
   );
 };
 
-// TODO: Proptypes doesn't contain "bucket" and it seems to be wrong hole...
 Avatar.propTypes = exact({
   avatars: arrayOf(
     shape({

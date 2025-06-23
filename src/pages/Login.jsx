@@ -72,10 +72,7 @@ const Login = () => {
         header={(
           <Fragment>
             <Link to="/login">
-              <span
-                className={`${blockName}__active-link`}
-                data-cy="login-header"
-              >
+              <span className={`${blockName}__active-link`}>
                 {'Logowanie '}
               </span>
             </Link>
@@ -92,7 +89,6 @@ const Login = () => {
               validationError={emailErrorMessage}
               type="email"
               autocomplete="email"
-              dataCy="login-email-input"
             />
             <TextInput
               placeholder="Hasło"
@@ -101,13 +97,11 @@ const Login = () => {
               value={password}
               onChange={handlePasswordOnChange}
               validationError={passwordErrorMessage}
-              dataCy="login-password-input"
             />
             <SubmitButton
               onMouseDown={handleLoginOnMouseDown}
               classNames="button--login"
               value="Zaloguj się"
-              dataCy="login-submit-btn"
             />
           </Fragment>
         )}

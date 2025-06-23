@@ -1,11 +1,9 @@
-import React from 'react';
 import { exact, element, string, object } from 'prop-types';
 import { motion } from 'framer-motion';
 
-const ShadowedContainer = ({ children, classNames, animationAttributes, dataCy }) => (
+const ShadowedContainer = ({ children, classNames, animationAttributes }) => (
   <motion.div
     className={`shadowed-box ${classNames}`}
-    data-cy={dataCy}
     {...animationAttributes}
   >
     {children}
@@ -15,14 +13,12 @@ const ShadowedContainer = ({ children, classNames, animationAttributes, dataCy }
 ShadowedContainer.propTypes = exact({
   children: element.isRequired,
   classNames: string.isRequired,
-  animationAttributes: object,
-  dataCy: string
+  animationAttributes: object
 }).isRequired;
 
 ShadowedContainer.defaultProps = {
   classNames: '',
-  animationAttributes: {},
-  dataCy: ''
+  animationAttributes: {}
 };
 
 export default ShadowedContainer;

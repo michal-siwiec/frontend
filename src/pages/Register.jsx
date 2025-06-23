@@ -95,7 +95,6 @@ const Register = () => {
               validationError={emailErrorMessage}
               type="email"
               autocomplete="email"
-              dataCy="register-email-input"
             />
             <TextInput
               placeholder="Password"
@@ -104,7 +103,6 @@ const Register = () => {
               onChange={handlePasswordOnChange}
               value={password}
               validationError={passwordErrorMessage}
-              dataCy="register-password-input"
             />
             <FileInput
               classNames="file-input--register"
@@ -117,7 +115,6 @@ const Register = () => {
               classNames="button--register"
               onMouseDown={handleSubmit}
               value="Załóż konto"
-              dataCy="register-submit-btn"
             />
           </Fragment>
         )}

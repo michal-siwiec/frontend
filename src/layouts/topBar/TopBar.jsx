@@ -1,4 +1,3 @@
-import React from 'react';
 import DesktopContent from './DesktopContent.jsx';
 import MobileContent from './MobileContent.jsx';
 import useIsMobile from 'hooks/useIsMobile.jsx';

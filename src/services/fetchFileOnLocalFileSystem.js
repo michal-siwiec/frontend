@@ -7,7 +7,6 @@ const fetchFileOnLocalFileSystem = ({ bucket = AWS_BUCKET, key, fileName, fileTy
     bucket,
     key,
     responseHandler: (error, data) => {
-      // TODO: Log error to Rollbar
       if (error) return;
 
       const blob = new Blob([data.Body], { type: fileType });

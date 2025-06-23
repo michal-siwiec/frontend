@@ -1,4 +1,3 @@
-import React from 'react';
 import { exact, bool, string } from 'prop-types';
 import { Modal, CircularProgress } from '@mui/material';
 import VawyDots from 'components/VawyDots.jsx';

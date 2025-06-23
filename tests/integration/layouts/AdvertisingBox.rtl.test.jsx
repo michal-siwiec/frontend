@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import AdvertisingBox from 'layouts/AdvertisingBox.jsx';
 import * as s3 from 'services/s3.js';

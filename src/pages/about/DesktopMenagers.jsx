@@ -1,4 +1,3 @@
-import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import useFetchUrl from 'hooks/useFetchUrl.jsx';
 import ShadowedContainer from 'components/containers/ShadowedContainer.jsx';
@@ -15,7 +14,7 @@ const DesktopMenagers = () => {
   });
 
   return (
-    <div className={`${blockName}__managers-circle`}>
+    <div className={`${blockName}__managers-circle`} data-testid={`${blockName}-container`}>
       {
         MANAGERS.map(({
           name,
@@ -31,7 +30,10 @@ const DesktopMenagers = () => {
             }}
             key={uuidv4()}
           >
-            <div className={`${blockName}__manager ${blockName}__manager--${MAPPED_DIRECTIONS[index]}`}>
+            <div
+              className={`${blockName}__manager ${blockName}__manager--${MAPPED_DIRECTIONS[index]}`}
+              data-testid={`${blockName}-manager-${MAPPED_DIRECTIONS[index]}`}
+            >
               <div className={`${blockName}__manager-details-wrapper`}>
                 <div className={`${blockName}__manager-name`}>
                   {name}

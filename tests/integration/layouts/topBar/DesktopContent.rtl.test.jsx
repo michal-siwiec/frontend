@@ -1,6 +1,4 @@
-import React from 'react';
 import { screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
 import DesktopContent from 'layouts/topBar/DesktopContent.jsx';
 import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
 import { WIDTH_BREAKPOINTS } from 'data/breakpoints.js';
@@ -9,13 +7,7 @@ import { resizeWindow } from 'tests/helpers/domUtils.js';
 describe('DesktopContent', () => {
   beforeEach(() => {
     resizeWindow(WIDTH_BREAKPOINTS.lg + 1);
-
-    // TODO: Fix this
-    renderWithProviders(
-      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <DesktopContent />
-      </MemoryRouter>
-    );
+    renderWithProviders(<DesktopContent />);
   });
 
   it('renders DesktopContent in desktop mood correctly', () => {

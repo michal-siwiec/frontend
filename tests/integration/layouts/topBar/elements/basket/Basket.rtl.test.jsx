@@ -1,10 +1,6 @@
-import React from 'react';
 import { screen, fireEvent, waitFor } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
 import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
 import Basket from 'layouts/topBar/elements/basket/Basket.jsx';
-
-// TODO: Add await for method "waitFor" - I have a places where don't use it
 
 describe('Basket', () => {
   it('renders basket when some product is added', () => {
@@ -27,12 +23,7 @@ describe('Basket', () => {
       }
     };
 
-    renderWithProviders(
-      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <Basket />
-      </MemoryRouter>,
-      { preloadedState }
-    );
+    renderWithProviders(<Basket />, { preloadedState });
 
     expect(screen.getByText('374.97 zł')).toBeInTheDocument();
     expect(screen.getByTestId('basket-icon')).toBeInTheDocument();
@@ -43,12 +34,7 @@ describe('Basket', () => {
   it('displays and hides empty basket modal after click in icon when basket is empty', async () => {
     const preloadedState = { basket: { addedProducts: [] } };
 
-    renderWithProviders(
-      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <Basket />
-      </MemoryRouter>,
-      { preloadedState }
-    );
+    renderWithProviders(<Basket />, { preloadedState });
 
     fireEvent.mouseDown(screen.getByTestId('basket-icon'));
 
@@ -84,12 +70,7 @@ describe('Basket', () => {
       }
     };
 
-    renderWithProviders(
-      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <Basket />
-      </MemoryRouter>,
-      { preloadedState }
-    );
+    renderWithProviders(<Basket />, { preloadedState });
 
     fireEvent.mouseDown(screen.getByTestId('basket-icon'));
 
