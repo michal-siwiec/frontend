@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import HamburgerMenu from 'layouts/topBar/elements/HamburgerMenu.jsx';
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { exact, func, number, arrayOf, string } from 'prop-types';
 import { Stepper as MuiStepper, Step, StepLabel } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';

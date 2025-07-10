@@ -1,6 +1,4 @@
-import React from 'react';
 import { screen, fireEvent } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
 import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
 import BasketSummaryModal from 'layouts/topBar/elements/basket/BasketSummaryModal.jsx';
 
@@ -36,13 +34,7 @@ describe('BasketSummaryModal', () => {
   };
 
   it('renders basket correctly', () => {
-    // TODO
-    renderWithProviders(
-      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <BasketSummaryModal open handleOnClose={() => {}} />
-      </MemoryRouter>,
-      { preloadedState }
-    );
+    renderWithProviders(<BasketSummaryModal open handleOnClose={() => {}} />, { preloadedState });
 
     expect(screen.getByText('Twój koszyk')).toBeInTheDocument();
     expect(screen.getByText('Kontynuuj zakupy')).toBeInTheDocument();
@@ -52,13 +44,7 @@ describe('BasketSummaryModal', () => {
   it('navigates to /order and calls handleOnClose when clicking "Kontynuuj zakupy"', () => {
     const handleOnClose = jest.fn();
 
-    // TODO
-    renderWithProviders(
-      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <BasketSummaryModal open handleOnClose={handleOnClose} />
-      </MemoryRouter>,
-      { preloadedState }
-    );
+    renderWithProviders(<BasketSummaryModal open handleOnClose={handleOnClose} />, { preloadedState });
 
     const button = screen.getByText('Kontynuuj zakupy');
     fireEvent.mouseDown(button);

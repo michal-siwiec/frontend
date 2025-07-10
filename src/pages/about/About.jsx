@@ -1,4 +1,3 @@
-import React from 'react';
 import DesktopMenagers from './DesktopMenagers.jsx';
 import MobileMenagers from './MobileMenagers.jsx';
 import useIsMobile from 'hooks/useIsMobile.jsx';
@@ -18,6 +17,7 @@ const About = () => {
         <div
           style={{ backgroundImage: `url(${backgroundPictureURL})` }}
           className={`${blockName}__renowation-picture`}
+          data-testid={`${blockName}-picture-container`}
         />
         <div className={`${blockName}__info-description`} dangerouslySetInnerHTML={{ __html: COMPANY_DESCRIPTION }} />
       </div>

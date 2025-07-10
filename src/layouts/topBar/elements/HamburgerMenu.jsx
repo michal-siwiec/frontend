@@ -1,4 +1,3 @@
-import React from 'react';
 import { exact, func } from 'prop-types';
 import MenuIcon from '@mui/icons-material/Menu';
 

@@ -44,7 +44,6 @@ const Footer = () => {
               onMouseDown={() => fetchFileOnLocalFileSystem({ key: 'documents/polityka_prywatnosci.pdf', fileName: 'Polityka prywatności.pdf' })}
               role="link"
               tabIndex={0}
-              data-cy="policy-privacy-label"
             >
               Polityka prywatności
             </span>
@@ -71,7 +70,6 @@ const Footer = () => {
               onMouseDown={() => fetchFileOnLocalFileSystem({ key: 'documents/regulamin_sklepu.pdf', fileName: 'Regulamin sklepu.pdf' })}
               role="link"
               tabIndex={0}
-              data-cy="shop-regulation-label"
             >
               Regulamin sklepu
             </span>
@@ -101,12 +99,8 @@ const Footer = () => {
           }
         >
           {
-            FOOTER_MENU_ROUTING.map(({ name, path, dataCy }) => (
-              <div
-                className={`${blockName}__product-cathegory`}
-                key={`${blockName}-product-cathegory-${name}`}
-                data-cy={dataCy}
-              >
+            FOOTER_MENU_ROUTING.map(({ name, path }) => (
+              <div className={`${blockName}__product-cathegory`} key={`${blockName}-product-cathegory-${name}`}>
                 <Link to={path}>
                   <span className={`${blockName}__content-element`}>
                     {name}

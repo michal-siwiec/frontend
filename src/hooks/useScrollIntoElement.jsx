@@ -1,12 +1,10 @@
 import { useEffect } from 'react';
 import { scrollIntoElement } from 'utils/helpers.js';
 
-const useScrollIntoElement = ({ data, locationKey, elementSelector }) => {
+const useScrollIntoElement = ({ scrollDependency, elementSelector }) => {
   useEffect(() => {
-    if (!data) return;
-
     scrollIntoElement({ elementSelector });
-  }, [locationKey, data]);
+  }, [scrollDependency]);
 };
 
 export default useScrollIntoElement;

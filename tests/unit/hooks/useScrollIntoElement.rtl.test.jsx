@@ -10,30 +10,21 @@ describe('useScrollIntoElement', () => {
     jest.clearAllMocks();
   });
 
-  it('calls scrollIntoElement when data is defined', () => {
-    renderHook(() => useScrollIntoElement({ data: { foo: 'bar' }, locationKey: 'some-location', elementSelector: '#my-element' }));
+  it('calls scrollIntoElement', () => {
+    renderHook(() => useScrollIntoElement({ scrollDependency: 'some-location', elementSelector: '#my-element' }));
 
     expect(scrollIntoElementMock).toHaveBeenCalledWith({ elementSelector: '#my-element' });
   });
 
-  it('does not call scrollIntoElement when data is undefined', () => {
-    renderHook(() => useScrollIntoElement({ data: undefined, locationKey: 'some-location', elementSelector: '#my-element' }));
-
-    expect(scrollIntoElementMock).not.toHaveBeenCalled();
-  });
-
-  it('re-triggers scrollIntoElement when locationKey or data changes', () => {
+  it('re-triggers scrollIntoElement when scrollDependency changes', () => {
     const { rerender } = renderHook(
-      ({ data, locationKey }) => useScrollIntoElement({ data, locationKey, elementSelector: '#dynamic-element' }),
-      { initialProps: { data: { foo: 'bar' }, locationKey: 'key-1' } }
+      ({ scrollDependency }) => useScrollIntoElement({ scrollDependency, elementSelector: '#dynamic-element' }),
+      { initialProps: { scrollDependency: 'key-1' } }
     );
 
     expect(scrollIntoElementMock).toHaveBeenCalledTimes(1);
 
-    rerender({
-      data: { foo: 'baz' },
-      locationKey: 'key-2'
-    });
+    rerender({ scrollDependency: 'key-2' });
 
     expect(scrollIntoElementMock).toHaveBeenCalledTimes(2);
     expect(scrollIntoElementMock).toHaveBeenLastCalledWith({ elementSelector: '#dynamic-element' });

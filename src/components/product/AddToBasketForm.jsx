@@ -36,11 +36,7 @@ const AddToBasketForm = ({ product }) => {
         value={selectedQuantity}
         onChange={selectQuantityOnChange}
       />
-      <SubmitButton
-        onMouseDown={handleAddToBasketOnMouseDown}
-        value="Dodaj do koszyka"
-        dataCy="add-to-basket-submit"
-      />
+      <SubmitButton onMouseDown={handleAddToBasketOnMouseDown} value="Dodaj do koszyka" />
     </div>
   );
 };

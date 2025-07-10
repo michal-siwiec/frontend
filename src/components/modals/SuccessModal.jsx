@@ -1,4 +1,3 @@
-import React from 'react';
 import { exact, string, bool, func } from 'prop-types';
 import { Modal } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';

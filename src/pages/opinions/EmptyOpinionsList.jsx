@@ -1,4 +1,3 @@
-import React from 'react';
 import { exact, element } from 'prop-types';
 import useIsLogged from 'hooks/useIsLogged.jsx';
 

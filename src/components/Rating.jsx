@@ -1,4 +1,3 @@
-import React from 'react';
 import { Rating as MuiRating } from '@mui/material';
 import {
   exact,

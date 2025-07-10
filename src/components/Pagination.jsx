@@ -1,4 +1,3 @@
-import React from 'react';
 import { exact, func, number } from 'prop-types';
 import { default as ReactJSPagination } from 'react-js-pagination';
 

@@ -1,7 +1,6 @@
-import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import useFetchUrl from 'hooks/useFetchUrl.jsx';
-import { MANAGERS } from 'data/uiElements.js';
+import { MANAGERS, MAPPED_DIRECTIONS } from 'data/uiElements.js';
 
 const MobileMenagers = () => {
   const blockName = 'mobile-menagers';
@@ -13,14 +12,18 @@ const MobileMenagers = () => {
   });
 
   return (
-    <div className={blockName}>
+    <div className={blockName} data-testid={`${blockName}-container`}>
       {
         MANAGERS.map(({
           name,
           description,
           position
         }, index) => (
-          <div className={`${blockName}__menager`} key={uuidv4()} data-cy={`manager-${index}`}>
+          <div
+            className={`${blockName}__menager`}
+            key={uuidv4()}
+            data-testid={`${blockName}-manager-${MAPPED_DIRECTIONS[index]}`}
+          >
             <div className={`${blockName}__manager-picture-wrapper`}>
               <img
                 src={managersPictureURL[index]}

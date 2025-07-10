@@ -1,4 +1,3 @@
-import React from 'react';
 import { exact, func, string, element, oneOfType } from 'prop-types';
 
 const CheckBox = ({ classNames, onChange, checked, label }) => (

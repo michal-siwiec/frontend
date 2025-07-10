@@ -1,6 +1,4 @@
-import React from 'react';
 import { screen, fireEvent } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
 import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
 import EmptyBasketModal from 'layouts/topBar/elements/basket/EmptyBasketModal.jsx';
 
@@ -17,12 +15,7 @@ jest.mock('react-router-dom', () => {
 
 describe('EmptyBasketModal', () => {
   it('renders modal correctly', () => {
-    // TODO
-    renderWithProviders(
-      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <EmptyBasketModal open handleOnClose={() => {}} />
-      </MemoryRouter>
-    );
+    renderWithProviders(<EmptyBasketModal open handleOnClose={() => {}} />);
 
     expect(screen.getByText('Twój koszyk jest pusty!')).toBeInTheDocument();
     expect(screen.getByText('Dodaj swój pierwszy produkt!')).toBeInTheDocument();
@@ -31,12 +24,7 @@ describe('EmptyBasketModal', () => {
   it('navigates to / and calls handleOnClose when clicking "Dodaj swój pierwszy produkt!"', () => {
     const handleOnClose = jest.fn();
 
-    // TODO
-    renderWithProviders(
-      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <EmptyBasketModal open handleOnClose={handleOnClose} />
-      </MemoryRouter>
-    );
+    renderWithProviders(<EmptyBasketModal open handleOnClose={handleOnClose} />);
 
     const button = screen.getByText('Dodaj swój pierwszy produkt!');
     fireEvent.mouseDown(button);

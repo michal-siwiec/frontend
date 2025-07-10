@@ -1,6 +1,4 @@
-import React from 'react';
 import { screen, fireEvent, waitFor } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
 import MobileContent from 'layouts/topBar/MobileContent.jsx';
 import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
 import { resizeWindow } from 'tests/helpers/domUtils.js';
@@ -9,13 +7,7 @@ import { WIDTH_BREAKPOINTS } from 'data/breakpoints.js';
 describe('MobileContent', () => {
   beforeEach(() => {
     resizeWindow(WIDTH_BREAKPOINTS.lg - 1);
-
-    // TODO: Fix this
-    renderWithProviders(
-      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <MobileContent />
-      </MemoryRouter>
-    );
+    renderWithProviders(<MobileContent />);
   });
 
   it('renders topBar in mobile mood correctly', () => {

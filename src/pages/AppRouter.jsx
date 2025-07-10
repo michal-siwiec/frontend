@@ -1,4 +1,3 @@
-import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Products from './Products.jsx';
 import Login from 'pages/Login.jsx';

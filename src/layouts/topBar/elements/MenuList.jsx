@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { TOP_BAR_MENU_ROUTING } from 'data/routing.js';
 

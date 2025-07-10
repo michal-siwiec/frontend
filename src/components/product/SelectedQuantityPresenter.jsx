@@ -1,4 +1,3 @@
-import React from 'react';
 import { exact, string } from 'prop-types';
 import { useSelector } from 'react-redux';
 import NumberInput from 'components/inputs/NumberInput.jsx';

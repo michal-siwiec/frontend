@@ -1,8 +1,5 @@
-import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import SearchEngine from 'layouts/topBar/elements/SearchEngine.jsx';
-
-// TODO: Remove data-cy - this is unused
 
 describe('SearchEngine', () => {
   it('renders component properly', () => {
@@ -15,7 +12,7 @@ describe('SearchEngine', () => {
     expect(screen.queryByText('Wyszukiwarka produktów jest nie dostępna!')).not.toBeInTheDocument();
   });
 
-  it('shows and hides tooltip on hover', () => {
+  it('shows and hides tooltip on hover', async () => {
     render(<SearchEngine />);
 
     const tooltipTrigger = screen.getByTestId('search-engine-prompt');
@@ -27,7 +24,7 @@ describe('SearchEngine', () => {
 
     fireEvent.mouseLeave(tooltipTrigger);
 
-    waitFor(() => {
+    await waitFor(() => {
       expect(screen.queryByText('Wyszukiwarka produktów jest nie dostępna!')).not.toBeInTheDocument();
     });
   });

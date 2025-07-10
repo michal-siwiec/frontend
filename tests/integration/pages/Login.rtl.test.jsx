@@ -1,9 +1,7 @@
-import React from 'react';
-import { Routes, Route, MemoryRouter } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { ApolloError } from '@apollo/client';
 import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
 import { screen, fireEvent, waitFor } from '@testing-library/react';
-import { MockedProvider } from '@apollo/client/testing';
 import { LOGIN_USER } from 'graphql/mutations/user.js';
 import { ERROR_CODES } from 'data/errors.js';
 import Login from 'pages/Login.jsx';
@@ -11,13 +9,11 @@ import Login from 'pages/Login.jsx';
 describe('Login', () => {
   it('redirect to / path when user is logged', () => {
     renderWithProviders(
-      <MemoryRouter initialEntries={['/login']} future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <Routes>
-          <Route path="/" element={<div>Home Page</div>} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </MemoryRouter>,
-      { preloadedState: { user: { loggedUserId: 'da97aa73-f0e4-4a17-9157-9f17454c73f3' } } }
+      <Routes>
+        <Route path="/" element={<div>Home Page</div>} />
+        <Route path="/login" element={<Login />} />
+      </Routes>,
+      { preloadedState: { user: { loggedUserId: 'da97aa73-f0e4-4a17-9157-9f17454c73f3' } }, initialEntries: ['/login'] }
     );
 
     expect(screen.queryByText('Rejestracja')).not.toBeInTheDocument();
@@ -29,13 +25,11 @@ describe('Login', () => {
 
   it('renders component successfully', () => {
     renderWithProviders(
-      <MemoryRouter initialEntries={['/login']} future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <Routes>
-          <Route path="/" element={<div>Home Page</div>} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </MemoryRouter>,
-      { preloadedState: { user: { loggedUserId: null } } }
+      <Routes>
+        <Route path="/" element={<div>Home Page</div>} />
+        <Route path="/login" element={<Login />} />
+      </Routes>,
+      { preloadedState: { user: { loggedUserId: null } }, initialEntries: ['/login'] }
     );
 
     const loginLink = screen.getByRole('link', { name: 'Logowanie' });
@@ -52,13 +46,11 @@ describe('Login', () => {
 
   it('fills inputs with values', () => {
     renderWithProviders(
-      <MemoryRouter initialEntries={['/login']} future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <Routes>
-          <Route path="/" element={<div>Home Page</div>} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </MemoryRouter>,
-      { preloadedState: { user: { loggedUserId: null } } }
+      <Routes>
+        <Route path="/" element={<div>Home Page</div>} />
+        <Route path="/login" element={<Login />} />
+      </Routes>,
+      { preloadedState: { user: { loggedUserId: null } }, initialEntries: ['/login'] }
     );
 
     const emailInput = screen.getByPlaceholderText('Adres email');
@@ -73,13 +65,11 @@ describe('Login', () => {
 
   it('shows validation errors', () => {
     renderWithProviders(
-      <MemoryRouter initialEntries={['/login']} future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <Routes>
-          <Route path="/" element={<div>Home Page</div>} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </MemoryRouter>,
-      { preloadedState: { user: { loggedUserId: null } } }
+      <Routes>
+        <Route path="/" element={<div>Home Page</div>} />
+        <Route path="/login" element={<Login />} />
+      </Routes>,
+      { preloadedState: { user: { loggedUserId: null } }, initialEntries: ['/login'] }
     );
 
     expect(screen.queryByText('Email ma niepoprawny format!')).not.toBeInTheDocument();
@@ -111,15 +101,11 @@ describe('Login', () => {
     ];
 
     renderWithProviders(
-      <MemoryRouter initialEntries={['/login']} future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <MockedProvider mocks={mocks} addTypename={false}>
-          <Routes>
-            <Route path="/" element={<div>Home Page</div>} />
-            <Route path="/login" element={<Login />} />
-          </Routes>
-        </MockedProvider>
-      </MemoryRouter>,
-      { preloadedState: { user: { loggedUserId: null } } }
+      <Routes>
+        <Route path="/" element={<div>Home Page</div>} />
+        <Route path="/login" element={<Login />} />
+      </Routes>,
+      { preloadedState: { user: { loggedUserId: null } }, initialEntries: ['/login'], mocks }
     );
 
     fireEvent.change(screen.getByPlaceholderText('Adres email'), { target: { value: 'test@example.com' } });
@@ -156,15 +142,11 @@ describe('Login', () => {
     ];
 
     renderWithProviders(
-      <MemoryRouter initialEntries={['/login']} future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <MockedProvider mocks={mocks} addTypename={false}>
-          <Routes>
-            <Route path="/" element={<div>Home Page</div>} />
-            <Route path="/login" element={<Login />} />
-          </Routes>
-        </MockedProvider>
-      </MemoryRouter>,
-      { preloadedState: { user: { loggedUserId: null } } }
+      <Routes>
+        <Route path="/" element={<div>Home Page</div>} />
+        <Route path="/login" element={<Login />} />
+      </Routes>,
+      { preloadedState: { user: { loggedUserId: null } }, initialEntries: ['/login'], mocks }
     );
 
     fireEvent.change(screen.getByPlaceholderText('Adres email'), { target: { value: 'test@example.com' } });
@@ -194,15 +176,11 @@ describe('Login', () => {
     ];
 
     renderWithProviders(
-      <MemoryRouter initialEntries={['/login']} future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <MockedProvider mocks={mocks} addTypename={false}>
-          <Routes>
-            <Route path="/" element={<div>Home Page</div>} />
-            <Route path="/login" element={<Login />} />
-          </Routes>
-        </MockedProvider>
-      </MemoryRouter>,
-      { preloadedState: { user: { loggedUserId: null } } }
+      <Routes>
+        <Route path="/" element={<div>Home Page</div>} />
+        <Route path="/login" element={<Login />} />
+      </Routes>,
+      { preloadedState: { user: { loggedUserId: null } }, initialEntries: ['/login'], mocks }
     );
 
     fireEvent.change(screen.getByPlaceholderText('Adres email'), { target: { value: 'test@example.com' } });
@@ -234,15 +212,11 @@ describe('Login', () => {
     ];
 
     renderWithProviders(
-      <MemoryRouter initialEntries={['/login']} future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <MockedProvider mocks={mocks} addTypename={false}>
-          <Routes>
-            <Route path="/" element={<div>Home Page</div>} />
-            <Route path="/login" element={<Login />} />
-          </Routes>
-        </MockedProvider>
-      </MemoryRouter>,
-      { preloadedState: { user: { loggedUserId: null } } }
+      <Routes>
+        <Route path="/" element={<div>Home Page</div>} />
+        <Route path="/login" element={<Login />} />
+      </Routes>,
+      { preloadedState: { user: { loggedUserId: null } }, initialEntries: ['/login'], mocks }
     );
 
     fireEvent.change(screen.getByPlaceholderText('Adres email'), { target: { value: 'test@example.com' } });
@@ -274,15 +248,11 @@ describe('Login', () => {
     ];
 
     renderWithProviders(
-      <MemoryRouter initialEntries={['/login']} future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <MockedProvider mocks={mocks} addTypename={false}>
-          <Routes>
-            <Route path="/" element={<div>Home Page</div>} />
-            <Route path="/login" element={<Login />} />
-          </Routes>
-        </MockedProvider>
-      </MemoryRouter>,
-      { preloadedState: { user: { loggedUserId: null } } }
+      <Routes>
+        <Route path="/" element={<div>Home Page</div>} />
+        <Route path="/login" element={<Login />} />
+      </Routes>,
+      { preloadedState: { user: { loggedUserId: null } }, initialEntries: ['/login'], mocks }
     );
 
     fireEvent.change(screen.getByPlaceholderText('Adres email'), { target: { value: 'test@example.com' } });

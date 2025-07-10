@@ -1,4 +1,3 @@
-import React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
 import { MemoryRouter, useNavigate } from 'react-router-dom';
 import useRedirect from 'hooks/useRedirect.jsx';

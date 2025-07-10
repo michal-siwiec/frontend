@@ -1,4 +1,3 @@
-import React from 'react';
 import { bool, exact, func, string } from 'prop-types';
 import { Modal } from '@mui/material';
 import ErrorIcon from '@mui/icons-material/Error';
