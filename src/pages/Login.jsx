@@ -88,7 +88,6 @@ const Login = () => {
               onChange={handleEmailOnChange}
               validationError={emailErrorMessage}
               type="email"
-              autocomplete="email"
             />
             <TextInput
               placeholder="Hasło"

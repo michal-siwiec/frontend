@@ -1,6 +1,3 @@
-// Search engine
-export const TOOLTIP_SECONDARY_TEXT = 'Niestety nasza wyszukiwarka produktów nie jest w tej chwili dostępna. Trwają prace serwisowe. Za utrudnienia przepraszamy.';
-
 // Orders
 export const STEP_LABELS = ['Dane odbiorcy', 'Sposób dostawy', 'Metoda płatności', 'Podsumowanie'];
 
@@ -22,30 +19,6 @@ export const CATEGORY_NAMES = {
   stairway: 'Schody',
   tools: 'Narzędzia'
 };
-
-// About
-/* eslint-disable max-len */
-export const COMPANY_DESCRIPTION = `
-  Początki sklepu budowlanego <span class="about__text-part about__text-part--bold">BUDOMAN</span>,
-  sięgają 1995 roku, a jego działalność na
-  początku koncentrowała się tylko na sprzedaży narzędzi malarskich (wałków, pędzli itp.).<br/>
-  Wraz z dynamicznym rozwojem firmy, już po
-  roku działania na rynku budowlanym, firma
-  <span class="about__text-part about__text-part--bold">BUDOMAN</span> rozszerzyła swój asortyment
-  o pełną ofertę artykułów budowlanych.<br/>
-  <span class="about__text-part about__text-part--italic">Przeróżne nagrody, oraz osiągnięcia w sprzedaży pozwalały nam zdobywać coraz to
-  większą popularność w całej Polsce. Aktualnie
-  jesteśmy jednym z największych sklepów
-  budowlanych w Polsce. Asortyment naszego
-  sklepu sięga dziesiątek tysięcy artykółów
-  budowlanych.</span><br/>
-  Współpracujemy z największymi dostawcami
-  w Europie.<br/>
-  Posiadamy również swój oddział, który
-  wykonuje prace budowlane na terenie
-  całej Polski.
-`;
-/* eslint-enable max-len */
 
 export const MANAGERS = [
   {

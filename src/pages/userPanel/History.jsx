@@ -22,6 +22,7 @@ const History = () => {
     GET_ORDERS,
     {
       variables: { input: { userId: loggedUserId, pagination: { page: activePage, quantityPerPage } } },
+      fetchPolicy: 'network-only',
       onError: () => setFetchingOrdersError(true)
     }
   );

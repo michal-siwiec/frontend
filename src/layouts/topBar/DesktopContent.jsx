@@ -1,6 +1,5 @@
 import Basket from './elements/basket/Basket.jsx';
 import Logo from './elements/Logo.jsx';
-import SearchEngine from './elements/SearchEngine.jsx';
 import Authorization from './elements/Authorization.jsx';
 import MenuList from './elements/MenuList.jsx';
 
@@ -10,7 +9,6 @@ const DesktopContent = () => {
   return (
     <div className={blockName}>
       <Logo />
-      <SearchEngine />
       <Authorization />
       <MenuList />
       <Basket />

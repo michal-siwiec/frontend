@@ -1,11 +1,12 @@
 import { exact, string, func } from 'prop-types';
 
-const SubmitButton = ({ classNames, onMouseDown, value }) => (
+const SubmitButton = ({ classNames, onMouseDown, value, dataTestId }) => (
   <div
     className={`button ${classNames}`}
     onMouseDown={onMouseDown}
     role="button"
     tabIndex={0}
+    data-testid={dataTestId}
   >
     {value}
   </div>

@@ -23,7 +23,7 @@
     flex-basis: 85%;
 
     @media screen and (min-width: $lg-breakpoint) {
-      flex-basis: 25%;
+      flex-basis: 75%;
     }
   }
 
@@ -40,11 +40,6 @@
 
   &__hamburger-menu-icon {
     font-size: 25px;
-  }
-
-  &__search-engine {
-    @include flex-container;
-    flex-basis: 50%;
   }
 
   &__tooltip-wrapper {
@@ -115,6 +110,7 @@
     font-size: 15px;
     color: $black;
     transition: color $default-hover-animation-time;
+    margin: 0 10px 0 0;
 
     &:hover {
       color: $gray;

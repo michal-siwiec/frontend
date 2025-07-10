@@ -5,7 +5,6 @@ import Drawer from 'components/Drawer.jsx';
 import Authorization from './elements/Authorization.jsx';
 import MenuList from './elements/MenuList.jsx';
 import Basket from './elements/basket/Basket.jsx';
-import SearchEngine from './elements/SearchEngine.jsx';
 
 const MobileContent = () => {
   const blockName = 'top-bar-elements';
@@ -28,7 +27,6 @@ const MobileContent = () => {
           <MenuList />
           <div className={`${blockName}__divider`} />
           <Basket />
-          <SearchEngine />
         </div>
       </Drawer>
     </Fragment>

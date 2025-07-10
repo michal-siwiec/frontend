@@ -1,4 +1,4 @@
-require('webpack');
+const webpack = require('webpack');
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -80,6 +80,9 @@ module.exports = {
     new Dotenv({
       path: path.resolve(__dirname, '../.env'),
       systemvars: true
+    }),
+    new webpack.ProvidePlugin({
+      React: 'react'
     })
   ],
   devtool: 'eval-cheap-source-map'

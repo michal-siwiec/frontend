@@ -34,6 +34,7 @@ const PaymentMethod = () => {
             <span className={`${blockName}__icon-label`}>Płatność przy odbiorze</span>
           </Fragment>
         )}
+        dataTestId="payment-on-delivery-checkbox"
       />
       <CheckBox
         onChange={handleTraditionalPaymentOnChange}
@@ -44,6 +45,7 @@ const PaymentMethod = () => {
             <span className={`${blockName}__icon-label`}>Przelew tradycyjny</span>
           </Fragment>
         )}
+        dataTestId="traditional-transfer-checkbox"
       />
       <SubmitButton
         classNames="button--client-details"

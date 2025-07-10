@@ -1,6 +1,5 @@
 export const TOP_BAR_MENU_ROUTING = [
   { path: '/products', name: 'Produkty' },
-  { path: '/about', name: 'O nas' },
   { path: '/opinions', name: 'Opinie' }
 ];
 

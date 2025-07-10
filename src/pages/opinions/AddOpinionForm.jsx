@@ -64,6 +64,7 @@ const AddOpinionForm = ({
             placeholder="Dodaj opinię"
             textareaRef={textareaRef}
             validationError={opinionValidationError}
+            dataTestId="opinion-textarea"
           />
           <Rating
             value={rating}
@@ -75,6 +76,7 @@ const AddOpinionForm = ({
             onMouseDown={handleAddOpinionSubmit}
             value="Wyślij"
             classNames="button--add-opinion"
+            dataTestId="add-opinion-submit-button"
           />
         </Fragment>
       )}

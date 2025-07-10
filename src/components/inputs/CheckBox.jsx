@@ -1,12 +1,13 @@
 import { exact, func, string, element, oneOfType } from 'prop-types';
 
-const CheckBox = ({ classNames, onChange, checked, label }) => (
+const CheckBox = ({ classNames, onChange, checked, label, dataTestId }) => (
   <div className="checkbox__wrapper">
     <input
       type="checkbox"
       className={`checkbox ${classNames}`}
       onChange={onChange}
       checked={checked}
+      data-testid={dataTestId}
     />
     {label}
   </div>
@@ -15,11 +16,13 @@ const CheckBox = ({ classNames, onChange, checked, label }) => (
 CheckBox.propTypes = exact({
   classNames: string,
   onChange: func.isRequired,
-  label: oneOfType([element, string]).isRequired
+  label: oneOfType([element, string]).isRequired,
+  dataTestId: string
 }).isRequired;
 
 CheckBox.defaultProps = {
-  classNames: ''
+  classNames: '',
+  dataTestId: ''
 };
 
 export default CheckBox;

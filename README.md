@@ -12,7 +12,7 @@ This is developed using:
 
 ## Requirements
 
-- Node.js 12.6.0
+- Node.js 18.0.0
 
 ## Application setup
 1. Make sure that you have filled .env file
@@ -21,7 +21,7 @@ This is developed using:
 
 To start app use:
 ```bash
-SSH_PUB_KEY=$(cat ~/.ssh/id_rsa.pub) docker-compose build # Build images (perform only once)
+SSH_PUB_KEY=$(cat ~/.ssh/id_ed25519.pub) docker-compose build --no-cache # Update path to public SSH key
 docker-compose up # App should be available on port 3003
 ```
 
