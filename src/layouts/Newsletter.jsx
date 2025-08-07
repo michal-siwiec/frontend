@@ -26,7 +26,7 @@ const Newsletter = () => {
   const [subscribingToNewsletterError, setSubscribingToNewsletterError] = useState(false);
   const [isUserSavedToNewsletter, setIsUserSavedToNewsletter] = useState(false);
 
-  const [getPersonalDetails] = useLazyQuery(
+  const [fetchPersonalDetails] = useLazyQuery(
     USER_PERSONAL_DETAILS,
     {
       variables: { userId: loggedUserId },
@@ -40,15 +40,12 @@ const Newsletter = () => {
     }
   );
 
-  const [checkIfSavedToNewsletter, {
-    called: checkIfSavedToNewsletterCalled,
-    refetch: checkIfSavedToNewsletterRefetch
-  }] = useLazyQuery(
+  const [checkIfSavedToNewsletter, { refetch: checkIfSavedToNewsletterRefetch }] = useLazyQuery(
     IS_USER_SAVED_TO_NEWSLETTER,
     {
       variables: { userId: loggedUserId },
       fetchPolicy: 'network-only',
-      onCompleted: (data) => setIsUserSavedToNewsletter(data.user.savedToNewsletter),
+      onCompleted: ({ user: { savedToNewsletter } }) => setIsUserSavedToNewsletter(savedToNewsletter),
       onError: () => setIsUserSavedToNewsletter(false)
     }
   );
@@ -57,21 +54,20 @@ const Newsletter = () => {
     variables: { input: { email, name, surname } },
     onCompleted: () => {
       setSubscribingToNewsletterSuccess(true);
-      checkIfSavedToNewsletterRefetch();
       clearForm();
     },
     onError: () => setSubscribingToNewsletterError(true)
   });
-
-  const handleNameOnChange = ({ target: { value } }) => setName(value);
-  const handleSurnameOnChange = ({ target: { value } }) => setSurname(value);
-  const handleEmailOnChange = ({ target: { value } }) => setEmail(value);
 
   const clearForm = () => {
     setName('');
     setSurname('');
     setEmail('');
   };
+
+  const handleNameOnChange = ({ target: { value } }) => setName(value);
+  const handleSurnameOnChange = ({ target: { value } }) => setSurname(value);
+  const handleEmailOnChange = ({ target: { value } }) => setEmail(value);
 
   const handleSaveToNewsletter = () => {
     const {
@@ -89,11 +85,25 @@ const Newsletter = () => {
     subscribeToNewsletter();
   };
 
-  useEffect(() => {
-    if (!isLogged) return clearForm();
+  const handleErrorModalOnClose = () => setSubscribingToNewsletterError(false);
 
-    getPersonalDetails();
-    if (!checkIfSavedToNewsletterCalled) checkIfSavedToNewsletter();
+  const handleSuccessModalOnClose = async () => {
+    setSubscribingToNewsletterSuccess(false);
+
+    if (isLogged) {
+      const { data: { user: { savedToNewsletter } } } = await checkIfSavedToNewsletterRefetch();
+      setIsUserSavedToNewsletter(savedToNewsletter);
+    };
+  };
+
+  useEffect(() => {
+    if (!isLogged) {
+      clearForm();
+      return;
+    }
+
+    fetchPersonalDetails();
+    checkIfSavedToNewsletter();
   }, [isLogged]);
 
   if (isLogged && isUserSavedToNewsletter) return null;
@@ -110,6 +120,7 @@ const Newsletter = () => {
               value={name}
               onChange={handleNameOnChange}
               validationError={nameErrorMessage}
+              dataTestId="newsletter-name-input"
             />
             <TextInput
               placeholder="Nazwisko"
@@ -117,20 +128,22 @@ const Newsletter = () => {
               value={surname}
               onChange={handleSurnameOnChange}
               validationError={surnameErrorMessage}
+              dataTestId="newsletter-surname-input"
             />
             <TextInput
               placeholder="Adres email"
               classNames="text-input--newsletter"
               value={email}
               type="email"
-              autocomplete="email"
               onChange={handleEmailOnChange}
               validationError={emailErrorMessage}
+              dataTestId="newsletter-email-input"
             />
             <SubmitButton
               onMouseDown={handleSaveToNewsletter}
               value="Zapisz"
               classNames="button--newsletter"
+              dataTestId="newsletter-submit-button"
             />
           </Fragment>
         )}
@@ -141,12 +154,12 @@ const Newsletter = () => {
       />
       <SuccessModal
         isOpen={subscribingToNewsletterSuccess}
-        handleOnClose={() => setSubscribingToNewsletterSuccess(false)}
+        handleOnClose={handleSuccessModalOnClose}
         info="Zostałeś zapisany na newsletter!"
       />
       <ErrorModal
         isOpen={subscribingToNewsletterError}
-        handleOnClose={() => setSubscribingToNewsletterError(false)}
+        handleOnClose={handleErrorModalOnClose}
         info="Niestety nie udało się zapisać na newsletter!"
       />
     </div>

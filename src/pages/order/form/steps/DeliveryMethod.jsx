@@ -39,6 +39,7 @@ const DeliveryMethod = () => {
             <span className={`${blockName}__icon-label`}>Inpost (10,99 zł)</span>
           </Fragment>
         )}
+        dataTestId="inpost-checkbox"
       />
       <CheckBox
         onChange={handleDpdOnChange}
@@ -49,6 +50,7 @@ const DeliveryMethod = () => {
             <span className={`${blockName}__icon-label`}>DPD (15,99 zł)</span>
           </Fragment>
         )}
+        dataTestId="dpd-checkbox"
       />
       <CheckBox
         onChange={handlePickUpAtheThePointOnChange}
@@ -59,6 +61,7 @@ const DeliveryMethod = () => {
             <span className={`${blockName}__icon-label`}>Odbiór w punkcie (0,00 zł)</span>
           </Fragment>
         )}
+        dataTestId="pickup-at-the-point-checkbox"
       />
       <SubmitButton
         classNames="button--client-details"

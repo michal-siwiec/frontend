@@ -1,10 +1,11 @@
 import { exact, element, string, object } from 'prop-types';
 import { motion } from 'framer-motion';
 
-const ShadowedContainer = ({ children, classNames, animationAttributes }) => (
+const ShadowedContainer = ({ children, classNames, animationAttributes, dataTestid }) => (
   <motion.div
     className={`shadowed-box ${classNames}`}
     {...animationAttributes}
+    data-testid={dataTestid}
   >
     {children}
   </motion.div>

@@ -11,16 +11,21 @@ const Newsletter = () => {
   const [userSavedToNewsletter, setUserSavedToNewsletter] = useState(false);
   const { loggedUserId } = useSelector((store) => store.user);
 
-  const { data, refetch } = useQuery(IS_USER_SAVED_TO_NEWSLETTER, {
+  const { refetch } = useQuery(IS_USER_SAVED_TO_NEWSLETTER, {
     variables: { userId: loggedUserId },
     fetchPolicy: 'network-only',
-    onCompleted: () => {
-      const { savedToNewsletter, email } = data.user;
-
+    onCompleted: ({ user: { email, savedToNewsletter } }) => {
       setUserEmail(email);
       setUserSavedToNewsletter(savedToNewsletter);
     }
   });
+
+  const handleUnsubscribe = async () => {
+    const { data: { user: { savedToNewsletter, email } } } = await refetch();
+
+    setUserEmail(email);
+    setUserSavedToNewsletter(savedToNewsletter);
+  };
 
   return (
     <div className={blockName}>
@@ -28,7 +33,7 @@ const Newsletter = () => {
       <div className={`${blockName}__content-wrapper`}>
         {
           userSavedToNewsletter
-            ? <SavedContent userEmail={userEmail} refetch={refetch} />
+            ? <SavedContent userEmail={userEmail} handleUnsubscribe={handleUnsubscribe} />
             : <UnsavedContent />
         }
       </div>

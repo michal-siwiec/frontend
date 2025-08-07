@@ -2,7 +2,6 @@ import { Routes, Route } from 'react-router-dom';
 import Products from './Products.jsx';
 import Login from 'pages/Login.jsx';
 import Register from 'pages/Register.jsx';
-import About from 'pages/about/About.jsx';
 import Opinions from 'pages/opinions/Opinions.jsx';
 import Order from 'pages/order/Order.jsx';
 import ThankYouPage from 'pages/ThankYouPage.jsx';
@@ -22,7 +21,6 @@ const AppRouter = () => (
       <Route path="/products" element={<Products />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/about" element={<About />} />
       <Route path="/opinions" element={<Opinions />} />
       <Route path="/order" element={<Order />} />
       <Route path="/thank-you-page" element={<ThankYouPage />} />

@@ -4,12 +4,12 @@ import { useMutation } from '@apollo/client';
 import { UNSUBSCRIBE_FROM_NEWSLETTER } from 'graphql/mutations/user.js';
 import SubmitButton from 'components/SubmitButton.jsx';
 
-const SavedContent = ({ userEmail, refetch }) => {
+const SavedContent = ({ userEmail, handleUnsubscribe }) => {
   const blockName = 'newsletter';
 
   const [unsubscribeFromNewsletter] = useMutation(UNSUBSCRIBE_FROM_NEWSLETTER, {
     variables: { email: userEmail },
-    onCompleted: refetch
+    onCompleted: handleUnsubscribe
   });
 
   return (
@@ -31,7 +31,7 @@ const SavedContent = ({ userEmail, refetch }) => {
 
 SavedContent.propTypes = exact({
   userEmail: string.isRequired,
-  refetch: func.isRequired
+  handleUnsubscribe: func.isRequired
 }).isRequired;
 
 export default SavedContent;

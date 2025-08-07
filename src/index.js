@@ -1,5 +1,3 @@
-/* eslint react/jsx-filename-extension: 0 */
-
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';

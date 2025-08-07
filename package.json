@@ -2,7 +2,7 @@
   "name": "budoman-front",
   "version": "1.0.0",
   "engines": {
-    "node": "16.0.0"
+    "node": "v18.0.0"
   },
   "description": "",
   "main": "index.js",
@@ -33,14 +33,12 @@
     "css-loader": "^6.5.1",
     "dotenv": "^16.5.0",
     "dotenv-webpack": "^8.1.0",
-    "eslint": "^8.13.0",
-    "eslint-config-airbnb": "^19.0.4",
+    "eslint": "^9.30.1",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-import-resolver-webpack": "^0.13.2",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.29.4",
-    "eslint-plugin-react-hooks": "^4.4.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "image-webpack-loader": "^8.0.1",

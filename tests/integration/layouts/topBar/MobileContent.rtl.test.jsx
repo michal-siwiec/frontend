@@ -16,7 +16,6 @@ describe('MobileContent', () => {
     expect(screen.queryByText('Logowanie')).not.toBeInTheDocument();
     expect(screen.queryByText('Rejestracja')).not.toBeInTheDocument();
     expect(screen.queryByText('Produkty')).not.toBeInTheDocument();
-    expect(screen.queryByText('O nas')).not.toBeInTheDocument();
     expect(screen.queryByText('Opinie')).not.toBeInTheDocument();
   });
 
@@ -26,7 +25,6 @@ describe('MobileContent', () => {
     expect(screen.getByText('Logowanie')).toBeInTheDocument();
     expect(screen.getByText('Rejestracja')).toBeInTheDocument();
     expect(screen.getByText('Produkty')).toBeInTheDocument();
-    expect(screen.getByText('O nas')).toBeInTheDocument();
     expect(screen.getByText('Opinie')).toBeInTheDocument();
 
     fireEvent.keyDown(screen.getByTestId('menu-drawer'), { key: 'Escape', code: 'Escape', keyCode: 27 });
@@ -35,7 +33,6 @@ describe('MobileContent', () => {
       expect(screen.queryByText('Logowanie')).not.toBeInTheDocument();
       expect(screen.queryByText('Rejestracja')).not.toBeInTheDocument();
       expect(screen.queryByText('Produkty')).not.toBeInTheDocument();
-      expect(screen.queryByText('O nas')).not.toBeInTheDocument();
       expect(screen.queryByText('Opinie')).not.toBeInTheDocument();
     });
   });

@@ -1,7 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
+import { ApolloError } from '@apollo/client';
 import { screen, fireEvent, waitFor } from '@testing-library/react';
 import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
 import { REGISTER_USER } from 'graphql/mutations/user.js';
+import { ERROR_CODES } from 'data/errors.js';
 import Register from 'pages/Register.jsx';
 
 describe('Register page', () => {
@@ -44,7 +46,6 @@ describe('Register page', () => {
     expect(registerLink).toHaveAttribute('href', '/register');
 
     expect(screen.getByPlaceholderText('Email')).toBeInTheDocument();
-    expect(screen.getByPlaceholderText('Password')).toBeInTheDocument();
     expect(screen.getByPlaceholderText('Password')).toBeInTheDocument();
     expect(screen.getByTestId('register-file-input')).toBeInTheDocument();
     expect(screen.getByText('Załóż konto')).toBeInTheDocument();
@@ -119,7 +120,17 @@ describe('Register page', () => {
       }
     ];
 
-    renderWithProviders(<Register />, { preloadedState: { user: { loggedUserId: null } }, mocks });
+    renderWithProviders(
+      <Routes>
+        <Route path="/" element={<div>Home Page</div>} />
+        <Route path="/register" element={<Register />} />
+      </Routes>,
+      {
+        preloadedState: { user: { loggedUserId: null } },
+        initialEntries: ['/register'],
+        mocks
+      }
+    );
 
     fireEvent.change(screen.getByPlaceholderText('Email'), { target: { value: 'siwiec.michal724@gmail.com' } });
     fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'qwertY12' } });
@@ -129,38 +140,6 @@ describe('Register page', () => {
       expect(screen.getByPlaceholderText('Email')).toHaveValue('');
       expect(screen.getByPlaceholderText('Password')).toHaveValue('');
       expect(screen.getByTestId('register-file-input').files).toHaveLength(0);
-    });
-  });
-
-  it('shows success modal after registration completed successfully', async () => {
-    const mocks = [
-      {
-        request: {
-          query: REGISTER_USER,
-          variables: { input: { email: 'siwiec.michal724@gmail.com', password: 'qwertY12', avatars: [] } }
-        },
-        result: {
-          data: {
-            user: {
-              __typename: 'UserObject',
-              id: 'da97aa73-f0e4-4a17-9157-9f17454c73f3',
-              avatars: []
-            }
-          }
-        }
-      }
-    ];
-
-    renderWithProviders(<Register />, { preloadedState: { user: { loggedUserId: null } }, mocks });
-
-    expect(screen.queryByText('Twoje konto zostało pomyślnie założone!')).not.toBeInTheDocument();
-
-    fireEvent.change(screen.getByPlaceholderText('Email'), { target: { value: 'siwiec.michal724@gmail.com' } });
-    fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'qwertY12' } });
-    fireEvent.mouseDown(screen.getByText('Załóż konto'));
-
-    await waitFor(() => {
-      expect(screen.getByText('Twoje konto zostało pomyślnie założone!')).toBeInTheDocument();
     });
   });
 
@@ -184,7 +163,17 @@ describe('Register page', () => {
       }
     ];
 
-    renderWithProviders(<Register />, { preloadedState: { user: { loggedUserId: null } }, mocks });
+    renderWithProviders(
+      <Routes>
+        <Route path="/" element={<div>Home Page</div>} />
+        <Route path="/register" element={<Register />} />
+      </Routes>,
+      {
+        preloadedState: { user: { loggedUserId: null } },
+        initialEntries: ['/register'],
+        mocks
+      }
+    );
 
     fireEvent.change(screen.getByPlaceholderText('Email'), { target: { value: 'siwiec.michal724@gmail.com' } });
     fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'qwertY12' } });
@@ -204,11 +193,27 @@ describe('Register page', () => {
           query: REGISTER_USER,
           variables: { input: { email: 'siwiec.michal724@gmail.com', password: 'qwertY12', avatars: [] } }
         },
-        error: new Error('Unknown error!')
+        error: new ApolloError({
+          networkError: {
+            name: 'ServerError',
+            statusCode: 500,
+            bodyText: 'Internal Server Error'
+          }
+        })
       }
     ];
 
-    renderWithProviders(<Register />, { preloadedState: { user: { loggedUserId: null } }, mocks });
+    renderWithProviders(
+      <Routes>
+        <Route path="/" element={<div>Home Page</div>} />
+        <Route path="/register" element={<Register />} />
+      </Routes>,
+      {
+        preloadedState: { user: { loggedUserId: null } },
+        initialEntries: ['/register'],
+        mocks
+      }
+    );
 
     fireEvent.change(screen.getByPlaceholderText('Email'), { target: { value: 'siwiec.michal724@gmail.com' } });
     fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'qwertY12' } });
@@ -218,6 +223,48 @@ describe('Register page', () => {
       expect(screen.queryByText('Twoje konto zostało pomyślnie założone!')).not.toBeInTheDocument();
       expect(screen.queryByText('Rejestrujemy użytkownika!')).not.toBeInTheDocument();
       expect(screen.getByText('Niestety nie udało się zarejestrować nowego konta.')).toBeInTheDocument();
+    });
+  });
+
+  it('shows error modal when user email is already busy', async () => {
+    const mocks = [
+      {
+        request: {
+          query: REGISTER_USER,
+          variables: { input: { email: 'siwiec.michal724@gmail.com', password: 'qwertY12', avatars: [] } }
+        },
+        error: new ApolloError({
+          graphQLErrors: [
+            {
+              extensions: {
+                error_code: ERROR_CODES.EMAIL_ALREADY_TAKEN
+              }
+            }
+          ]
+        })
+      }
+    ];
+
+    renderWithProviders(
+      <Routes>
+        <Route path="/" element={<div>Home Page</div>} />
+        <Route path="/register" element={<Register />} />
+      </Routes>,
+      {
+        preloadedState: { user: { loggedUserId: null } },
+        initialEntries: ['/register'],
+        mocks
+      }
+    );
+
+    fireEvent.change(screen.getByPlaceholderText('Email'), { target: { value: 'siwiec.michal724@gmail.com' } });
+    fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'qwertY12' } });
+    fireEvent.mouseDown(screen.getByText('Załóż konto'));
+
+    await waitFor(() => {
+      expect(screen.queryByText('Twoje konto zostało pomyślnie założone!')).not.toBeInTheDocument();
+      expect(screen.queryByText('Rejestrujemy użytkownika!')).not.toBeInTheDocument();
+      expect(screen.getByText('Adres email jest już zajęty!')).toBeInTheDocument();
     });
   });
 });

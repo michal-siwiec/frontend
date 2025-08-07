@@ -24,6 +24,7 @@ const Product = ({ product, index, mode }) => {
         initial: APPEARING_IN_SEQUENCE.hidden,
         animate: APPEARING_IN_SEQUENCE.visible
       }}
+      dataTestid="product-container"
     >
       <div className={`${blockName}__img-wrapper`}>
         <img

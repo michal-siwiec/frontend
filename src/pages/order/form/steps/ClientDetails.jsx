@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useLazyQuery } from '@apollo/client';
 import { USER_PERSONAL_DETAILS } from 'graphql/queries/user.js';
 import { useSelector, useDispatch } from 'react-redux';
@@ -43,9 +43,7 @@ const ClientDetails = () => {
   const handleEmailOnChange = ({ target: { value } }) => dispatch(setEmail(value));
   const handlePhoneNumberOnChange = ({ target: { value } }) => dispatch(setPhoneNumber(value));
 
-  const setDefaultClientDetailsIfNeeded = () => {
-    const { user } = personalDetailsData;
-
+  const setDefaultClientDetailsIfNeeded = (user) => {
     if (!name) dispatch(setName(user.name || ''));
     if (!surname) dispatch(setSurname(user.surname || ''));
     if (!street) dispatch(setStreet(user.street || ''));
@@ -55,12 +53,12 @@ const ClientDetails = () => {
     if (!phoneNumber) dispatch(setPhoneNumber(user.phoneNumber || ''));
   };
 
-  const [getUserPersonalDetails, { called, loading, data: personalDetailsData }] = useLazyQuery(
+  const [getUserPersonalDetails] = useLazyQuery(
     USER_PERSONAL_DETAILS,
     {
       variables: { userId: loggedUserId },
       fetchPolicy: 'network-only',
-      onCompleted: setDefaultClientDetailsIfNeeded
+      onCompleted: (response) => setDefaultClientDetailsIfNeeded(response.user)
     }
   );
 
@@ -90,7 +88,11 @@ const ClientDetails = () => {
     setStep(1);
   };
 
-  if (isLogged && !called) getUserPersonalDetails();
+  useEffect(() => {
+    if (isLogged) {
+      getUserPersonalDetails();
+    } 
+  }, [isLogged])
 
   return (
     <div className="order__form-part-container">

@@ -11,8 +11,8 @@ import TextInput from 'components/inputs/TextInput.jsx';
 import FileInput from 'components/inputs/FileInput.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
 import LoadingModal from 'components/modals/LoadingModal.jsx';
-import SuccessModal from 'components/modals/SuccessModal.jsx';
 import ErrorModal from 'components/modals/ErrorModal.jsx';
+import { ERROR_CODES } from 'data/errors.js';
 
 const Register = () => {
   const blockName = 'register';
@@ -25,14 +25,28 @@ const Register = () => {
   const [emailErrorMessage, setEmailErrorMessage] = useState('');
   const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
   const [avatarsErrorMessages, setAvatarsErrorMessages] = useState('');
-  const [registerUserSuccess, setRegisterUserSuccess] = useState(false);
   const [registerUserError, setRegisterUserError] = useState(false);
+  const [registerUserErrorMesage, setRegisterUserErrorMesage] = useState('');
 
-  const [registerUser, { loading, data }] = useMutation(REGISTER_USER, {
-    onError: () => { setRegisterUserError(true); },
+  const [registerUser, { loading, data, error }] = useMutation(REGISTER_USER, {
+    onError: () => {
+      if (error.networkError?.statusCode === 500) {
+        setRegisterUserErrorMesage('Niestety nie udało się zarejestrować nowego konta.');
+      } else {
+        const { extensions: { error_code: errorCode } } = error.graphQLErrors[0];
+
+        if (errorCode === ERROR_CODES.EMAIL_ALREADY_TAKEN) {
+          setRegisterUserErrorMesage('Adres email jest już zajęty!');
+        } else {
+          setRegisterUserErrorMesage('Niestety nie udało się zarejestrować nowego konta.');
+        }
+      }
+
+      setRegisterUserError(true);
+    },
     onCompleted: () => {
       clearForm();
-      setRegisterUserSuccess(true);
+      loginUser();
     }
   });
 
@@ -94,7 +108,7 @@ const Register = () => {
               value={email}
               validationError={emailErrorMessage}
               type="email"
-              autocomplete="email"
+              dataTestId="register-email-input"
             />
             <TextInput
               placeholder="Password"
@@ -103,6 +117,7 @@ const Register = () => {
               onChange={handlePasswordOnChange}
               value={password}
               validationError={passwordErrorMessage}
+              dataTestId="register-password-input"
             />
             <FileInput
               classNames="file-input--register"
@@ -115,6 +130,7 @@ const Register = () => {
               classNames="button--register"
               onMouseDown={handleSubmit}
               value="Załóż konto"
+              dataTestId="register-submit-button"
             />
           </Fragment>
         )}
@@ -123,23 +139,10 @@ const Register = () => {
         isOpen={loading}
         info="Rejestrujemy użytkownika!"
       />
-      <SuccessModal
-        isOpen={registerUserSuccess}
-        handleOnClose={() => setRegisterUserSuccess(false)}
-        info="Twoje konto zostało pomyślnie założone!"
-      >
-        <div className="modal__buttons-wrapper">
-          <SubmitButton
-            onMouseDown={loginUser}
-            value="Zaloguj się"
-            classNames="modal__button"
-          />
-        </div>
-      </SuccessModal>
       <ErrorModal
         isOpen={registerUserError}
         handleOnClose={() => setRegisterUserError(false)}
-        info="Niestety nie udało się zarejestrować nowego konta."
+        info={registerUserErrorMesage}
       />
     </div>
   );

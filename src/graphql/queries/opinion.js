@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const GET_OPINIONS = gql`
-  query OpinionsDetails ($input: OpinionFiltrationInput) {
+  query OpinionsDetails ($input: OpinionFilterInput) {
     opinionsDetails: opinions(input: $input) {
       opinions {
         content

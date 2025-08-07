@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import clsx from 'clsx';
 import { exact, string, func, oneOf, bool } from 'prop-types';
 
-const TextInput = ({ placeholder, type, classNames, value, onChange, validationError, isDisabled }) => (
+const TextInput = ({ placeholder, type, classNames, value, onChange, validationError, isDisabled, dataTestId }) => (
   <Fragment>
     <input
       type={type}
@@ -11,6 +11,8 @@ const TextInput = ({ placeholder, type, classNames, value, onChange, validationE
       value={value}
       onChange={onChange}
       disabled={isDisabled}
+      data-testid={dataTestId}
+      autoComplete="nope"
     />
     {validationError && <div className="input__error">{validationError}</div>}
   </Fragment>

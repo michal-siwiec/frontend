@@ -12,7 +12,8 @@ const TextArea = ({
   onChange,
   placeholder,
   textareaRef,
-  validationError
+  validationError,
+  dataTestId
 }) => (
   <Fragment>
     <textarea
@@ -21,6 +22,7 @@ const TextArea = ({
       onChange={onChange}
       placeholder={placeholder}
       ref={textareaRef}
+      data-testid={dataTestId}
     />
     {validationError && <div className="text-area__error">{validationError}</div>}
   </Fragment>
@@ -38,7 +40,8 @@ TextArea.propTypes = exact({
 TextArea.defaultProps = {
   classNames: '',
   placeholder: '',
-  validationError: ''
+  validationError: '',
+  dataTestId: ''
 };
 
 export default TextArea;

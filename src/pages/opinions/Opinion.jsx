@@ -35,6 +35,7 @@ const Opinion = ({ opinionsData: { content, mark, updatedAt, user: { email, avat
   return (
     <ShadowedContainer
       classNames={blockName}
+      dataTestid="opinion-container"
       animationAttributes={{
         variants: APPEARING_IN_SEQUENCE,
         custom: index,

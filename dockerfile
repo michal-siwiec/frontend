@@ -1,4 +1,4 @@
-FROM node:14.21.3
+FROM node:18.0.0
 
 # SETUP SSH
 RUN apt-get update
