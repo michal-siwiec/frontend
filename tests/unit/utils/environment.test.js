@@ -6,7 +6,6 @@ describe('env variables', () => {
 
   beforeEach(() => {
     process.env.API_URL = 'Fake API_URL';
-    process.env.AWS_REGION = 'Fake AWS_REGION';
     process.env.AWS_ACCESS_KEY_ID = 'Fake AWS_ACCESS_KEY_ID';
     process.env.AWS_SECRET_ACCESS_KEY = 'Fake AWS_SECRET_ACCESS_KEY';
     process.env.AWS_BUCKET = 'Fake AWS_BUCKET';
@@ -16,10 +15,9 @@ describe('env variables', () => {
 
   it('assigns env variables to consts', async () => {
     reloadEnvs();
-    const { API_URL, AWS_REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_BUCKET, BASIC_AUTH_USER, BASIC_AUTH_PASSWORD } = await import('utils/environment.js');
+    const { API_URL, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_BUCKET, BASIC_AUTH_USER, BASIC_AUTH_PASSWORD } = await import('utils/environment.js');
 
     expect(API_URL).toBe('Fake API_URL');
-    expect(AWS_REGION).toBe('Fake AWS_REGION');
     expect(AWS_ACCESS_KEY_ID).toBe('Fake AWS_ACCESS_KEY_ID');
     expect(AWS_SECRET_ACCESS_KEY).toBe('Fake AWS_SECRET_ACCESS_KEY');
     expect(AWS_BUCKET).toBe('Fake AWS_BUCKET');
@@ -32,12 +30,6 @@ describe('env variables', () => {
       reloadEnvs(() => { process.env.API_URL = ''; });
 
       await expect(async () => { await import('utils/environment.js'); }).rejects.toThrow('Missing required environment variable: API_URL');
-    });
-
-    it('API_URL', async () => {
-      reloadEnvs(() => { process.env.AWS_REGION = ''; });
-
-      await expect(async () => { await import('utils/environment.js'); }).rejects.toThrow('Missing required environment variable: AWS_REGION');
     });
 
     it('AWS_ACCESS_KEY_ID', async () => {
