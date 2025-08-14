@@ -24,7 +24,7 @@ jobs:
       run: npm run ${{ matrix.script }}
   e2e-tests:
     needs: core-validation
-    uses: kiwi439/budoman-system-tests/.github/workflows/shop_e2e_tests.yml@develop
+    uses: michal-siwiec/system-tests/.github/workflows/shop_e2e_tests.yml@develop
     with:
       budoman-frontend_branch: ${{ github.ref_name }}
     secrets:
