@@ -39,11 +39,11 @@ module.exports = {
         ]
       },
       {
-        test: /\.(js|jsx)$/i,
+        test: /\.(js|jsx|ts|tsx)$/i,
         loader: 'babel-loader',
         exclude: /node_modules/,
         resolve: {
-          extensions: ['.js', '.jsx'],
+          extensions: ['.ts', '.tsx', '.js', '.jsx'],
           alias: {
             components: path.resolve(__dirname, '../', 'src/components'),
             data: path.resolve(__dirname, '../', 'src/data'),
@@ -61,7 +61,8 @@ module.exports = {
         options: {
           presets: [
             ['@babel/preset-env', { useBuiltIns: 'usage', corejs: '2.0.0' }],
-            '@babel/preset-react'
+            ['@babel/preset-react', { runtime: 'automatic' }],
+            '@babel/preset-typescript'
           ]
         }
       }
