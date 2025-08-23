@@ -1,5 +1,3 @@
-/* eslint-disable prefer-destructuring */
-
 import { isEmpty } from 'lodash';
 
 const API_URL = process.env.API_URL;
