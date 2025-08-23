@@ -2,9 +2,9 @@
 
 class AvatarsGenerator {
   #files;
-  #avatars;
+  #avatars: Array<{ fileName: string, fileType: string, main: boolean, base64: unknown }>;
 
-  constructor(files) {
+  constructor(files: Array<File>) {
     this.#files = files;
     this.#avatars = [];
   }
@@ -17,7 +17,7 @@ class AvatarsGenerator {
     return this.#avatars;
   }
 
-  async #process({ file, index }) {
+  async #process({ file, index }: { file: File, index: string }) {
     const fileName = file.name;
     const fileType = file.type;
     const main = AvatarsGenerator.#isMainAvatar(index);
@@ -31,7 +31,7 @@ class AvatarsGenerator {
     });
   }
 
-  static #convertToBase64(file) {
+  static #convertToBase64(file: File) {
     return new Promise((resolve) => {
       const reader = new FileReader();
       reader.readAsDataURL(file);
@@ -39,7 +39,7 @@ class AvatarsGenerator {
     });
   }
 
-  static #isMainAvatar(index) {
+  static #isMainAvatar(index: string) {
     return index === '0';
   }
 }

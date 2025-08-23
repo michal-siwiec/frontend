@@ -1,4 +1,4 @@
-import AvatarsGenerator from 'services/users/avatarsGenerator.js';
+import AvatarsGenerator from 'services/users/avatarsGenerator.ts';
 
 describe('AvatarsGenerator', () => {
   it('should convert multiple files to base64 and mark the first one as main', async () => {

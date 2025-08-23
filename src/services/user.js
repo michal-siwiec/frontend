@@ -1,7 +1,7 @@
 import regexps from 'data/regexps.js';
 import { validateByRegexp, areTheSame } from 'utils/helpers.ts';
 import { VALIDATION_ERROR_MESSAGES } from 'data/errors.js';
-import AvatarsGenerator from 'services/users/avatarsGenerator.js';
+import AvatarsGenerator from 'services/users/avatarsGenerator.ts';
 
 export const generateTooltipHeaderText = ({ index, selectedAvatar }) => selectedAvatar === index
   ? 'Główny avatar'

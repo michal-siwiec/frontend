@@ -10,7 +10,7 @@ import {
   generateAvatars
 } from 'services/user.js';
 
-import AvatarsGenerator from 'services/users/avatarsGenerator.js';
+import AvatarsGenerator from 'services/users/avatarsGenerator.ts';
 
 describe('generateTooltipHeaderText', () => {
   it('returns main avatar label', () => {
