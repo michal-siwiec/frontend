@@ -1,11 +1,11 @@
-import { cutAfterNChars, isTextLonger } from 'utils/helpers.ts';
+import { cutAfterNChars, isTextLonger } from 'utils/helpers';
 
 class OpinionPresentedContentGenerator {
   #displayedNumberOfChars;
   #content;
   #contentExpanded;
 
-  constructor({ displayedNumberOfChars, content, contentExpanded }) {
+  constructor({ displayedNumberOfChars, content, contentExpanded }: { displayedNumberOfChars: number, content: string, contentExpanded: boolean }) {
     this.#displayedNumberOfChars = displayedNumberOfChars;
     this.#content = content;
     this.#contentExpanded = contentExpanded;
@@ -30,7 +30,7 @@ class OpinionPresentedContentGenerator {
     return { narrowContent, restOfContent };
   }
 
-  #generatePresentedNarrowContent(narrowContent) {
+  #generatePresentedNarrowContent(narrowContent: string) {
     const isTextTolong = this.#isTextToLongToDisplay();
     const shouldAddFutherTip = isTextTolong && !this.#contentExpanded;
     const shouldAddClosingQuotationMark = !this.#contentExpanded;
@@ -38,7 +38,7 @@ class OpinionPresentedContentGenerator {
     return `"${narrowContent}${shouldAddFutherTip ? '...' : ''}${shouldAddClosingQuotationMark ? '"' : ''}`;
   }
 
-  #generatePresentedRestOfContent(restOfContent) {
+  #generatePresentedRestOfContent(restOfContent: string) {
     return `${restOfContent}"`;
   }
 

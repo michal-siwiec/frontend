@@ -1,6 +1,6 @@
 import { isEmpty } from 'lodash';
 import { VALIDATION_ERROR_MESSAGES } from 'data/errors.js';
-import OpinionPresentedContentGenerator from 'services/opinions/opinionPresentedContentGenerator.js';
+import OpinionPresentedContentGenerator from 'services/opinions/opinionPresentedContentGenerator.ts';
 
 export const handleAddOpinionValidation = ({ opinion }) => {
   const isOpinionValid = !isEmpty(opinion);

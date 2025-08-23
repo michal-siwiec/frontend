@@ -1,4 +1,4 @@
-import OpinionPresentedContentGenerator from 'services/opinions/opinionPresentedContentGenerator.js';
+import OpinionPresentedContentGenerator from 'services/opinions/opinionPresentedContentGenerator.ts';
 import * as helpers from 'utils/helpers.ts';
 
 describe('OpinionPresentedContentGenerator', () => {

@@ -1,5 +1,5 @@
 import { handleAddOpinionValidation, generateOpinionContent } from 'services/opinions.js';
-import OpinionPresentedContentGenerator from 'services/opinions/opinionPresentedContentGenerator.js';
+import OpinionPresentedContentGenerator from 'services/opinions/opinionPresentedContentGenerator.ts';
 
 describe('handleAddOpinionValidation', () => {
   it('returns false status if opinion is empty', () => {
