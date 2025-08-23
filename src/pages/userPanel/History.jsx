@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useQuery } from '@apollo/client';
 import { GET_ORDERS } from 'graphql/queries/order.js';
-import { formatTimestamp } from 'utils/helpers.js';
+import { formatTimestamp } from 'utils/helpers.ts';
 import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem.js';
 import LiveHelpIcon from '@mui/icons-material/LiveHelp';
 import LoadingModal from 'components/modals/LoadingModal.jsx';

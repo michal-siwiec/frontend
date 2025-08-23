@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import useFetchUrl from 'hooks/useFetchUrl.jsx';
 import ShadowedContainer from 'components/containers/ShadowedContainer.jsx';
 import { APPEARING_IN_SEQUENCE } from 'data/animations.js';
-import { formatPrice } from 'utils/helpers.js';
+import { formatPrice } from 'utils/helpers.ts';
 import AddToBasketForm from './AddToBasketForm.jsx';
 import SelectedQuantityPresenter from './SelectedQuantityPresenter.jsx';
 

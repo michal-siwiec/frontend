@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { isEmpty } from 'lodash';
-import { countTotalPrice } from 'utils/helpers.js';
+import { countTotalPrice } from 'utils/helpers.ts';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import EmptyBasketModal from 'layouts/topBar/elements/basket/EmptyBasketModal.jsx';
 import BasketSummaryModal from 'layouts/topBar/elements/basket/BasketSummaryModal.jsx';

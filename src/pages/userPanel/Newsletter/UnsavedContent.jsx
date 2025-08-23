@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { scrollIntoElement } from 'utils/helpers.js';
+import { scrollIntoElement } from 'utils/helpers.ts';
 
 const UnsavedContent = () => {
   const blockName = 'newsletter';

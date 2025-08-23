@@ -8,7 +8,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import Tooltip from 'components/Tooltip.jsx';
 import useFetchUrl from 'hooks/useFetchUrl.jsx';
 import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem.js';
-import { formatPhoneNumber } from 'utils/helpers.js';
+import { formatPhoneNumber } from 'utils/helpers.ts';
 import { FOOTER_MENU_ROUTING } from 'data/routing.js';
 import { SHOP_RULES_TEXT, PRIVACY_POLICY_TEXT, SHOP_MAIL, SHOP_PHONE } from 'data/uiElements.js';
 

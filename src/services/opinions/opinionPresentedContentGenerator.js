@@ -1,4 +1,4 @@
-import { cutAfterNChars, isTextLonger } from 'utils/helpers.js';
+import { cutAfterNChars, isTextLonger } from 'utils/helpers.ts';
 
 class OpinionPresentedContentGenerator {
   #displayedNumberOfChars;
@@ -25,7 +25,7 @@ class OpinionPresentedContentGenerator {
     const {
       narrowContent,
       restOfContent
-    } = cutAfterNChars({ string: this.#content, charsQuantity: this.#displayedNumberOfChars });
+    } = cutAfterNChars({ text: this.#content, charsQuantity: this.#displayedNumberOfChars });
 
     return { narrowContent, restOfContent };
   }
@@ -43,7 +43,7 @@ class OpinionPresentedContentGenerator {
   }
 
   #isTextToLongToDisplay() {
-    return isTextLonger({ string: this.#content, charsQuantity: this.#displayedNumberOfChars });
+    return isTextLonger({ text: this.#content, charsQuantity: this.#displayedNumberOfChars });
   }
 }
 

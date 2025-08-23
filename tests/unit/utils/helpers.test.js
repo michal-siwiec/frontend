@@ -7,7 +7,7 @@ import {
   formatTimestamp,
   validateByRegexp,
   areTheSame
-} from 'utils/helpers.js';
+} from 'utils/helpers.ts';
 
 import regexps from 'data/regexps.js';
 
@@ -37,25 +37,25 @@ describe('formatPhoneNumber', () => {
 
 describe('cutAfterNChars', () => {
   test('should split string correctly when charsQuantity is valid', () => {
-    const result = cutAfterNChars({ string: 'Hello, World!', charsQuantity: 5 });
+    const result = cutAfterNChars({ text: 'Hello, World!', charsQuantity: 5 });
 
     expect(result).toEqual({ narrowContent: 'Hello', restOfContent: ', World!' });
   });
 
   test('should split correctly when charsQuantity equals string length', () => {
-    const result = cutAfterNChars({ string: 'Exact', charsQuantity: 5 });
+    const result = cutAfterNChars({ text: 'Exact', charsQuantity: 5 });
 
     expect(result).toEqual({ narrowContent: 'Exact', restOfContent: '' });
   });
 
   test('should return full string in narrowContent if charsQuantity exceeds length', () => {
-    const result = cutAfterNChars({ string: 'Short', charsQuantity: 10 });
+    const result = cutAfterNChars({ text: 'Short', charsQuantity: 10 });
 
     expect(result).toEqual({ narrowContent: 'Short', restOfContent: '' });
   });
 
   test('should return empty narrowContent if charsQuantity is 0', () => {
-    const result = cutAfterNChars({ string: 'Test', charsQuantity: 0 });
+    const result = cutAfterNChars({ text: 'Test', charsQuantity: 0 });
 
     expect(result).toEqual({ narrowContent: '', restOfContent: 'Test' });
   });
@@ -71,13 +71,13 @@ describe('formatPrice', () => {
 
 describe('isTextLonger', () => {
   test('should return true if text is longer', () => {
-    const isLonger = isTextLonger({ string: 'Hello world!', charsQuantity: 2 });
+    const isLonger = isTextLonger({ text: 'Hello world!', charsQuantity: 2 });
 
     expect(isLonger).toBe(true);
   });
 
   test('should return false if text is shorter', () => {
-    const isLonger = isTextLonger({ string: 'Hello world!', charsQuantity: 25 });
+    const isLonger = isTextLonger({ text: 'Hello world!', charsQuantity: 25 });
 
     expect(isLonger).toBe(false);
   });

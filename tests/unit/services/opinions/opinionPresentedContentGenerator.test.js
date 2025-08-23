@@ -1,5 +1,5 @@
 import OpinionPresentedContentGenerator from 'services/opinions/opinionPresentedContentGenerator.js';
-import * as helpers from 'utils/helpers.js';
+import * as helpers from 'utils/helpers.ts';
 
 describe('OpinionPresentedContentGenerator', () => {
   let cutAfterNCharsSpy;
@@ -25,7 +25,7 @@ describe('OpinionPresentedContentGenerator', () => {
     const result = new OpinionPresentedContentGenerator({ displayedNumberOfChars, content, contentExpanded }).call();
 
     expect(cutAfterNCharsSpy).toHaveBeenCalledTimes(1);
-    expect(cutAfterNCharsSpy).toHaveBeenCalledWith({ string: content, charsQuantity: displayedNumberOfChars });
+    expect(cutAfterNCharsSpy).toHaveBeenCalledWith({ text: content, charsQuantity: displayedNumberOfChars });
     expect(result).toEqual({ narrowContent: '"Hello Worl"', restOfContent: 'd!"', textToLongToDisplay: false });
   });
 
@@ -39,7 +39,7 @@ describe('OpinionPresentedContentGenerator', () => {
 
     const result = new OpinionPresentedContentGenerator({ displayedNumberOfChars, content, contentExpanded }).call();
 
-    expect(isTextLongerSpy).toHaveBeenCalledWith({ string: content, charsQuantity: displayedNumberOfChars });
+    expect(isTextLongerSpy).toHaveBeenCalledWith({ text: content, charsQuantity: displayedNumberOfChars });
     expect(result).toEqual({ narrowContent: '"Jest ..."', restOfContent: 'is great!"', textToLongToDisplay: true });
   });
 

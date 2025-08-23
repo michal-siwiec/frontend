@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { exact, string, number } from 'prop-types';
 import SmoothCollapse from 'react-smooth-collapse';
 import { isEmpty } from 'lodash';
-import { formatTimestamp } from 'utils/helpers.js';
+import { formatTimestamp } from 'utils/helpers.ts';
 import ShadowedContainer from 'components/containers/ShadowedContainer.jsx';
 import Rating from 'components/Rating.jsx';
 import Avatar from 'components/Avatar.jsx';

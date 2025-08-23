@@ -1,5 +1,5 @@
 import regexps from 'data/regexps.js';
-import { validateByRegexp } from 'utils/helpers.js';
+import { validateByRegexp } from 'utils/helpers.ts';
 import { VALIDATION_ERROR_MESSAGES } from 'data/errors.js';
 
 export const handleSaveToNewsletterValidation = ({ name, surname, email }) => {

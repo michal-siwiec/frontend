@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { scrollIntoElement } from 'utils/helpers.js';
+import { scrollIntoElement } from 'utils/helpers.ts';
 
 const useScrollIntoElement = ({ scrollDependency, elementSelector }) => {
   useEffect(() => {
