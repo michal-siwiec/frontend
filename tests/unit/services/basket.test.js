@@ -1,4 +1,4 @@
-import { addProductToBasket } from 'services/basket.js';
+import { addProductToBasket } from 'services/basket.ts';
 
 describe('addProductToBasket', () => {
   it('adds product to basket when is not added yet', () => {

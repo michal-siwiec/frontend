@@ -55,7 +55,8 @@ module.exports = {
             validators: path.resolve(__dirname, '../', 'src/validators'),
             pages: path.resolve(__dirname, '../', 'src/pages'),
             contexts: path.resolve(__dirname, '../', 'src/contexts'),
-            layouts: path.resolve(__dirname, '../', 'src/layouts')
+            layouts: path.resolve(__dirname, '../', 'src/layouts'),
+            types: path.resolve(__dirname, '../', 'src/types')
           }
         },
         options: {

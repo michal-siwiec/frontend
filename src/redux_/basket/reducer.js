@@ -2,7 +2,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { addProductToBasket, clearBasket } from './actionCreators.js';
-import { addProductToBasket as addProduct } from 'services/basket.js';
+import { addProductToBasket as addProduct } from 'services/basket.ts';
 
 const initialState = { addedProducts: [] };
 const persistConfig = { key: 'basket', storage };
