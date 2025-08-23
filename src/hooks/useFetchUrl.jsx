@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getSignedUrl } from 'services/s3.js';
-import { AWS_BUCKET } from 'utils/environment.js';
+import { AWS_BUCKET } from 'utils/environment.ts';
 
 const useFetchUrl = ({ bucket = AWS_BUCKET, key }) => {
   const [objectURL, setObjectURL] = useState(null);

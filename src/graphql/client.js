@@ -1,5 +1,5 @@
 import { ApolloClient, InMemoryCache, HttpLink, ApolloLink, concat } from '@apollo/client';
-import { API_URL, BASIC_AUTH_USER, BASIC_AUTH_PASSWORD, isProductionEnv } from 'utils/environment.js';
+import { API_URL, BASIC_AUTH_USER, BASIC_AUTH_PASSWORD, isProductionEnv } from 'utils/environment.ts';
 import 'unfetch/polyfill';
 
 const httpLink = new HttpLink({ uri: `${API_URL}/graphql/`, credentials: 'include' });

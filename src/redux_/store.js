@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { persistStore } from 'redux-persist';
 import thunk from 'redux-thunk';
 import rootReducer from './rootReducer.js';
-import { isProductionEnv } from 'utils/environment.js';
+import { isProductionEnv } from 'utils/environment.ts';
 
 export const store = configureStore({
   reducer: rootReducer,

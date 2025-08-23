@@ -1,5 +1,5 @@
 import { S3 } from 'aws-sdk';
-import { AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION, AWS_BUCKET } from 'utils/environment.js';
+import { AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION, AWS_BUCKET } from 'utils/environment.ts';
 
 const s3 = new S3({
   accessKeyId: AWS_ACCESS_KEY_ID,

@@ -1,6 +1,6 @@
 import FileSaver from 'file-saver';
 import { getObject } from 'services/s3.js';
-import { AWS_BUCKET } from 'utils/environment.js';
+import { AWS_BUCKET } from 'utils/environment.ts';
 
 const fetchFileOnLocalFileSystem = ({ bucket = AWS_BUCKET, key, fileName, fileType = 'application/pdf' }) => {
   getObject({
