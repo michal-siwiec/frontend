@@ -1,6 +1,6 @@
 import FileSaver from 'file-saver';
-import * as S3Service from 'services/s3.js';
-import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem.js';
+import * as S3Service from 'services/s3.ts';
+import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem.ts';
 
 describe('fetchFileOnLocalFileSystem', () => {
   beforeEach(() => {

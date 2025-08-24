@@ -1,10 +1,10 @@
 import { isEmpty } from 'lodash';
 
-const API_URL = process.env.API_URL;
+const API_URL = process.env.API_URL!;
 const AWS_REGION = 'eu-central-1';
-const AWS_ACCESS_KEY_ID = process.env.AWS_ACCESS_KEY_ID;
-const AWS_SECRET_ACCESS_KEY = process.env.AWS_SECRET_ACCESS_KEY;
-const AWS_BUCKET = process.env.AWS_BUCKET;
+const AWS_ACCESS_KEY_ID = process.env.AWS_ACCESS_KEY_ID!;
+const AWS_SECRET_ACCESS_KEY = process.env.AWS_SECRET_ACCESS_KEY!;
+const AWS_BUCKET = process.env.AWS_BUCKET!;
 const BASIC_AUTH_USER = process.env.BASIC_AUTH_USER;
 const BASIC_AUTH_PASSWORD = process.env.BASIC_AUTH_PASSWORD;
 const NODE_ENV = process.env.NODE_ENV || 'development';

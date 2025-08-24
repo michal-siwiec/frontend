@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { useSelector } from 'react-redux';
-import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem.js';
+import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem.ts';
 import SubmitButton from 'components/SubmitButton.jsx';
 
 const ThankYouPage = () => {

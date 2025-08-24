@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useQuery } from '@apollo/client';
 import { GET_ORDERS } from 'graphql/queries/order.js';
 import { formatTimestamp } from 'utils/helpers.ts';
-import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem.js';
+import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem.ts';
 import LiveHelpIcon from '@mui/icons-material/LiveHelp';
 import LoadingModal from 'components/modals/LoadingModal.jsx';
 import ErrorModal from 'components/modals/ErrorModal.jsx';

@@ -1,9 +1,9 @@
 import { screen, fireEvent } from '@testing-library/react';
 import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
 import ThankYouPage from 'pages/ThankYouPage.jsx';
-import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem.js';
+import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem.ts';
 
-jest.mock('services/fetchFileOnLocalFileSystem.js', () => jest.fn());
+jest.mock('services/fetchFileOnLocalFileSystem.ts', () => jest.fn());
 
 describe('ThankYouPage', () => {
   const baseState = {
