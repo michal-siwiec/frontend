@@ -1,4 +1,4 @@
-import { generateAddedProductPayload, generateHeaderCaption, generatePossibleProductQuantity } from 'services/products.js';
+import { generateAddedProductPayload, generateHeaderCaption, generatePossibleProductQuantity } from 'services/products.ts';
 
 describe('generateAddedProductPayload', () => {
   test('should return proper object with properties', () => {

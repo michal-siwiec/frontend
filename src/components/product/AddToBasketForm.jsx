@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { exact, number, string } from 'prop-types';
-import { isEmpty } from 'lodash';
 import NumberInput from 'components/inputs/NumberInput.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
 import { useSelector, useDispatch } from 'react-redux';
 import { addProductToBasket } from 'redux_/basket/actionCreators.js';
-import { generateAddedProductPayload, generatePossibleProductQuantity } from 'services/products.js';
+import { generateAddedProductPayload, generatePossibleProductQuantity } from 'services/products.ts';
 
 const AddToBasketForm = ({ product }) => {
   const blockName = 'product';
@@ -16,10 +15,10 @@ const AddToBasketForm = ({ product }) => {
   const [selectedQuantity, setSelectedQuantity] = useState(1);
 
   const selectQuantityOnChange = ({ target: { value } }) => {
-    if (isEmpty(value)) return setSelectedQuantity(1);
-    if (value > possibleProductQuantity) return setSelectedQuantity(possibleProductQuantity);
+    let quantity = parseInt(value) || 1;
+    if (quantity > possibleProductQuantity) quantity = possibleProductQuantity
 
-    setSelectedQuantity(value);
+    setSelectedQuantity(quantity);
   };
 
   const handleAddToBasketOnMouseDown = () => {
