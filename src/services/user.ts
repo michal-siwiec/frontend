@@ -1,16 +1,23 @@
+import { Avatar } from 'types/avatar';
 import regexps from 'data/regexps.js';
-import { validateByRegexp, areTheSame } from 'utils/helpers.ts';
+import { validateByRegexp, areTheSame } from 'utils/helpers';
 import { VALIDATION_ERROR_MESSAGES } from 'data/errors.js';
-import AvatarsGenerator from 'services/users/avatarsGenerator.ts';
+import AvatarsGenerator from 'services/users/avatarsGenerator';
 
+// TODO: Feature disabled so far. Fix in future
+// @ts-ignore
 export const generateTooltipHeaderText = ({ index, selectedAvatar }) => selectedAvatar === index
   ? 'Główny avatar'
   : 'Oznacz jako główny avatar';
 
+// TODO: Feature disabled so far. Fix in future
+// @ts-ignore
 export const generateTooltipSecondaryText = ({ index, selectedAvatar }) => selectedAvatar === index
   ? 'Główny avatar jest wyświetlany jako zdjęcie profiowe'
   : 'Główny avatar bedzie uzywany jako zdjecie profilowe.';
 
+// TODO: Feature disabled so far. Fix in future
+// @ts-ignore
 export const sortAvatarByMainField = (a, b) => {
   if (a.main === 'true') return 1;
   if (b.main === 'true') return -1;
@@ -18,7 +25,9 @@ export const sortAvatarByMainField = (a, b) => {
   return 0;
 };
 
-export const handleMyDetailsValidation = ({ name, surname, phoneNumber, city, postalCode, street }) => {
+export const handleMyDetailsValidation = (
+  { name, surname, phoneNumber, city, postalCode, street }: { name: string, surname: string, phoneNumber: string, city: string, postalCode: string, street: string }
+) => {
   const isNameValid = validateByRegexp({ regexp: regexps.name, subject: name });
   const isSurnameValid = validateByRegexp({ regexp: regexps.surname, subject: surname });
   const isPhoneNumberValid = validateByRegexp({ regexp: regexps.phoneNumber, subject: phoneNumber });
@@ -38,7 +47,7 @@ export const handleMyDetailsValidation = ({ name, surname, phoneNumber, city, po
   };
 };
 
-export const handleLoginValidation = ({ email, password }) => {
+export const handleLoginValidation = ({ email, password }: { email: string, password: string }) => {
   const isValidEmail = validateByRegexp({ regexp: regexps.email, subject: email });
   const isValidPassword = validateByRegexp({ regexp: regexps.password, subject: password });
 
@@ -49,7 +58,9 @@ export const handleLoginValidation = ({ email, password }) => {
   };
 };
 
-export const handleClientDetailsValidation = ({ name, surname, street, city, postalCode, email, phoneNumber }) => {
+export const handleClientDetailsValidation = (
+  { name, surname, street, city, postalCode, email, phoneNumber }: { name: string, surname: string, street: string, city: string, postalCode: string, email: string, phoneNumber: string }
+) => {
   const isNameValid = validateByRegexp({ regexp: regexps.name, subject: name });
   const isSurnameValid = validateByRegexp({ regexp: regexps.surname, subject: surname });
   const isStreetValid = validateByRegexp({ regexp: regexps.street, subject: street });
@@ -73,7 +84,7 @@ export const handleClientDetailsValidation = ({ name, surname, street, city, pos
   };
 };
 
-export const handleChangePasswordValidation = ({ password, passwordConfirmation }) => {
+export const handleChangePasswordValidation = ({ password, passwordConfirmation }: { password: string, passwordConfirmation: string }) => {
   const isPasswordValid = validateByRegexp({ regexp: regexps.password, subject: password });
   const arePasswordsTheSame = areTheSame({ val1: password, val2: passwordConfirmation });
 
@@ -84,7 +95,9 @@ export const handleChangePasswordValidation = ({ password, passwordConfirmation 
   };
 };
 
-export const handleRegisterValidation = ({ email, password, avatars }) => {
+export const handleRegisterValidation = (
+  { email, password, avatars }: { email: string, password: string, avatars: Array<Avatar> }
+) => {
   const isEmailValid = validateByRegexp({ regexp: regexps.email, subject: email });
   const isPasswordValid = validateByRegexp({ regexp: regexps.password, subject: password });
   const isAvatarValid = validateAvatars({ avatars });
@@ -97,7 +110,7 @@ export const handleRegisterValidation = ({ email, password, avatars }) => {
   };
 };
 
-const validateAvatars = ({ avatars }) => {
+const validateAvatars = ({ avatars }: { avatars: Array<Avatar> }) => {
   const allowedFileFormats = ['image/png', 'image/svg+xml', 'image/jpeg'];
   let eachAvatarsHasValidFormat = true;
 
@@ -112,4 +125,4 @@ const validateAvatars = ({ avatars }) => {
   return eachAvatarsHasValidFormat;
 };
 
-export const generateAvatars = async (files) => new AvatarsGenerator(files).call();
+export const generateAvatars = async (files: Array<File>) => new AvatarsGenerator(files).call();

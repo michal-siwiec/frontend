@@ -8,7 +8,7 @@ import {
   handleChangePasswordValidation,
   handleRegisterValidation,
   generateAvatars
-} from 'services/user.js';
+} from 'services/user.ts';
 
 import AvatarsGenerator from 'services/users/avatarsGenerator.ts';
 
