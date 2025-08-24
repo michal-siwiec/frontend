@@ -4,7 +4,7 @@ import { useLazyQuery, useMutation } from '@apollo/client';
 import { USER_PERSONAL_DETAILS, IS_USER_SAVED_TO_NEWSLETTER } from 'graphql/queries/user.js';
 import { SUBSCRIBE_TO_NEWSLETTER } from 'graphql/mutations/user.js';
 import useIsLogged from 'hooks/useIsLogged.jsx';
-import { handleSaveToNewsletterValidation } from 'services/newsletter.js';
+import { handleSaveToNewsletterValidation } from 'services/newsletter.ts';
 import FormContainer from 'components/containers/FormContainer.jsx';
 import TextInput from 'components/inputs/TextInput.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';

@@ -1,4 +1,4 @@
-import { handleSaveToNewsletterValidation } from 'services/newsletter.js';
+import { handleSaveToNewsletterValidation } from 'services/newsletter.ts';
 
 describe('handleSaveToNewsletterValidation', () => {
   let name;

@@ -1,4 +1,4 @@
-import { handleAddOpinionValidation, generateOpinionContent } from 'services/opinions.js';
+import { handleAddOpinionValidation, generateOpinionContent } from 'services/opinions.ts';
 import OpinionPresentedContentGenerator from 'services/opinions/opinionPresentedContentGenerator.ts';
 
 describe('handleAddOpinionValidation', () => {
