@@ -9,7 +9,7 @@ import {
   areTheSame
 } from 'utils/helpers.ts';
 
-import regexps from 'data/regexps.ts';
+import { EMAIL_REGEX } from 'data/regexps.ts';
 
 describe('countTotalPrice', () => {
   test('should return 0.0 for non products', () => {
@@ -95,13 +95,13 @@ describe('formatTimestamp', () => {
 
 describe('validateByRegexp', () => {
   test('should match correctly', () => {
-    const isValid = validateByRegexp({ regexp: regexps.email, subject: 'siwiec.michal724@gmail.com' });
+    const isValid = validateByRegexp({ regexp: EMAIL_REGEX, subject: 'siwiec.michal724@gmail.com' });
 
     expect(isValid).toBe(true);
   });
 
   test("shouldn't match correctly", () => {
-    const isValid = validateByRegexp({ regexp: regexps.email, subject: 'siwiec.michal724gmail.com' });
+    const isValid = validateByRegexp({ regexp: EMAIL_REGEX, subject: 'siwiec.michal724gmail.com' });
 
     expect(isValid).toBe(false);
   });

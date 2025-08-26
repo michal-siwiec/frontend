@@ -1,5 +1,5 @@
 import { Avatars } from 'types/avatar';
-import regexps from 'data/regexps';
+import { NAME_REGEX, SURNAME_REGEX, EMAIL_REGEX, PHONE_NUMBER_REGEX, PASSWORD_REGEX, CITY_REGEX, POSTAL_CODE_REGEX, STREET_REGEX } from 'data/regexps';
 import { validateByRegexp, areTheSame } from 'utils/helpers';
 import { VALIDATION_ERROR_MESSAGES } from 'data/errors';
 import AvatarsGenerator from 'services/users/avatarsGenerator';
@@ -28,12 +28,12 @@ export const sortAvatarByMainField = (a, b) => {
 export const handleMyDetailsValidation = (
   { name, surname, phoneNumber, city, postalCode, street }: { name: string, surname: string, phoneNumber: string, city: string, postalCode: string, street: string }
 ) => {
-  const isNameValid = validateByRegexp({ regexp: regexps.name, subject: name });
-  const isSurnameValid = validateByRegexp({ regexp: regexps.surname, subject: surname });
-  const isPhoneNumberValid = validateByRegexp({ regexp: regexps.phoneNumber, subject: phoneNumber });
-  const isCityValid = validateByRegexp({ regexp: regexps.city, subject: city });
-  const isPostalCodeValid = validateByRegexp({ regexp: regexps.postalCode, subject: postalCode });
-  const isStreetValid = validateByRegexp({ regexp: regexps.street, subject: street });
+  const isNameValid = validateByRegexp({ regexp: NAME_REGEX, subject: name });
+  const isSurnameValid = validateByRegexp({ regexp: SURNAME_REGEX, subject: surname });
+  const isPhoneNumberValid = validateByRegexp({ regexp: PHONE_NUMBER_REGEX, subject: phoneNumber });
+  const isCityValid = validateByRegexp({ regexp: CITY_REGEX, subject: city });
+  const isPostalCodeValid = validateByRegexp({ regexp: POSTAL_CODE_REGEX, subject: postalCode });
+  const isStreetValid = validateByRegexp({ regexp: STREET_REGEX, subject: street });
 
   return {
     nameError: !isNameValid && VALIDATION_ERROR_MESSAGES.name,
@@ -48,8 +48,8 @@ export const handleMyDetailsValidation = (
 };
 
 export const handleLoginValidation = ({ email, password }: { email: string, password: string }) => {
-  const isValidEmail = validateByRegexp({ regexp: regexps.email, subject: email });
-  const isValidPassword = validateByRegexp({ regexp: regexps.password, subject: password });
+  const isValidEmail = validateByRegexp({ regexp: EMAIL_REGEX, subject: email });
+  const isValidPassword = validateByRegexp({ regexp: PASSWORD_REGEX, subject: password });
 
   return {
     emailError: !isValidEmail && VALIDATION_ERROR_MESSAGES.email,
@@ -61,13 +61,13 @@ export const handleLoginValidation = ({ email, password }: { email: string, pass
 export const handleClientDetailsValidation = (
   { name, surname, street, city, postalCode, email, phoneNumber }: { name: string, surname: string, street: string, city: string, postalCode: string, email: string, phoneNumber: string }
 ) => {
-  const isNameValid = validateByRegexp({ regexp: regexps.name, subject: name });
-  const isSurnameValid = validateByRegexp({ regexp: regexps.surname, subject: surname });
-  const isStreetValid = validateByRegexp({ regexp: regexps.street, subject: street });
-  const isCityValid = validateByRegexp({ regexp: regexps.city, subject: city });
-  const isPostalCodeValid = validateByRegexp({ regexp: regexps.postalCode, subject: postalCode });
-  const isEmailValid = validateByRegexp({ regexp: regexps.email, subject: email });
-  const isPhoneNumberValid = validateByRegexp({ regexp: regexps.phoneNumber, subject: phoneNumber });
+  const isNameValid = validateByRegexp({ regexp: NAME_REGEX, subject: name });
+  const isSurnameValid = validateByRegexp({ regexp: SURNAME_REGEX, subject: surname });
+  const isStreetValid = validateByRegexp({ regexp: STREET_REGEX, subject: street });
+  const isCityValid = validateByRegexp({ regexp: CITY_REGEX, subject: city });
+  const isPostalCodeValid = validateByRegexp({ regexp: POSTAL_CODE_REGEX, subject: postalCode });
+  const isEmailValid = validateByRegexp({ regexp: EMAIL_REGEX, subject: email });
+  const isPhoneNumberValid = validateByRegexp({ regexp: PHONE_NUMBER_REGEX, subject: phoneNumber });
 
   return {
     nameError: !isNameValid && VALIDATION_ERROR_MESSAGES.name,
@@ -85,7 +85,7 @@ export const handleClientDetailsValidation = (
 };
 
 export const handleChangePasswordValidation = ({ password, passwordConfirmation }: { password: string, passwordConfirmation: string }) => {
-  const isPasswordValid = validateByRegexp({ regexp: regexps.password, subject: password });
+  const isPasswordValid = validateByRegexp({ regexp: PASSWORD_REGEX, subject: password });
   const arePasswordsTheSame = areTheSame({ val1: password, val2: passwordConfirmation });
 
   return {
@@ -98,8 +98,8 @@ export const handleChangePasswordValidation = ({ password, passwordConfirmation 
 export const handleRegisterValidation = (
   { email, password, avatars }: { email: string, password: string, avatars: Avatars }
 ) => {
-  const isEmailValid = validateByRegexp({ regexp: regexps.email, subject: email });
-  const isPasswordValid = validateByRegexp({ regexp: regexps.password, subject: password });
+  const isEmailValid = validateByRegexp({ regexp: EMAIL_REGEX, subject: email });
+  const isPasswordValid = validateByRegexp({ regexp: PASSWORD_REGEX, subject: password });
   const isAvatarValid = validateAvatars({ avatars });
 
   return {
