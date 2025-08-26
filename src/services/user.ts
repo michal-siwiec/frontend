@@ -1,4 +1,4 @@
-import { Avatar } from 'types/avatar';
+import { Avatars } from 'types/avatar';
 import regexps from 'data/regexps.js';
 import { validateByRegexp, areTheSame } from 'utils/helpers';
 import { VALIDATION_ERROR_MESSAGES } from 'data/errors.js';
@@ -96,7 +96,7 @@ export const handleChangePasswordValidation = ({ password, passwordConfirmation 
 };
 
 export const handleRegisterValidation = (
-  { email, password, avatars }: { email: string, password: string, avatars: Array<Avatar> }
+  { email, password, avatars }: { email: string, password: string, avatars: Avatars }
 ) => {
   const isEmailValid = validateByRegexp({ regexp: regexps.email, subject: email });
   const isPasswordValid = validateByRegexp({ regexp: regexps.password, subject: password });
@@ -110,7 +110,7 @@ export const handleRegisterValidation = (
   };
 };
 
-const validateAvatars = ({ avatars }: { avatars: Array<Avatar> }) => {
+const validateAvatars = ({ avatars }: { avatars: Avatars }) => {
   const allowedFileFormats = ['image/png', 'image/svg+xml', 'image/jpeg'];
   let eachAvatarsHasValidFormat = true;
 

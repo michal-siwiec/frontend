@@ -11,3 +11,5 @@ export type Product = {
     __typename: string
   }
 }
+
+export type Products = Array<Product>;

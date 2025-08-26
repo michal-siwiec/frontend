@@ -1,6 +1,6 @@
-import { Product } from 'types/product.ts';
+import { Product, Products } from 'types/product';
 
-export const addProductToBasket = ({ addedProducts, payload }: { addedProducts: Array<Product>, payload: Product }) => {
+export const addProductToBasket = ({ addedProducts, payload }: { addedProducts: Products, payload: Product }) => {
   const productInBasket = addedProducts.find(({ id }) => id === payload.id);
 
   if (productInBasket) {

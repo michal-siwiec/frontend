@@ -1,6 +1,6 @@
-import { Product } from 'types/product.ts';
+import { Products } from 'types/product';
 
-export const countTotalPrice = (products: Array<Product>) => {
+export const countTotalPrice = (products: Products) => {
   const initialValue = 0;
 
   return products.reduce((prev, { quantity, attributes: { price } }) => (
