@@ -1,42 +1,16 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import {
-  setName,
-  setSurname,
-  setStreet,
-  setCity,
-  setPostalCode,
-  setEmail,
-  setPhoneNumber,
-  setDeliveryMethod,
-  setPaymentMethod,
-  setCompletedOrder
-} from './actionsCreator.js';
+import { setName, setSurname, setStreet, setCity, setPostalCode, setEmail, setPhoneNumber, setDeliveryMethod, setPaymentMethod, setCompletedOrder } from './actionsCreator';
 
 const persistConfig = { key: 'order', storage };
 const initialState = {
-  clientDetails: {
-    name: '',
-    surname: '',
-    street: '',
-    city: '',
-    postalCode: '',
-    email: '',
-    phoneNumber: ''
-  },
-  delivery: {
-    inPost: true,
-    dpd: false,
-    pickUpAtThePoint: false
-  },
-  payment: {
-    cashPayment: false,
-    traditionalTransfer: true
-  },
-  orderID: null,
-  totalPrice: null,
-  paymentMethod: null
+  clientDetails: { name: '', surname: '', street: '', city: '', postalCode: '', email: '', phoneNumber: '' },
+  delivery: { inPost: true, dpd: false, pickUpAtThePoint: false },
+  payment: { cashPayment: false, traditionalTransfer: true },
+  orderID: null as string | null,
+  totalPrice: null as number | null,
+  paymentMethod: null as string | null
 };
 
 const reducer = createReducer(initialState, (builder) => {

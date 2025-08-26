@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
-import { setCompletedOrder } from 'redux_/order/actionsCreator.js';
+import { setCompletedOrder } from 'redux_/order/actionsCreator.ts';
 import { clearBasket } from 'redux_/basket/actionCreators.js';
 import { countTotalPrice } from 'utils/helpers.ts';
 import { ADD_ORDER } from 'graphql/mutations/order.js';

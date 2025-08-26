@@ -11,7 +11,7 @@ import {
   setPostalCode,
   setEmail,
   setPhoneNumber
-} from 'redux_/order/actionsCreator.js';
+} from 'redux_/order/actionsCreator.ts';
 import { OrderContext } from 'contexts/contexts.js';
 import { handleClientDetailsValidation } from 'services/user.ts';
 import TextInput from 'components/inputs/TextInput.jsx';
