@@ -12,7 +12,7 @@ import {
   setEmail,
   setPhoneNumber
 } from 'redux_/order/actionsCreator.ts';
-import { OrderContext } from 'contexts/contexts.js';
+import { OrderContext } from 'contexts/contexts.ts';
 import { handleClientDetailsValidation } from 'services/user.ts';
 import TextInput from 'components/inputs/TextInput.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';

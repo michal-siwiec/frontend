@@ -1,5 +1,5 @@
 import React, { Fragment, useContext } from 'react';
-import { OrderContext } from 'contexts/contexts.js';
+import { OrderContext } from 'contexts/contexts.ts';
 import ClientDetails from 'pages/order/form/steps/ClientDetails.jsx';
 import DeliveryMethod from 'pages/order/form/steps/DeliveryMethod.jsx';
 import PaymentMethod from 'pages/order/form/steps/PaymentMethod.jsx';

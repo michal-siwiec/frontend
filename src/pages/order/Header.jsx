@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { OrderContext } from 'contexts/contexts.js';
+import { OrderContext } from 'contexts/contexts.ts';
 import Stepper from 'components/Stepper.jsx';
   import { STEP_LABELS } from 'data/uiElements.ts';
 

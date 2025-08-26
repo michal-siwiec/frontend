@@ -1,5 +1,5 @@
 import React, { Fragment, useContext } from 'react';
-import { OrderContext } from 'contexts/contexts.js';
+import { OrderContext } from 'contexts/contexts.ts';
 import { useSelector, useDispatch } from 'react-redux';
 import { setDeliveryMethod } from 'redux_/order/actionsCreator.ts';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
