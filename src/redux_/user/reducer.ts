@@ -1,7 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { login, logout, checkIfLogged, updateAvatars } from './actionsCreator.js';
+import { login, logout, checkIfLogged, updateAvatars } from './actionsCreator';
 import { Avatars } from 'types/avatar';
 
 type InitialState = { loggedUserId: null | string, avatars: Avatars };
