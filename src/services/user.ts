@@ -47,7 +47,7 @@ export const handleMyDetailsValidation = (
   };
 };
 
-export const handleLoginValidation = ({ email, password }: { email: string, password: string }) => {
+export const handleLoginValidation = (email: string, password: string) => {
   const isValidEmail = validateByRegexp({ regexp: EMAIL_REGEX, subject: email });
   const isValidPassword = validateByRegexp({ regexp: PASSWORD_REGEX, subject: password });
 

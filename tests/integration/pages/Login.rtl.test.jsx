@@ -4,7 +4,7 @@ import renderWithProviders from 'tests/integration/helpers/renderWithProviders.j
 import { screen, fireEvent, waitFor } from '@testing-library/react';
 import { LOGIN_USER } from 'graphql/mutations/user.js';
 import { ERROR_CODES } from 'data/errors.ts';
-import Login from 'pages/Login.jsx';
+import Login from 'pages/Login.tsx';
 
 describe('Login', () => {
   it('redirect to / path when user is logged', () => {

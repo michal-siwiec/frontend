@@ -223,7 +223,7 @@ describe('handleLoginValidation', () => {
 
   it('returns proper error status if email is not valid', () => {
     email = 'siwiec.michal72gmial.com';
-    const response = handleLoginValidation({ email, password });
+    const response = handleLoginValidation(email, password);
 
     expect(response).toEqual({
       emailError: 'Email ma niepoprawny format!',
@@ -234,7 +234,7 @@ describe('handleLoginValidation', () => {
 
   it('returns proper error status if password is not valid', () => {
     password = 'qwe';
-    const response = handleLoginValidation({ email, password });
+    const response = handleLoginValidation(email, password);
 
     expect(response).toEqual({
       emailError: false,
@@ -246,7 +246,7 @@ describe('handleLoginValidation', () => {
   it('returns multiple error messages', () => {
     email = 'siwiec.michal724gmail.com';
     password = 'qwer';
-    const response = handleLoginValidation({ email, password });
+    const response = handleLoginValidation(email, password);
 
     expect(response).toEqual({
       emailError: 'Email ma niepoprawny format!',
@@ -256,7 +256,7 @@ describe('handleLoginValidation', () => {
   });
 
   it('no return error status if the both are valid', () => {
-    const response = handleLoginValidation({ email, password });
+    const response = handleLoginValidation(email, password);
 
     expect(response).toEqual({
       emailError: false,

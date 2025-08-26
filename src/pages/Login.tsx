@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -51,7 +52,7 @@ const Login = () => {
   const handlePasswordOnChange = ({ target: { value } }) => setPassword(value);
 
   const handleLoginOnMouseDown = () => {
-    const { emailError, passwordError, validationStatus } = handleLoginValidation({ email, password });
+    const { emailError, passwordError, validationStatus } = handleLoginValidation(email, password);
     setEmailErrorMessage(emailError);
     setPasswordErrorMessage(passwordError);
     if (!validationStatus) return;
