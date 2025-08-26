@@ -1,8 +1,8 @@
 export type Avatar = {
-  base64: string,
-  fileName: string,
-  fileType: string,
-  main: boolean
+  readonly base64: string,
+  readonly fileName: string,
+  readonly fileType: string,
+  readonly main: boolean
 }
 
 export type Avatars = Array<Avatar>

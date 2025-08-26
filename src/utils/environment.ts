@@ -15,7 +15,7 @@ const requiredVars = [
   { name: 'AWS_SECRET_ACCESS_KEY', value: AWS_SECRET_ACCESS_KEY },
   { name: 'AWS_BUCKET', value: AWS_BUCKET },
   { name: 'NODE_ENV', value: NODE_ENV }
-];
+] as const;
 
 requiredVars.forEach(({ name, value }) => {
   if (isEmpty(value)) {

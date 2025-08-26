@@ -1,4 +1,6 @@
-export type Product = {
+import { DeepReadonly } from 'utility-types';
+
+export type Product = DeepReadonly<{
   id: string,
   quantity: number,
   attributes: {
@@ -10,6 +12,9 @@ export type Product = {
     price: number,
     __typename: string
   }
-}
+}>
 
 export type Products = Array<Product>;
+
+export type ProductInBasket = Omit<Product, 'quantity'> & { quantity: number }
+export type ProductsInBasket = Array<ProductInBasket>;
