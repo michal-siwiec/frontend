@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import { REMOVE_ACCOUNT } from 'graphql/mutations/user.js';
-import { logout } from 'redux_/user/actionsCreator.js';
+import { logout } from 'redux_/user/actionsCreator.ts';
 import SubmitButton from 'components/SubmitButton.jsx';
 import LoadingModal from 'components/modals/LoadingModal.jsx';
 import ErrorModal from 'components/modals/ErrorModal.jsx';

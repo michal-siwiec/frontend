@@ -4,3 +4,5 @@ export type Avatar = {
   fileType: string,
   main: boolean
 }
+
+export type Avatars = Array<Avatar>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import useRedirect from 'hooks/useRedirect.jsx';
-import { login } from 'redux_/user/actionsCreator.js';
+import { login } from 'redux_/user/actionsCreator.ts';
 import { handleRegisterValidation, generateAvatars } from 'services/user.ts';
 import { REGISTER_USER } from 'graphql/mutations/user.js';
 import FormContainer from 'components/containers/FormContainer.jsx';

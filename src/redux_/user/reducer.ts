@@ -2,8 +2,11 @@ import { createReducer } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { login, logout, checkIfLogged, updateAvatars } from './actionsCreator.js';
+import { Avatars } from 'types/avatar';
 
-const initialState = { loggedUserId: null, avatars: [] };
+type InitialState = { loggedUserId: null | string, avatars: Avatars };
+
+const initialState: InitialState = { loggedUserId: null, avatars: [] }
 const persistConfig = { key: 'user', storage };
 
 const reducer = createReducer(initialState, (builder) => {
