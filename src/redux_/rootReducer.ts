@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import basketReducer from './basket/reducer.js';
+import basketReducer from './basket/reducer';
 import userReducer from './user/reducer';
 import orderReducer from './order/reducer';
 
