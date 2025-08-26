@@ -2,7 +2,7 @@ import { exact, number, string } from 'prop-types';
 import clsx from 'clsx';
 import useFetchUrl from 'hooks/useFetchUrl.jsx';
 import ShadowedContainer from 'components/containers/ShadowedContainer.jsx';
-import { APPEARING_IN_SEQUENCE } from 'data/animations.js';
+import { APPEARING_IN_SEQUENCE } from 'data/animations.ts';
 import { formatPrice } from 'utils/helpers.ts';
 import AddToBasketForm from './AddToBasketForm.jsx';
 import SelectedQuantityPresenter from './SelectedQuantityPresenter.jsx';

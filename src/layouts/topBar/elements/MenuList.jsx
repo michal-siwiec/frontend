@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { TOP_BAR_MENU_ROUTING } from 'data/routing.js';
+import { TOP_BAR_MENU_ROUTING } from 'data/routing.ts';
 
 const MenuList = () => {
   const blockName = 'top-bar-elements';

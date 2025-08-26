@@ -9,7 +9,7 @@ import {
   areTheSame
 } from 'utils/helpers.ts';
 
-import regexps from 'data/regexps.js';
+import regexps from 'data/regexps.ts';
 
 describe('countTotalPrice', () => {
   test('should return 0.0 for non products', () => {

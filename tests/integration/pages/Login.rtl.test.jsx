@@ -3,7 +3,7 @@ import { ApolloError } from '@apollo/client';
 import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
 import { screen, fireEvent, waitFor } from '@testing-library/react';
 import { LOGIN_USER } from 'graphql/mutations/user.js';
-import { ERROR_CODES } from 'data/errors.js';
+import { ERROR_CODES } from 'data/errors.ts';
 import Login from 'pages/Login.jsx';
 
 describe('Login', () => {

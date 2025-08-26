@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react';
 import DesktopContent from 'layouts/topBar/DesktopContent.jsx';
 import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
-import { WIDTH_BREAKPOINTS } from 'data/breakpoints.js';
+import { WIDTH_BREAKPOINTS } from 'data/breakpoints.ts';
 import { resizeWindow } from 'tests/helpers/domUtils.js';
 
 describe('DesktopContent', () => {

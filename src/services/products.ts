@@ -1,5 +1,5 @@
 import { Product, Products } from 'types/product';
-import { CATEGORY_NAMES } from 'data/uiElements.js';
+import { CATEGORY_NAMES } from 'data/uiElements';
 
 // TODO: Update scripts inside package.json to match to ts files
 

@@ -5,7 +5,7 @@ import renderWithProviders from 'tests/integration/helpers/renderWithProviders.j
 import Newsletter from 'layouts/Newsletter.jsx';
 import { USER_PERSONAL_DETAILS, IS_USER_SAVED_TO_NEWSLETTER } from 'graphql/queries/user.js';
 import { SUBSCRIBE_TO_NEWSLETTER } from 'graphql/mutations/user.js';
-import { VALIDATION_ERROR_MESSAGES } from 'data/errors.js';
+import { VALIDATION_ERROR_MESSAGES } from 'data/errors.ts';
 
 const renderComponent = ({ mocks, preloadedState }) => (
   renderWithProviders(

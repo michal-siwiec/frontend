@@ -12,7 +12,7 @@ import FileInput from 'components/inputs/FileInput.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';
 import LoadingModal from 'components/modals/LoadingModal.jsx';
 import ErrorModal from 'components/modals/ErrorModal.jsx';
-import { ERROR_CODES } from 'data/errors.js';
+import { ERROR_CODES } from 'data/errors.ts';
 
 const Register = () => {
   const blockName = 'register';

@@ -1,6 +1,6 @@
-import regexps from 'data/regexps.js';
+import regexps from 'data/regexps';
 import { validateByRegexp } from 'utils/helpers';
-import { VALIDATION_ERROR_MESSAGES } from 'data/errors.js';
+import { VALIDATION_ERROR_MESSAGES } from 'data/errors';
 
 export const handleSaveToNewsletterValidation = ({ name, surname, email }: { name: string, surname: string, email: string }) => {
   const isNameValid = validateByRegexp({ regexp: regexps.name, subject: name });

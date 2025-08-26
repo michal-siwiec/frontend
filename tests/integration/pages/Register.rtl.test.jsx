@@ -3,7 +3,7 @@ import { ApolloError } from '@apollo/client';
 import { screen, fireEvent, waitFor } from '@testing-library/react';
 import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
 import { REGISTER_USER } from 'graphql/mutations/user.js';
-import { ERROR_CODES } from 'data/errors.js';
+import { ERROR_CODES } from 'data/errors.ts';
 import Register from 'pages/Register.jsx';
 
 describe('Register page', () => {

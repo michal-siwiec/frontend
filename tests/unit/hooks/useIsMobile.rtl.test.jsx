@@ -1,6 +1,6 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import useIsMobile from 'hooks/useIsMobile.jsx';
-import { WIDTH_BREAKPOINTS } from 'data/breakpoints.js';
+import { WIDTH_BREAKPOINTS } from 'data/breakpoints.ts';
 import { resizeWindow } from 'tests/helpers/domUtils.js';
 
 describe('useIsMobile', () => {

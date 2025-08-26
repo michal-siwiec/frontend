@@ -1,5 +1,5 @@
 import { isEmpty } from 'lodash';
-import { VALIDATION_ERROR_MESSAGES } from 'data/errors.js';
+import { VALIDATION_ERROR_MESSAGES } from 'data/errors';
 import OpinionPresentedContentGenerator from 'services/opinions/opinionPresentedContentGenerator';
 
 export const handleAddOpinionValidation = ({ opinion }: { opinion: string }) => {

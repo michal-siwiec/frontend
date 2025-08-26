@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
 import TopBar from 'layouts/topBar/TopBar.jsx';
-import { WIDTH_BREAKPOINTS } from 'data/breakpoints.js';
+import { WIDTH_BREAKPOINTS } from 'data/breakpoints.ts';
 import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
 import { resizeWindow } from 'tests/helpers/domUtils.js';
 

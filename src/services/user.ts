@@ -1,7 +1,7 @@
 import { Avatars } from 'types/avatar';
-import regexps from 'data/regexps.js';
+import regexps from 'data/regexps';
 import { validateByRegexp, areTheSame } from 'utils/helpers';
-import { VALIDATION_ERROR_MESSAGES } from 'data/errors.js';
+import { VALIDATION_ERROR_MESSAGES } from 'data/errors';
 import AvatarsGenerator from 'services/users/avatarsGenerator';
 
 // TODO: Feature disabled so far. Fix in future

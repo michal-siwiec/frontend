@@ -1,3 +1,5 @@
+// TODO: It should be separated - why do I export whole object
+
 export default {
   surname: /^[\w ]+$/,
   street: /^[\w ]+$/,

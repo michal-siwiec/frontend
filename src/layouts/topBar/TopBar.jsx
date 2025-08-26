@@ -1,7 +1,7 @@
 import DesktopContent from './DesktopContent.jsx';
 import MobileContent from './MobileContent.jsx';
 import useIsMobile from 'hooks/useIsMobile.jsx';
-import { WIDTH_BREAKPOINTS } from 'data/breakpoints.js';
+import { WIDTH_BREAKPOINTS } from 'data/breakpoints.ts';
 
 const TopBar = () => {
   const blockName = 'top-bar';
