@@ -1,5 +1,7 @@
 import { findKey, snakeCase } from 'lodash';
-import { store } from 'redux_/store.js';
+import { store } from 'redux_/store.ts';
+
+// TODO: Check whether it works and returns proper types
 
 export const generateAddOrderPayload = () => {
   const {

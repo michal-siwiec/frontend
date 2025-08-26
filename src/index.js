@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
 import { Provider as ReduxProvider } from 'react-redux';
-import { store, persistor } from 'redux_/store.js';
+import { store, persistor } from 'redux_/store.ts';
 import { PersistGate } from 'redux-persist/integration/react';
 import client from 'graphql/client.js';
 import App from './App.tsx';

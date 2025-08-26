@@ -3,7 +3,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import { MockedProvider } from '@apollo/client/testing';
-import rootReducer from 'redux_/rootReducer.js';
+import rootReducer from 'redux_/rootReducer.ts';
 import { ApolloProvider } from '@apollo/client';
 import Client from 'graphql/client.js';
 

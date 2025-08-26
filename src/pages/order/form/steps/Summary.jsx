@@ -7,7 +7,7 @@ import { setCompletedOrder } from 'redux_/order/actionsCreator.js';
 import { clearBasket } from 'redux_/basket/actionCreators.js';
 import { countTotalPrice } from 'utils/helpers.ts';
 import { ADD_ORDER } from 'graphql/mutations/order.js';
-import { generateAddOrderPayload } from 'services/orders.js';
+import { generateAddOrderPayload } from 'services/orders.ts';
 import LoadingModal from 'components/modals/LoadingModal.jsx';
 import ErrorModal from 'components/modals/ErrorModal.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';

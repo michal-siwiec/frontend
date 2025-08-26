@@ -1,5 +1,5 @@
-import { store } from 'redux_/store.js';
-import { generateAddOrderPayload } from 'services/orders.js';
+import { store } from 'redux_/store.ts';
+import { generateAddOrderPayload } from 'services/orders.ts';
 
 describe('generateAddOrderPayload', () => {
   it('returns proper payload based on input', () => {
