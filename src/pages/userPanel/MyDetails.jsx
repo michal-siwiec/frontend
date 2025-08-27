@@ -68,7 +68,7 @@ const MyDetails = () => {
       postalCodeError,
       streetError,
       validationStatus
-    } = handleMyDetailsValidation({ name, surname, phoneNumber, city, postalCode, street });
+    } = handleMyDetailsValidation(name, surname, phoneNumber, city, postalCode, street);
 
     setNameValidationError(nameError);
     setSurnameValidationError(surnameError);

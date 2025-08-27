@@ -25,9 +25,7 @@ export const sortAvatarByMainField = (a, b) => {
   return 0;
 };
 
-export const handleMyDetailsValidation = (
-  { name, surname, phoneNumber, city, postalCode, street }: { name: string, surname: string, phoneNumber: string, city: string, postalCode: string, street: string }
-) => {
+export const handleMyDetailsValidation = (name: string, surname: string, phoneNumber: string, city: string, postalCode: string, street: string) => {
   const isNameValid = validateByRegexp({ regexp: NAME_REGEX, subject: name });
   const isSurnameValid = validateByRegexp({ regexp: SURNAME_REGEX, subject: surname });
   const isPhoneNumberValid = validateByRegexp({ regexp: PHONE_NUMBER_REGEX, subject: phoneNumber });

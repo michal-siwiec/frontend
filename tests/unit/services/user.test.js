@@ -93,7 +93,7 @@ describe('handleMyDetailsValidation', () => {
 
   it('returns proper error status if name is not correct', () => {
     name = 'H$#$%627y1';
-    const response = handleMyDetailsValidation({ name, surname, phoneNumber, city, postalCode, street });
+    const response = handleMyDetailsValidation(name, surname, phoneNumber, city, postalCode, street);
 
     expect(response).toEqual({
       nameError: 'Imię ma niepoprawny format!',
@@ -108,7 +108,7 @@ describe('handleMyDetailsValidation', () => {
 
   it('returns proper error status if surname is not correct', () => {
     surname = 'H$#$%627y1';
-    const response = handleMyDetailsValidation({ name, surname, phoneNumber, city, postalCode, street });
+    const response = handleMyDetailsValidation(name, surname, phoneNumber, city, postalCode, street);
 
     expect(response).toEqual({
       nameError: false,
@@ -123,7 +123,7 @@ describe('handleMyDetailsValidation', () => {
 
   it('returns proper error status if phone number is not correct', () => {
     phoneNumber = '7241311400';
-    const response = handleMyDetailsValidation({ name, surname, phoneNumber, city, postalCode, street });
+    const response = handleMyDetailsValidation(name, surname, phoneNumber, city, postalCode, street);
 
     expect(response).toEqual({
       nameError: false,
@@ -138,7 +138,7 @@ describe('handleMyDetailsValidation', () => {
 
   it('returns proper error status if city is not correct', () => {
     city = '*86hnmaknx';
-    const response = handleMyDetailsValidation({ name, surname, phoneNumber, city, postalCode, street });
+    const response = handleMyDetailsValidation(name, surname, phoneNumber, city, postalCode, street);
 
     expect(response).toEqual({
       nameError: false,
@@ -153,7 +153,7 @@ describe('handleMyDetailsValidation', () => {
 
   it('returns proper error status if postal code is not correct', () => {
     postalCode = '400100';
-    const response = handleMyDetailsValidation({ name, surname, phoneNumber, city, postalCode, street });
+    const response = handleMyDetailsValidation(name, surname, phoneNumber, city, postalCode, street);
 
     expect(response).toEqual({
       nameError: false,
@@ -168,7 +168,7 @@ describe('handleMyDetailsValidation', () => {
 
   it('returns proper error status if street is not correct', () => {
     street = '8898671%#$';
-    const response = handleMyDetailsValidation({ name, surname, phoneNumber, city, postalCode, street });
+    const response = handleMyDetailsValidation(name, surname, phoneNumber, city, postalCode, street);
 
     expect(response).toEqual({
       nameError: false,
@@ -184,7 +184,7 @@ describe('handleMyDetailsValidation', () => {
   it('returns multiple error messages', () => {
     name = '8898671%#$';
     street = '8898671%#$';
-    const response = handleMyDetailsValidation({ name, surname, phoneNumber, city, postalCode, street });
+    const response = handleMyDetailsValidation(name, surname, phoneNumber, city, postalCode, street);
 
     expect(response).toEqual({
       nameError: 'Imię ma niepoprawny format!',
@@ -198,7 +198,7 @@ describe('handleMyDetailsValidation', () => {
   });
 
   it('not return error status if each field has proper value', () => {
-    const response = handleMyDetailsValidation({ name, surname, phoneNumber, city, postalCode, street });
+    const response = handleMyDetailsValidation(name, surname, phoneNumber, city, postalCode, street);
 
     expect(response).toEqual({
       nameError: false,
