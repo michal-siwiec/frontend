@@ -67,7 +67,7 @@ const Register = () => {
       passwordError,
       avatarError,
       validationStatus
-    } = handleRegisterValidation({ email, password, avatars });
+    } = handleRegisterValidation(email, password, avatars);
 
     setEmailErrorMessage(emailError);
     setPasswordErrorMessage(passwordError);

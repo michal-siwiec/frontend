@@ -95,22 +95,20 @@ export const handleChangePasswordValidation = (password: string, passwordConfirm
   };
 };
 
-export const handleRegisterValidation = (
-  { email, password, avatars }: { email: string, password: string, avatars: Avatars }
-) => {
+export const handleRegisterValidation = (email: string, password: string, avatars: Avatars) => {
   const isEmailValid = validateByRegexp({ regexp: EMAIL_REGEX, subject: email });
   const isPasswordValid = validateByRegexp({ regexp: PASSWORD_REGEX, subject: password });
-  const isAvatarValid = validateAvatars({ avatars });
+  const areAvatarsValid = validateAvatars(avatars);
 
   return {
     emailError: !isEmailValid && VALIDATION_ERROR_MESSAGES.email,
     passwordError: !isPasswordValid && VALIDATION_ERROR_MESSAGES.password,
-    avatarError: !isAvatarValid && VALIDATION_ERROR_MESSAGES.avatar,
-    validationStatus: isEmailValid && isPasswordValid && isAvatarValid
+    avatarError: !areAvatarsValid && VALIDATION_ERROR_MESSAGES.avatar,
+    validationStatus: isEmailValid && isPasswordValid && areAvatarsValid
   };
 };
 
-const validateAvatars = ({ avatars }: { avatars: Avatars }) => {
+const validateAvatars = (avatars: Avatars ) => {
   const allowedFileFormats = ['image/png', 'image/svg+xml', 'image/jpeg'];
   let eachAvatarsHasValidFormat = true;
 

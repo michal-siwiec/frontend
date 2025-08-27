@@ -497,7 +497,7 @@ describe('handleRegisterValidation', () => {
 
   it('returns proper error response if email is not correct', () => {
     email = 'siwiec.michal724gmail.com';
-    const response = handleRegisterValidation({ email, password, avatars });
+    const response = handleRegisterValidation(email, password, avatars);
 
     expect(response).toEqual({
       emailError: 'Email ma niepoprawny format!',
@@ -509,7 +509,7 @@ describe('handleRegisterValidation', () => {
 
   it('returns proper error response if password is not correct', () => {
     password = 'qwe';
-    const response = handleRegisterValidation({ email, password, avatars });
+    const response = handleRegisterValidation(email, password, avatars);
 
     expect(response).toEqual({
       emailError: false,
@@ -521,7 +521,7 @@ describe('handleRegisterValidation', () => {
 
   it('returns proper error response if at least one avatar has incorrect format', () => {
     avatars = [{ fileType: 'image/jpg' }];
-    const response = handleRegisterValidation({ email, password, avatars });
+    const response = handleRegisterValidation(email, password, avatars);
 
     expect(response).toEqual({
       emailError: false,
@@ -534,7 +534,7 @@ describe('handleRegisterValidation', () => {
   it('returns multiple error messages', () => {
     email = 'siwiec.michal724gmail.com';
     password = 'qwe';
-    const response = handleRegisterValidation({ email, password, avatars });
+    const response = handleRegisterValidation(email, password, avatars);
 
     expect(response).toEqual({
       emailError: 'Email ma niepoprawny format!',
@@ -545,7 +545,7 @@ describe('handleRegisterValidation', () => {
   });
 
   it('returns success response if each field is valid', () => {
-    const response = handleRegisterValidation({ email, password, avatars });
+    const response = handleRegisterValidation(email, password, avatars);
 
     expect(response).toEqual({
       emailError: false,
