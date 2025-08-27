@@ -287,7 +287,7 @@ describe('handleClientDetailsValidation', () => {
 
   it('returns proper error status if name is not valid', () => {
     name = 'H$#$%627y1';
-    const response = handleClientDetailsValidation({ name, surname, street, city, postalCode, email, phoneNumber });
+    const response = handleClientDetailsValidation(name, surname, street, city, postalCode, email, phoneNumber);
 
     expect(response).toEqual({
       nameError: 'Imię ma niepoprawny format!',
@@ -303,7 +303,7 @@ describe('handleClientDetailsValidation', () => {
 
   it('returns proper error status if surname is not valid', () => {
     surname = 'H$#$%627y1';
-    const response = handleClientDetailsValidation({ name, surname, street, city, postalCode, email, phoneNumber });
+    const response = handleClientDetailsValidation(name, surname, street, city, postalCode, email, phoneNumber);
 
     expect(response).toEqual({
       nameError: false,
@@ -319,7 +319,7 @@ describe('handleClientDetailsValidation', () => {
 
   it('returns proper error status if street is not valid', () => {
     street = 'H$#$%627y1';
-    const response = handleClientDetailsValidation({ name, surname, street, city, postalCode, email, phoneNumber });
+    const response = handleClientDetailsValidation(name, surname, street, city, postalCode, email, phoneNumber);
 
     expect(response).toEqual({
       nameError: false,
@@ -335,7 +335,7 @@ describe('handleClientDetailsValidation', () => {
 
   it('returns proper error status if city is not valid', () => {
     city = 'H$#$%627y1';
-    const response = handleClientDetailsValidation({ name, surname, street, city, postalCode, email, phoneNumber });
+    const response = handleClientDetailsValidation(name, surname, street, city, postalCode, email, phoneNumber);
 
     expect(response).toEqual({
       nameError: false,
@@ -351,7 +351,7 @@ describe('handleClientDetailsValidation', () => {
 
   it('returns proper error status if postal code is not valid', () => {
     postalCode = 'H$#$%627y1';
-    const response = handleClientDetailsValidation({ name, surname, street, city, postalCode, email, phoneNumber });
+    const response = handleClientDetailsValidation(name, surname, street, city, postalCode, email, phoneNumber);
 
     expect(response).toEqual({
       nameError: false,
@@ -367,7 +367,7 @@ describe('handleClientDetailsValidation', () => {
 
   it('returns proper error status if email is not valid', () => {
     email = 'siwiec.michal724gmail.com';
-    const response = handleClientDetailsValidation({ name, surname, street, city, postalCode, email, phoneNumber });
+    const response = handleClientDetailsValidation(name, surname, street, city, postalCode, email, phoneNumber);
 
     expect(response).toEqual({
       nameError: false,
@@ -383,7 +383,7 @@ describe('handleClientDetailsValidation', () => {
 
   it('returns proper error status if phone number is not valid', () => {
     phoneNumber = '72413114';
-    const response = handleClientDetailsValidation({ name, surname, street, city, postalCode, email, phoneNumber });
+    const response = handleClientDetailsValidation(name, surname, street, city, postalCode, email, phoneNumber);
 
     expect(response).toEqual({
       nameError: false,
@@ -400,7 +400,7 @@ describe('handleClientDetailsValidation', () => {
   it('returns multiple error messages', () => {
     phoneNumber = '72413114';
     email = 'siwiec.michal724gmail.com';
-    const response = handleClientDetailsValidation({ name, surname, street, city, postalCode, email, phoneNumber });
+    const response = handleClientDetailsValidation(name, surname, street, city, postalCode, email, phoneNumber);
 
     expect(response).toEqual({
       nameError: false,
@@ -415,7 +415,7 @@ describe('handleClientDetailsValidation', () => {
   });
 
   it('not return error status if each field has proper value', () => {
-    const response = handleClientDetailsValidation({ name, surname, street, city, postalCode, email, phoneNumber });
+    const response = handleClientDetailsValidation(name, surname, street, city, postalCode, email, phoneNumber);
 
     expect(response).toEqual({
       nameError: false,

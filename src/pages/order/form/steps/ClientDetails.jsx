@@ -72,7 +72,7 @@ const ClientDetails = () => {
       emailError,
       phoneError,
       validationStatus
-    } = handleClientDetailsValidation({ name, surname, street, city, postalCode, email, phoneNumber });
+    } = handleClientDetailsValidation(name, surname, street, city, postalCode, email, phoneNumber);
 
     if (!validationStatus) {
       setNameErrorMessage(nameError);

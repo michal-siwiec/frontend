@@ -58,9 +58,7 @@ export const handleLoginValidation = (email: string, password: string) => {
   };
 };
 
-export const handleClientDetailsValidation = (
-  { name, surname, street, city, postalCode, email, phoneNumber }: { name: string, surname: string, street: string, city: string, postalCode: string, email: string, phoneNumber: string }
-) => {
+export const handleClientDetailsValidation = (name: string, surname: string, street: string, city: string, postalCode: string, email: string, phoneNumber: string) => {
   const isNameValid = validateByRegexp({ regexp: NAME_REGEX, subject: name });
   const isSurnameValid = validateByRegexp({ regexp: SURNAME_REGEX, subject: surname });
   const isStreetValid = validateByRegexp({ regexp: STREET_REGEX, subject: street });
