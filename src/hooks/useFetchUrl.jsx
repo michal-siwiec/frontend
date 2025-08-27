@@ -6,7 +6,7 @@ const useFetchUrl = ({ bucket = AWS_BUCKET, key }) => {
   const [objectURL, setObjectURL] = useState(null);
 
   useEffect(() => {
-    const url = getSignedUrl({ bucket, key });
+    const url = getSignedUrl(key, bucket);
     setObjectURL(url);
   }, []);
 

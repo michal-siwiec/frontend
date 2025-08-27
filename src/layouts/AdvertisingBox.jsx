@@ -10,7 +10,7 @@ const AdvertisingBox = () => {
 
   useEffect(() => {
     const backgroundPictureKey = isMobile ? 'images/construction-photos/building-house.jpeg' : 'images/construction-photos/paver.jpeg';
-    const pictureURL = getSignedUrl({ key: backgroundPictureKey });
+    const pictureURL = getSignedUrl(backgroundPictureKey);
     setBackgroundPictureURL(pictureURL);
   }, [isMobile]);
 

@@ -14,10 +14,7 @@ describe('useFetchUrl', () => {
     const { result } = renderHook(() => useFetchUrl({ bucket: 'budoman-production', key: 'images/products/foundation_materials/powłoka_przeciwwilgociowa.jpeg' }));
 
     await waitFor(() => {
-      expect(S3Service.getSignedUrl).toHaveBeenCalledWith({
-        bucket: 'budoman-production',
-        key: 'images/products/foundation_materials/powłoka_przeciwwilgociowa.jpeg'
-      });
+      expect(S3Service.getSignedUrl).toHaveBeenCalledWith('images/products/foundation_materials/powłoka_przeciwwilgociowa.jpeg', 'budoman-production');
     });
 
     expect(result.current).toBe('https://signed.example.com/image.jpg');
@@ -29,10 +26,7 @@ describe('useFetchUrl', () => {
     const { result } = renderHook(() => useFetchUrl({ key: 'images/products/foundation_materials/powłoka_przeciwwilgociowa.jpeg' }));
 
     await waitFor(() => {
-      expect(S3Service.getSignedUrl).toHaveBeenCalledWith({
-        bucket: 'budoman-development',
-        key: 'images/products/foundation_materials/powłoka_przeciwwilgociowa.jpeg'
-      });
+      expect(S3Service.getSignedUrl).toHaveBeenCalledWith('images/products/foundation_materials/powłoka_przeciwwilgociowa.jpeg', 'budoman-development');
     });
 
     expect(result.current).toBe('https://signed.example.com/image.jpg');

@@ -34,9 +34,7 @@ describe('AdvertisingBox', () => {
       backgroundImage: 'url(https://images/construction-photos/paver.jpeg)'
     });
 
-    expect(s3.getSignedUrl).toHaveBeenCalledWith({
-      key: 'images/construction-photos/paver.jpeg'
-    });
+    expect(s3.getSignedUrl).toHaveBeenCalledWith('images/construction-photos/paver.jpeg');
   });
 
   it('renders mobile image when screen is narrow', () => {
@@ -47,6 +45,6 @@ describe('AdvertisingBox', () => {
 
     const backgroundImageDiv = document.querySelector('.advertising-box__background--picture');
     expect(backgroundImageDiv).toHaveStyle({ backgroundImage: 'url(https://images/construction-photos/building-house.jpeg)' });
-    expect(s3.getSignedUrl).toHaveBeenCalledWith({ key: 'images/construction-photos/building-house.jpeg' });
+    expect(s3.getSignedUrl).toHaveBeenCalledWith('images/construction-photos/building-house.jpeg');
   });
 });
