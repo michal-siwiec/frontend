@@ -442,7 +442,7 @@ describe('handleChangePasswordValidation', () => {
   it('returns proper error when password is not valid', () => {
     password = 'qwe';
     passwordConfirmation = 'qwe';
-    const response = handleChangePasswordValidation({ password, passwordConfirmation });
+    const response = handleChangePasswordValidation(password, passwordConfirmation);
 
     expect(response).toEqual({
       passwordError: 'Hasło powinno mieć minimum 8 znaków, zawierać małą i dużą literę oraz cyfrę!',
@@ -453,7 +453,7 @@ describe('handleChangePasswordValidation', () => {
 
   it('returns proper error message if passwords ae not the same', () => {
     passwordConfirmation = 'Qwerty123333';
-    const response = handleChangePasswordValidation({ password, passwordConfirmation });
+    const response = handleChangePasswordValidation(password, passwordConfirmation);
 
     expect(response).toEqual({
       passwordError: false,
@@ -464,7 +464,7 @@ describe('handleChangePasswordValidation', () => {
 
   it('returns multiple error messages', () => {
     password = 'qwe';
-    const response = handleChangePasswordValidation({ password, passwordConfirmation });
+    const response = handleChangePasswordValidation(password, passwordConfirmation);
 
     expect(response).toEqual({
       passwordError: 'Hasło powinno mieć minimum 8 znaków, zawierać małą i dużą literę oraz cyfrę!',
@@ -474,7 +474,7 @@ describe('handleChangePasswordValidation', () => {
   });
 
   it('return sucess status when both passwords are correct and the same', () => {
-    const response = handleChangePasswordValidation({ password, passwordConfirmation });
+    const response = handleChangePasswordValidation(password, passwordConfirmation);
 
     expect(response).toEqual({
       passwordError: false,

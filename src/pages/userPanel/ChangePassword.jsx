@@ -37,7 +37,7 @@ const ChangePassword = () => {
       passwordError,
       passwordIdentityError,
       validationStatus
-    } = handleChangePasswordValidation({ password, passwordConfirmation });
+    } = handleChangePasswordValidation(password, passwordConfirmation);
 
     setPasswordValidationError(passwordError);
     setPasswordIdentityValidationError(passwordIdentityError);
