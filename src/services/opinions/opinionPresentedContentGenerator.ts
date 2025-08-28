@@ -5,7 +5,7 @@ class OpinionPresentedContentGenerator {
   #content;
   #contentExpanded;
 
-  constructor({ displayedNumberOfChars, content, contentExpanded }: { displayedNumberOfChars: number, content: string, contentExpanded: boolean }) {
+  constructor(displayedNumberOfChars: number, content: string, contentExpanded: boolean) {
     this.#displayedNumberOfChars = displayedNumberOfChars;
     this.#content = content;
     this.#contentExpanded = contentExpanded;

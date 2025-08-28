@@ -22,7 +22,7 @@ describe('OpinionPresentedContentGenerator', () => {
     cutAfterNCharsSpy.mockReturnValue({ narrowContent: 'Hello Worl', restOfContent: 'd!' });
     isTextLongerSpy.mockReturnValue(false);
 
-    const result = new OpinionPresentedContentGenerator({ displayedNumberOfChars, content, contentExpanded }).call();
+    const result = new OpinionPresentedContentGenerator(displayedNumberOfChars, content, contentExpanded).call();
 
     expect(cutAfterNCharsSpy).toHaveBeenCalledTimes(1);
     expect(cutAfterNCharsSpy).toHaveBeenCalledWith({ text: content, charsQuantity: displayedNumberOfChars });
@@ -37,7 +37,7 @@ describe('OpinionPresentedContentGenerator', () => {
     cutAfterNCharsSpy.mockReturnValue({ narrowContent: 'Jest ', restOfContent: 'is great!' });
     isTextLongerSpy.mockReturnValue(true);
 
-    const result = new OpinionPresentedContentGenerator({ displayedNumberOfChars, content, contentExpanded }).call();
+    const result = new OpinionPresentedContentGenerator(displayedNumberOfChars, content, contentExpanded).call();
 
     expect(isTextLongerSpy).toHaveBeenCalledWith({ text: content, charsQuantity: displayedNumberOfChars });
     expect(result).toEqual({ narrowContent: '"Jest ..."', restOfContent: 'is great!"', textToLongToDisplay: true });
@@ -51,7 +51,7 @@ describe('OpinionPresentedContentGenerator', () => {
     cutAfterNCharsSpy.mockReturnValue({ narrowContent: 'Test', restOfContent: 'ing is important' });
     isTextLongerSpy.mockReturnValue(true);
 
-    const result = new OpinionPresentedContentGenerator({ displayedNumberOfChars, content, contentExpanded }).call();
+    const result = new OpinionPresentedContentGenerator(displayedNumberOfChars, content, contentExpanded).call();
 
     expect(result).toEqual({ narrowContent: '"Test', restOfContent: 'ing is important"', textToLongToDisplay: true });
   });
@@ -64,7 +64,7 @@ describe('OpinionPresentedContentGenerator', () => {
     cutAfterNCharsSpy.mockReturnValue({ narrowContent: 'Short text', restOfContent: '' });
     isTextLongerSpy.mockReturnValue(false);
 
-    const result = new OpinionPresentedContentGenerator({ displayedNumberOfChars, content, contentExpanded }).call();
+    const result = new OpinionPresentedContentGenerator(displayedNumberOfChars, content, contentExpanded).call();
 
     expect(result.textToLongToDisplay).toBe(false);
   });

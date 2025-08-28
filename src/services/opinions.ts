@@ -12,5 +12,5 @@ export const handleAddOpinionValidation = (opinion: string) => {
 };
 
 export const generateOpinionContent = (displayedNumberOfChars: number, content: string, contentExpanded: boolean) => (
-  new OpinionPresentedContentGenerator({ displayedNumberOfChars, content, contentExpanded }).call()
+  new OpinionPresentedContentGenerator(displayedNumberOfChars, content, contentExpanded).call()
 );
