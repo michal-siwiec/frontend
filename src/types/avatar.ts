@@ -1,5 +1,5 @@
 export type Avatar = {
-  readonly base64: string,
+  readonly base64: unknown,
   readonly fileName: string,
   readonly fileType: string,
   readonly main: boolean

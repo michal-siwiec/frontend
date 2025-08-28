@@ -1,6 +1,8 @@
+import { Avatars } from 'types/avatar';
+
 class AvatarsGenerator {
   #files;
-  #avatars: Array<{ fileName: string, fileType: string, main: boolean, base64: unknown }>;
+  #avatars: Avatars
 
   constructor(files: Array<File>) {
     this.#files = files;
@@ -9,13 +11,13 @@ class AvatarsGenerator {
 
   async call() {
     for (const [index, file] of Object.entries(this.#files)) {
-      await this.#process({ file, index });
+      await this.#process(file, index);
     }
 
     return this.#avatars;
   }
 
-  async #process({ file, index }: { file: File, index: string }) {
+  async #process(file: File, index: string) {
     const fileName = file.name;
     const fileType = file.type;
     const main = AvatarsGenerator.#isMainAvatar(index);
