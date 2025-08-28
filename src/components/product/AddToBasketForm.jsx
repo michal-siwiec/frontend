@@ -10,7 +10,7 @@ const AddToBasketForm = ({ product }) => {
   const blockName = 'product';
   const { id: productID, availableQuantity } = product;
   const productsInBasket = useSelector(({ basket: { addedProducts } }) => addedProducts);
-  const possibleProductQuantity = generatePossibleProductQuantity({ productID, productsInBasket, availableQuantity });
+  const possibleProductQuantity = generatePossibleProductQuantity(productID, productsInBasket, availableQuantity);
   const dispatch = useDispatch();
   const [selectedQuantity, setSelectedQuantity] = useState(1);
 

@@ -16,7 +16,7 @@ const Products = ({ arePromoted }) => {
   const blockName = 'products';
   const quantityPerPage = 5;
   const productType = searchParams.get('type');
-  const headerCaption = generateHeaderCaption({ arePromoted, productType });
+  const headerCaption = generateHeaderCaption(arePromoted, productType);
   const [activePage, setActivePage] = useState(0);
   const [fetchingProductError, setFetchingProductError] = useState(false);
   const { loading, error, data } = useQuery(

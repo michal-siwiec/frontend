@@ -14,19 +14,19 @@ describe('generateAddedProductPayload', () => {
 
 describe('generateHeaderCaption', () => {
   test('should return promoted products inscription', () => {
-    const response = generateHeaderCaption({ arePromoted: true, productType: null });
+    const response = generateHeaderCaption(true, null);
 
     expect(response).toBe('Polecane produkty');
   });
 
   test('should return all products inscription', () => {
-    const response = generateHeaderCaption({ arePromoted: false, productType: null });
+    const response = generateHeaderCaption(false, null);
 
     expect(response).toBe('Wszystkie produkty');
   });
 
   test('should return product from specific category inscription', () => {
-    const response = generateHeaderCaption({ arePromoted: false, productType: 'foundationZone' });
+    const response = generateHeaderCaption(false, 'foundationZone');
 
     expect(response).toBe('Produkty z kategori "Strefa fundamentu"');
   });
@@ -35,14 +35,14 @@ describe('generateHeaderCaption', () => {
 describe('generatePossibleProductQuantity', () => {
   it('should subtract the quantity of the product already in the basket', () => {
     const productsInBasket = [{ id: '123', quantity: 2 }, { id: '456', quantity: 1 }];
-    const result = generatePossibleProductQuantity({ productID: '123', productsInBasket, availableQuantity: 5 });
+    const result = generatePossibleProductQuantity('123', productsInBasket, 5);
 
     expect(result).toBe(3);
   });
 
   it('should return full available quantity if product is not in the basket', () => {
     const productsInBasket = [{ id: '123', quantity: 2 }, { id: '456', quantity: 1 }];
-    const result = generatePossibleProductQuantity({ productID: '789', productsInBasket, availableQuantity: 5 });
+    const result = generatePossibleProductQuantity('789', productsInBasket, 5);
 
     expect(result).toBe(5);
   });
