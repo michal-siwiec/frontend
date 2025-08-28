@@ -82,7 +82,7 @@ export const handleClientDetailsValidation = (name: string, surname: string, str
 
 export const handleChangePasswordValidation = (password: string, passwordConfirmation: string) => {
   const isPasswordValid = validateByRegexp({ regexp: PASSWORD_REGEX, subject: password });
-  const arePasswordsTheSame = areTheSame({ val1: password, val2: passwordConfirmation });
+  const arePasswordsTheSame = areTheSame(password, passwordConfirmation);
 
   return {
     passwordError: !isPasswordValid && VALIDATION_ERROR_MESSAGES.password,

@@ -40,4 +40,4 @@ export const formatPrice = (price: number) => price.toFixed(2).toString().replac
 export const isTextLonger = (text: string, charsQuantity: number) => text.length > charsQuantity;
 export const formatTimestamp = (timeStamp: Date) => new Date(timeStamp).toLocaleString();
 export const validateByRegexp = ({ regexp, subject }: { regexp: RegExp, subject: string }) => regexp.test(subject);
-export const areTheSame = ({ val1, val2 }: { val1: string, val2: string }) => val1 === val2;
+export const areTheSame = (val1: string, val2: string) => val1 === val2;

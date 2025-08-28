@@ -109,13 +109,13 @@ describe('validateByRegexp', () => {
 
 describe('areTheSame', () => {
   test('should be the same', () => {
-    const same = areTheSame({ val1: 'Hello world!', val2: 'Hello world!' });
+    const same = areTheSame('Hello world!', 'Hello world!');
 
     expect(same).toBe(true);
   });
 
   test("shouldn't be the same", () => {
-    const same = areTheSame({ val1: 'Hello world!', val2: 'Hello world' });
+    const same = areTheSame('Hello world!', 'Hello world');
 
     expect(same).toBe(false);
   });
