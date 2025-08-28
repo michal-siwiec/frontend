@@ -66,9 +66,9 @@ describe('ThankYouPage', () => {
 
     fireEvent.mouseDown(screen.getByText('Pobierz fakturę w formacie PDF'));
 
-    expect(fetchFileOnLocalFileSystem).toHaveBeenCalledWith({
-      key: 'users/0c1069c7-8e77-4749-bc4b-e308c6679d1c/invoices/da97aa73-f0e4-4a17-9157-9f17454c73f3.pdf',
-      fileName: 'Faktura za zamówienie: da97aa73-f0e4-4a17-9157-9f17454c73f3'
-    });
+    expect(fetchFileOnLocalFileSystem).toHaveBeenCalledWith(
+      'users/0c1069c7-8e77-4749-bc4b-e308c6679d1c/invoices/da97aa73-f0e4-4a17-9157-9f17454c73f3.pdf',
+      'Faktura za zamówienie: da97aa73-f0e4-4a17-9157-9f17454c73f3'
+    );
   });
 });

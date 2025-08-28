@@ -19,7 +19,7 @@ describe('fetchFileOnLocalFileSystem', () => {
     });
 
     const saveAsSpy = jest.spyOn(FileSaver, 'saveAs');
-    fetchFileOnLocalFileSystem({ key: 'testKey', fileName: 'Polityka prywatnosci.pdf' });
+    fetchFileOnLocalFileSystem('testKey', 'Polityka prywatnosci.pdf');
 
     const saveAsSpyBlobArg = saveAsSpy.mock.calls[0][0];
 
@@ -36,7 +36,7 @@ describe('fetchFileOnLocalFileSystem', () => {
     });
 
     const saveAsSpy = jest.spyOn(FileSaver, 'saveAs');
-    fetchFileOnLocalFileSystem({ bucket: 'testBucket', key: 'testKey', fileName: 'Polityka prywatnosci.pdf' });
+    fetchFileOnLocalFileSystem('testKey', 'Polityka prywatnosci.pdf', 'testBucket');
 
     expect(getObjectSpy).toHaveBeenCalledTimes(1);
     expect(getObjectSpy).toHaveBeenCalledWith('testKey', 'testBucket', expect.any(Function));

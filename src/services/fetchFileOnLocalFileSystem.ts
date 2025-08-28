@@ -2,9 +2,7 @@ import FileSaver from 'file-saver';
 import { getObject } from 'services/s3';
 import { AWS_BUCKET } from 'utils/environment';
 
-const fetchFileOnLocalFileSystem = (
-  { bucket = AWS_BUCKET, key, fileName, fileType = 'application/pdf' }: { bucket: string, key: string, fileName: string, fileType: 'application/pdf' }
-) => {
+const fetchFileOnLocalFileSystem = (key: string, fileName: string, bucket: string = AWS_BUCKET, fileType: 'application/pdf' = 'application/pdf') => {
   getObject(
     key,
     bucket,

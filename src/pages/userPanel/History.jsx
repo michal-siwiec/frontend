@@ -33,7 +33,7 @@ const History = () => {
     const key = `users/${loggedUserId}/invoices/${orderID}.pdf`;
     const fileName = `Faktura za zamówienie: ${orderID}`;
 
-    fetchFileOnLocalFileSystem({ key, fileName });
+    fetchFileOnLocalFileSystem(key, fileName);
   };
 
   return (

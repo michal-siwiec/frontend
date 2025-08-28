@@ -71,7 +71,7 @@ describe('Footer', () => {
 
     fireEvent.mouseDown(screen.getByText('Polityka prywatności'));
 
-    expect(fetchFileOnLocalFileSystem).toHaveBeenCalledWith({ key: 'documents/polityka_prywatnosci.pdf', fileName: 'Polityka prywatności.pdf' });
+    expect(fetchFileOnLocalFileSystem).toHaveBeenCalledWith('documents/polityka_prywatnosci.pdf', 'Polityka prywatności.pdf');
   });
 
   it("fetches shop rules document after click in 'Regulamin sklepu'", () => {
@@ -79,7 +79,7 @@ describe('Footer', () => {
 
     fireEvent.mouseDown(screen.getByText('Regulamin sklepu'));
 
-    expect(fetchFileOnLocalFileSystem).toHaveBeenCalledWith({ key: 'documents/regulamin_sklepu.pdf', fileName: 'Regulamin sklepu.pdf' });
+    expect(fetchFileOnLocalFileSystem).toHaveBeenCalledWith('documents/regulamin_sklepu.pdf', 'Regulamin sklepu.pdf');
   });
 
   it('shows and hides privacy policy tooltip', async () => {

@@ -41,7 +41,7 @@ const Footer = () => {
                 `${blockName}__content-element
                  ${blockName}__content-element--tooltip-label`
               }
-              onMouseDown={() => fetchFileOnLocalFileSystem({ key: 'documents/polityka_prywatnosci.pdf', fileName: 'Polityka prywatności.pdf' })}
+              onMouseDown={() => fetchFileOnLocalFileSystem('documents/polityka_prywatnosci.pdf', 'Polityka prywatności.pdf')}
               role="link"
               tabIndex={0}
             >
@@ -67,7 +67,7 @@ const Footer = () => {
                 `${blockName}__content-element
                  ${blockName}__content-element--tooltip-label`
               }
-              onMouseDown={() => fetchFileOnLocalFileSystem({ key: 'documents/regulamin_sklepu.pdf', fileName: 'Regulamin sklepu.pdf' })}
+              onMouseDown={() => fetchFileOnLocalFileSystem('documents/regulamin_sklepu.pdf', 'Regulamin sklepu.pdf')}
               role="link"
               tabIndex={0}
             >
