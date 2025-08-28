@@ -22,10 +22,7 @@ class OpinionPresentedContentGenerator {
   }
 
   #cutString() {
-    const {
-      narrowContent,
-      restOfContent
-    } = cutAfterNChars({ text: this.#content, charsQuantity: this.#displayedNumberOfChars });
+    const { narrowContent, restOfContent } = cutAfterNChars(this.#content, this.#displayedNumberOfChars);
 
     return { narrowContent, restOfContent };
   }

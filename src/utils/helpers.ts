@@ -8,7 +8,7 @@ export const countTotalPrice = (products: Products) => {
   ), initialValue).toFixed(2);
 };
 
-export const formatPhoneNumber = (phoneNumber: string): string => {
+export const formatPhoneNumber = (phoneNumber: string) => {
   const phoneNumberToArray = phoneNumber.split('');
   const initialValue = '';
 
@@ -20,7 +20,7 @@ export const formatPhoneNumber = (phoneNumber: string): string => {
   }, initialValue);
 };
 
-export const cutAfterNChars = ({ text, charsQuantity }: { text: string, charsQuantity: number }) => {
+export const cutAfterNChars = (text: string, charsQuantity: number) => {
   const stringLength = text.length;
   const narrowContent = text.slice(0, charsQuantity);
   const restOfContent = text.slice(charsQuantity, stringLength);

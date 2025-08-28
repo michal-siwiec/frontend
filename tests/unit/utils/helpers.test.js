@@ -37,25 +37,25 @@ describe('formatPhoneNumber', () => {
 
 describe('cutAfterNChars', () => {
   test('should split string correctly when charsQuantity is valid', () => {
-    const result = cutAfterNChars({ text: 'Hello, World!', charsQuantity: 5 });
+    const result = cutAfterNChars('Hello, World!', 5);
 
     expect(result).toEqual({ narrowContent: 'Hello', restOfContent: ', World!' });
   });
 
   test('should split correctly when charsQuantity equals string length', () => {
-    const result = cutAfterNChars({ text: 'Exact', charsQuantity: 5 });
+    const result = cutAfterNChars('Exact', 5);
 
     expect(result).toEqual({ narrowContent: 'Exact', restOfContent: '' });
   });
 
   test('should return full string in narrowContent if charsQuantity exceeds length', () => {
-    const result = cutAfterNChars({ text: 'Short', charsQuantity: 10 });
+    const result = cutAfterNChars('Short', 10);
 
     expect(result).toEqual({ narrowContent: 'Short', restOfContent: '' });
   });
 
   test('should return empty narrowContent if charsQuantity is 0', () => {
-    const result = cutAfterNChars({ text: 'Test', charsQuantity: 0 });
+    const result = cutAfterNChars('Test', 0);
 
     expect(result).toEqual({ narrowContent: '', restOfContent: 'Test' });
   });
