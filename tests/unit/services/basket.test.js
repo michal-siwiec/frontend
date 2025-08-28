@@ -17,9 +17,9 @@ describe('addProductToBasket', () => {
       }
     ];
 
-    addProductToBasket({
+    addProductToBasket(
       addedProducts,
-      payload: {
+      {
         id: '000082f4-69e1-41f9-ba0b-b4004439642f',
         quantity: 2,
         attributes: {
@@ -31,7 +31,7 @@ describe('addProductToBasket', () => {
           price: 55
         }
       }
-    });
+    );
 
     expect(addedProducts).toEqual(
       [
@@ -79,9 +79,9 @@ describe('addProductToBasket', () => {
       }
     ];
 
-    addProductToBasket({
+    addProductToBasket(
       addedProducts,
-      payload: {
+      {
         id: '000082f4-69e1-41f9-ba0b-b4004439642f',
         quantity: 13,
         attributes: {
@@ -93,7 +93,7 @@ describe('addProductToBasket', () => {
           price: 55
         }
       }
-    });
+    );
 
     expect(addedProducts).toEqual(
       [

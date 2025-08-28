@@ -1,6 +1,6 @@
 import { ProductInBasket, ProductsInBasket } from 'types/product';
 
-export const addProductToBasket = ({ addedProducts, payload }: { addedProducts: ProductsInBasket, payload: ProductInBasket }) => {
+export const addProductToBasket = (addedProducts: ProductsInBasket, payload: ProductInBasket) => {
   const productInBasket = addedProducts.find(({ id }) => id === payload.id);
 
   if (productInBasket) {

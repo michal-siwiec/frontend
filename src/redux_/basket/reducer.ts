@@ -9,7 +9,7 @@ const persistConfig = { key: 'basket', storage };
 
 const reducer = createReducer(initialState, (builder) => {
   builder.addCase(addProductToBasket, (state, { payload }) => {
-    addProduct({ addedProducts: state.addedProducts, payload });
+    addProduct(state.addedProducts, payload);
   });
   builder.addCase(clearBasket, (state) => {
     state.addedProducts = [];
