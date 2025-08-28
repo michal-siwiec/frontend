@@ -25,7 +25,7 @@ const Opinion = ({ opinionsData: { content, mark, updatedAt, user: { email, avat
       narrowContent,
       restOfContent,
       textToLongToDisplay
-    } = generateOpinionContent({ displayedNumberOfChars, content, contentExpanded });
+    } = generateOpinionContent(displayedNumberOfChars, content, contentExpanded);
 
     setPresentedNarrowContent(narrowContent);
     setPresentedRestOfContent(restOfContent);

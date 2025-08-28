@@ -39,7 +39,7 @@ const AddOpinionForm = ({
   };
 
   const handleAddOpinionSubmit = () => {
-    const { opinionError, validationStatus } = handleAddOpinionValidation({ opinion: addedOpinion });
+    const { opinionError, validationStatus } = handleAddOpinionValidation(addedOpinion);
 
     setOpinionValidationError(opinionError);
     if (!validationStatus) return;

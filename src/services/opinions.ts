@@ -2,7 +2,7 @@ import { isEmpty } from 'lodash';
 import { VALIDATION_ERROR_MESSAGES } from 'data/errors';
 import OpinionPresentedContentGenerator from 'services/opinions/opinionPresentedContentGenerator';
 
-export const handleAddOpinionValidation = ({ opinion }: { opinion: string }) => {
+export const handleAddOpinionValidation = (opinion: string) => {
   const isOpinionValid = !isEmpty(opinion);
 
   return {
@@ -11,10 +11,6 @@ export const handleAddOpinionValidation = ({ opinion }: { opinion: string }) => 
   };
 };
 
-export const generateOpinionContent = (
-  { displayedNumberOfChars, content, contentExpanded }: { displayedNumberOfChars: number, content: string, contentExpanded: boolean }
-) => new OpinionPresentedContentGenerator({
-  displayedNumberOfChars,
-  content,
-  contentExpanded
-}).call();
+export const generateOpinionContent = (displayedNumberOfChars: number, content: string, contentExpanded: boolean) => (
+  new OpinionPresentedContentGenerator({ displayedNumberOfChars, content, contentExpanded }).call()
+);
