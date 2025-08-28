@@ -40,7 +40,7 @@ class OpinionPresentedContentGenerator {
   }
 
   #isTextToLongToDisplay() {
-    return isTextLonger({ text: this.#content, charsQuantity: this.#displayedNumberOfChars });
+    return isTextLonger(this.#content, this.#displayedNumberOfChars);
   }
 }
 

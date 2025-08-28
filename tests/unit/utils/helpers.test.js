@@ -71,13 +71,13 @@ describe('formatPrice', () => {
 
 describe('isTextLonger', () => {
   test('should return true if text is longer', () => {
-    const isLonger = isTextLonger({ text: 'Hello world!', charsQuantity: 2 });
+    const isLonger = isTextLonger('Hello world!', 2);
 
     expect(isLonger).toBe(true);
   });
 
   test('should return false if text is shorter', () => {
-    const isLonger = isTextLonger({ text: 'Hello world!', charsQuantity: 25 });
+    const isLonger = isTextLonger('Hello world!', 25);
 
     expect(isLonger).toBe(false);
   });
