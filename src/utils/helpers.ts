@@ -28,7 +28,7 @@ export const cutAfterNChars = (text: string, charsQuantity: number) => {
   return { narrowContent, restOfContent };
 };
 
-export const scrollIntoElement = ({ elementSelector }: { elementSelector: string }) => {
+export const scrollIntoElement = (elementSelector: string) => {
   const htmlElement = document.querySelector(elementSelector);
 
   if (htmlElement) {

@@ -5,7 +5,7 @@ const UnsavedContent = () => {
   const blockName = 'newsletter';
 
   const handleSaveToNewsletterClick = () => {
-    scrollIntoElement({ elementSelector: '#newsletter-form' });
+    scrollIntoElement('#newsletter-form');
   };
 
   return (

@@ -27,6 +27,6 @@ describe('useScrollIntoElement', () => {
     rerender({ scrollDependency: 'key-2' });
 
     expect(scrollIntoElementMock).toHaveBeenCalledTimes(2);
-    expect(scrollIntoElementMock).toHaveBeenLastCalledWith({ elementSelector: '#dynamic-element' });
+    expect(scrollIntoElementMock).toHaveBeenLastCalledWith('#dynamic-element');
   });
 });

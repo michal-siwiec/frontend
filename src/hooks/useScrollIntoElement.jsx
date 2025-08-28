@@ -3,7 +3,7 @@ import { scrollIntoElement } from 'utils/helpers.ts';
 
 const useScrollIntoElement = ({ scrollDependency, elementSelector }) => {
   useEffect(() => {
-    scrollIntoElement({ elementSelector });
+    scrollIntoElement(elementSelector);
   }, [scrollDependency]);
 };
 
