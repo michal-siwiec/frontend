@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useLazyQuery } from '@apollo/client';
-import { USER_PERSONAL_DETAILS } from 'graphql/queries/user.js';
+import { USER_PERSONAL_DETAILS } from 'graphql/queries/user.ts';
 import { useSelector, useDispatch } from 'react-redux';
 import useIsLogged from 'hooks/useIsLogged.jsx';
 import {

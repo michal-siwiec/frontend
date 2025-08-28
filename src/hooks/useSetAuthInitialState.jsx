@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client';
 import { useDispatch } from 'react-redux';
-import { IS_USER_LOGGED } from 'graphql/queries/user.js';
+import { IS_USER_LOGGED } from 'graphql/queries/user.ts';
 import { checkIfLogged } from 'redux_/user/actionsCreator.ts';
 
 const useSetAuthInitialState = () => {

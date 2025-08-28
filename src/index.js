@@ -4,7 +4,7 @@ import { ApolloProvider } from '@apollo/client';
 import { Provider as ReduxProvider } from 'react-redux';
 import { store, persistor } from 'redux_/store.ts';
 import { PersistGate } from 'redux-persist/integration/react';
-import client from 'graphql/client.js';
+import client from 'graphql/client.ts';
 import App from './App.tsx';
 
 ReactDOM.render(

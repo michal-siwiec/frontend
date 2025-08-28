@@ -1,8 +1,8 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useLazyQuery, useMutation } from '@apollo/client';
-import { USER_PERSONAL_DETAILS, IS_USER_SAVED_TO_NEWSLETTER } from 'graphql/queries/user.js';
-import { SUBSCRIBE_TO_NEWSLETTER } from 'graphql/mutations/user.js';
+import { USER_PERSONAL_DETAILS, IS_USER_SAVED_TO_NEWSLETTER } from 'graphql/queries/user.ts';
+import { SUBSCRIBE_TO_NEWSLETTER } from 'graphql/mutations/user.ts';
 import useIsLogged from 'hooks/useIsLogged.jsx';
 import { handleSaveToNewsletterValidation } from 'services/newsletter.ts';
 import FormContainer from 'components/containers/FormContainer.jsx';

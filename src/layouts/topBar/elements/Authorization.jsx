@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import { logout } from 'redux_/user/actionsCreator.ts';
-import { LOGOUT_USER } from 'graphql/mutations/user.js';
+import { LOGOUT_USER } from 'graphql/mutations/user.ts';
 import useIsLogged from 'hooks/useIsLogged.jsx';
 import Avatar from 'components/Avatar.jsx';
 

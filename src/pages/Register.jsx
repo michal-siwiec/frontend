@@ -5,7 +5,7 @@ import { useMutation } from '@apollo/client';
 import useRedirect from 'hooks/useRedirect.jsx';
 import { login } from 'redux_/user/actionsCreator.ts';
 import { handleRegisterValidation, generateAvatars } from 'services/user.ts';
-import { REGISTER_USER } from 'graphql/mutations/user.js';
+import { REGISTER_USER } from 'graphql/mutations/user.ts';
 import FormContainer from 'components/containers/FormContainer.jsx';
 import TextInput from 'components/inputs/TextInput.jsx';
 import FileInput from 'components/inputs/FileInput.jsx';

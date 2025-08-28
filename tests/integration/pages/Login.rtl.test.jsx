@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import { ApolloError } from '@apollo/client';
 import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
 import { screen, fireEvent, waitFor } from '@testing-library/react';
-import { LOGIN_USER } from 'graphql/mutations/user.js';
+import { LOGIN_USER } from 'graphql/mutations/user.ts';
 import { ERROR_CODES } from 'data/errors.ts';
 import Login from 'pages/Login.tsx';
 

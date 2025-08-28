@@ -3,8 +3,8 @@ import userEvent from '@testing-library/user-event';
 import { MockedProvider } from '@apollo/client/testing';
 import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
 import Newsletter from 'layouts/Newsletter.jsx';
-import { USER_PERSONAL_DETAILS, IS_USER_SAVED_TO_NEWSLETTER } from 'graphql/queries/user.js';
-import { SUBSCRIBE_TO_NEWSLETTER } from 'graphql/mutations/user.js';
+import { USER_PERSONAL_DETAILS, IS_USER_SAVED_TO_NEWSLETTER } from 'graphql/queries/user.ts';
+import { SUBSCRIBE_TO_NEWSLETTER } from 'graphql/mutations/user.ts';
 import { VALIDATION_ERROR_MESSAGES } from 'data/errors.ts';
 
 const renderComponent = ({ mocks, preloadedState }) => (

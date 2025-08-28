@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useQuery } from '@apollo/client';
 import { isEmpty } from 'lodash';
-import { GET_OPINIONS } from 'graphql/queries/opinion.js';
+import { GET_OPINIONS } from 'graphql/queries/opinion.ts';
 import useIsLogged from 'hooks/useIsLogged.jsx';
 import LoadingModal from 'components/modals/LoadingModal.jsx';
 import SuccessModal from 'components/modals/SuccessModal.jsx';

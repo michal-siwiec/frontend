@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useQuery } from '@apollo/client';
-import { IS_USER_SAVED_TO_NEWSLETTER } from 'graphql/queries/user.js';
+import { IS_USER_SAVED_TO_NEWSLETTER } from 'graphql/queries/user.ts';
 import SavedContent from './SavedContent.jsx';
 import UnsavedContent from './UnsavedContent.jsx';
 

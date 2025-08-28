@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/client';
 import { exact, arrayOf, shape, string } from 'prop-types';
 import clsx from 'clsx';
 import { generateTooltipHeaderText, generateTooltipSecondaryText, sortAvatarByMainField } from 'services/user.ts';
-import { UPDATE_USER_AVATARS } from 'graphql/mutations/user.js';
+import { UPDATE_USER_AVATARS } from 'graphql/mutations/user.ts';
 import { updateAvatars } from 'redux_/user/actionsCreator.ts';
 import Tooltip from 'components/Tooltip.jsx';
 import SubmitButton from 'components/SubmitButton.jsx';

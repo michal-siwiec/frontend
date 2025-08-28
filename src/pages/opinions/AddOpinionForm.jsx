@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { exact, func, element } from 'prop-types';
 import { useSelector } from 'react-redux';
 import { useMutation } from '@apollo/client';
-import { ADD_OPINION } from 'graphql/mutations/opinion.js';
+import { ADD_OPINION } from 'graphql/mutations/opinion.ts';
 import { handleAddOpinionValidation } from 'services/opinions.ts';
 import FormContainer from 'components/containers/FormContainer.jsx';
 import Rating from 'components/Rating.jsx';

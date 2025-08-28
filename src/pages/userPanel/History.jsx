@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useQuery } from '@apollo/client';
-import { GET_ORDERS } from 'graphql/queries/order.js';
+import { GET_ORDERS } from 'graphql/queries/order.ts';
 import { formatTimestamp } from 'utils/helpers.ts';
 import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem.ts';
 import LiveHelpIcon from '@mui/icons-material/LiveHelp';
