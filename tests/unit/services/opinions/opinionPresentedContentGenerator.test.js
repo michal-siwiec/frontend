@@ -39,7 +39,7 @@ describe('OpinionPresentedContentGenerator', () => {
 
     const result = new OpinionPresentedContentGenerator(displayedNumberOfChars, content, contentExpanded).call();
 
-    expect(isTextLongerSpy).toHaveBeenCalledWith({ text: content, charsQuantity: displayedNumberOfChars });
+    expect(isTextLongerSpy).toHaveBeenCalledWith(content, displayedNumberOfChars);
     expect(result).toEqual({ narrowContent: '"Jest ..."', restOfContent: 'is great!"', textToLongToDisplay: true });
   });
 

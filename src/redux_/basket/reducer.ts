@@ -3,8 +3,9 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { addProductToBasket, clearBasket } from './actionCreators';
 import { addProductToBasket as addProduct } from 'services/basket';
+import { Products } from 'types/product';
 
-const initialState = { addedProducts: [] };
+const initialState: { addedProducts: Products } = { addedProducts: [] };
 const persistConfig = { key: 'basket', storage };
 
 const reducer = createReducer(initialState, (builder) => {
