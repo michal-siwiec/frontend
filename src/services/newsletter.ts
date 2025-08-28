@@ -3,9 +3,9 @@ import { validateByRegexp } from 'utils/helpers';
 import { VALIDATION_ERROR_MESSAGES } from 'data/errors';
 
 export const handleSaveToNewsletterValidation = (name: string, surname: string, email: string) => {
-  const isNameValid = validateByRegexp({ regexp: NAME_REGEX, subject: name });
-  const isSurnameValid = validateByRegexp({ regexp: SURNAME_REGEX, subject: surname });
-  const isEmailValid = validateByRegexp({ regexp: EMAIL_REGEX, subject: email });
+  const isNameValid = validateByRegexp(NAME_REGEX, name);
+  const isSurnameValid = validateByRegexp(SURNAME_REGEX, surname);
+  const isEmailValid = validateByRegexp(EMAIL_REGEX, email);
 
   return {
     nameError: !isNameValid && VALIDATION_ERROR_MESSAGES.name,

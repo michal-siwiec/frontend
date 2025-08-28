@@ -95,13 +95,13 @@ describe('formatTimestamp', () => {
 
 describe('validateByRegexp', () => {
   test('should match correctly', () => {
-    const isValid = validateByRegexp({ regexp: EMAIL_REGEX, subject: 'siwiec.michal724@gmail.com' });
+    const isValid = validateByRegexp(EMAIL_REGEX, 'siwiec.michal724@gmail.com');
 
     expect(isValid).toBe(true);
   });
 
   test("shouldn't match correctly", () => {
-    const isValid = validateByRegexp({ regexp: EMAIL_REGEX, subject: 'siwiec.michal724gmail.com' });
+    const isValid = validateByRegexp(EMAIL_REGEX, 'siwiec.michal724gmail.com');
 
     expect(isValid).toBe(false);
   });

@@ -26,12 +26,12 @@ export const sortAvatarByMainField = (a, b) => {
 };
 
 export const handleMyDetailsValidation = (name: string, surname: string, phoneNumber: string, city: string, postalCode: string, street: string) => {
-  const isNameValid = validateByRegexp({ regexp: NAME_REGEX, subject: name });
-  const isSurnameValid = validateByRegexp({ regexp: SURNAME_REGEX, subject: surname });
-  const isPhoneNumberValid = validateByRegexp({ regexp: PHONE_NUMBER_REGEX, subject: phoneNumber });
-  const isCityValid = validateByRegexp({ regexp: CITY_REGEX, subject: city });
-  const isPostalCodeValid = validateByRegexp({ regexp: POSTAL_CODE_REGEX, subject: postalCode });
-  const isStreetValid = validateByRegexp({ regexp: STREET_REGEX, subject: street });
+  const isNameValid = validateByRegexp(NAME_REGEX, name);
+  const isSurnameValid = validateByRegexp(SURNAME_REGEX, surname);
+  const isPhoneNumberValid = validateByRegexp(PHONE_NUMBER_REGEX, phoneNumber);
+  const isCityValid = validateByRegexp(CITY_REGEX, city);
+  const isPostalCodeValid = validateByRegexp(POSTAL_CODE_REGEX, postalCode);
+  const isStreetValid = validateByRegexp(STREET_REGEX, street);
 
   return {
     nameError: !isNameValid && VALIDATION_ERROR_MESSAGES.name,
@@ -46,8 +46,8 @@ export const handleMyDetailsValidation = (name: string, surname: string, phoneNu
 };
 
 export const handleLoginValidation = (email: string, password: string) => {
-  const isValidEmail = validateByRegexp({ regexp: EMAIL_REGEX, subject: email });
-  const isValidPassword = validateByRegexp({ regexp: PASSWORD_REGEX, subject: password });
+  const isValidEmail = validateByRegexp(EMAIL_REGEX, email);
+  const isValidPassword = validateByRegexp(PASSWORD_REGEX, password);
 
   return {
     emailError: !isValidEmail && VALIDATION_ERROR_MESSAGES.email,
@@ -57,13 +57,13 @@ export const handleLoginValidation = (email: string, password: string) => {
 };
 
 export const handleClientDetailsValidation = (name: string, surname: string, street: string, city: string, postalCode: string, email: string, phoneNumber: string) => {
-  const isNameValid = validateByRegexp({ regexp: NAME_REGEX, subject: name });
-  const isSurnameValid = validateByRegexp({ regexp: SURNAME_REGEX, subject: surname });
-  const isStreetValid = validateByRegexp({ regexp: STREET_REGEX, subject: street });
-  const isCityValid = validateByRegexp({ regexp: CITY_REGEX, subject: city });
-  const isPostalCodeValid = validateByRegexp({ regexp: POSTAL_CODE_REGEX, subject: postalCode });
-  const isEmailValid = validateByRegexp({ regexp: EMAIL_REGEX, subject: email });
-  const isPhoneNumberValid = validateByRegexp({ regexp: PHONE_NUMBER_REGEX, subject: phoneNumber });
+  const isNameValid = validateByRegexp(NAME_REGEX, name);
+  const isSurnameValid = validateByRegexp(SURNAME_REGEX, surname);
+  const isStreetValid = validateByRegexp(STREET_REGEX, street);
+  const isCityValid = validateByRegexp(CITY_REGEX, city);
+  const isPostalCodeValid = validateByRegexp(POSTAL_CODE_REGEX, postalCode);
+  const isEmailValid = validateByRegexp(EMAIL_REGEX, email);
+  const isPhoneNumberValid = validateByRegexp(PHONE_NUMBER_REGEX, phoneNumber);
 
   return {
     nameError: !isNameValid && VALIDATION_ERROR_MESSAGES.name,
@@ -81,7 +81,7 @@ export const handleClientDetailsValidation = (name: string, surname: string, str
 };
 
 export const handleChangePasswordValidation = (password: string, passwordConfirmation: string) => {
-  const isPasswordValid = validateByRegexp({ regexp: PASSWORD_REGEX, subject: password });
+  const isPasswordValid = validateByRegexp(PASSWORD_REGEX, password);
   const arePasswordsTheSame = areTheSame(password, passwordConfirmation);
 
   return {
@@ -92,8 +92,8 @@ export const handleChangePasswordValidation = (password: string, passwordConfirm
 };
 
 export const handleRegisterValidation = (email: string, password: string, avatars: Avatars) => {
-  const isEmailValid = validateByRegexp({ regexp: EMAIL_REGEX, subject: email });
-  const isPasswordValid = validateByRegexp({ regexp: PASSWORD_REGEX, subject: password });
+  const isEmailValid = validateByRegexp(EMAIL_REGEX, email);
+  const isPasswordValid = validateByRegexp(PASSWORD_REGEX, password);
   const areAvatarsValid = validateAvatars(avatars);
 
   return {
