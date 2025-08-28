@@ -2,7 +2,7 @@ import { generateAddedProductPayload, generateHeaderCaption, generatePossiblePro
 
 describe('generateAddedProductPayload', () => {
   test('should return proper object with properties', () => {
-    const response = generateAddedProductPayload({ product: { id: '000082f4-69e1-41f9-ba0b-b4004439642f', name: 'Product name' }, selectedQuantity: 4 });
+    const response = generateAddedProductPayload({ id: '000082f4-69e1-41f9-ba0b-b4004439642f', name: 'Product name' }, 4);
 
     expect(response).toEqual({
       id: '000082f4-69e1-41f9-ba0b-b4004439642f',

@@ -22,7 +22,7 @@ const AddToBasketForm = ({ product }) => {
   };
 
   const handleAddToBasketOnMouseDown = () => {
-    const payload = generateAddedProductPayload({ product, selectedQuantity });
+    const payload = generateAddedProductPayload(product, selectedQuantity);
 
     setSelectedQuantity(1);
     dispatch(addProductToBasket(payload));
