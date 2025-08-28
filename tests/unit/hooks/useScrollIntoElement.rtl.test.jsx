@@ -13,7 +13,7 @@ describe('useScrollIntoElement', () => {
   it('calls scrollIntoElement', () => {
     renderHook(() => useScrollIntoElement({ scrollDependency: 'some-location', elementSelector: '#my-element' }));
 
-    expect(scrollIntoElementMock).toHaveBeenCalledWith({ elementSelector: '#my-element' });
+    expect(scrollIntoElementMock).toHaveBeenCalledWith('#my-element');
   });
 
   it('re-triggers scrollIntoElement when scrollDependency changes', () => {
