@@ -25,7 +25,7 @@ describe('OpinionPresentedContentGenerator', () => {
     const result = new OpinionPresentedContentGenerator(displayedNumberOfChars, content, contentExpanded).call();
 
     expect(cutAfterNCharsSpy).toHaveBeenCalledTimes(1);
-    expect(cutAfterNCharsSpy).toHaveBeenCalledWith({ text: content, charsQuantity: displayedNumberOfChars });
+    expect(cutAfterNCharsSpy).toHaveBeenCalledWith(content, displayedNumberOfChars);
     expect(result).toEqual({ narrowContent: '"Hello Worl"', restOfContent: 'd!"', textToLongToDisplay: false });
   });
 
