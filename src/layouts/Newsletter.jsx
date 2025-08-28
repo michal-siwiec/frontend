@@ -75,7 +75,7 @@ const Newsletter = () => {
       surnameError,
       emailError,
       validationStatus
-    } = handleSaveToNewsletterValidation({ name, surname, email });
+    } = handleSaveToNewsletterValidation(name, surname, email);
 
     setNameErrorMessage(nameError);
     setSurnameErrorMessage(surnameError);

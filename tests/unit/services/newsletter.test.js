@@ -13,7 +13,7 @@ describe('handleSaveToNewsletterValidation', () => {
 
   it('returns false status when name is not correct', () => {
     name = '';
-    const response = handleSaveToNewsletterValidation({ name, surname, email });
+    const response = handleSaveToNewsletterValidation(name, surname, email);
 
     expect(response).toEqual({
       nameError: 'Imię ma niepoprawny format!',
@@ -25,7 +25,7 @@ describe('handleSaveToNewsletterValidation', () => {
 
   it('returns false status when surname is not correct', () => {
     surname = '';
-    const response = handleSaveToNewsletterValidation({ name, surname, email });
+    const response = handleSaveToNewsletterValidation(name, surname, email);
 
     expect(response).toEqual({
       nameError: false,
@@ -37,7 +37,7 @@ describe('handleSaveToNewsletterValidation', () => {
 
   it('returns false status when email is not correct', () => {
     email = '';
-    const response = handleSaveToNewsletterValidation({ name, surname, email });
+    const response = handleSaveToNewsletterValidation(name, surname, email);
 
     expect(response).toEqual({
       nameError: false,
@@ -50,7 +50,7 @@ describe('handleSaveToNewsletterValidation', () => {
   it('returns multiple error validation messages', () => {
     name = '';
     surname = '';
-    const response = handleSaveToNewsletterValidation({ name, surname, email });
+    const response = handleSaveToNewsletterValidation(name, surname, email);
 
     expect(response).toEqual({
       nameError: 'Imię ma niepoprawny format!',
@@ -61,7 +61,7 @@ describe('handleSaveToNewsletterValidation', () => {
   });
 
   it('returns true status when each value is correct', () => {
-    const response = handleSaveToNewsletterValidation({ name, surname, email });
+    const response = handleSaveToNewsletterValidation(name, surname, email);
 
     expect(response).toEqual({
       nameError: false,
