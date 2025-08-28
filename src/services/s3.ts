@@ -11,5 +11,7 @@ const s3 = new S3({
 export const getSignedUrl = (key: string, bucket: string = AWS_BUCKET) => s3.getSignedUrl('getObject', { Bucket: bucket, Key: key });
 
 export const getObject = async (
-  { bucket = AWS_BUCKET, key, responseHandler = () => {} }: { bucket: string, key: string, responseHandler: (error: AWSError, data: GetObjectOutput) => void }
+  key: string,
+  bucket: string = AWS_BUCKET,
+  responseHandler: (error: AWSError, data: GetObjectOutput) => void = () => {}
 ) => s3.getObject({ Bucket: bucket, Key: key }, responseHandler);

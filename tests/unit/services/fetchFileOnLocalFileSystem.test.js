@@ -13,7 +13,7 @@ describe('fetchFileOnLocalFileSystem', () => {
     global.URL.createObjectURL = () => {};
     jest.spyOn(global.URL, 'createObjectURL').mockImplementation(() => 'mock-blob-url');
 
-    const getObjectSpy = jest.spyOn(S3Service, 'getObject').mockImplementation(({ responseHandler }) => {
+    const getObjectSpy = jest.spyOn(S3Service, 'getObject').mockImplementation((key, bucket, responseHandler) => {
       const binaryData = Buffer.from('binary-fake-data', 'utf8');
       responseHandler(null, { Body: binaryData });
     });
@@ -24,14 +24,14 @@ describe('fetchFileOnLocalFileSystem', () => {
     const saveAsSpyBlobArg = saveAsSpy.mock.calls[0][0];
 
     expect(getObjectSpy).toHaveBeenCalledTimes(1);
-    expect(getObjectSpy).toHaveBeenCalledWith({ bucket: 'budoman-development', key: 'testKey', responseHandler: expect.any(Function) });
+    expect(getObjectSpy).toHaveBeenCalledWith('testKey', 'budoman-development', expect.any(Function));
     expect(saveAsSpy).toHaveBeenCalledTimes(1);
     expect(saveAsSpy).toHaveBeenCalledWith(saveAsSpyBlobArg, 'Polityka prywatnosci.pdf');
     expect(saveAsSpyBlobArg).toBeInstanceOf(Blob);
   });
 
   it('calls getObject with failed response', () => {
-    const getObjectSpy = jest.spyOn(S3Service, 'getObject').mockImplementation(({ responseHandler }) => {
+    const getObjectSpy = jest.spyOn(S3Service, 'getObject').mockImplementation((key, bucket, responseHandler) => {
       responseHandler(new Error('Some S3 error'), null);
     });
 
@@ -39,7 +39,7 @@ describe('fetchFileOnLocalFileSystem', () => {
     fetchFileOnLocalFileSystem({ bucket: 'testBucket', key: 'testKey', fileName: 'Polityka prywatnosci.pdf' });
 
     expect(getObjectSpy).toHaveBeenCalledTimes(1);
-    expect(getObjectSpy).toHaveBeenCalledWith({ bucket: 'testBucket', key: 'testKey', responseHandler: expect.any(Function) });
+    expect(getObjectSpy).toHaveBeenCalledWith('testKey', 'testBucket', expect.any(Function));
     expect(saveAsSpy).toHaveBeenCalledTimes(0);
   });
 });
