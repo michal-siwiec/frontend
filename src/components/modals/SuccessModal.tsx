@@ -1,8 +1,16 @@
+import React, { ReactElement } from 'react';
 import { exact, string, bool, func } from 'prop-types';
 import { Modal } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
-const SuccessModal = ({ isOpen, handleOnClose, info, children }) => {
+type SuccessModalProps = {
+  isOpen: boolean,
+  info: string,
+  handleOnClose: () => void,
+  children: ReactElement
+};
+
+const SuccessModal = ({ isOpen, handleOnClose, info, children }: SuccessModalProps) => {
   const blockName = 'modal';
 
   return (

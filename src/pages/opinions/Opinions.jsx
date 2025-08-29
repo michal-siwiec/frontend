@@ -4,7 +4,7 @@ import { isEmpty } from 'lodash';
 import { GET_OPINIONS } from 'graphql/queries/opinion.ts';
 import useIsLogged from 'hooks/useIsLogged.jsx';
 import LoadingModal from 'components/modals/LoadingModal.jsx';
-import SuccessModal from 'components/modals/SuccessModal.jsx';
+import SuccessModal from 'components/modals/SuccessModal.tsx';
 import ErrorModal from 'components/modals/ErrorModal.jsx';
 import Pagination from 'components/Pagination.tsx';
 import OpinionsList from './OpinionsList.jsx';

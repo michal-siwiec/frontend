@@ -9,7 +9,7 @@ import { updateAvatars } from 'redux_/user/actionsCreator.ts';
 import Tooltip from 'components/Tooltip.tsx';
 import SubmitButton from 'components/SubmitButton.tsx';
 import LoadingModal from 'components/modals/LoadingModal.jsx';
-import SuccessModal from 'components/modals/SuccessModal.jsx';
+import SuccessModal from 'components/modals/SuccessModal.tsx';
 import ErrorModal from 'components/modals/ErrorModal.jsx';
 
 const PresentAvatarsContent = ({ avatars }) => {
