@@ -2,7 +2,7 @@ import { exact, bool, func } from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Modal } from '@mui/material';
-import Product from 'components/product/Product.jsx';
+import Product from 'components/product/Product.tsx';
 import SubmitButton from 'components/SubmitButton.tsx';
 
 const BasketSummaryModal = ({ open, handleOnClose }) => {

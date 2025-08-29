@@ -1,13 +1,20 @@
-import { exact, number, string } from 'prop-types';
+import React from 'react';
 import clsx from 'clsx';
 import useFetchUrl from 'hooks/useFetchUrl.jsx';
+import { Product as ProductType } from 'types/product';
 import ShadowedContainer from 'components/containers/ShadowedContainer.jsx';
-import { APPEARING_IN_SEQUENCE } from 'data/animations.ts';
-import { formatPrice } from 'utils/helpers.ts';
+import { APPEARING_IN_SEQUENCE } from 'data/animations';
+import { formatPrice } from 'utils/helpers';
 import AddToBasketForm from './AddToBasketForm.jsx';
-import SelectedQuantityPresenter from './SelectedQuantityPresenter.tsx';
+import SelectedQuantityPresenter from './SelectedQuantityPresenter';
 
-const Product = ({ product, index, mode }) => {
+type ProductProps = {
+  product: ProductType['attributes'],
+  index: number,
+  mode: 'main' | 'basket'
+};
+
+const Product = ({ product, index, mode }: ProductProps) => {
   const blockName = 'product';
   const { id, name, price, pictureBucket, pictureKey } = product;
   const isMainMode = mode === 'main';
@@ -28,6 +35,7 @@ const Product = ({ product, index, mode }) => {
     >
       <div className={`${blockName}__img-wrapper`}>
         <img
+          // @ts-ignore // TODO
           src={pictureURL}
           alt="Zdjęcie produktu"
           className={`${blockName}__img`}
@@ -45,12 +53,5 @@ const Product = ({ product, index, mode }) => {
     </ShadowedContainer>
   );
 };
-
-Product.propTypes = exact({
-  id: string.isRequired,
-  name: string.isRequired,
-  price: number.isRequired,
-  availableQuantity: number.isRequired
-}).isRequired;
 
 export default Product;
