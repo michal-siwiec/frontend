@@ -5,7 +5,7 @@ import { USER_PERSONAL_DETAILS, IS_USER_SAVED_TO_NEWSLETTER } from 'graphql/quer
 import { SUBSCRIBE_TO_NEWSLETTER } from 'graphql/mutations/user.ts';
 import useIsLogged from 'hooks/useIsLogged.jsx';
 import { handleSaveToNewsletterValidation } from 'services/newsletter.ts';
-import FormContainer from 'components/containers/FormContainer.jsx';
+import FormContainer from 'components/containers/FormContainer.tsx';
 import TextInput from 'components/inputs/TextInput.tsx';
 import SubmitButton from 'components/SubmitButton.tsx';
 import SuccessModal from 'components/modals/SuccessModal.tsx';

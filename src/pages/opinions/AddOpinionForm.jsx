@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import { ADD_OPINION } from 'graphql/mutations/opinion.ts';
 import { handleAddOpinionValidation } from 'services/opinions.ts';
-import FormContainer from 'components/containers/FormContainer.jsx';
+import FormContainer from 'components/containers/FormContainer.tsx';
 import Rating from 'components/Rating.tsx';
 import TextArea from 'components/inputs/TextArea.tsx';
 import SubmitButton from 'components/SubmitButton.tsx';

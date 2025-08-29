@@ -6,7 +6,7 @@ import useRedirect from 'hooks/useRedirect.jsx';
 import { login } from 'redux_/user/actionsCreator.ts';
 import { handleRegisterValidation, generateAvatars } from 'services/user.ts';
 import { REGISTER_USER } from 'graphql/mutations/user.ts';
-import FormContainer from 'components/containers/FormContainer.jsx';
+import FormContainer from 'components/containers/FormContainer.tsx';
 import TextInput from 'components/inputs/TextInput.tsx';
 import FileInput from 'components/inputs/FileInput.tsx';
 import SubmitButton from 'components/SubmitButton.tsx';

@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import ShadowedContainer from 'components/containers/ShadowedContainer.jsx';
+import ShadowedContainer from 'components/containers/ShadowedContainer.tsx';
 
 describe('ShadowedContainer', () => {
   it('renders children correctly', () => {

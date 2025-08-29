@@ -2,7 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import useFetchUrl from 'hooks/useFetchUrl.jsx';
 import { Product as ProductType } from 'types/product';
-import ShadowedContainer from 'components/containers/ShadowedContainer.jsx';
+import ShadowedContainer from 'components/containers/ShadowedContainer.tsx';
 import { APPEARING_IN_SEQUENCE } from 'data/animations';
 import { formatPrice } from 'utils/helpers';
 import AddToBasketForm from './AddToBasketForm';

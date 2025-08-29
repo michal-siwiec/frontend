@@ -1,6 +1,12 @@
-import { exact, oneOfType, string, element } from 'prop-types';
+import React, { ReactElement } from 'react';
 
-const FormContainer = ({ header, form, classNames }) => {
+type FormContainerProps = {
+  header: string | ReactElement,
+  form: ReactElement,
+  classNames?: ''
+};
+
+const FormContainer = ({ header, form, classNames = '' }: FormContainerProps) => {
   const blockName = 'form-container';
 
   return (
@@ -15,16 +21,6 @@ const FormContainer = ({ header, form, classNames }) => {
       </div>
     </div>
   );
-};
-
-FormContainer.propTypes = exact({
-  header: oneOfType([string, element]).isRequired,
-  form: element.isRequired,
-  classNames: string
-}).isRequired;
-
-FormContainer.defaultProps = {
-  classNames: ''
 };
 
 export default FormContainer;

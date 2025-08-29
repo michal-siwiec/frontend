@@ -8,7 +8,7 @@ import { ERROR_CODES } from 'data/errors.ts';
 import { LOGIN_USER } from 'graphql/mutations/user.ts';
 import { login } from 'redux_/user/actionsCreator.ts';
 import { handleLoginValidation } from 'services/user.ts';
-import FormContainer from 'components/containers/FormContainer.jsx';
+import FormContainer from 'components/containers/FormContainer.tsx';
 import TextInput from 'components/inputs/TextInput.tsx';
 import SubmitButton from 'components/SubmitButton.tsx';
 import LoadingModal from 'components/modals/LoadingModal.tsx';

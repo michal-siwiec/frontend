@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { isEmpty } from 'lodash';
 import useRedirect from 'hooks/useRedirect.jsx';
 import { OrderContext } from 'contexts/contexts.ts';
-import FormContainer from 'components/containers/FormContainer.jsx';
+import FormContainer from 'components/containers/FormContainer.tsx';
 import Header from './Header.jsx';
 import From from './form/Form.jsx';
 

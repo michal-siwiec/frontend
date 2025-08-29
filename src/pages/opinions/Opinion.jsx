@@ -3,7 +3,7 @@ import { exact, string, number } from 'prop-types';
 import SmoothCollapse from 'react-smooth-collapse';
 import { isEmpty } from 'lodash';
 import { formatTimestamp } from 'utils/helpers.ts';
-import ShadowedContainer from 'components/containers/ShadowedContainer.jsx';
+import ShadowedContainer from 'components/containers/ShadowedContainer.tsx';
 import Rating from 'components/Rating.tsx';
 import Avatar from 'components/Avatar.jsx';
 import { APPEARING_IN_SEQUENCE } from 'data/animations.ts';

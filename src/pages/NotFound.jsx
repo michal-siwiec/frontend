@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ShadowedContainer from 'components/containers/ShadowedContainer.jsx';
+import ShadowedContainer from 'components/containers/ShadowedContainer.tsx';
 
 const NotFound = () => {
   const blockName = 'not-found';
