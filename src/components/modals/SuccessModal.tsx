@@ -1,12 +1,12 @@
-import React, { ReactElement } from 'react';
+import React, { Fragment, ReactElement } from 'react';
 import { Modal } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 type SuccessModalProps = {
   isOpen: boolean,
   info: string,
-  handleOnClose: () => void,
-  children: ReactElement
+  children?: ReactElement,
+  handleOnClose: () => void
 };
 
 const SuccessModal = ({ isOpen, handleOnClose, info, children }: SuccessModalProps) => {

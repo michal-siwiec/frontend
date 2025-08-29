@@ -8,9 +8,9 @@ export const handleSaveToNewsletterValidation = (name: string, surname: string, 
   const isEmailValid = validateByRegexp(EMAIL_REGEX, email);
 
   return {
-    nameError: !isNameValid && VALIDATION_ERROR_MESSAGES.name,
-    surnameError: !isSurnameValid && VALIDATION_ERROR_MESSAGES.surname,
-    emailError: !isEmailValid && VALIDATION_ERROR_MESSAGES.email,
+    nameError: !isNameValid ? VALIDATION_ERROR_MESSAGES.name : '',
+    surnameError: !isSurnameValid ? VALIDATION_ERROR_MESSAGES.surname : '',
+    emailError: !isEmailValid ? VALIDATION_ERROR_MESSAGES.email : '',
     validationStatus: isNameValid && isSurnameValid && isEmailValid
   };
 };

@@ -3,13 +3,13 @@ import clsx from 'clsx';
 
 type TextInputProps = {
   placeholder: string,
-  type?: 'text' | 'password',
+  type?: 'text' | 'password' | 'email',
   value: string,
   classNames?: string,
   validationError?: string,
   isDisabled?: boolean,
   dataTestId?: string,
-  onChange: () => void,
+  onChange: (...args: any[]) => void,
 };
 
 const TextInput = ({ placeholder, type = 'text', classNames = '', value, onChange, validationError, isDisabled = false, dataTestId }: TextInputProps) => (

@@ -17,8 +17,8 @@ describe('handleSaveToNewsletterValidation', () => {
 
     expect(response).toEqual({
       nameError: 'Imię ma niepoprawny format!',
-      surnameError: false,
-      emailError: false,
+      surnameError: '',
+      emailError: '',
       validationStatus: false
     });
   });
@@ -28,9 +28,9 @@ describe('handleSaveToNewsletterValidation', () => {
     const response = handleSaveToNewsletterValidation(name, surname, email);
 
     expect(response).toEqual({
-      nameError: false,
+      nameError: '',
       surnameError: 'Nazwisko ma niepoprawny format!',
-      emailError: false,
+      emailError: '',
       validationStatus: false
     });
   });
@@ -40,8 +40,8 @@ describe('handleSaveToNewsletterValidation', () => {
     const response = handleSaveToNewsletterValidation(name, surname, email);
 
     expect(response).toEqual({
-      nameError: false,
-      surnameError: false,
+      nameError: '',
+      surnameError: '',
       emailError: 'Email ma niepoprawny format!',
       validationStatus: false
     });
@@ -55,7 +55,7 @@ describe('handleSaveToNewsletterValidation', () => {
     expect(response).toEqual({
       nameError: 'Imię ma niepoprawny format!',
       surnameError: 'Nazwisko ma niepoprawny format!',
-      emailError: false,
+      emailError: '',
       validationStatus: false
     });
   });
@@ -64,9 +64,9 @@ describe('handleSaveToNewsletterValidation', () => {
     const response = handleSaveToNewsletterValidation(name, surname, email);
 
     expect(response).toEqual({
-      nameError: false,
-      surnameError: false,
-      emailError: false,
+      nameError: '',
+      surnameError: '',
+      emailError: '',
       validationStatus: true
     });
   });
