@@ -1,5 +1,5 @@
 import { render, fireEvent, screen } from '@testing-library/react';
-import Rating from 'components/Rating.jsx';
+import Rating from 'components/Rating.tsx';
 
 describe('Rating Component', () => {
   it('renders without crashing', () => {

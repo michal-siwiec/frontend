@@ -4,7 +4,7 @@ import SmoothCollapse from 'react-smooth-collapse';
 import { isEmpty } from 'lodash';
 import { formatTimestamp } from 'utils/helpers.ts';
 import ShadowedContainer from 'components/containers/ShadowedContainer.jsx';
-import Rating from 'components/Rating.jsx';
+import Rating from 'components/Rating.tsx';
 import Avatar from 'components/Avatar.jsx';
 import { APPEARING_IN_SEQUENCE } from 'data/animations.ts';
 import { generateOpinionContent } from 'services/opinions.ts';
