@@ -5,7 +5,7 @@ import { OrderContext } from 'contexts/contexts.ts';
 import PaymentIcon from '@mui/icons-material/Payment';
 import PaidIcon from '@mui/icons-material/Paid';
 import CheckBox from 'components/inputs/CheckBox.jsx';
-import SubmitButton from 'components/SubmitButton.jsx';
+import SubmitButton from 'components/SubmitButton.tsx';
 
 const PaymentMethod = () => {
   const blockName = 'payment-method';

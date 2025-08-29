@@ -7,7 +7,7 @@ import { generateTooltipHeaderText, generateTooltipSecondaryText, sortAvatarByMa
 import { UPDATE_USER_AVATARS } from 'graphql/mutations/user.ts';
 import { updateAvatars } from 'redux_/user/actionsCreator.ts';
 import Tooltip from 'components/Tooltip.tsx';
-import SubmitButton from 'components/SubmitButton.jsx';
+import SubmitButton from 'components/SubmitButton.tsx';
 import LoadingModal from 'components/modals/LoadingModal.jsx';
 import SuccessModal from 'components/modals/SuccessModal.jsx';
 import ErrorModal from 'components/modals/ErrorModal.jsx';

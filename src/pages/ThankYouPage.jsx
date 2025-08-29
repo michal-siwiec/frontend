@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem.ts';
-import SubmitButton from 'components/SubmitButton.jsx';
+import SubmitButton from 'components/SubmitButton.tsx';
 
 const ThankYouPage = () => {
   const blockName = 'thank-you-page';

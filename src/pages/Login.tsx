@@ -10,7 +10,7 @@ import { login } from 'redux_/user/actionsCreator.ts';
 import { handleLoginValidation } from 'services/user.ts';
 import FormContainer from 'components/containers/FormContainer.jsx';
 import TextInput from 'components/inputs/TextInput.jsx';
-import SubmitButton from 'components/SubmitButton.jsx';
+import SubmitButton from 'components/SubmitButton.tsx';
 import LoadingModal from 'components/modals/LoadingModal.jsx';
 import ErrorModal from 'components/modals/ErrorModal.jsx';
 

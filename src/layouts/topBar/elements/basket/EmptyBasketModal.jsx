@@ -1,7 +1,7 @@
 import { exact, bool, func } from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { Modal } from '@mui/material';
-import SubmitButton from 'components/SubmitButton.jsx';
+import SubmitButton from 'components/SubmitButton.tsx';
 
 const EmptyBasketModal = ({ open, handleOnClose }) => {
   const blockName = 'modal';

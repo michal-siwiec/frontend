@@ -6,7 +6,7 @@ import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import ApprovalIcon from '@mui/icons-material/Approval';
 import CheckBox from 'components/inputs/CheckBox.jsx';
-import SubmitButton from 'components/SubmitButton.jsx';
+import SubmitButton from 'components/SubmitButton.tsx';
 
 const DeliveryMethod = () => {
   const blockName = 'delivery-method';

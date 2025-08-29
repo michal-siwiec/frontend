@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/client';
 import { CHANGE_USER_PASSWORD } from 'graphql/mutations/user.ts';
 import { handleChangePasswordValidation } from 'services/user.ts';
 import TextInput from 'components/inputs/TextInput.jsx';
-import SubmitButton from 'components/SubmitButton.jsx';
+import SubmitButton from 'components/SubmitButton.tsx';
 import SuccessModal from 'components/modals/SuccessModal.jsx';
 import LoadingModal from 'components/modals/LoadingModal.jsx';
 import ErrorModal from 'components/modals/ErrorModal.jsx';

@@ -7,7 +7,7 @@ import { handleAddOpinionValidation } from 'services/opinions.ts';
 import FormContainer from 'components/containers/FormContainer.jsx';
 import Rating from 'components/Rating.jsx';
 import TextArea from 'components/inputs/TextArea.jsx';
-import SubmitButton from 'components/SubmitButton.jsx';
+import SubmitButton from 'components/SubmitButton.tsx';
 
 const AddOpinionForm = ({
   setIsOpinionAdded,

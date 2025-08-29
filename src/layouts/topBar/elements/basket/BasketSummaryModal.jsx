@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Modal } from '@mui/material';
 import Product from 'components/product/Product.jsx';
-import SubmitButton from 'components/SubmitButton.jsx';
+import SubmitButton from 'components/SubmitButton.tsx';
 
 const BasketSummaryModal = ({ open, handleOnClose }) => {
   const blockName = 'modal';

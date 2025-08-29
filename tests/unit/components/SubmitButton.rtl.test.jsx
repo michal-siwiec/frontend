@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import SubmitButton from 'components/SubmitButton.jsx';
+import SubmitButton from 'components/SubmitButton.tsx';
 
 describe('SubmitButton Component', () => {
   it('renders without crashing', () => {

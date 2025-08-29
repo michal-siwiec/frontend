@@ -9,7 +9,7 @@ import { REGISTER_USER } from 'graphql/mutations/user.ts';
 import FormContainer from 'components/containers/FormContainer.jsx';
 import TextInput from 'components/inputs/TextInput.jsx';
 import FileInput from 'components/inputs/FileInput.jsx';
-import SubmitButton from 'components/SubmitButton.jsx';
+import SubmitButton from 'components/SubmitButton.tsx';
 import LoadingModal from 'components/modals/LoadingModal.jsx';
 import ErrorModal from 'components/modals/ErrorModal.jsx';
 import { ERROR_CODES } from 'data/errors.ts';

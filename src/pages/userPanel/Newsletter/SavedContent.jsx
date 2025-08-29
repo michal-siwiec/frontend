@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { exact, func, string } from 'prop-types';
 import { useMutation } from '@apollo/client';
 import { UNSUBSCRIBE_FROM_NEWSLETTER } from 'graphql/mutations/user.ts';
-import SubmitButton from 'components/SubmitButton.jsx';
+import SubmitButton from 'components/SubmitButton.tsx';
 
 const SavedContent = ({ userEmail, handleUnsubscribe }) => {
   const blockName = 'newsletter';

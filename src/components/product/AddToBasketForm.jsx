@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { exact, number, string } from 'prop-types';
 import NumberInput from 'components/inputs/NumberInput.jsx';
-import SubmitButton from 'components/SubmitButton.jsx';
+import SubmitButton from 'components/SubmitButton.tsx';
 import { useSelector, useDispatch } from 'react-redux';
 import { addProductToBasket } from 'redux_/basket/actionCreators.ts';
 import { generateAddedProductPayload, generatePossibleProductQuantity } from 'services/products.ts';
