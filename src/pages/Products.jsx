@@ -5,8 +5,8 @@ import { useQuery } from '@apollo/client';
 import useScrollIntoElement from 'hooks/useScrollIntoElement.jsx';
 import { GET_PRODUCTS } from 'graphql/queries/products.ts';
 import { generateHeaderCaption } from 'services/products.ts';
-import LoadingModal from 'components/modals/LoadingModal.jsx';
-import ErrorModal from 'components/modals/ErrorModal.jsx';
+import LoadingModal from 'components/modals/LoadingModal.tsx';
+import ErrorModal from 'components/modals/ErrorModal.tsx';
 import Product from 'components/product/Product.tsx';
 import Pagination from 'components/Pagination.tsx';
 

@@ -8,9 +8,9 @@ import { UPDATE_USER_AVATARS } from 'graphql/mutations/user.ts';
 import { updateAvatars } from 'redux_/user/actionsCreator.ts';
 import Tooltip from 'components/Tooltip.tsx';
 import SubmitButton from 'components/SubmitButton.tsx';
-import LoadingModal from 'components/modals/LoadingModal.jsx';
+import LoadingModal from 'components/modals/LoadingModal.tsx';
 import SuccessModal from 'components/modals/SuccessModal.tsx';
-import ErrorModal from 'components/modals/ErrorModal.jsx';
+import ErrorModal from 'components/modals/ErrorModal.tsx';
 
 const PresentAvatarsContent = ({ avatars }) => {
   const blockName = 'present-avatars';

@@ -5,8 +5,8 @@ import { GET_ORDERS } from 'graphql/queries/order.ts';
 import { formatTimestamp } from 'utils/helpers.ts';
 import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem.ts';
 import LiveHelpIcon from '@mui/icons-material/LiveHelp';
-import LoadingModal from 'components/modals/LoadingModal.jsx';
-import ErrorModal from 'components/modals/ErrorModal.jsx';
+import LoadingModal from 'components/modals/LoadingModal.tsx';
+import ErrorModal from 'components/modals/ErrorModal.tsx';
 import Pagination from 'components/Pagination.tsx';
 import Tooltip from 'components/Tooltip.tsx';
 

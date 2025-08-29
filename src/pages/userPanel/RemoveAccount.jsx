@@ -4,8 +4,8 @@ import { useMutation } from '@apollo/client';
 import { REMOVE_ACCOUNT } from 'graphql/mutations/user.ts';
 import { logout } from 'redux_/user/actionsCreator.ts';
 import SubmitButton from 'components/SubmitButton.tsx';
-import LoadingModal from 'components/modals/LoadingModal.jsx';
-import ErrorModal from 'components/modals/ErrorModal.jsx';
+import LoadingModal from 'components/modals/LoadingModal.tsx';
+import ErrorModal from 'components/modals/ErrorModal.tsx';
 import SuccessModal from 'components/modals/SuccessModal.tsx';
 
 const RemoveAccount = () => {

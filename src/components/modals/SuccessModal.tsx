@@ -1,5 +1,4 @@
 import React, { ReactElement } from 'react';
-import { exact, string, bool, func } from 'prop-types';
 import { Modal } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
@@ -30,11 +29,5 @@ const SuccessModal = ({ isOpen, handleOnClose, info, children }: SuccessModalPro
     </Modal>
   );
 };
-
-SuccessModal.propTypes = exact({
-  isOpen: bool.isRequired,
-  handleOnClose: func.isRequired,
-  info: string
-}).isRequired;
 
 export default SuccessModal;

@@ -8,8 +8,8 @@ import { clearBasket } from 'redux_/basket/actionCreators.ts';
 import { countTotalPrice } from 'utils/helpers.ts';
 import { ADD_ORDER } from 'graphql/mutations/order.ts';
 import { generateAddOrderPayload } from 'services/orders.ts';
-import LoadingModal from 'components/modals/LoadingModal.jsx';
-import ErrorModal from 'components/modals/ErrorModal.jsx';
+import LoadingModal from 'components/modals/LoadingModal.tsx';
+import ErrorModal from 'components/modals/ErrorModal.tsx';
 import SubmitButton from 'components/SubmitButton.tsx';
 
 const Summary = () => {

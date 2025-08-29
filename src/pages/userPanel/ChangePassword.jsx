@@ -6,8 +6,8 @@ import { handleChangePasswordValidation } from 'services/user.ts';
 import TextInput from 'components/inputs/TextInput.jsx';
 import SubmitButton from 'components/SubmitButton.tsx';
 import SuccessModal from 'components/modals/SuccessModal.tsx';
-import LoadingModal from 'components/modals/LoadingModal.jsx';
-import ErrorModal from 'components/modals/ErrorModal.jsx';
+import LoadingModal from 'components/modals/LoadingModal.tsx';
+import ErrorModal from 'components/modals/ErrorModal.tsx';
 
 const ChangePassword = () => {
   const blockName = 'change-password';

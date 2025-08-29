@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import LoadingModal from 'components/modals/LoadingModal.jsx';
+import LoadingModal from 'components/modals/LoadingModal.tsx';
 
 describe('LoadingModal', () => {
   const setup = (props = {}) => (

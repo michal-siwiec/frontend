@@ -1,8 +1,10 @@
-import { bool, exact, func, string } from 'prop-types';
+import React from 'react';
 import { Modal } from '@mui/material';
 import ErrorIcon from '@mui/icons-material/Error';
 
-const ErrorModal = ({ isOpen, handleOnClose, info }) => {
+type ErrorModalProps = { isOpen: boolean, info: string, handleOnClose: () => void };
+
+const ErrorModal = ({ isOpen, handleOnClose, info }: ErrorModalProps) => {
   const blockName = 'modal';
 
   return (
@@ -22,11 +24,5 @@ const ErrorModal = ({ isOpen, handleOnClose, info }) => {
     </Modal>
   );
 };
-
-ErrorModal.propTypes = exact({
-  isOpen: bool.isRequired,
-  handleOnClose: func.isRequired,
-  info: string
-}).isRequired;
 
 export default ErrorModal;

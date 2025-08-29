@@ -1,8 +1,10 @@
-import { exact, bool, string } from 'prop-types';
+import React from 'react';
 import { Modal, CircularProgress } from '@mui/material';
-import VawyDots from 'components/VawyDots.tsx';
+import VawyDots from 'components/VawyDots';
 
-const LoadingModal = ({ isOpen, info }) => {
+type LoadingModalProps = { isOpen: boolean, info: string }
+
+const LoadingModal = ({ isOpen, info }: LoadingModalProps) => {
   const blockName = 'modal';
 
   return (
@@ -23,10 +25,5 @@ const LoadingModal = ({ isOpen, info }) => {
     </Modal>
   );
 };
-
-LoadingModal.propTypes = exact({
-  isOpen: bool.isRequired,
-  info: string.isRequired
-}).isRequired;
 
 export default LoadingModal;
