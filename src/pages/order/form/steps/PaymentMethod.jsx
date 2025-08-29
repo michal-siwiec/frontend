@@ -4,7 +4,7 @@ import { setPaymentMethod } from 'redux_/order/actionsCreator.ts';
 import { OrderContext } from 'contexts/contexts.ts';
 import PaymentIcon from '@mui/icons-material/Payment';
 import PaidIcon from '@mui/icons-material/Paid';
-import CheckBox from 'components/inputs/CheckBox.jsx';
+import CheckBox from 'components/inputs/CheckBox.tsx';
 import SubmitButton from 'components/SubmitButton.tsx';
 
 const PaymentMethod = () => {

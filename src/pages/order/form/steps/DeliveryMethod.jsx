@@ -5,7 +5,7 @@ import { setDeliveryMethod } from 'redux_/order/actionsCreator.ts';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import ApprovalIcon from '@mui/icons-material/Approval';
-import CheckBox from 'components/inputs/CheckBox.jsx';
+import CheckBox from 'components/inputs/CheckBox.tsx';
 import SubmitButton from 'components/SubmitButton.tsx';
 
 const DeliveryMethod = () => {

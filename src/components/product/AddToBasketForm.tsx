@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Product } from 'types/product';
-import NumberInput from 'components/inputs/NumberInput.jsx';
+import NumberInput from 'components/inputs/NumberInput.tsx';
 import SubmitButton from 'components/SubmitButton';
 import { useSelector, useDispatch } from 'react-redux';
 import { addProductToBasket } from 'redux_/basket/actionCreators';

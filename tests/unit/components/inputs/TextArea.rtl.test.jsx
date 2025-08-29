@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import TextArea from 'components/inputs/TextArea.jsx';
+import TextArea from 'components/inputs/TextArea.tsx';
 
 describe('TextArea', () => {
   const mockOnChange = jest.fn();

@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import CheckBox from 'components/inputs/CheckBox.jsx';
+import CheckBox from 'components/inputs/CheckBox.tsx';
 
 describe('CheckBox', () => {
   it('renders properly with label', () => {

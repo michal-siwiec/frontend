@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import NumberInput from 'components/inputs/NumberInput.jsx';
+import NumberInput from 'components/inputs/NumberInput.tsx';
 
 describe('NumberInput component', () => {
   const mockOnChange = jest.fn();

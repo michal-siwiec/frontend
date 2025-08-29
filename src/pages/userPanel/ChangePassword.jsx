@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import { CHANGE_USER_PASSWORD } from 'graphql/mutations/user.ts';
 import { handleChangePasswordValidation } from 'services/user.ts';
-import TextInput from 'components/inputs/TextInput.jsx';
+import TextInput from 'components/inputs/TextInput.tsx';
 import SubmitButton from 'components/SubmitButton.tsx';
 import SuccessModal from 'components/modals/SuccessModal.tsx';
 import LoadingModal from 'components/modals/LoadingModal.tsx';

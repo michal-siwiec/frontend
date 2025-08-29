@@ -4,7 +4,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { USER_PERSONAL_DETAILS } from 'graphql/queries/user.ts';
 import { UPDATE_USER_DETAILS } from 'graphql/mutations/user.ts';
 import { handleMyDetailsValidation } from 'services/user.ts';
-import TextInput from 'components/inputs/TextInput.jsx';
+import TextInput from 'components/inputs/TextInput.tsx';
 import SubmitButton from 'components/SubmitButton.tsx';
 import SuccessModal from 'components/modals/SuccessModal.tsx';
 import LoadingModal from 'components/modals/LoadingModal.tsx';

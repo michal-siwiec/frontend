@@ -14,7 +14,7 @@ import {
 } from 'redux_/order/actionsCreator.ts';
 import { OrderContext } from 'contexts/contexts.ts';
 import { handleClientDetailsValidation } from 'services/user.ts';
-import TextInput from 'components/inputs/TextInput.jsx';
+import TextInput from 'components/inputs/TextInput.tsx';
 import SubmitButton from 'components/SubmitButton.tsx';
 
 const ClientDetails = () => {

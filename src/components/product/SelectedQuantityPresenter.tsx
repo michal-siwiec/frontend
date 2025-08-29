@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Products } from 'types/product';
-import NumberInput from 'components/inputs/NumberInput.jsx';
+import NumberInput from 'components/inputs/NumberInput.tsx';
 
 type SelectedQuantityPresenterProps = { productID: string };
 type BasketType = { basket: { addedProducts: Products } };

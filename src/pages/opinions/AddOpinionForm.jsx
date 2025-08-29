@@ -6,7 +6,7 @@ import { ADD_OPINION } from 'graphql/mutations/opinion.ts';
 import { handleAddOpinionValidation } from 'services/opinions.ts';
 import FormContainer from 'components/containers/FormContainer.jsx';
 import Rating from 'components/Rating.tsx';
-import TextArea from 'components/inputs/TextArea.jsx';
+import TextArea from 'components/inputs/TextArea.tsx';
 import SubmitButton from 'components/SubmitButton.tsx';
 
 const AddOpinionForm = ({

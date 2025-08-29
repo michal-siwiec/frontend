@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
-import FileInput from 'components/inputs/FileInput.jsx';
+import FileInput from 'components/inputs/FileInput.tsx';
 
 describe('FileInput component', () => {
   const mockOnChange = jest.fn();
