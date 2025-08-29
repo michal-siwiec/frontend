@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Tooltip from 'components/Tooltip.jsx';
+import Tooltip from 'components/Tooltip.tsx';
 
 describe('Tooltip Component', () => {
   it('renders without crashing', () => {

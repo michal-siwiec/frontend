@@ -1,8 +1,18 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, ReactElement } from 'react';
 import { Tooltip as MuiTooltip } from '@mui/material';
-import { exact, string, bool, element } from 'prop-types';
+import { TooltipProps as MuiTooltipProps } from '@mui/material/Tooltip';
 
-const Tooltip = ({ headerText, secondaryText, open, placement, children, classNames, id }) => {
+type TooltipProps = {
+  headerText: string,
+  secondaryText?: string,
+  open: boolean,
+  placement?: MuiTooltipProps['placement'],
+  children: ReactElement,
+  classNames?: string,
+  id?: string
+}
+
+const Tooltip = ({ headerText, secondaryText = '', open, placement = 'top', children, classNames = '', id = undefined }: TooltipProps) => {
   const blockName = 'tooltip';
 
   return (
@@ -22,23 +32,6 @@ const Tooltip = ({ headerText, secondaryText, open, placement, children, classNa
       {children}
     </MuiTooltip>
   );
-};
-
-Tooltip.propTypes = exact({
-  headerText: string.isRequired,
-  secondaryText: string,
-  open: bool.isRequired,
-  placement: string,
-  classNames: string,
-  children: element.isRequired,
-  id: string
-}).isRequired;
-
-Tooltip.defaultProps = {
-  placement: 'top',
-  secondaryText: null,
-  classNames: '',
-  id: null
 };
 
 export default Tooltip;

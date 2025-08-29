@@ -8,7 +8,7 @@ import LiveHelpIcon from '@mui/icons-material/LiveHelp';
 import LoadingModal from 'components/modals/LoadingModal.jsx';
 import ErrorModal from 'components/modals/ErrorModal.jsx';
 import Pagination from 'components/Pagination.jsx';
-import Tooltip from 'components/Tooltip.jsx';
+import Tooltip from 'components/Tooltip.tsx';
 
 const History = () => {
   const blockName = 'history';

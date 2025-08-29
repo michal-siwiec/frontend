@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import { generateTooltipHeaderText, generateTooltipSecondaryText, sortAvatarByMainField } from 'services/user.ts';
 import { UPDATE_USER_AVATARS } from 'graphql/mutations/user.ts';
 import { updateAvatars } from 'redux_/user/actionsCreator.ts';
-import Tooltip from 'components/Tooltip.jsx';
+import Tooltip from 'components/Tooltip.tsx';
 import SubmitButton from 'components/SubmitButton.jsx';
 import LoadingModal from 'components/modals/LoadingModal.jsx';
 import SuccessModal from 'components/modals/SuccessModal.jsx';

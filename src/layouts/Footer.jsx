@@ -5,7 +5,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import TwitterIcon from '@mui/icons-material/Twitter';
-import Tooltip from 'components/Tooltip.jsx';
+import Tooltip from 'components/Tooltip.tsx';
 import useFetchUrl from 'hooks/useFetchUrl.jsx';
 import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem.ts';
 import { formatPhoneNumber } from 'utils/helpers.ts';
