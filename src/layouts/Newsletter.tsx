@@ -1,20 +1,21 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useLazyQuery, useMutation } from '@apollo/client';
-import { USER_PERSONAL_DETAILS, IS_USER_SAVED_TO_NEWSLETTER } from 'graphql/queries/user.ts';
-import { SUBSCRIBE_TO_NEWSLETTER } from 'graphql/mutations/user.ts';
+import { RootState } from 'redux_/store';
+import { USER_PERSONAL_DETAILS, IS_USER_SAVED_TO_NEWSLETTER } from 'graphql/queries/user';
+import { SUBSCRIBE_TO_NEWSLETTER } from 'graphql/mutations/user';
 import useIsLogged from 'hooks/useIsLogged.jsx';
-import { handleSaveToNewsletterValidation } from 'services/newsletter.ts';
-import FormContainer from 'components/containers/FormContainer.tsx';
-import TextInput from 'components/inputs/TextInput.tsx';
-import SubmitButton from 'components/SubmitButton.tsx';
-import SuccessModal from 'components/modals/SuccessModal.tsx';
-import LoadingModal from 'components/modals/LoadingModal.tsx';
-import ErrorModal from 'components/modals/ErrorModal.tsx';
+import { handleSaveToNewsletterValidation } from 'services/newsletter';
+import FormContainer from 'components/containers/FormContainer';
+import TextInput from 'components/inputs/TextInput';
+import SubmitButton from 'components/SubmitButton';
+import SuccessModal from 'components/modals/SuccessModal';
+import LoadingModal from 'components/modals/LoadingModal';
+import ErrorModal from 'components/modals/ErrorModal';
 
 const Newsletter = () => {
   const blockName = 'newsletter';
-  const { loggedUserId } = useSelector((store) => store.user);
+  const { loggedUserId } = useSelector((store: RootState) => store.user);
   const isLogged = useIsLogged();
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
@@ -65,17 +66,12 @@ const Newsletter = () => {
     setEmail('');
   };
 
-  const handleNameOnChange = ({ target: { value } }) => setName(value);
-  const handleSurnameOnChange = ({ target: { value } }) => setSurname(value);
-  const handleEmailOnChange = ({ target: { value } }) => setEmail(value);
+  const handleNameOnChange = ({ target: { value } }: { target: { value: string } }) => setName(value);
+  const handleSurnameOnChange = ({ target: { value } }: { target: { value: string } }) => setSurname(value);
+  const handleEmailOnChange = ({ target: { value } }: { target: { value: string } }) => setEmail(value);
 
   const handleSaveToNewsletter = () => {
-    const {
-      nameError,
-      surnameError,
-      emailError,
-      validationStatus
-    } = handleSaveToNewsletterValidation(name, surname, email);
+    const { nameError, surnameError, emailError, validationStatus } = handleSaveToNewsletterValidation(name, surname, email);
 
     setNameErrorMessage(nameError);
     setSurnameErrorMessage(surnameError);
