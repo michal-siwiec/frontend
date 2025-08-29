@@ -4,7 +4,7 @@ import { CATEGORY_NAMES } from 'data/uiElements';
 
 // TODO: Update scripts inside package.json to match to ts files
 
-export const generateAddedProductPayload = (product: Product, selectedQuantity: number) => ({
+export const generateAddedProductPayload = (product: Product['attributes'], selectedQuantity: number) => ({
   id: product.id,
   quantity: selectedQuantity,
   attributes: product

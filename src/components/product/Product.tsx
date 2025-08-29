@@ -5,7 +5,7 @@ import { Product as ProductType } from 'types/product';
 import ShadowedContainer from 'components/containers/ShadowedContainer.jsx';
 import { APPEARING_IN_SEQUENCE } from 'data/animations';
 import { formatPrice } from 'utils/helpers';
-import AddToBasketForm from './AddToBasketForm.jsx';
+import AddToBasketForm from './AddToBasketForm';
 import SelectedQuantityPresenter from './SelectedQuantityPresenter';
 
 type ProductProps = {

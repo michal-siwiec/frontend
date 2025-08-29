@@ -1,5 +1,7 @@
 import { DeepReadonly } from 'utility-types';
 
+// TODO: Consider adding new type - ProductAttributes
+
 export type Product = DeepReadonly<{
   id: string,
   quantity: number,

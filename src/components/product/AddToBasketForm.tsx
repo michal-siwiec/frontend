@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import { exact, number, string } from 'prop-types';
+import { Product } from 'types/product';
 import NumberInput from 'components/inputs/NumberInput.jsx';
-import SubmitButton from 'components/SubmitButton.tsx';
+import SubmitButton from 'components/SubmitButton';
 import { useSelector, useDispatch } from 'react-redux';
-import { addProductToBasket } from 'redux_/basket/actionCreators.ts';
-import { generateAddedProductPayload, generatePossibleProductQuantity } from 'services/products.ts';
+import { addProductToBasket } from 'redux_/basket/actionCreators';
+import { generateAddedProductPayload, generatePossibleProductQuantity } from 'services/products';
 
-const AddToBasketForm = ({ product }) => {
+type AddToBasketFormProps = {
+  product: Product['attributes']
+};
+
+const AddToBasketForm = ({ product }: AddToBasketFormProps) => {
   const blockName = 'product';
   const { id: productID, availableQuantity } = product;
   const productsInBasket = useSelector(({ basket: { addedProducts } }) => addedProducts);
@@ -14,7 +18,7 @@ const AddToBasketForm = ({ product }) => {
   const dispatch = useDispatch();
   const [selectedQuantity, setSelectedQuantity] = useState(1);
 
-  const selectQuantityOnChange = ({ target: { value } }) => {
+  const selectQuantityOnChange = ({ target: { value } }: { target: { value: string } }) => {
     let quantity = parseInt(value) || 1;
     if (quantity > possibleProductQuantity) quantity = possibleProductQuantity
 
@@ -39,13 +43,5 @@ const AddToBasketForm = ({ product }) => {
     </div>
   );
 };
-
-AddToBasketForm.propTypes = exact({
-  availableQuantity: number.isRequired,
-  id: string.isRequired,
-  name: string.isRequired,
-  picturePath: string.isRequired,
-  price: number.isRequired
-}).isRequired;
 
 export default AddToBasketForm;
