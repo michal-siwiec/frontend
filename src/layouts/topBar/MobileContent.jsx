@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import Logo from './elements/Logo.jsx';
 import HamburgerMenu from './elements/HamburgerMenu.jsx';
-import Drawer from 'components/Drawer.jsx';
+import Drawer from 'components/Drawer.tsx';
 import Authorization from './elements/Authorization.jsx';
 import MenuList from './elements/MenuList.jsx';
 import Basket from './elements/basket/Basket.jsx';

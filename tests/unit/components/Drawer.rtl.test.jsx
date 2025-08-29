@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Drawer from 'components/Drawer.jsx';
+import Drawer from 'components/Drawer.tsx';
 
 describe('Drawer component', () => {
   const defaultProps = {
