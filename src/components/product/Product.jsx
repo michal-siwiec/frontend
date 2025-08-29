@@ -5,7 +5,7 @@ import ShadowedContainer from 'components/containers/ShadowedContainer.jsx';
 import { APPEARING_IN_SEQUENCE } from 'data/animations.ts';
 import { formatPrice } from 'utils/helpers.ts';
 import AddToBasketForm from './AddToBasketForm.jsx';
-import SelectedQuantityPresenter from './SelectedQuantityPresenter.jsx';
+import SelectedQuantityPresenter from './SelectedQuantityPresenter.tsx';
 
 const Product = ({ product, index, mode }) => {
   const blockName = 'product';
@@ -40,7 +40,7 @@ const Product = ({ product, index, mode }) => {
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, consequatur. Ex blanditiis accusamus nam molestiae officiis totam repellendus labore beatae ullam quas, hic facilis fugit illum tenetur, magni est distinctio.
         </p>
         { isMainMode && <AddToBasketForm product={product} /> }
-        { isBasketMode && <SelectedQuantityPresenter id={id} /> }
+        { isBasketMode && <SelectedQuantityPresenter productID={id} /> }
       </div>
     </ShadowedContainer>
   );

@@ -23,16 +23,18 @@ const NumberInput = ({
   />
 );
 
-NumberInput.propTypes = exact({
-  max: number.isRequired,
-  value: string.isRequired,
+NumberInput.propTypes = {
+  max: number,
+  value: string | number,
   classNames: string,
-  onChange: func.isRequired
-}).isRequired;
+  onChange: func
+};
 
 NumberInput.defaultProps = {
   classNames: '',
-  disabled: false
+  disabled: false,
+  onChange: () => {},
+  max: null
 };
 
 export default NumberInput;
