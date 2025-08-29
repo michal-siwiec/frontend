@@ -3,7 +3,7 @@ import Rating from 'components/Rating.tsx';
 
 describe('Rating Component', () => {
   it('renders without crashing', () => {
-    render(<Rating value={3} onChange={() => {}} />);
+    render(<Rating value={3} onChange={() => {}} readOnly={false} />);
     const radios = screen.getAllByRole('radio');
     const checkedRadios = radios.filter((button) => button.checked);
 
