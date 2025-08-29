@@ -3,7 +3,7 @@ import clsx from 'clsx';
 
 type TextInputProps = {
   placeholder: string,
-  type: 'text' | 'password',
+  type?: 'text' | 'password',
   value: string,
   classNames?: string,
   validationError?: string,
@@ -12,7 +12,7 @@ type TextInputProps = {
   onChange: () => void,
 };
 
-const TextInput = ({ placeholder, type, classNames = '', value, onChange, validationError, isDisabled = false, dataTestId }: TextInputProps) => (
+const TextInput = ({ placeholder, type = 'text', classNames = '', value, onChange, validationError, isDisabled = false, dataTestId }: TextInputProps) => (
   <Fragment>
     <input
       type={type}
