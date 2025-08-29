@@ -1,6 +1,6 @@
 import { exact, bool, string } from 'prop-types';
 import { Modal, CircularProgress } from '@mui/material';
-import VawyDots from 'components/VawyDots.jsx';
+import VawyDots from 'components/VawyDots.tsx';
 
 const LoadingModal = ({ isOpen, info }) => {
   const blockName = 'modal';

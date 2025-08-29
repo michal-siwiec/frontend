@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import VawyDots from 'components/VawyDots.jsx';
+import VawyDots from 'components/VawyDots.tsx';
 
 describe('VavyDots Component', () => {
   it('renders without crashing', () => {
