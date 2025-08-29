@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { OrderContext } from 'contexts/contexts.ts';
-import Stepper from 'components/Stepper.jsx';
+import Stepper from 'components/Stepper.tsx';
   import { STEP_LABELS } from 'data/uiElements.ts';
 
 const Header = () => {

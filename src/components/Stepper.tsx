@@ -1,8 +1,14 @@
-import { exact, func, number, arrayOf, string } from 'prop-types';
+import React from 'react';
 import { Stepper as MuiStepper, Step, StepLabel } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
 
-const Stepper = ({ activeStep, handleStepOnClick, labels }) => {
+type StepperType = {
+  activeStep: number,
+  labels: Array<string>,
+  handleStepOnClick: (index: number) => void
+};
+
+const Stepper = ({ activeStep, handleStepOnClick, labels }: StepperType) => {
   const blockName = 'stepper';
 
   return (
@@ -19,11 +25,5 @@ const Stepper = ({ activeStep, handleStepOnClick, labels }) => {
     </MuiStepper>
   );
 };
-
-Stepper.propTypes = exact({
-  activeStep: number.isRequired,
-  handleStepOnClick: func.isRequired,
-  labels: arrayOf(string)
-}).isRequired;
 
 export default Stepper;
