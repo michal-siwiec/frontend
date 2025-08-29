@@ -1,7 +1,14 @@
-import { exact, func, number } from 'prop-types';
+import React from 'react';
 import { default as ReactJSPagination } from 'react-js-pagination';
 
-const Pagination = ({ activePage, onChange, itemsQuantity, quantityPerPage }) => {
+type PaginationProps = {
+  activePage: number,
+  itemsQuantity: number,
+  quantityPerPage: number,
+  onChange: () => void
+};
+
+const Pagination = ({ activePage, onChange, itemsQuantity, quantityPerPage }: PaginationProps) => {
   const blockName = 'pagination';
   const isOnlyOnePage = itemsQuantity <= quantityPerPage;
 
@@ -25,12 +32,5 @@ const Pagination = ({ activePage, onChange, itemsQuantity, quantityPerPage }) =>
     </div>
   );
 };
-
-Pagination.propTypes = exact({
-  activePage: number.isRequired,
-  onChange: func.isRequired,
-  itemsQuantity: number.isRequired,
-  quantityPerPage: number.isRequired
-}).isRequired;
 
 export default Pagination;

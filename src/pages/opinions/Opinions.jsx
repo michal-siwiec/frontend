@@ -6,7 +6,7 @@ import useIsLogged from 'hooks/useIsLogged.jsx';
 import LoadingModal from 'components/modals/LoadingModal.jsx';
 import SuccessModal from 'components/modals/SuccessModal.jsx';
 import ErrorModal from 'components/modals/ErrorModal.jsx';
-import Pagination from 'components/Pagination.jsx';
+import Pagination from 'components/Pagination.tsx';
 import OpinionsList from './OpinionsList.jsx';
 import EmptyOpinionsList from './EmptyOpinionsList.jsx';
 import AddOpinionForm from './AddOpinionForm.jsx';
