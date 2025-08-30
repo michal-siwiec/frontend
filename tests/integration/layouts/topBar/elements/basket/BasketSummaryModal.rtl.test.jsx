@@ -1,6 +1,6 @@
 import { screen, fireEvent } from '@testing-library/react';
 import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
-import BasketSummaryModal from 'layouts/topBar/elements/basket/BasketSummaryModal.jsx';
+import BasketSummaryModal from 'layouts/topBar/elements/basket/BasketSummaryModal.tsx';
 
 const mockNavigate = jest.fn();
 

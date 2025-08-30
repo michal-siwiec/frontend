@@ -1,9 +1,14 @@
-import { exact, bool, func } from 'prop-types';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Modal } from '@mui/material';
-import SubmitButton from 'components/SubmitButton.tsx';
+import SubmitButton from 'components/SubmitButton';
 
-const EmptyBasketModal = ({ open, handleOnClose }) => {
+type EmptyBasketModalProps = {
+  open: boolean,
+  handleOnClose: (...args: any[]) => void
+};
+
+const EmptyBasketModal = ({ open, handleOnClose }: EmptyBasketModalProps) => {
   const blockName = 'modal';
   const navigate = useNavigate();
 
@@ -33,10 +38,5 @@ const EmptyBasketModal = ({ open, handleOnClose }) => {
     </Modal>
   );
 };
-
-EmptyBasketModal.propTypes = exact({
-  open: bool.isRequired,
-  handleOnClose: func.isRequired
-}).isRequired;
 
 export default EmptyBasketModal;

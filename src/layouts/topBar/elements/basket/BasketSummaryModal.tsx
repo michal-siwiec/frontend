@@ -1,13 +1,19 @@
-import { exact, bool, func } from 'prop-types';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { RootState } from 'redux_/store';
 import { Modal } from '@mui/material';
-import Product from 'components/product/Product.tsx';
-import SubmitButton from 'components/SubmitButton.tsx';
+import Product from 'components/product/Product';
+import SubmitButton from 'components/SubmitButton';
 
-const BasketSummaryModal = ({ open, handleOnClose }) => {
+type BasketSummaryModalProps = {
+  open: boolean,
+  handleOnClose: (...args: any[]) => void
+};
+
+const BasketSummaryModal = ({ open, handleOnClose }: BasketSummaryModalProps) => {
   const blockName = 'modal';
-  const productsInBasket = useSelector(({ basket: { addedProducts } }) => addedProducts);
+  const productsInBasket = useSelector((store: RootState) => store.basket.addedProducts);
   const navigate = useNavigate();
 
   const handleSubmitOnMouseDown = () => {
@@ -44,10 +50,5 @@ const BasketSummaryModal = ({ open, handleOnClose }) => {
     </Modal>
   );
 };
-
-BasketSummaryModal.propTypes = exact({
-  open: bool.isRequired,
-  handleOnClose: func.isRequired
-}).isRequired;
 
 export default BasketSummaryModal;

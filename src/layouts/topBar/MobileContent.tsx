@@ -4,7 +4,7 @@ import HamburgerMenu from './elements/HamburgerMenu';
 import Drawer from 'components/Drawer';
 import Authorization from './elements/Authorization';
 import MenuList from './elements/MenuList';
-import Basket from './elements/basket/Basket.jsx';
+import Basket from './elements/basket/Basket';
 
 const MobileContent = () => {
   const blockName = 'top-bar-elements';

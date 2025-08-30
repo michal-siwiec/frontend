@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { RootState } from 'redux_/store';
 import { isEmpty } from 'lodash';
-import { countTotalPrice } from 'utils/helpers.ts';
+import { countTotalPrice } from 'utils/helpers';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import EmptyBasketModal from 'layouts/topBar/elements/basket/EmptyBasketModal.jsx';
-import BasketSummaryModal from 'layouts/topBar/elements/basket/BasketSummaryModal.jsx';
+import EmptyBasketModal from 'layouts/topBar/elements/basket/EmptyBasketModal';
+import BasketSummaryModal from 'layouts/topBar/elements/basket/BasketSummaryModal';
 
 const Basket = () => {
-  const productsInBasket = useSelector(({ basket: { addedProducts } }) => addedProducts);
+  const productsInBasket = useSelector((store: RootState) => store.basket.addedProducts);
   const [isBasketSummaryOpen, setIsBasketSummaryOpen] = useState(false);
   const [isEmptyBasketModalOpen, setIsEmptyBasketModalOpen] = useState(false);
   const blockName = 'top-bar-elements';
