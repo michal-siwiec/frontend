@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import Footer from 'layouts/Footer.jsx';
+import Footer from 'layouts/Footer.tsx';
 import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem.ts';
 
 jest.mock('services/fetchFileOnLocalFileSystem', () => jest.fn());

@@ -5,12 +5,12 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import TwitterIcon from '@mui/icons-material/Twitter';
-import Tooltip from 'components/Tooltip.tsx';
+import Tooltip from 'components/Tooltip';
 import useFetchUrl from 'hooks/useFetchUrl.jsx';
-import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem.ts';
-import { formatPhoneNumber } from 'utils/helpers.ts';
-import { FOOTER_MENU_ROUTING } from 'data/routing.ts';
-import { SHOP_RULES_TEXT, PRIVACY_POLICY_TEXT, SHOP_MAIL, SHOP_PHONE } from 'data/uiElements.ts';
+import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem';
+import { formatPhoneNumber } from 'utils/helpers';
+import { FOOTER_MENU_ROUTING } from 'data/routing';
+import { SHOP_RULES_TEXT, PRIVACY_POLICY_TEXT, SHOP_MAIL, SHOP_PHONE } from 'data/uiElements';
 
 const Footer = () => {
   const blockName = 'footer';
@@ -25,6 +25,7 @@ const Footer = () => {
         <h4 className={`${blockName}__part-header`}>
           <Link to="/">
             <img
+              // @ts-ignore // TODO
               src={logoURL}
               alt="Budoman-logo"
               className={`${blockName}__logo-img`}
