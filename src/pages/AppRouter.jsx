@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
 import Products from './Products.jsx';
 import Login from 'pages/Login.tsx';
-import Register from 'pages/Register.jsx';
+import Register from 'pages/Register.tsx';
 import Opinions from 'pages/opinions/Opinions.jsx';
 import Order from 'pages/order/Order.jsx';
-import ThankYouPage from 'pages/ThankYouPage.jsx';
+import ThankYouPage from 'pages/ThankYouPage.tsx';
 import UserPanel from 'pages/userPanel/UserPanel.jsx';
 import MyDetails from 'pages/userPanel/MyDetails.jsx';
 import History from 'pages/userPanel/History.jsx';

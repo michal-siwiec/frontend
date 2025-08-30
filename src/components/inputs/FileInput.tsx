@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import clsx from 'clsx';
 
 type FileInputProps = {
-  onChange: () => void,
+  onChange: (...args: any[]) => void,
   innerRef: React.Ref<HTMLInputElement>,
   classNames?: string,
   validationError?: string,

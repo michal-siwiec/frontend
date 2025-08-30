@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Product } from 'types/product';
-import NumberInput from 'components/inputs/NumberInput.tsx';
+import { TextInputOnChange } from 'types/events';
+import NumberInput from 'components/inputs/NumberInput';
 import SubmitButton from 'components/SubmitButton';
 import { useSelector, useDispatch } from 'react-redux';
 import { addProductToBasket } from 'redux_/basket/actionCreators';
@@ -18,7 +19,7 @@ const AddToBasketForm = ({ product }: AddToBasketFormProps) => {
   const dispatch = useDispatch();
   const [selectedQuantity, setSelectedQuantity] = useState(1);
 
-  const selectQuantityOnChange = ({ target: { value } }: { target: { value: string } }) => {
+  const selectQuantityOnChange = ({ target: { value } }: TextInputOnChange) => {
     let quantity = parseInt(value) || 1;
     if (quantity > possibleProductQuantity) quantity = possibleProductQuantity
 

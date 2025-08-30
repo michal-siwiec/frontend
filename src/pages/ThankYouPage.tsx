@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react';
 import { useSelector } from 'react-redux';
-import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem.ts';
-import SubmitButton from 'components/SubmitButton.tsx';
+import { RootState } from 'redux_/store';
+import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem';
+import SubmitButton from 'components/SubmitButton';
 
 const ThankYouPage = () => {
   const blockName = 'thank-you-page';
-  const { loggedUserId } = useSelector((store) => store.user);
-  const { orderID, paymentMethod, totalPrice } = useSelector((store) => store.order);
+  const { loggedUserId } = useSelector((store: RootState) => store.user);
+  const { orderID, paymentMethod, totalPrice } = useSelector((store: RootState) => store.order);
 
   const isTraditionalTransfer = paymentMethod === 'traditional_transfer';
 

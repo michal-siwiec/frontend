@@ -97,9 +97,9 @@ export const handleRegisterValidation = (email: string, password: string, avatar
   const areAvatarsValid = validateAvatars(avatars);
 
   return {
-    emailError: !isEmailValid && VALIDATION_ERROR_MESSAGES.email,
-    passwordError: !isPasswordValid && VALIDATION_ERROR_MESSAGES.password,
-    avatarError: !areAvatarsValid && VALIDATION_ERROR_MESSAGES.avatar,
+    emailError: !isEmailValid ? VALIDATION_ERROR_MESSAGES.email : '',
+    passwordError: !isPasswordValid ? VALIDATION_ERROR_MESSAGES.password : '',
+    avatarError: !areAvatarsValid ? VALIDATION_ERROR_MESSAGES.avatar : '',
     validationStatus: isEmailValid && isPasswordValid && areAvatarsValid
   };
 };

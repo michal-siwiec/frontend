@@ -501,8 +501,8 @@ describe('handleRegisterValidation', () => {
 
     expect(response).toEqual({
       emailError: 'Email ma niepoprawny format!',
-      passwordError: false,
-      avatarError: false,
+      passwordError: '',
+      avatarError: '',
       validationStatus: false
     });
   });
@@ -512,9 +512,9 @@ describe('handleRegisterValidation', () => {
     const response = handleRegisterValidation(email, password, avatars);
 
     expect(response).toEqual({
-      emailError: false,
+      emailError: '',
       passwordError: 'Hasło powinno mieć minimum 8 znaków, zawierać małą i dużą literę oraz cyfrę!',
-      avatarError: false,
+      avatarError: '',
       validationStatus: false
     });
   });
@@ -524,8 +524,8 @@ describe('handleRegisterValidation', () => {
     const response = handleRegisterValidation(email, password, avatars);
 
     expect(response).toEqual({
-      emailError: false,
-      passwordError: false,
+      emailError: '',
+      passwordError: '',
       avatarError: 'Dozwolone formaty to: png, svg, jpeg',
       validationStatus: false
     });
@@ -539,7 +539,7 @@ describe('handleRegisterValidation', () => {
     expect(response).toEqual({
       emailError: 'Email ma niepoprawny format!',
       passwordError: 'Hasło powinno mieć minimum 8 znaków, zawierać małą i dużą literę oraz cyfrę!',
-      avatarError: false,
+      avatarError: '',
       validationStatus: false
     });
   });
@@ -548,9 +548,9 @@ describe('handleRegisterValidation', () => {
     const response = handleRegisterValidation(email, password, avatars);
 
     expect(response).toEqual({
-      emailError: false,
-      passwordError: false,
-      avatarError: false,
+      emailError: '',
+      passwordError: '',
+      avatarError: '',
       validationStatus: true
     });
   });

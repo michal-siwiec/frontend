@@ -1,6 +1,6 @@
 import { screen, fireEvent } from '@testing-library/react';
 import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
-import ThankYouPage from 'pages/ThankYouPage.jsx';
+import ThankYouPage from 'pages/ThankYouPage.tsx';
 import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem.ts';
 
 jest.mock('services/fetchFileOnLocalFileSystem.ts', () => jest.fn());

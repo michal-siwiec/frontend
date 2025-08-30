@@ -4,7 +4,7 @@ import { screen, fireEvent, waitFor } from '@testing-library/react';
 import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
 import { REGISTER_USER } from 'graphql/mutations/user.ts';
 import { ERROR_CODES } from 'data/errors.ts';
-import Register from 'pages/Register.jsx';
+import Register from 'pages/Register.tsx';
 
 describe('Register page', () => {
   afterEach(() => {

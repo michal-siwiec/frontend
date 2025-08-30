@@ -2,7 +2,7 @@ import React from 'react';
 
 type SubmitButtonProps = {
   classNames?: string,
-  onMouseDown: () => void,
+  onMouseDown: (...args: any[]) => void,
   value: string,
   dataTestId?: string
 };

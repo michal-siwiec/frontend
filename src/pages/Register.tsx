@@ -1,25 +1,28 @@
 import React, { Fragment, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { useMutation } from '@apollo/client';
+import { RootState } from 'redux_/store';
+import { useMutation, ApolloError, ServerError } from '@apollo/client';
+import { TextInputOnChange, FileInputOnChange } from 'types/events';
+import { Avatars } from 'types/avatar';
 import useRedirect from 'hooks/useRedirect.jsx';
-import { login } from 'redux_/user/actionsCreator.ts';
-import { handleRegisterValidation, generateAvatars } from 'services/user.ts';
-import { REGISTER_USER } from 'graphql/mutations/user.ts';
-import FormContainer from 'components/containers/FormContainer.tsx';
-import TextInput from 'components/inputs/TextInput.tsx';
-import FileInput from 'components/inputs/FileInput.tsx';
-import SubmitButton from 'components/SubmitButton.tsx';
-import LoadingModal from 'components/modals/LoadingModal.tsx';
-import ErrorModal from 'components/modals/ErrorModal.tsx';
-import { ERROR_CODES } from 'data/errors.ts';
+import { login } from 'redux_/user/actionsCreator';
+import { handleRegisterValidation, generateAvatars } from 'services/user';
+import { REGISTER_USER } from 'graphql/mutations/user';
+import FormContainer from 'components/containers/FormContainer';
+import TextInput from 'components/inputs/TextInput';
+import FileInput from 'components/inputs/FileInput';
+import SubmitButton from 'components/SubmitButton';
+import LoadingModal from 'components/modals/LoadingModal';
+import ErrorModal from 'components/modals/ErrorModal';
+import { ERROR_CODES } from 'data/errors';
 
 const Register = () => {
   const blockName = 'register';
   const dispatch = useDispatch();
-  const fileInput = useRef(null);
-  const { loggedUserId } = useSelector((store) => store.user);
-  const [avatars, setAvatars] = useState([]);
+  const fileInput = useRef<null | HTMLInputElement>(null);
+  const { loggedUserId } = useSelector((store: RootState) => store.user);
+  const [avatars, setAvatars] = useState<Avatars>([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailErrorMessage, setEmailErrorMessage] = useState('');
@@ -50,24 +53,19 @@ const Register = () => {
     }
   });
 
-  const handleEmailOnChange = ({ target: { value } }) => setEmail(value);
-  const handlePasswordOnChange = ({ target: { value } }) => setPassword(value);
+  const handleEmailOnChange = ({ target: { value } }: TextInputOnChange) => setEmail(value);
+  const handlePasswordOnChange = ({ target: { value } }: TextInputOnChange) => setPassword(value);
 
-  const handleFileOnChange = async ({ target: { files } }) => {
+  const handleFileOnChange = async ({ target: { files } }: FileInputOnChange) => {
     const generatedAvatars = await generateAvatars(files);
 
     setAvatars(generatedAvatars);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    const {
-      emailError,
-      passwordError,
-      avatarError,
-      validationStatus
-    } = handleRegisterValidation(email, password, avatars);
+    const { emailError, passwordError, avatarError, validationStatus } = handleRegisterValidation(email, password, avatars);
 
     setEmailErrorMessage(emailError);
     setPasswordErrorMessage(passwordError);
@@ -81,7 +79,7 @@ const Register = () => {
     setAvatars([]);
     setEmail('');
     setPassword('');
-    fileInput.current.value = '';
+    fileInput.current!.value = '';
   };
 
   const loginUser = () => dispatch(login(data));
