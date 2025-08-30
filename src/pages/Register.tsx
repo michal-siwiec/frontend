@@ -33,7 +33,7 @@ const Register = () => {
 
   const [registerUser, { loading, data }] = useMutation(REGISTER_USER, {
     onError: (error) => {
-      const statusCode = (error.networkError as ServerError).statusCode;
+      const statusCode = (error.networkError as ServerError)?.statusCode;
 
       if (statusCode === 500) {
         setRegisterUserErrorMesage('Niestety nie udało się zarejestrować nowego konta.');
@@ -43,7 +43,7 @@ const Register = () => {
         if (errorCode === ERROR_CODES.EMAIL_ALREADY_TAKEN) {
           setRegisterUserErrorMesage('Adres email jest już zajęty!');
         } else {
-          setRegisterUserErrorMesage('Niestety nie udało się zarejestrować nowego konta 22222.');
+          setRegisterUserErrorMesage('Niestety nie udało się zarejestrować nowego konta');
         }
       }
 
