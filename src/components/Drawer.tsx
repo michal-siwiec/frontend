@@ -2,14 +2,14 @@ import React, { ReactElement } from 'react';
 import MuiDrawer, { DrawerProps as MuiDrawerProps } from '@mui/material/Drawer';
 
 type DrawerProps = {
-  anchor: MuiDrawerProps['anchor'],
+  anchor?: MuiDrawerProps['anchor'],
   isOpen: boolean,
   children: ReactElement,
-  className: string,
+  className?: string,
   onClose: () => void
 };
 
-const Drawer = ({ anchor = 'left', isOpen, onClose, children, className = '' }: DrawerProps) => (
+const Drawer = ({ isOpen, children, onClose, anchor = 'left', className = '' }: DrawerProps) => (
   <MuiDrawer
     anchor={anchor}
     open={isOpen}

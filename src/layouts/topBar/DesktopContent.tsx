@@ -1,3 +1,4 @@
+import React from 'react';
 import Basket from './elements/basket/Basket.jsx';
 import Logo from './elements/Logo.jsx';
 import Authorization from './elements/Authorization.jsx';
