@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import useIsMobile from 'hooks/useIsMobile.jsx';
-import { getSignedUrl } from 'services/s3.ts';
-import { WIDTH_BREAKPOINTS } from 'data/breakpoints.ts';
+import { getSignedUrl } from 'services/s3';
+import { WIDTH_BREAKPOINTS } from 'data/breakpoints';
 
 const AdvertisingBox = () => {
   const blockName = 'advertising-box';
-  const [backgroundPictureURL, setBackgroundPictureURL] = useState(null);
+  const [backgroundPictureURL, setBackgroundPictureURL] = useState('');
   const isMobile = useIsMobile(WIDTH_BREAKPOINTS.xl);
 
   useEffect(() => {
