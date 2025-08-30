@@ -31,17 +31,19 @@ const Register = () => {
   const [registerUserError, setRegisterUserError] = useState(false);
   const [registerUserErrorMesage, setRegisterUserErrorMesage] = useState('');
 
-  const [registerUser, { loading, data, error }] = useMutation(REGISTER_USER, {
-    onError: () => {
-      if (error.networkError?.statusCode === 500) {
+  const [registerUser, { loading, data }] = useMutation(REGISTER_USER, {
+    onError: (error) => {
+      const statusCode = (error.networkError as ServerError).statusCode;
+
+      if (statusCode === 500) {
         setRegisterUserErrorMesage('Niestety nie udało się zarejestrować nowego konta.');
       } else {
-        const { extensions: { error_code: errorCode } } = error.graphQLErrors[0];
+        const errorCode = (error.graphQLErrors[0].extensions as { error_code: string }).error_code;
 
         if (errorCode === ERROR_CODES.EMAIL_ALREADY_TAKEN) {
           setRegisterUserErrorMesage('Adres email jest już zajęty!');
         } else {
-          setRegisterUserErrorMesage('Niestety nie udało się zarejestrować nowego konta.');
+          setRegisterUserErrorMesage('Niestety nie udało się zarejestrować nowego konta 22222.');
         }
       }
 
