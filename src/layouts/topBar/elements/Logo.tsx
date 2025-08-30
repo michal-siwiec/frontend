@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import useFetchUrl from 'hooks/useFetchUrl.jsx';
 
@@ -9,6 +10,7 @@ const Logo = () => {
     <div className={`${blockName}__logo`}>
       <Link to="/">
         <img
+          // @ts-ignore // TODO
           src={logoURL}
           alt="Budoman logo"
           className={`${blockName}__logo-img`}

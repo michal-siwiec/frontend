@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
 import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
-import Logo from 'layouts/topBar/elements/Logo.jsx';
+import Logo from 'layouts/topBar/elements/Logo.tsx';
 
 describe('Logo', () => {
   it('renders logo image inside a link to "/"', () => {

@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
 import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
-import MenuList from 'layouts/topBar/elements/MenuList.jsx';
+import MenuList from 'layouts/topBar/elements/MenuList.tsx';
 import { TOP_BAR_MENU_ROUTING } from 'data/routing.ts';
 
 describe('MenuList ', () => {

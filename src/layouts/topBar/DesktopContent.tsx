@@ -1,8 +1,8 @@
 import React from 'react';
 import Basket from './elements/basket/Basket.jsx';
-import Logo from './elements/Logo.jsx';
+import Logo from './elements/Logo';
 import Authorization from './elements/Authorization.jsx';
-import MenuList from './elements/MenuList.jsx';
+import MenuList from './elements/MenuList';
 
 const DesktopContent = () => {
   const blockName = 'top-bar-elements';

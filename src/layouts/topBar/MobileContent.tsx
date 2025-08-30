@@ -1,9 +1,9 @@
 import React, { Fragment, useState } from 'react';
-import Logo from './elements/Logo.jsx';
+import Logo from './elements/Logo';
 import HamburgerMenu from './elements/HamburgerMenu.jsx';
 import Drawer from 'components/Drawer';
 import Authorization from './elements/Authorization.jsx';
-import MenuList from './elements/MenuList.jsx';
+import MenuList from './elements/MenuList';
 import Basket from './elements/basket/Basket.jsx';
 
 const MobileContent = () => {
