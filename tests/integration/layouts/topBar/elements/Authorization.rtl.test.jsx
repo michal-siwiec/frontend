@@ -1,5 +1,5 @@
 import { screen, fireEvent, waitFor } from '@testing-library/react';
-import Authorization from 'layouts/topBar/elements/Authorization.jsx';
+import Authorization from 'layouts/topBar/elements/Authorization.tsx';
 import { LOGOUT_USER } from 'graphql/mutations/user.ts';
 import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
 

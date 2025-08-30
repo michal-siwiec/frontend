@@ -1,7 +1,11 @@
-import { exact, func } from 'prop-types';
+import React from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 
-const HamburgerMenu = ({ handleOnMouseDown }) => {
+type HamburgerMenuProps = {
+  handleOnMouseDown: (...args: any[]) => void
+}
+
+const HamburgerMenu = ({ handleOnMouseDown }: HamburgerMenuProps) => {
   const blockName = 'top-bar-elements';
 
   return (
@@ -15,9 +19,5 @@ const HamburgerMenu = ({ handleOnMouseDown }) => {
     </div>
   );
 };
-
-HamburgerMenu.propTypes = exact({
-  handleOnMouseDown: func.isRequired
-}).isRequired;
 
 export default HamburgerMenu;

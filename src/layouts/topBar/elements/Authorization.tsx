@@ -1,16 +1,17 @@
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
-import { logout } from 'redux_/user/actionsCreator.ts';
-import { LOGOUT_USER } from 'graphql/mutations/user.ts';
+import { RootState } from 'redux_/store';
+import { logout } from 'redux_/user/actionsCreator';
+import { LOGOUT_USER } from 'graphql/mutations/user';
 import useIsLogged from 'hooks/useIsLogged.jsx';
 import Avatar from 'components/Avatar.jsx';
 
 const Authorization = () => {
   const blockName = 'top-bar-elements';
   const dispatch = useDispatch();
-  const { loggedUserId, avatars } = useSelector((store) => store.user);
+  const { loggedUserId, avatars } = useSelector((store: RootState) => store.user);
   const isLogged = useIsLogged();
   const [logoutUser] = useMutation(LOGOUT_USER, {
     onCompleted: () => dispatch(logout())
