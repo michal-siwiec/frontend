@@ -446,7 +446,7 @@ describe('handleChangePasswordValidation', () => {
 
     expect(response).toEqual({
       passwordError: 'Hasło powinno mieć minimum 8 znaków, zawierać małą i dużą literę oraz cyfrę!',
-      passwordIdentityError: false,
+      passwordIdentityError: '',
       validationStatus: false
     });
   });
@@ -456,7 +456,7 @@ describe('handleChangePasswordValidation', () => {
     const response = handleChangePasswordValidation(password, passwordConfirmation);
 
     expect(response).toEqual({
-      passwordError: false,
+      passwordError: '',
       passwordIdentityError: 'Hasła nie są identyczne!',
       validationStatus: false
     });
@@ -477,8 +477,8 @@ describe('handleChangePasswordValidation', () => {
     const response = handleChangePasswordValidation(password, passwordConfirmation);
 
     expect(response).toEqual({
-      passwordError: false,
-      passwordIdentityError: false,
+      passwordError: '',
+      passwordIdentityError: '',
       validationStatus: true
     });
   });

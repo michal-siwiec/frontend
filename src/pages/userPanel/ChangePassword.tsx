@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useMutation } from '@apollo/client';
-import { CHANGE_USER_PASSWORD } from 'graphql/mutations/user.ts';
-import { handleChangePasswordValidation } from 'services/user.ts';
-import TextInput from 'components/inputs/TextInput.tsx';
-import SubmitButton from 'components/SubmitButton.tsx';
-import SuccessModal from 'components/modals/SuccessModal.tsx';
-import LoadingModal from 'components/modals/LoadingModal.tsx';
-import ErrorModal from 'components/modals/ErrorModal.tsx';
+import { RootState } from 'redux_/store'; // TODO: Is it a proper place to keep such type? Why not inside types
+import { TextInputOnChange } from 'types/events';
+import { CHANGE_USER_PASSWORD } from 'graphql/mutations/user';
+import { handleChangePasswordValidation } from 'services/user';
+import TextInput from 'components/inputs/TextInput';
+import SubmitButton from 'components/SubmitButton';
+import SuccessModal from 'components/modals/SuccessModal';
+import LoadingModal from 'components/modals/LoadingModal';
+import ErrorModal from 'components/modals/ErrorModal';
 
 const ChangePassword = () => {
   const blockName = 'change-password';
-  const { loggedUserId } = useSelector((store) => store.user);
+  const { loggedUserId } = useSelector((store: RootState) => store.user);
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [passwordValidationError, setPasswordValidationError] = useState('');
@@ -24,8 +26,8 @@ const ChangePassword = () => {
     onCompleted: () => setChangePasswordSuccess(true)
   });
 
-  const handlePasswordOnChange = ({ target: { value } }) => setPassword(value);
-  const handlePasswordConfirmationOnChange = ({ target: { value } }) => setPasswordConfirmation(value);
+  const handlePasswordOnChange = ({ target: { value } }: TextInputOnChange) => setPassword(value);
+  const handlePasswordConfirmationOnChange = ({ target: { value } }: TextInputOnChange) => setPasswordConfirmation(value);
 
   const clearForm = () => {
     setPassword('');
@@ -33,11 +35,7 @@ const ChangePassword = () => {
   };
 
   const handleSubmitOnMouseDown = () => {
-    const {
-      passwordError,
-      passwordIdentityError,
-      validationStatus
-    } = handleChangePasswordValidation(password, passwordConfirmation);
+    const { passwordError, passwordIdentityError, validationStatus } = handleChangePasswordValidation(password, passwordConfirmation);
 
     setPasswordValidationError(passwordError);
     setPasswordIdentityValidationError(passwordIdentityError);

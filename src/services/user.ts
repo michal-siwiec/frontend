@@ -85,8 +85,8 @@ export const handleChangePasswordValidation = (password: string, passwordConfirm
   const arePasswordsTheSame = areTheSame(password, passwordConfirmation);
 
   return {
-    passwordError: !isPasswordValid && VALIDATION_ERROR_MESSAGES.password,
-    passwordIdentityError: !arePasswordsTheSame && VALIDATION_ERROR_MESSAGES.passwordIdentity,
+    passwordError: !isPasswordValid ? VALIDATION_ERROR_MESSAGES.password : '',
+    passwordIdentityError: !arePasswordsTheSame ? VALIDATION_ERROR_MESSAGES.passwordIdentity : '',
     validationStatus: isPasswordValid && arePasswordsTheSame
   };
 };
