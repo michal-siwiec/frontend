@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useQuery, useMutation } from '@apollo/client';
-import { USER_PERSONAL_DETAILS } from 'graphql/queries/user.ts';
-import { UPDATE_USER_DETAILS } from 'graphql/mutations/user.ts';
-import { handleMyDetailsValidation } from 'services/user.ts';
-import TextInput from 'components/inputs/TextInput.tsx';
-import SubmitButton from 'components/SubmitButton.tsx';
-import SuccessModal from 'components/modals/SuccessModal.tsx';
-import LoadingModal from 'components/modals/LoadingModal.tsx';
-import ErrorModal from 'components/modals/ErrorModal.tsx';
+import { RootState } from 'redux_/store';
+import { TextInputOnChange } from 'types/events';
+import { USER_PERSONAL_DETAILS } from 'graphql/queries/user';
+import { UPDATE_USER_DETAILS } from 'graphql/mutations/user';
+import { handleMyDetailsValidation } from 'services/user';
+import TextInput from 'components/inputs/TextInput';
+import SubmitButton from 'components/SubmitButton';
+import SuccessModal from 'components/modals/SuccessModal';
+import LoadingModal from 'components/modals/LoadingModal';
+import ErrorModal from 'components/modals/ErrorModal';
 
 const MyDetails = () => {
   const blockName = 'my-details';
-  const { loggedUserId } = useSelector((store) => store.user);
+  const { loggedUserId } = useSelector((store: RootState) => store.user);
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -52,12 +54,12 @@ const MyDetails = () => {
     onCompleted: () => setUpdateUserDetailsSuccess(true)
   });
 
-  const handleNameOnChange = ({ target: { value } }) => setName(value);
-  const handleSurnameNameOnChange = ({ target: { value } }) => setSurname(value);
-  const handlePhoneNumberOnChange = ({ target: { value } }) => setPhoneNumber(value);
-  const handleCityOnChange = ({ target: { value } }) => setCity(value);
-  const handlePostalCodeOnChange = ({ target: { value } }) => setPostalCode(value);
-  const handleStreetOnChange = ({ target: { value } }) => setStreet(value);
+  const handleNameOnChange = ({ target: { value } }: TextInputOnChange) => setName(value);
+  const handleSurnameNameOnChange = ({ target: { value } }: TextInputOnChange) => setSurname(value);
+  const handlePhoneNumberOnChange = ({ target: { value } }: TextInputOnChange) => setPhoneNumber(value);
+  const handleCityOnChange = ({ target: { value } }: TextInputOnChange) => setCity(value);
+  const handlePostalCodeOnChange = ({ target: { value } }: TextInputOnChange) => setPostalCode(value);
+  const handleStreetOnChange = ({ target: { value } }: TextInputOnChange) => setStreet(value);
 
   const updatePersonalData = () => {
     const {

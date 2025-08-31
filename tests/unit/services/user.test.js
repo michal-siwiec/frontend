@@ -97,11 +97,11 @@ describe('handleMyDetailsValidation', () => {
 
     expect(response).toEqual({
       nameError: 'Imię ma niepoprawny format!',
-      surnameError: false,
-      phoneNumberError: false,
-      cityError: false,
-      postalCodeError: false,
-      streetError: false,
+      surnameError: '',
+      phoneNumberError: '',
+      cityError: '',
+      postalCodeError: '',
+      streetError: '',
       validationStatus: false
     });
   });
@@ -111,12 +111,12 @@ describe('handleMyDetailsValidation', () => {
     const response = handleMyDetailsValidation(name, surname, phoneNumber, city, postalCode, street);
 
     expect(response).toEqual({
-      nameError: false,
+      nameError: '',
       surnameError: 'Nazwisko ma niepoprawny format!',
-      phoneNumberError: false,
-      cityError: false,
-      postalCodeError: false,
-      streetError: false,
+      phoneNumberError: '',
+      cityError: '',
+      postalCodeError: '',
+      streetError: '',
       validationStatus: false
     });
   });
@@ -126,12 +126,12 @@ describe('handleMyDetailsValidation', () => {
     const response = handleMyDetailsValidation(name, surname, phoneNumber, city, postalCode, street);
 
     expect(response).toEqual({
-      nameError: false,
-      surnameError: false,
+      nameError: '',
+      surnameError: '',
       phoneNumberError: 'Telefon ma niepoprawny format!',
-      cityError: false,
-      postalCodeError: false,
-      streetError: false,
+      cityError: '',
+      postalCodeError: '',
+      streetError: '',
       validationStatus: false
     });
   });
@@ -141,12 +141,12 @@ describe('handleMyDetailsValidation', () => {
     const response = handleMyDetailsValidation(name, surname, phoneNumber, city, postalCode, street);
 
     expect(response).toEqual({
-      nameError: false,
-      surnameError: false,
-      phoneNumberError: false,
+      nameError: '',
+      surnameError: '',
+      phoneNumberError: '',
       cityError: 'Miasto ma niepoprawny format!',
-      postalCodeError: false,
-      streetError: false,
+      postalCodeError: '',
+      streetError: '',
       validationStatus: false
     });
   });
@@ -156,12 +156,12 @@ describe('handleMyDetailsValidation', () => {
     const response = handleMyDetailsValidation(name, surname, phoneNumber, city, postalCode, street);
 
     expect(response).toEqual({
-      nameError: false,
-      surnameError: false,
-      phoneNumberError: false,
-      cityError: false,
+      nameError: '',
+      surnameError: '',
+      phoneNumberError: '',
+      cityError: '',
       postalCodeError: 'Kod pocztowy ma niepoprawny format!',
-      streetError: false,
+      streetError: '',
       validationStatus: false
     });
   });
@@ -171,11 +171,11 @@ describe('handleMyDetailsValidation', () => {
     const response = handleMyDetailsValidation(name, surname, phoneNumber, city, postalCode, street);
 
     expect(response).toEqual({
-      nameError: false,
-      surnameError: false,
-      phoneNumberError: false,
-      cityError: false,
-      postalCodeError: false,
+      nameError: '',
+      surnameError: '',
+      phoneNumberError: '',
+      cityError: '',
+      postalCodeError: '',
       streetError: 'Ulica ma niepoprawny format!',
       validationStatus: false
     });
@@ -188,10 +188,10 @@ describe('handleMyDetailsValidation', () => {
 
     expect(response).toEqual({
       nameError: 'Imię ma niepoprawny format!',
-      surnameError: false,
-      phoneNumberError: false,
-      cityError: false,
-      postalCodeError: false,
+      surnameError: '',
+      phoneNumberError: '',
+      cityError: '',
+      postalCodeError: '',
       streetError: 'Ulica ma niepoprawny format!',
       validationStatus: false
     });
@@ -201,12 +201,12 @@ describe('handleMyDetailsValidation', () => {
     const response = handleMyDetailsValidation(name, surname, phoneNumber, city, postalCode, street);
 
     expect(response).toEqual({
-      nameError: false,
-      surnameError: false,
-      phoneNumberError: false,
-      cityError: false,
-      postalCodeError: false,
-      streetError: false,
+      nameError: '',
+      surnameError: '',
+      phoneNumberError: '',
+      cityError: '',
+      postalCodeError: '',
+      streetError: '',
       validationStatus: true
     });
   });

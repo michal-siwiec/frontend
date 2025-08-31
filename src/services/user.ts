@@ -34,12 +34,12 @@ export const handleMyDetailsValidation = (name: string, surname: string, phoneNu
   const isStreetValid = validateByRegexp(STREET_REGEX, street);
 
   return {
-    nameError: !isNameValid && VALIDATION_ERROR_MESSAGES.name,
-    surnameError: !isSurnameValid && VALIDATION_ERROR_MESSAGES.surname,
-    phoneNumberError: !isPhoneNumberValid && VALIDATION_ERROR_MESSAGES.phone,
-    cityError: !isCityValid && VALIDATION_ERROR_MESSAGES.city,
-    postalCodeError: !isPostalCodeValid && VALIDATION_ERROR_MESSAGES.postalCode,
-    streetError: !isStreetValid && VALIDATION_ERROR_MESSAGES.street,
+    nameError: !isNameValid ? VALIDATION_ERROR_MESSAGES.name : '',
+    surnameError: !isSurnameValid ? VALIDATION_ERROR_MESSAGES.surname : '',
+    phoneNumberError: !isPhoneNumberValid ? VALIDATION_ERROR_MESSAGES.phone : '',
+    cityError: !isCityValid ? VALIDATION_ERROR_MESSAGES.city : '',
+    postalCodeError: !isPostalCodeValid ? VALIDATION_ERROR_MESSAGES.postalCode : '',
+    streetError: !isStreetValid ? VALIDATION_ERROR_MESSAGES.street : '',
     validationStatus: isNameValid && isSurnameValid && isPhoneNumberValid
                       && isCityValid && isPostalCodeValid && isStreetValid
   };

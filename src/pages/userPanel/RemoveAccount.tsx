@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
-import { REMOVE_ACCOUNT } from 'graphql/mutations/user.ts';
-import { logout } from 'redux_/user/actionsCreator.ts';
-import SubmitButton from 'components/SubmitButton.tsx';
-import LoadingModal from 'components/modals/LoadingModal.tsx';
-import ErrorModal from 'components/modals/ErrorModal.tsx';
-import SuccessModal from 'components/modals/SuccessModal.tsx';
+import { RootState } from 'redux_/store';
+import { REMOVE_ACCOUNT } from 'graphql/mutations/user';
+import { logout } from 'redux_/user/actionsCreator';
+import SubmitButton from 'components/SubmitButton';
+import LoadingModal from 'components/modals/LoadingModal';
+import ErrorModal from 'components/modals/ErrorModal';
+import SuccessModal from 'components/modals/SuccessModal';
 
 const RemoveAccount = () => {
   const blockName = 'remove-account';
   const dispatch = useDispatch();
-  const { loggedUserId } = useSelector((store) => store.user);
+  const { loggedUserId } = useSelector((store: RootState) => store.user);
   const [removingAccountError, setRemovingAccountError] = useState(false);
   const [removingAccountSuccess, setRemovingAccountSuccess] = useState(false);
 
