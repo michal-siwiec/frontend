@@ -8,7 +8,7 @@ import Order from 'pages/order/Order.jsx';
 import ThankYouPage from 'pages/ThankYouPage';
 import UserPanel from 'pages/userPanel/UserPanel.tsx';
 import MyDetails from 'pages/userPanel/MyDetails.tsx';
-import History from 'pages/userPanel/History.jsx';
+import History from 'pages/userPanel/History.tsx';
 import ChangePassword from 'pages/userPanel/ChangePassword.jsx';
 import Newsletter from 'pages/userPanel/Newsletter/Newsletter.jsx';
 import RemoveAccount from 'pages/userPanel/RemoveAccount.tsx';

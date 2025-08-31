@@ -1,24 +1,26 @@
 import React, { Fragment, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { RootState } from 'redux_/store';
 import { useQuery } from '@apollo/client';
-import { GET_ORDERS } from 'graphql/queries/order.ts';
-import { formatTimestamp } from 'utils/helpers.ts';
-import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem.ts';
+import { GetOrdersResponse } from 'types/orders';
+import { GET_ORDERS } from 'graphql/queries/order';
+import { formatTimestamp } from 'utils/helpers';
+import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem';
 import LiveHelpIcon from '@mui/icons-material/LiveHelp';
-import LoadingModal from 'components/modals/LoadingModal.tsx';
-import ErrorModal from 'components/modals/ErrorModal.tsx';
-import Pagination from 'components/Pagination.tsx';
-import Tooltip from 'components/Tooltip.tsx';
+import LoadingModal from 'components/modals/LoadingModal';
+import ErrorModal from 'components/modals/ErrorModal';
+import Pagination from 'components/Pagination';
+import Tooltip from 'components/Tooltip';
 
 const History = () => {
   const blockName = 'history';
   const quantityPerPage = 5;
-  const { loggedUserId } = useSelector((store) => store.user);
+  const { loggedUserId } = useSelector((store: RootState) => store.user);
   const [activePage, setActivePage] = useState(0);
   const [downloadInvoiceTooltipOpen, setDownloadInvoiceTooltipOpen] = useState(false);
   const [fetchingOrdersError, setFetchingOrdersError] = useState(false);
 
-  const { loading, data } = useQuery(
+  const { loading, data } = useQuery<GetOrdersResponse>(
     GET_ORDERS,
     {
       variables: { input: { userId: loggedUserId, pagination: { page: activePage, quantityPerPage } } },
@@ -27,9 +29,9 @@ const History = () => {
     }
   );
 
-  const handlePaginationOnChange = (pageNumber) => setActivePage(pageNumber - 1);
+  const handlePaginationOnChange = (pageNumber: number) => setActivePage(pageNumber - 1);
 
-  const downloadInvoice = (orderID) => {
+  const downloadInvoice = (orderID: string) => {
     const key = `users/${loggedUserId}/invoices/${orderID}.pdf`;
     const fileName = `Faktura za zamówienie: ${orderID}`;
 
