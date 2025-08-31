@@ -12,7 +12,7 @@ import ChangePassword from 'pages/userPanel/ChangePassword.jsx';
 import Newsletter from 'pages/userPanel/Newsletter/Newsletter.jsx';
 import RemoveAccount from 'pages/userPanel/RemoveAccount.jsx';
 import Avatars from 'pages/userPanel/Avatars/Avatars.jsx';
-import NotFound from 'pages/NotFound.jsx';
+import NotFound from 'pages/NotFound.tsx';
 
 const AppRouter = () => (
   <div className="main">
