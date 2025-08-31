@@ -1,10 +1,11 @@
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Products from './Products.tsx';
-import Login from 'pages/Login.tsx';
-import Register from 'pages/Register.tsx';
+import Products from './Products.js';
+import Login from 'pages/Login';
+import Register from 'pages/Register';
 import Opinions from 'pages/opinions/Opinions.jsx';
 import Order from 'pages/order/Order.jsx';
-import ThankYouPage from 'pages/ThankYouPage.tsx';
+import ThankYouPage from 'pages/ThankYouPage';
 import UserPanel from 'pages/userPanel/UserPanel.jsx';
 import MyDetails from 'pages/userPanel/MyDetails.jsx';
 import History from 'pages/userPanel/History.jsx';
@@ -12,7 +13,7 @@ import ChangePassword from 'pages/userPanel/ChangePassword.jsx';
 import Newsletter from 'pages/userPanel/Newsletter/Newsletter.jsx';
 import RemoveAccount from 'pages/userPanel/RemoveAccount.jsx';
 import Avatars from 'pages/userPanel/Avatars/Avatars.jsx';
-import NotFound from 'pages/NotFound.tsx';
+import NotFound from 'pages/NotFound';
 
 const AppRouter = () => (
   <div className="main">
