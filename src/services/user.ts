@@ -50,8 +50,8 @@ export const handleLoginValidation = (email: string, password: string) => {
   const isValidPassword = validateByRegexp(PASSWORD_REGEX, password);
 
   return {
-    emailError: !isValidEmail && VALIDATION_ERROR_MESSAGES.email,
-    passwordError: !isValidPassword && VALIDATION_ERROR_MESSAGES.password,
+    emailError: !isValidEmail ? VALIDATION_ERROR_MESSAGES.email : '',
+    passwordError: !isValidPassword ? VALIDATION_ERROR_MESSAGES.password : '',
     validationStatus: isValidEmail && isValidPassword
   };
 };

@@ -1,23 +1,25 @@
-// @ts-nocheck // TODO
 import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { useMutation } from '@apollo/client';
+import { useMutation, ServerError } from '@apollo/client';
+import { RootState } from 'redux_/store';
+import { TextInputOnChange } from 'types/events';
+import { LoginUserResponse } from 'types/user';
 import useRedirect from 'hooks/useRedirect.jsx';
-import { ERROR_CODES } from 'data/errors.ts';
-import { LOGIN_USER } from 'graphql/mutations/user.ts';
-import { login } from 'redux_/user/actionsCreator.ts';
-import { handleLoginValidation } from 'services/user.ts';
-import FormContainer from 'components/containers/FormContainer.tsx';
-import TextInput from 'components/inputs/TextInput.tsx';
-import SubmitButton from 'components/SubmitButton.tsx';
-import LoadingModal from 'components/modals/LoadingModal.tsx';
-import ErrorModal from 'components/modals/ErrorModal.tsx';
+import { ERROR_CODES } from 'data/errors';
+import { LOGIN_USER } from 'graphql/mutations/user';
+import { login } from 'redux_/user/actionsCreator';
+import { handleLoginValidation } from 'services/user';
+import FormContainer from 'components/containers/FormContainer';
+import TextInput from 'components/inputs/TextInput';
+import SubmitButton from 'components/SubmitButton';
+import LoadingModal from 'components/modals/LoadingModal';
+import ErrorModal from 'components/modals/ErrorModal';
 
 const Login = () => {
   const blockName = 'login';
   const dispatch = useDispatch();
-  const { loggedUserId } = useSelector((store) => store.user);
+  const { loggedUserId } = useSelector((store: RootState) => store.user);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailErrorMessage, setEmailErrorMessage] = useState('');
@@ -25,15 +27,17 @@ const Login = () => {
   const [loginFail, setLoginFail] = useState(false);
   const [loginFailMessage, setLoginFailMessage] = useState('');
 
-  const [loginUser, { loading, data, error }] = useMutation(LOGIN_USER, {
-    onCompleted: () => {
+  const [loginUser, { loading }] = useMutation<LoginUserResponse>(LOGIN_USER, {
+    onCompleted: (data) => {
       dispatch(login(data));
     },
-    onError: () => {
-      if (error.networkError?.statusCode === 500) {
+    onError: (error) => {
+      const statusCode = (error.networkError as ServerError)?.statusCode;
+
+      if (statusCode === 500) {
         setLoginFailMessage('Niestety nie udało się zalogować!');
       } else {
-        const { extensions: { error_code: errorCode } } = error.graphQLErrors[0];
+        const errorCode = (error.graphQLErrors[0].extensions as { error_code: string }).error_code;
 
         if (errorCode === ERROR_CODES.USER_NOT_FOUND) {
           setLoginFailMessage('Użytkownik o takim adresie email nie istnieje!');
@@ -48,8 +52,8 @@ const Login = () => {
     }
   });
 
-  const handleEmailOnChange = ({ target: { value } }) => setEmail(value);
-  const handlePasswordOnChange = ({ target: { value } }) => setPassword(value);
+  const handleEmailOnChange = ({ target: { value } }: TextInputOnChange) => setEmail(value);
+  const handlePasswordOnChange = ({ target: { value } }: TextInputOnChange) => setPassword(value);
 
   const handleLoginOnMouseDown = () => {
     const { emailError, passwordError, validationStatus } = handleLoginValidation(email, password);

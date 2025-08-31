@@ -227,7 +227,7 @@ describe('handleLoginValidation', () => {
 
     expect(response).toEqual({
       emailError: 'Email ma niepoprawny format!',
-      passwordError: false,
+      passwordError: '',
       validationStatus: false
     });
   });
@@ -237,7 +237,7 @@ describe('handleLoginValidation', () => {
     const response = handleLoginValidation(email, password);
 
     expect(response).toEqual({
-      emailError: false,
+      emailError: '',
       passwordError: 'Hasło powinno mieć minimum 8 znaków, zawierać małą i dużą literę oraz cyfrę!',
       validationStatus: false
     });
@@ -259,8 +259,8 @@ describe('handleLoginValidation', () => {
     const response = handleLoginValidation(email, password);
 
     expect(response).toEqual({
-      emailError: false,
-      passwordError: false,
+      emailError: '',
+      passwordError: '',
       validationStatus: true
     });
   });
