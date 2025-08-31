@@ -20,3 +20,11 @@ export type Products = Array<Product>;
 
 export type ProductInBasket = Omit<Product, 'quantity'> & { quantity: number }
 export type ProductsInBasket = Array<ProductInBasket>;
+
+export type GetProductsResponse = DeepReadonly<{
+  productsDetails: {
+    products: Array<Product['attributes']>,
+    quantity: number,
+    __typename: string
+  }
+}>;

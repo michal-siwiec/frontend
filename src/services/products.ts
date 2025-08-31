@@ -10,7 +10,7 @@ export const generateAddedProductPayload = (product: Product['attributes'], sele
   attributes: product
 });
 
-export const generateHeaderCaption = (arePromoted: boolean, productType: Categories) => {
+export const generateHeaderCaption = (arePromoted: boolean, productType: Categories | null) => {
   if (arePromoted) return 'Polecane produkty';
   if (!productType) return 'Wszystkie produkty';
 

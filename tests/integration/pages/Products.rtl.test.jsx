@@ -1,6 +1,6 @@
 import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Products from 'pages/Products.jsx';
+import Products from 'pages/Products.tsx';
 import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
 import { GET_PRODUCTS } from 'graphql/queries/products.ts';
 

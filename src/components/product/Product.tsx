@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import clsx from 'clsx';
 import useFetchUrl from 'hooks/useFetchUrl.jsx';
 import { Product as ProductType } from 'types/product';
-import ShadowedContainer from 'components/containers/ShadowedContainer.tsx';
+import ShadowedContainer from 'components/containers/ShadowedContainer';
 import { APPEARING_IN_SEQUENCE } from 'data/animations';
 import { formatPrice } from 'utils/helpers';
 import AddToBasketForm from './AddToBasketForm';
@@ -29,27 +29,29 @@ const Product = ({ product, index, mode }: ProductProps) => {
         variants: APPEARING_IN_SEQUENCE,
         custom: index,
         initial: APPEARING_IN_SEQUENCE.hidden,
-        animate: APPEARING_IN_SEQUENCE.visible
+        animate: APPEARING_IN_SEQUENCE.visible(index)
       }}
       dataTestid="product-container"
     >
-      <div className={`${blockName}__img-wrapper`}>
-        <img
-          // @ts-ignore // TODO
-          src={pictureURL}
-          alt="Zdjęcie produktu"
-          className={`${blockName}__img`}
-        />
-      </div>
-      <div className={`${blockName}__info-wrapper`}>
-        <h2 className={`${blockName}__name`}>{name}</h2>
-        <h3 className={`${blockName}__price`}>{formatPrice(price)} zł</h3>
-        <p className={`${blockName}__description`}>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, consequatur. Ex blanditiis accusamus nam molestiae officiis totam repellendus labore beatae ullam quas, hic facilis fugit illum tenetur, magni est distinctio.
-        </p>
-        { isMainMode && <AddToBasketForm product={product} /> }
-        { isBasketMode && <SelectedQuantityPresenter productID={id} /> }
-      </div>
+      <Fragment>
+        <div className={`${blockName}__img-wrapper`}>
+          <img
+            // @ts-ignore // TODO
+            src={pictureURL}
+            alt="Zdjęcie produktu"
+            className={`${blockName}__img`}
+          />
+        </div>
+        <div className={`${blockName}__info-wrapper`}>
+          <h2 className={`${blockName}__name`}>{name}</h2>
+          <h3 className={`${blockName}__price`}>{formatPrice(price)} zł</h3>
+          <p className={`${blockName}__description`}>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, consequatur. Ex blanditiis accusamus nam molestiae officiis totam repellendus labore beatae ullam quas, hic facilis fugit illum tenetur, magni est distinctio.
+          </p>
+          { isMainMode && <AddToBasketForm product={product} /> }
+          { isBasketMode && <SelectedQuantityPresenter productID={id} /> }
+        </div>
+      </Fragment>
     </ShadowedContainer>
   );
 };
