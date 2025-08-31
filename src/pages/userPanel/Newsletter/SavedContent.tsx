@@ -1,10 +1,14 @@
 import React, { Fragment } from 'react';
-import { exact, func, string } from 'prop-types';
 import { useMutation } from '@apollo/client';
-import { UNSUBSCRIBE_FROM_NEWSLETTER } from 'graphql/mutations/user.ts';
-import SubmitButton from 'components/SubmitButton.tsx';
+import { UNSUBSCRIBE_FROM_NEWSLETTER } from 'graphql/mutations/user';
+import SubmitButton from 'components/SubmitButton';
 
-const SavedContent = ({ userEmail, handleUnsubscribe }) => {
+type SavedContentProps = {
+  userEmail: string,
+  handleUnsubscribe: (...args: any[]) => void
+};
+
+const SavedContent = ({ userEmail, handleUnsubscribe }: SavedContentProps) => {
   const blockName = 'newsletter';
 
   const [unsubscribeFromNewsletter] = useMutation(UNSUBSCRIBE_FROM_NEWSLETTER, {
@@ -28,10 +32,5 @@ const SavedContent = ({ userEmail, handleUnsubscribe }) => {
     </Fragment>
   );
 };
-
-SavedContent.propTypes = exact({
-  userEmail: string.isRequired,
-  handleUnsubscribe: func.isRequired
-}).isRequired;
 
 export default SavedContent;

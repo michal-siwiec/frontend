@@ -6,12 +6,12 @@ import Register from 'pages/Register';
 import Opinions from 'pages/opinions/Opinions.jsx';
 import Order from 'pages/order/Order.jsx';
 import ThankYouPage from 'pages/ThankYouPage';
-import UserPanel from 'pages/userPanel/UserPanel.tsx';
-import MyDetails from 'pages/userPanel/MyDetails.tsx';
-import History from 'pages/userPanel/History.tsx';
-import ChangePassword from 'pages/userPanel/ChangePassword.tsx';
-import Newsletter from 'pages/userPanel/Newsletter/Newsletter.jsx';
-import RemoveAccount from 'pages/userPanel/RemoveAccount.tsx';
+import UserPanel from 'pages/userPanel/UserPanel';
+import MyDetails from 'pages/userPanel/MyDetails';
+import History from 'pages/userPanel/History';
+import ChangePassword from 'pages/userPanel/ChangePassword';
+import Newsletter from 'pages/userPanel/Newsletter/Newsletter';
+import RemoveAccount from 'pages/userPanel/RemoveAccount';
 import Avatars from 'pages/userPanel/Avatars/Avatars.jsx';
 import NotFound from 'pages/NotFound';
 

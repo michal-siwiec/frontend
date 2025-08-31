@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { RootState } from 'redux_/store';
 import { useQuery } from '@apollo/client';
-import { IS_USER_SAVED_TO_NEWSLETTER } from 'graphql/queries/user.ts';
-import SavedContent from './SavedContent.jsx';
-import UnsavedContent from './UnsavedContent.jsx';
+import { IS_USER_SAVED_TO_NEWSLETTER } from 'graphql/queries/user';
+import SavedContent from './SavedContent';
+import UnsavedContent from './UnsavedContent';
 
 const Newsletter = () => {
   const blockName = 'newsletter';
   const [userEmail, setUserEmail] = useState('');
   const [userSavedToNewsletter, setUserSavedToNewsletter] = useState(false);
-  const { loggedUserId } = useSelector((store) => store.user);
+  const { loggedUserId } = useSelector((store: RootState) => store.user);
 
   const { refetch } = useQuery(IS_USER_SAVED_TO_NEWSLETTER, {
     variables: { userId: loggedUserId },
