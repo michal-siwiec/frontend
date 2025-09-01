@@ -1,3 +1,5 @@
+import { Avatars } from 'types/avatar';
+
 import {
   generateTooltipHeaderText,
   generateTooltipSecondaryText,
@@ -8,9 +10,9 @@ import {
   handleChangePasswordValidation,
   handleRegisterValidation,
   generateAvatars
-} from 'services/user.ts';
+} from 'services/user';
 
-import AvatarsGenerator from 'services/users/avatarsGenerator.ts';
+import AvatarsGenerator from 'services/users/avatarsGenerator';
 
 describe('generateTooltipHeaderText', () => {
   it('returns main avatar label', () => {
@@ -75,12 +77,12 @@ describe('sortAvatarByMainField', () => {
 });
 
 describe('handleMyDetailsValidation', () => {
-  let name;
-  let surname;
-  let phoneNumber;
-  let city;
-  let postalCode;
-  let street;
+  let name = '';
+  let surname = '';
+  let phoneNumber = '';
+  let city = '';
+  let postalCode ='';
+  let street = '';
 
   beforeEach(() => {
     name = 'Michal';
@@ -213,8 +215,8 @@ describe('handleMyDetailsValidation', () => {
 });
 
 describe('handleLoginValidation', () => {
-  let email;
-  let password;
+  let email = '';
+  let password = '';
 
   beforeEach(() => {
     email = 'siwiec.michal724@gmial.com';
@@ -267,13 +269,13 @@ describe('handleLoginValidation', () => {
 });
 
 describe('handleClientDetailsValidation', () => {
-  let name;
-  let surname;
-  let street;
-  let city;
-  let postalCode;
-  let email;
-  let phoneNumber;
+  let name = '';
+  let surname = '';
+  let street = '';
+  let city = '';
+  let postalCode = '';
+  let email = '';
+  let phoneNumber = '';
 
   beforeEach(() => {
     name = 'Michal';
@@ -431,8 +433,8 @@ describe('handleClientDetailsValidation', () => {
 });
 
 describe('handleChangePasswordValidation', () => {
-  let password;
-  let passwordConfirmation;
+  let password = '';
+  let passwordConfirmation = '';
 
   beforeEach(() => {
     password = 'Qwerty12';
@@ -485,14 +487,14 @@ describe('handleChangePasswordValidation', () => {
 });
 
 describe('handleRegisterValidation', () => {
-  let email;
-  let password;
-  let avatars;
+  let email = '';
+  let password = '';
+  let avatars: Avatars = [];
 
   beforeEach(() => {
     email = 'siwiec.michal724@gmail.com';
     password = 'Qwerty12';
-    avatars = [{ fileType: 'image/png' }];
+    avatars = [{ base64: 'Example data', fileName: 'Avatar.png', fileType: 'image/png', main: true }];
   });
 
   it('returns proper error response if email is not correct', () => {
@@ -520,7 +522,7 @@ describe('handleRegisterValidation', () => {
   });
 
   it('returns proper error response if at least one avatar has incorrect format', () => {
-    avatars = [{ fileType: 'image/jpg' }];
+    avatars = [{ base64: 'Example data', fileName: 'Avatar.png', fileType: 'image/jpg', main: true }];
     const response = handleRegisterValidation(email, password, avatars);
 
     expect(response).toEqual({
@@ -557,12 +559,13 @@ describe('handleRegisterValidation', () => {
 });
 
 describe('generateAvatars', () => {
-  const callSpy = jest.spyOn(AvatarsGenerator.prototype, 'call').mockResolvedValue('mocked-avatar-response');
+  const avatars = [{ base64: 'Example data', fileName: 'Avatar.png', fileType: 'image/png', main: true }];
+  const callSpy = jest.spyOn(AvatarsGenerator.prototype, 'call').mockResolvedValue(avatars);
 
   it('returns AvatarsGenerator result', async () => {
-    const response = await generateAvatars(['exampleFile1.jpeg', 'exampleFile2.jpeg']);
+    const response = await generateAvatars([new File(['Example data'], 'Avatar.png')]);
 
     expect(callSpy).toHaveBeenCalledTimes(1);
-    expect(response).toEqual('mocked-avatar-response');
+    expect(response).toEqual(avatars);
   });
 });
