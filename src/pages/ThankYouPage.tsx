@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from 'redux_/store';
+import { RootState } from 'types/store';
 import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem';
 import SubmitButton from 'components/SubmitButton';
 

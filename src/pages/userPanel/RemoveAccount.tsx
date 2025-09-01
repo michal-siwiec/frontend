@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
-import { RootState } from 'redux_/store';
+import { RootState } from 'types/store';
 import { REMOVE_ACCOUNT } from 'graphql/mutations/user';
 import { logout } from 'redux_/user/actionsCreator';
 import SubmitButton from 'components/SubmitButton';

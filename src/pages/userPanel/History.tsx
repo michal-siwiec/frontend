@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from 'redux_/store';
+import { RootState } from 'types/store';
 import { useQuery } from '@apollo/client';
 import { GetOrdersResponse } from 'types/orders';
 import { GET_ORDERS } from 'graphql/queries/order';

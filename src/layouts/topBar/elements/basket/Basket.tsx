@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from 'redux_/store';
+import { RootState } from 'types/store';
 import { isEmpty } from 'lodash';
 import { countTotalPrice } from 'utils/helpers';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';

@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from 'redux_/store';
+import { RootState } from 'types/store';
 import { useMutation, ServerError } from '@apollo/client';
 import { TextInputOnChange, FileInputOnChange } from 'types/events';
 import { Avatars } from 'types/avatar';

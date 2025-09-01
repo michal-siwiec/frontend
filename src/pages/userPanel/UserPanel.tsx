@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { RootState } from 'redux_/store';
+import { RootState } from 'types/store';
 import useRedirect from 'hooks/useRedirect';
 
 const UserPanel = () => {

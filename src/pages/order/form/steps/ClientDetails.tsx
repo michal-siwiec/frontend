@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useLazyQuery } from '@apollo/client';
 import { USER_PERSONAL_DETAILS } from 'graphql/queries/user';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from 'redux_/store';
+import { RootState } from 'types/store';
 import { TextInputOnChange } from 'types/events';
 import { UserPersonalDetailsResponse } from 'types/user';
 import useIsLogged from 'hooks/useIsLogged';

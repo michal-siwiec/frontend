@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { RootState } from 'redux_/store';
+import { RootState } from 'types/store';
 import { Modal } from '@mui/material';
 import Product from 'components/product/Product';
 import SubmitButton from 'components/SubmitButton';

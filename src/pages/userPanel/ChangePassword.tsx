@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useMutation } from '@apollo/client';
-import { RootState } from 'redux_/store'; // TODO: Is it a proper place to keep such type? Why not inside types
+import { RootState } from 'types/store';
 import { TextInputOnChange } from 'types/events';
 import { CHANGE_USER_PASSWORD } from 'graphql/mutations/user';
 import { handleChangePasswordValidation } from 'services/user';

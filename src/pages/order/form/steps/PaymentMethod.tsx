@@ -1,6 +1,6 @@
 import React, { Fragment, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from 'redux_/store';
+import { RootState } from 'types/store';
 import { setPaymentMethod } from 'redux_/order/actionsCreator';
 import { OrderContext } from 'contexts/contexts';
 import PaymentIcon from '@mui/icons-material/Payment';

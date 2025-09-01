@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
-import { RootState } from 'redux_/store';
+import { RootState } from 'types/store';
 import { setCompletedOrder } from 'redux_/order/actionsCreator';
 import { clearBasket } from 'redux_/basket/actionCreators';
 import { countTotalPrice } from 'utils/helpers';

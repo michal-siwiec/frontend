@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useMutation } from '@apollo/client';
-import { RootState } from 'redux_/store';
+import { RootState } from 'types/store';
 import { TextInputOnChange } from 'types/events';
 import { ADD_OPINION } from 'graphql/mutations/opinion';
 import { handleAddOpinionValidation } from 'services/opinions';

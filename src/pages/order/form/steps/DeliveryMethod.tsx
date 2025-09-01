@@ -1,7 +1,7 @@
 import React, { Fragment, useContext } from 'react';
 import { OrderContext } from 'contexts/contexts';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from 'redux_/store';
+import { RootState } from 'types/store';
 import { setDeliveryMethod } from 'redux_/order/actionsCreator';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import PostAddIcon from '@mui/icons-material/PostAdd';

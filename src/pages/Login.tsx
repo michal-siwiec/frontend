@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useMutation, ServerError } from '@apollo/client';
-import { RootState } from 'redux_/store';
+import { RootState } from 'types/store';
 import { TextInputOnChange } from 'types/events';
 import { LoginUserResponse } from 'types/user';
 import useRedirect from 'hooks/useRedirect';

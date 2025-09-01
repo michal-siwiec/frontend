@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
-import { RootState } from 'redux_/store';
+import { RootState } from 'types/store';
 import { logout } from 'redux_/user/actionsCreator';
 import { LOGOUT_USER } from 'graphql/mutations/user';
 import useIsLogged from 'hooks/useIsLogged';

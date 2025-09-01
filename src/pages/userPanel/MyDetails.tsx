@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useQuery, useMutation } from '@apollo/client';
-import { RootState } from 'redux_/store';
+import { RootState } from 'types/store';
 import { TextInputOnChange } from 'types/events';
 import { USER_PERSONAL_DETAILS } from 'graphql/queries/user';
 import { UPDATE_USER_DETAILS } from 'graphql/mutations/user';
