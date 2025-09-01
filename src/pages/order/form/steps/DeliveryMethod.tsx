@@ -1,17 +1,18 @@
 import React, { Fragment, useContext } from 'react';
-import { OrderContext } from 'contexts/contexts.ts';
+import { OrderContext } from 'contexts/contexts';
 import { useSelector, useDispatch } from 'react-redux';
-import { setDeliveryMethod } from 'redux_/order/actionsCreator.ts';
+import { RootState } from 'redux_/store';
+import { setDeliveryMethod } from 'redux_/order/actionsCreator';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import ApprovalIcon from '@mui/icons-material/Approval';
-import CheckBox from 'components/inputs/CheckBox.tsx';
-import SubmitButton from 'components/SubmitButton.tsx';
+import CheckBox from 'components/inputs/CheckBox';
+import SubmitButton from 'components/SubmitButton';
 
 const DeliveryMethod = () => {
   const blockName = 'delivery-method';
   const { setStep } = useContext(OrderContext);
-  const { inPost, dpd, pickUpAtThePoint } = useSelector((store) => store.order.delivery);
+  const { inPost, dpd, pickUpAtThePoint } = useSelector((store: RootState) => store.order.delivery);
   const dispatch = useDispatch();
 
   const handleInPostOnChange = () => {

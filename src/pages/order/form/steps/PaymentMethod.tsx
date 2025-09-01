@@ -1,16 +1,17 @@
 import React, { Fragment, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setPaymentMethod } from 'redux_/order/actionsCreator.ts';
-import { OrderContext } from 'contexts/contexts.ts';
+import { RootState } from 'redux_/store';
+import { setPaymentMethod } from 'redux_/order/actionsCreator';
+import { OrderContext } from 'contexts/contexts';
 import PaymentIcon from '@mui/icons-material/Payment';
 import PaidIcon from '@mui/icons-material/Paid';
-import CheckBox from 'components/inputs/CheckBox.tsx';
-import SubmitButton from 'components/SubmitButton.tsx';
+import CheckBox from 'components/inputs/CheckBox';
+import SubmitButton from 'components/SubmitButton';
 
 const PaymentMethod = () => {
   const blockName = 'payment-method';
   const { setStep } = useContext(OrderContext);
-  const { cashPayment, traditionalTransfer } = useSelector((store) => store.order.payment);
+  const { cashPayment, traditionalTransfer } = useSelector((store: RootState) => store.order.payment);
   const dispatch = useDispatch();
 
   const handleCashPaymentOnChange = () => {

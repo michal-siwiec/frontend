@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { OrderContext } from 'contexts/contexts';
-import ClientDetails from 'pages/order/form/steps/ClientDetails.tsx';
-import DeliveryMethod from 'pages/order/form/steps/DeliveryMethod.jsx';
-import PaymentMethod from 'pages/order/form/steps/PaymentMethod.jsx';
-import Summary from 'pages/order/form/steps/Summary.jsx';
+import ClientDetails from 'pages/order/form/steps/ClientDetails';
+import DeliveryMethod from 'pages/order/form/steps/DeliveryMethod.tsx';
+import PaymentMethod from 'pages/order/form/steps/PaymentMethod.tsx';
+import Summary from 'pages/order/form/steps/Summary.tsx';
 
 const Form = () => {
   const { step } = useContext(OrderContext);

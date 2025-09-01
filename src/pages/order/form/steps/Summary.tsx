@@ -3,20 +3,21 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
-import { setCompletedOrder } from 'redux_/order/actionsCreator.ts';
-import { clearBasket } from 'redux_/basket/actionCreators.ts';
-import { countTotalPrice } from 'utils/helpers.ts';
-import { ADD_ORDER } from 'graphql/mutations/order.ts';
-import { generateAddOrderPayload } from 'services/orders.ts';
-import LoadingModal from 'components/modals/LoadingModal.tsx';
-import ErrorModal from 'components/modals/ErrorModal.tsx';
-import SubmitButton from 'components/SubmitButton.tsx';
+import { RootState } from 'redux_/store';
+import { setCompletedOrder } from 'redux_/order/actionsCreator';
+import { clearBasket } from 'redux_/basket/actionCreators';
+import { countTotalPrice } from 'utils/helpers';
+import { ADD_ORDER } from 'graphql/mutations/order';
+import { generateAddOrderPayload } from 'services/orders';
+import LoadingModal from 'components/modals/LoadingModal';
+import ErrorModal from 'components/modals/ErrorModal';
+import SubmitButton from 'components/SubmitButton';
 
 const Summary = () => {
   const blockName = 'summary';
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { addedProducts } = useSelector((store) => store.basket);
+  const { addedProducts } = useSelector((store: RootState) => store.basket);
   const [orderError, setOrderError] = useState(false);
   const [addOrder, { loading, data }] = useMutation(
     ADD_ORDER,
