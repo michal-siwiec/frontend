@@ -5,15 +5,14 @@ type ShadowedContainerProps = {
   children: ReactElement,
   animationAttributes?: Omit<HTMLMotionProps<'div'>, 'className' | 'children'>;
   classNames?: string,
-  dataTestid?: string
+  dataTestId?: string
 };
 
-// TODO: Rename dataTestid to dataTestID
-const ShadowedContainer = ({ children, classNames = '', animationAttributes = {}, dataTestid = undefined }: ShadowedContainerProps) => (
+const ShadowedContainer = ({ children, classNames = '', animationAttributes = {}, dataTestId = undefined }: ShadowedContainerProps) => (
   <motion.div
     className={`shadowed-box ${classNames}`}
     {...animationAttributes}
-    data-testid={dataTestid}
+    data-testid={dataTestId}
   >
     {children}
   </motion.div>

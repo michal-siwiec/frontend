@@ -35,8 +35,4 @@ const EmptyOpinionsList = ({ textAreaRef }: EmptyOpinionsListProps) => {
   );
 };
 
-EmptyOpinionsList.propTypes = exact({
-  textAreaRef: element.isRequired
-}).isRequired;
-
 export default EmptyOpinionsList;

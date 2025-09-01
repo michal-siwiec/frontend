@@ -31,7 +31,7 @@ const Product = ({ product, index, mode }: ProductProps) => {
         initial: APPEARING_IN_SEQUENCE.hidden,
         animate: APPEARING_IN_SEQUENCE.visible(index)
       }}
-      dataTestid="product-container"
+      dataTestId="product-container"
     >
       <Fragment>
         <div className={`${blockName}__img-wrapper`}>
