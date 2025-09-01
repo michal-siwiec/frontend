@@ -1,5 +1,5 @@
 import { S3 } from 'aws-sdk';
-import { getSignedUrl } from 'services/s3.ts';
+import { getSignedUrl } from 'services/s3';
 
 describe('getSignedUrl', () => {
   it('calls s3.getSignedUrl with the correct, default parameters', () => {
