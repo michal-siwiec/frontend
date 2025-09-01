@@ -66,13 +66,13 @@ export const handleClientDetailsValidation = (name: string, surname: string, str
   const isPhoneNumberValid = validateByRegexp(PHONE_NUMBER_REGEX, phoneNumber);
 
   return {
-    nameError: !isNameValid && VALIDATION_ERROR_MESSAGES.name,
-    surnameError: !isSurnameValid && VALIDATION_ERROR_MESSAGES.surname,
-    streetError: !isStreetValid && VALIDATION_ERROR_MESSAGES.street,
-    cityError: !isCityValid && VALIDATION_ERROR_MESSAGES.city,
-    postalCodeError: !isPostalCodeValid && VALIDATION_ERROR_MESSAGES.postalCode,
-    emailError: !isEmailValid && VALIDATION_ERROR_MESSAGES.email,
-    phoneError: !isPhoneNumberValid && VALIDATION_ERROR_MESSAGES.phone,
+    nameError: !isNameValid ? VALIDATION_ERROR_MESSAGES.name : '',
+    surnameError: !isSurnameValid ? VALIDATION_ERROR_MESSAGES.surname : '',
+    streetError: !isStreetValid ? VALIDATION_ERROR_MESSAGES.street : '',
+    cityError: !isCityValid ? VALIDATION_ERROR_MESSAGES.city : '',
+    postalCodeError: !isPostalCodeValid ? VALIDATION_ERROR_MESSAGES.postalCode : '',
+    emailError: !isEmailValid ? VALIDATION_ERROR_MESSAGES.email : '',
+    phoneError: !isPhoneNumberValid ? VALIDATION_ERROR_MESSAGES.phone : '',
     validationStatus: (
       isNameValid && isSurnameValid && isStreetValid && isCityValid
       && isPostalCodeValid && isEmailValid && isPhoneNumberValid

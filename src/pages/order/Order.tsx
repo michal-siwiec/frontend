@@ -6,7 +6,7 @@ import useRedirect from 'hooks/useRedirect.jsx';
 import { OrderContext } from 'contexts/contexts';
 import FormContainer from 'components/containers/FormContainer';
 import Header from './Header';
-import From from './form/Form.jsx';
+import From from './form/Form';
 
 const Order = () => {
   const [step, setStep] = useState(0);

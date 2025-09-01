@@ -1,21 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useLazyQuery } from '@apollo/client';
-import { USER_PERSONAL_DETAILS } from 'graphql/queries/user.ts';
+import { USER_PERSONAL_DETAILS } from 'graphql/queries/user';
 import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from 'redux_/store';
+import { TextInputOnChange } from 'types/events';
+import { UserPersonalDetailsResponse } from 'types/user';
 import useIsLogged from 'hooks/useIsLogged.jsx';
-import {
-  setName,
-  setSurname,
-  setStreet,
-  setCity,
-  setPostalCode,
-  setEmail,
-  setPhoneNumber
-} from 'redux_/order/actionsCreator.ts';
-import { OrderContext } from 'contexts/contexts.ts';
-import { handleClientDetailsValidation } from 'services/user.ts';
-import TextInput from 'components/inputs/TextInput.tsx';
-import SubmitButton from 'components/SubmitButton.tsx';
+import { setName, setSurname, setStreet, setCity, setPostalCode, setEmail, setPhoneNumber } from 'redux_/order/actionsCreator';
+import { OrderContext } from 'contexts/contexts';
+import { handleClientDetailsValidation } from 'services/user';
+import TextInput from 'components/inputs/TextInput';
+import SubmitButton from 'components/SubmitButton';
 
 const ClientDetails = () => {
   const modifier = 'text-input--personal-details';
@@ -25,7 +20,7 @@ const ClientDetails = () => {
   const {
     user: { loggedUserId },
     order: { clientDetails: { name, surname, street, city, postalCode, email, phoneNumber } }
-  } = useSelector((store) => store);
+  } = useSelector((store: RootState) => store);
 
   const [nameErrorMessage, setNameErrorMessage] = useState('');
   const [surnameErrorMessage, setSurnameErrorMessage] = useState('');
@@ -35,15 +30,15 @@ const ClientDetails = () => {
   const [emailErrorMessage, setEmailErrorMessage] = useState('');
   const [phoneNumberErrorMessage, setPhoneNumberErrorMessage] = useState('');
 
-  const handleNameOnChange = ({ target: { value } }) => dispatch(setName(value));
-  const handleSurnameOnChange = ({ target: { value } }) => dispatch(setSurname(value));
-  const handleStreetOnChange = ({ target: { value } }) => dispatch(setStreet(value));
-  const handleCityOnChange = ({ target: { value } }) => dispatch(setCity(value));
-  const handlePostalCodeOnChange = ({ target: { value } }) => dispatch(setPostalCode(value));
-  const handleEmailOnChange = ({ target: { value } }) => dispatch(setEmail(value));
-  const handlePhoneNumberOnChange = ({ target: { value } }) => dispatch(setPhoneNumber(value));
+  const handleNameOnChange = ({ target: { value } }: TextInputOnChange) => dispatch(setName(value));
+  const handleSurnameOnChange = ({ target: { value } }: TextInputOnChange) => dispatch(setSurname(value));
+  const handleStreetOnChange = ({ target: { value } }: TextInputOnChange) => dispatch(setStreet(value));
+  const handleCityOnChange = ({ target: { value } }: TextInputOnChange) => dispatch(setCity(value));
+  const handlePostalCodeOnChange = ({ target: { value } }: TextInputOnChange) => dispatch(setPostalCode(value));
+  const handleEmailOnChange = ({ target: { value } }: TextInputOnChange) => dispatch(setEmail(value));
+  const handlePhoneNumberOnChange = ({ target: { value } }: TextInputOnChange) => dispatch(setPhoneNumber(value));
 
-  const setDefaultClientDetailsIfNeeded = (user) => {
+  const setDefaultClientDetailsIfNeeded = (user: UserPersonalDetailsResponse['user']) => {
     if (!name) dispatch(setName(user.name || ''));
     if (!surname) dispatch(setSurname(user.surname || ''));
     if (!street) dispatch(setStreet(user.street || ''));
@@ -58,7 +53,7 @@ const ClientDetails = () => {
     {
       variables: { userId: loggedUserId },
       fetchPolicy: 'network-only',
-      onCompleted: (response) => setDefaultClientDetailsIfNeeded(response.user)
+      onCompleted: (response: UserPersonalDetailsResponse) => setDefaultClientDetailsIfNeeded(response.user)
     }
   );
 

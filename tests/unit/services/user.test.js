@@ -291,12 +291,12 @@ describe('handleClientDetailsValidation', () => {
 
     expect(response).toEqual({
       nameError: 'Imię ma niepoprawny format!',
-      surnameError: false,
-      streetError: false,
-      cityError: false,
-      postalCodeError: false,
-      emailError: false,
-      phoneError: false,
+      surnameError: '',
+      streetError: '',
+      cityError: '',
+      postalCodeError: '',
+      emailError: '',
+      phoneError: '',
       validationStatus: false
     });
   });
@@ -306,13 +306,13 @@ describe('handleClientDetailsValidation', () => {
     const response = handleClientDetailsValidation(name, surname, street, city, postalCode, email, phoneNumber);
 
     expect(response).toEqual({
-      nameError: false,
+      nameError: '',
       surnameError: 'Nazwisko ma niepoprawny format!',
-      streetError: false,
-      cityError: false,
-      postalCodeError: false,
-      emailError: false,
-      phoneError: false,
+      streetError: '',
+      cityError: '',
+      postalCodeError: '',
+      emailError: '',
+      phoneError: '',
       validationStatus: false
     });
   });
@@ -322,13 +322,13 @@ describe('handleClientDetailsValidation', () => {
     const response = handleClientDetailsValidation(name, surname, street, city, postalCode, email, phoneNumber);
 
     expect(response).toEqual({
-      nameError: false,
-      surnameError: false,
+      nameError: '',
+      surnameError: '',
       streetError: 'Ulica ma niepoprawny format!',
-      cityError: false,
-      postalCodeError: false,
-      emailError: false,
-      phoneError: false,
+      cityError: '',
+      postalCodeError: '',
+      emailError: '',
+      phoneError: '',
       validationStatus: false
     });
   });
@@ -338,13 +338,13 @@ describe('handleClientDetailsValidation', () => {
     const response = handleClientDetailsValidation(name, surname, street, city, postalCode, email, phoneNumber);
 
     expect(response).toEqual({
-      nameError: false,
-      surnameError: false,
-      streetError: false,
+      nameError: '',
+      surnameError: '',
+      streetError: '',
       cityError: 'Miasto ma niepoprawny format!',
-      postalCodeError: false,
-      emailError: false,
-      phoneError: false,
+      postalCodeError: '',
+      emailError: '',
+      phoneError: '',
       validationStatus: false
     });
   });
@@ -354,13 +354,13 @@ describe('handleClientDetailsValidation', () => {
     const response = handleClientDetailsValidation(name, surname, street, city, postalCode, email, phoneNumber);
 
     expect(response).toEqual({
-      nameError: false,
-      surnameError: false,
-      streetError: false,
-      cityError: false,
+      nameError: '',
+      surnameError: '',
+      streetError: '',
+      cityError: '',
       postalCodeError: 'Kod pocztowy ma niepoprawny format!',
-      emailError: false,
-      phoneError: false,
+      emailError: '',
+      phoneError: '',
       validationStatus: false
     });
   });
@@ -370,13 +370,13 @@ describe('handleClientDetailsValidation', () => {
     const response = handleClientDetailsValidation(name, surname, street, city, postalCode, email, phoneNumber);
 
     expect(response).toEqual({
-      nameError: false,
-      surnameError: false,
-      streetError: false,
-      cityError: false,
-      postalCodeError: false,
+      nameError: '',
+      surnameError: '',
+      streetError: '',
+      cityError: '',
+      postalCodeError: '',
       emailError: 'Email ma niepoprawny format!',
-      phoneError: false,
+      phoneError: '',
       validationStatus: false
     });
   });
@@ -386,12 +386,12 @@ describe('handleClientDetailsValidation', () => {
     const response = handleClientDetailsValidation(name, surname, street, city, postalCode, email, phoneNumber);
 
     expect(response).toEqual({
-      nameError: false,
-      surnameError: false,
-      streetError: false,
-      cityError: false,
-      postalCodeError: false,
-      emailError: false,
+      nameError: '',
+      surnameError: '',
+      streetError: '',
+      cityError: '',
+      postalCodeError: '',
+      emailError: '',
       phoneError: 'Telefon ma niepoprawny format!',
       validationStatus: false
     });
@@ -403,11 +403,11 @@ describe('handleClientDetailsValidation', () => {
     const response = handleClientDetailsValidation(name, surname, street, city, postalCode, email, phoneNumber);
 
     expect(response).toEqual({
-      nameError: false,
-      surnameError: false,
-      streetError: false,
-      cityError: false,
-      postalCodeError: false,
+      nameError: '',
+      surnameError: '',
+      streetError: '',
+      cityError: '',
+      postalCodeError: '',
       emailError: 'Email ma niepoprawny format!',
       phoneError: 'Telefon ma niepoprawny format!',
       validationStatus: false
@@ -418,13 +418,13 @@ describe('handleClientDetailsValidation', () => {
     const response = handleClientDetailsValidation(name, surname, street, city, postalCode, email, phoneNumber);
 
     expect(response).toEqual({
-      nameError: false,
-      surnameError: false,
-      streetError: false,
-      cityError: false,
-      postalCodeError: false,
-      emailError: false,
-      phoneError: false,
+      nameError: '',
+      surnameError: '',
+      streetError: '',
+      cityError: '',
+      postalCodeError: '',
+      emailError: '',
+      phoneError: '',
       validationStatus: true
     });
   });
