@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
-import useScrollIntoElement from 'hooks/useScrollIntoElement.tsx';
-import * as helpers from 'utils/helpers.ts';
+import useScrollIntoElement from 'hooks/useScrollIntoElement';
+import * as helpers from 'utils/helpers';
 
 describe('useScrollIntoElement', () => {
   const scrollIntoElementMock = jest.fn();
