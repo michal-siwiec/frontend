@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
 import useIsLogged from 'hooks/useIsLogged';
-import createProvidersWrapper from 'tests/unit/helpers/createProvidersWrapper.jsx';
+import createProvidersWrapper from 'tests/unit/helpers/createProvidersWrapper';
 
 describe('useIsLogged', () => {
   it('returns true if loggedUserId exists in store', () => {

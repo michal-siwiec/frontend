@@ -1,43 +1,33 @@
 import React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
-import { MemoryRouter, useNavigate } from 'react-router-dom';
 import useRedirect from 'hooks/useRedirect';
+import { MemoryRouter } from 'react-router-dom';
 
-jest.mock('react-router-dom', () => {
-  const actual = jest.requireActual('react-router-dom');
+// TODO: v7_startTransition
 
-  return { ...actual, useNavigate: jest.fn() };
-});
+const mockNavigate = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockNavigate,
+}));
 
 describe('useRedirect', () => {
-  const mockNavigate = jest.fn();
-
   beforeEach(() => {
-    jest.clearAllMocks();
-    useNavigate.mockReturnValue(mockNavigate);
+    mockNavigate.mockClear();
   });
 
-  // TODO: Simplify it after update react router to v7
   it('calls navigate when shouldRedirect is true', () => {
     renderHook(() => useRedirect({ path: '/target', shouldRedirect: true }), {
-      wrapper: ({ children }) => (
-        <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-          {children}
-        </MemoryRouter>
-      )
+      wrapper: ({ children }) => <MemoryRouter>{children}</MemoryRouter>,
     });
 
     expect(mockNavigate).toHaveBeenCalledWith('/target');
   });
 
-  // TODO: Simplify it after update react router to v7
   it('does not call navigate when shouldRedirect is false', () => {
     renderHook(() => useRedirect({ path: '/target', shouldRedirect: false }), {
-      wrapper: ({ children }) => (
-        <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-          {children}
-        </MemoryRouter>
-      )
+      wrapper: ({ children }) => <MemoryRouter>{children}</MemoryRouter>,
     });
 
     expect(mockNavigate).not.toHaveBeenCalled();
