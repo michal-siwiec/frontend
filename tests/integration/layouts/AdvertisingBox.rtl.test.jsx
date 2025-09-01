@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import AdvertisingBox from 'layouts/AdvertisingBox.tsx';
 import * as s3 from 'services/s3.ts';
 import { WIDTH_BREAKPOINTS } from 'data/breakpoints.ts';
-import { resizeWindow } from 'tests/helpers/domUtils.js';
+import { resizeWindow } from 'tests/helpers/domUtils.ts';
 
 jest.mock('services/s3.ts', () => ({
   getSignedUrl: jest.fn()
