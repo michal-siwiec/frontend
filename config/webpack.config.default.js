@@ -58,7 +58,7 @@ module.exports = {
             pages: path.resolve(__dirname, '../', 'src/pages'),
             contexts: path.resolve(__dirname, '../', 'src/contexts'),
             layouts: path.resolve(__dirname, '../', 'src/layouts'),
-            types: path.resolve(__dirname, '../', 'src/types'),
+            types: path.resolve(__dirname, '../', 'src/types')
           }
         },
         options: {
