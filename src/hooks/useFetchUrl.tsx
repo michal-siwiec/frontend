@@ -5,7 +5,7 @@ import { AWS_BUCKET } from 'utils/environment';
 type useFetchUrlProps = { key: string, bucket?: string }
 
 const useFetchUrl = ({ bucket = AWS_BUCKET, key }: useFetchUrlProps) => {
-  const [objectURL, setObjectURL] = useState<null | string>(null);
+  const [objectURL, setObjectURL] = useState<undefined | string>(undefined);
 
   useEffect(() => {
     const url = getSignedUrl(key, bucket);

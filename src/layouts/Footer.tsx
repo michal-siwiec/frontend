@@ -25,7 +25,6 @@ const Footer = () => {
         <h4 className={`${blockName}__part-header`}>
           <Link to="/">
             <img
-              // @ts-ignore // TODO
               src={logoURL}
               alt="Budoman-logo"
               className={`${blockName}__logo-img`}

@@ -36,7 +36,6 @@ const Product = ({ product, index, mode }: ProductProps) => {
       <Fragment>
         <div className={`${blockName}__img-wrapper`}>
           <img
-            // @ts-ignore // TODO
             src={pictureURL}
             alt="Zdjęcie produktu"
             className={`${blockName}__img`}
