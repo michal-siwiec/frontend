@@ -1,5 +1,7 @@
 import { DeepReadonly } from 'utility-types';
 
+// TODO Why do I keep inside Product type quantity? Product should keep only attributes...
+
 export type Product = DeepReadonly<{
   id: string,
   quantity: number,
