@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { waitFor } from '@testing-library/react';
-import useFetchUrl from 'hooks/useFetchUrl.jsx';
+import useFetchUrl from 'hooks/useFetchUrl.tsx';
 import * as S3Service from 'services/s3.ts';
 
 describe('useFetchUrl', () => {

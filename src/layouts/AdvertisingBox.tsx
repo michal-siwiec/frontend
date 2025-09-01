@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import useIsMobile from 'hooks/useIsMobile.jsx';
+import useIsMobile from 'hooks/useIsMobile.tsx';
 import { getSignedUrl } from 'services/s3';
 import { WIDTH_BREAKPOINTS } from 'data/breakpoints';
 

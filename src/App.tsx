@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import './styles/style.scss';
-import useSetAuthInitialState from 'hooks/useSetAuthInitialState.jsx';
+import useSetAuthInitialState from 'hooks/useSetAuthInitialState.tsx';
 import TopBar from 'layouts/topBar/TopBar.tsx';
 import AdvertisingBox from 'layouts/AdvertisingBox.tsx';
 import AppRouter from 'pages/AppRouter.tsx';

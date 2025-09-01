@@ -3,7 +3,7 @@ import { useSearchParams, useLocation } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { Categories } from 'types/category';
 import { GetProductsResponse } from 'types/product';
-import useScrollIntoElement from 'hooks/useScrollIntoElement.jsx';
+import useScrollIntoElement from 'hooks/useScrollIntoElement';
 import { GET_PRODUCTS } from 'graphql/queries/products';
 import { generateHeaderCaption } from 'services/products';
 import LoadingModal from 'components/modals/LoadingModal';

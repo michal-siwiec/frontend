@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { WIDTH_BREAKPOINTS } from 'data/breakpoints.ts';
+import { WIDTH_BREAKPOINTS } from 'data/breakpoints';
 
 const useIsMobile = (mobileBreakPoint = WIDTH_BREAKPOINTS.md) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < mobileBreakPoint);

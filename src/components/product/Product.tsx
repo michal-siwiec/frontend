@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import clsx from 'clsx';
-import useFetchUrl from 'hooks/useFetchUrl.jsx';
+import useFetchUrl from 'hooks/useFetchUrl.tsx';
 import { Product as ProductType } from 'types/product';
 import ShadowedContainer from 'components/containers/ShadowedContainer';
 import { APPEARING_IN_SEQUENCE } from 'data/animations';

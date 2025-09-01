@@ -1,6 +1,6 @@
 import React from 'react';
 import { exact, element } from 'prop-types';
-import useIsLogged from 'hooks/useIsLogged.jsx';
+import useIsLogged from 'hooks/useIsLogged.tsx';
 
 type EmptyOpinionsListProps = { textAreaRef: React.RefObject<HTMLTextAreaElement> }
 

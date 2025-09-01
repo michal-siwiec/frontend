@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'redux_/store';
 import { TextInputOnChange } from 'types/events';
 import { UserPersonalDetailsResponse } from 'types/user';
-import useIsLogged from 'hooks/useIsLogged.jsx';
+import useIsLogged from 'hooks/useIsLogged.tsx';
 import { setName, setSurname, setStreet, setCity, setPostalCode, setEmail, setPhoneNumber } from 'redux_/order/actionsCreator';
 import { OrderContext } from 'contexts/contexts';
 import { handleClientDetailsValidation } from 'services/user';

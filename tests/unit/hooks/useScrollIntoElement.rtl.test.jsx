@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks';
-import useScrollIntoElement from 'hooks/useScrollIntoElement.jsx';
+import useScrollIntoElement from 'hooks/useScrollIntoElement.tsx';
 import * as helpers from 'utils/helpers.ts';
 
 describe('useScrollIntoElement', () => {

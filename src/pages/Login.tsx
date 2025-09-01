@@ -5,7 +5,7 @@ import { useMutation, ServerError } from '@apollo/client';
 import { RootState } from 'redux_/store';
 import { TextInputOnChange } from 'types/events';
 import { LoginUserResponse } from 'types/user';
-import useRedirect from 'hooks/useRedirect.jsx';
+import useRedirect from 'hooks/useRedirect';
 import { ERROR_CODES } from 'data/errors';
 import { LOGIN_USER } from 'graphql/mutations/user';
 import { login } from 'redux_/user/actionsCreator';

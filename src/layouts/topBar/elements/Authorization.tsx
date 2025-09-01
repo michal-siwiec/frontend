@@ -5,7 +5,7 @@ import { useMutation } from '@apollo/client';
 import { RootState } from 'redux_/store';
 import { logout } from 'redux_/user/actionsCreator';
 import { LOGOUT_USER } from 'graphql/mutations/user';
-import useIsLogged from 'hooks/useIsLogged.jsx';
+import useIsLogged from 'hooks/useIsLogged.tsx';
 import Avatar from 'components/Avatar.jsx';
 
 const Authorization = () => {

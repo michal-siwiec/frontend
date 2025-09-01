@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { waitFor } from '@testing-library/react';
 import createProvidersWrapper from 'tests/unit/helpers/createProvidersWrapper.jsx';
-import useSetAuthInitialState from 'hooks/useSetAuthInitialState.jsx';
+import useSetAuthInitialState from 'hooks/useSetAuthInitialState.tsx';
 import { useQuery } from '@apollo/client';
 
 jest.mock('@apollo/client', () => ({

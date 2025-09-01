@@ -5,7 +5,7 @@ import { RootState } from 'redux_/store';
 import { TextInputOnChange } from 'types/events';
 import { USER_PERSONAL_DETAILS, IS_USER_SAVED_TO_NEWSLETTER } from 'graphql/queries/user';
 import { SUBSCRIBE_TO_NEWSLETTER } from 'graphql/mutations/user';
-import useIsLogged from 'hooks/useIsLogged.jsx';
+import useIsLogged from 'hooks/useIsLogged.tsx';
 import { handleSaveToNewsletterValidation } from 'services/newsletter';
 import FormContainer from 'components/containers/FormContainer';
 import TextInput from 'components/inputs/TextInput';

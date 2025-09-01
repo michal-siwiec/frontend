@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from 'redux_/store';
-import useRedirect from 'hooks/useRedirect.jsx';
+import useRedirect from 'hooks/useRedirect.tsx';
 
 const UserPanel = () => {
   const blockName = 'user-panel';

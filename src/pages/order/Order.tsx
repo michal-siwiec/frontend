@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from 'redux_/store';
 import { isEmpty } from 'lodash';
-import useRedirect from 'hooks/useRedirect.jsx';
+import useRedirect from 'hooks/useRedirect.tsx';
 import { OrderContext } from 'contexts/contexts';
 import FormContainer from 'components/containers/FormContainer';
 import Header from './Header';

@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import Avatar from 'components/Avatar.jsx';
-import useFetchUrl from 'hooks/useFetchUrl.jsx';
+import useFetchUrl from 'hooks/useFetchUrl.tsx';
 
 jest.mock('hooks/useFetchUrl');
 

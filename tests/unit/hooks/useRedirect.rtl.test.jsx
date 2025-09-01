@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { MemoryRouter, useNavigate } from 'react-router-dom';
-import useRedirect from 'hooks/useRedirect.jsx';
+import useRedirect from 'hooks/useRedirect.tsx';
 
 jest.mock('react-router-dom', () => {
   const actual = jest.requireActual('react-router-dom');

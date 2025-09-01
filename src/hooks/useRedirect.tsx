@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const useRedirect = ({ path, shouldRedirect }) => {
+type useRedirectProps = { path: string, shouldRedirect: boolean };
+
+const useRedirect = ({ path, shouldRedirect }: useRedirectProps) => {
   const navigate = useNavigate();
 
   useEffect(() => {
