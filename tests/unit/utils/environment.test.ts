@@ -15,7 +15,7 @@ describe('env variables', () => {
 
   it('assigns env variables to consts', async () => {
     reloadEnvs();
-    const { API_URL, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_BUCKET, BASIC_AUTH_USER, BASIC_AUTH_PASSWORD } = await import('utils/environment.ts');
+    const { API_URL, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_BUCKET, BASIC_AUTH_USER, BASIC_AUTH_PASSWORD } = await import('utils/environment');
 
     expect(API_URL).toBe('Fake API_URL');
     expect(AWS_ACCESS_KEY_ID).toBe('Fake AWS_ACCESS_KEY_ID');
@@ -29,25 +29,25 @@ describe('env variables', () => {
     it('API_URL', async () => {
       reloadEnvs(() => { process.env.API_URL = ''; });
 
-      await expect(async () => { await import('utils/environment.ts'); }).rejects.toThrow('Missing required environment variable: API_URL');
+      expect(async () => { await import('utils/environment'); }).rejects.toThrow('Missing required environment variable: API_URL');
     });
 
     it('AWS_ACCESS_KEY_ID', async () => {
       reloadEnvs(() => { process.env.AWS_ACCESS_KEY_ID = ''; });
 
-      await expect(async () => { await import('utils/environment.ts'); }).rejects.toThrow('Missing required environment variable: AWS_ACCESS_KEY_ID');
+      expect(async () => { await import('utils/environment'); }).rejects.toThrow('Missing required environment variable: AWS_ACCESS_KEY_ID');
     });
 
     it('AWS_SECRET_ACCESS_KEY', async () => {
       reloadEnvs(() => { process.env.AWS_SECRET_ACCESS_KEY = ''; });
 
-      await expect(async () => { await import('utils/environment.ts'); }).rejects.toThrow('Missing required environment variable: AWS_SECRET_ACCESS_KEY');
+      expect(async () => { await import('utils/environment'); }).rejects.toThrow('Missing required environment variable: AWS_SECRET_ACCESS_KEY');
     });
 
     it('AWS_BUCKET', async () => {
       reloadEnvs(() => { process.env.AWS_BUCKET = ''; });
 
-      await expect(async () => { await import('utils/environment.ts'); }).rejects.toThrow('Missing required environment variable: AWS_BUCKET');
+      expect(async () => { await import('utils/environment'); }).rejects.toThrow('Missing required environment variable: AWS_BUCKET');
     });
   });
 
@@ -55,13 +55,13 @@ describe('env variables', () => {
     it('BASIC_AUTH_USER', async () => {
       reloadEnvs(() => { process.env.BASIC_AUTH_USER = ''; });
 
-      await expect(async () => { await import('utils/environment.ts'); }).not.toThrow();
+      expect(async () => { await import('utils/environment'); }).not.toThrow();
     });
 
     it('BASIC_AUTH_PASSWORD', async () => {
       reloadEnvs(() => { process.env.BASIC_AUTH_PASSWORD = ''; });
 
-      await expect(async () => { await import('utils/environment.ts'); }).not.toThrow();
+      expect(async () => { await import('utils/environment'); }).not.toThrow();
     });
   });
 });
