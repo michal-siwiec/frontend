@@ -1,7 +1,7 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Opinions } from 'types/opinion';
-import Opinion from './Opinion.jsx';
+import Opinion from './Opinion';
 
 type OpinionsListProps = { opinions: Opinions }
 

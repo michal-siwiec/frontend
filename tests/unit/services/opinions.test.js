@@ -11,7 +11,7 @@ describe('handleAddOpinionValidation', () => {
   it('returns true status if opinion has appropriate format', () => {
     const response = handleAddOpinionValidation('Lorem ipsum');
 
-    expect(response).toEqual({ opinionError: false, validationStatus: true });
+    expect(response).toEqual({ opinionError: '', validationStatus: true });
   });
 });
 

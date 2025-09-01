@@ -6,7 +6,7 @@ export const handleAddOpinionValidation = (opinion: string) => {
   const isOpinionValid = !isEmpty(opinion);
 
   return {
-    opinionError: !isOpinionValid && VALIDATION_ERROR_MESSAGES.opinion,
+    opinionError: !isOpinionValid ? VALIDATION_ERROR_MESSAGES.opinion : '',
     validationStatus: isOpinionValid
   };
 };

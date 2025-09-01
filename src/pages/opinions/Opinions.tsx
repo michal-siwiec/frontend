@@ -9,14 +9,14 @@ import SuccessModal from 'components/modals/SuccessModal';
 import ErrorModal from 'components/modals/ErrorModal';
 import Pagination from 'components/Pagination';
 import OpinionsList from './OpinionsList';
-import EmptyOpinionsList from './EmptyOpinionsList.jsx';
-import AddOpinionForm from './AddOpinionForm.jsx';
+import EmptyOpinionsList from './EmptyOpinionsList';
+import AddOpinionForm from './AddOpinionForm';
 
 const Opinions = () => {
   const blockName = 'opinions';
   const quantityPerPage = 2;
   const isLogged = useIsLogged();
-  const textareaRef = useRef(null);
+  const textareaRef = useRef<null | HTMLTextAreaElement>(null);
   const [activePage, setActivePage] = useState(0);
   const [isOpinionAdded, setIsOpinionAdded] = useState(false);
   const [isAddedOpinionError, setIsAddedOpinionError] = useState(false);

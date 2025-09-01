@@ -1,14 +1,14 @@
 import React from 'react';
 import { Rating as MuiRating } from '@mui/material';
 
-type RatingProps = {
+type BaseRatingProps = {
   value: number,
   readOnly?: boolean,
   classes?: string,
-  onChange: () => void
+  onChange?: (...args: any[]) => void
 };
 
-const Rating = ({ value, onChange, readOnly = true, classes = '' }: RatingProps) => (
+const Rating = ({ value, onChange = () => {}, readOnly = true, classes = '' }: BaseRatingProps) => (
   <MuiRating
     value={value}
     readOnly={readOnly}

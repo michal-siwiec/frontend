@@ -7,7 +7,7 @@ type TextAreaProps = {
   placeholder?: string,
   validationError?: string,
   dataTestId?: string,
-  onChange: () => void
+  onChange: (...args: any[]) => void
 };
 
 const TextArea = ({ value, textareaRef, onChange, classNames = '', placeholder = '', validationError = '', dataTestId = undefined }: TextAreaProps) => (

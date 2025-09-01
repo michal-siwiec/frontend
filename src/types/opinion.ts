@@ -1,6 +1,6 @@
 import { Avatars } from 'types/avatar';
 
-type Opinion = {
+export type Opinion = {
   content: string,
   mark: number,
   updatedAt: string,

@@ -1,14 +1,17 @@
+import React from 'react';
 import { exact, element } from 'prop-types';
 import useIsLogged from 'hooks/useIsLogged.jsx';
 
-const EmptyOpinionsList = ({ textAreaRef }) => {
+type EmptyOpinionsListProps = { textAreaRef: React.RefObject<HTMLTextAreaElement> }
+
+const EmptyOpinionsList = ({ textAreaRef }: EmptyOpinionsListProps) => {
   const blockName = 'opinions';
   const isLogged = useIsLogged();
 
   const handleSetFocusOnMouseDown = () => {
     const timeToSetFocus = 0;
     // It'll not work without setTimeout
-    setTimeout(() => textAreaRef.current.focus(), timeToSetFocus);
+    setTimeout(() => textAreaRef!.current?.focus(), timeToSetFocus);
   };
 
   return (

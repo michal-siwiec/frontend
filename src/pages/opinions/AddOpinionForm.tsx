@@ -1,22 +1,25 @@
 import React, { Fragment, useState } from 'react';
-import { exact, func, element } from 'prop-types';
 import { useSelector } from 'react-redux';
 import { useMutation } from '@apollo/client';
-import { ADD_OPINION } from 'graphql/mutations/opinion.ts';
-import { handleAddOpinionValidation } from 'services/opinions.ts';
-import FormContainer from 'components/containers/FormContainer.tsx';
-import Rating from 'components/Rating.tsx';
-import TextArea from 'components/inputs/TextArea.tsx';
-import SubmitButton from 'components/SubmitButton.tsx';
+import { RootState } from 'redux_/store';
+import { TextInputOnChange } from 'types/events';
+import { ADD_OPINION } from 'graphql/mutations/opinion';
+import { handleAddOpinionValidation } from 'services/opinions';
+import FormContainer from 'components/containers/FormContainer';
+import Rating from 'components/Rating';
+import TextArea from 'components/inputs/TextArea';
+import SubmitButton from 'components/SubmitButton';
 
-const AddOpinionForm = ({
-  setIsOpinionAdded,
-  setIsAddedOpinionError,
-  textareaRef,
-  refetchOpinions
-}) => {
+type AddOpinionFormProps = {
+  setIsOpinionAdded: (isOpinionAdded: boolean) => void,
+  setIsAddedOpinionError: (isError: boolean) => void,
+  refetchOpinions: () => void,
+  textareaRef: React.RefObject<HTMLTextAreaElement>
+};
+
+const AddOpinionForm = ({ setIsOpinionAdded, setIsAddedOpinionError, textareaRef, refetchOpinions }: AddOpinionFormProps) => {
   const theHighestMark = 5;
-  const userId = useSelector((store) => store.user.loggedUserId);
+  const userId = useSelector((store: RootState) => store.user.loggedUserId);
   const [rating, setRating] = useState(theHighestMark);
   const [opinionValidationError, setOpinionValidationError] = useState('');
   const [addedOpinion, setAddedOpinion] = useState('');
@@ -29,9 +32,9 @@ const AddOpinionForm = ({
     onError: () => setIsAddedOpinionError(true)
   });
 
-  const handleAddOpinionOnChange = ({ target: { value } }) => setAddedOpinion(value);
+  const handleAddOpinionOnChange = ({ target: { value } }: TextInputOnChange) => setAddedOpinion(value);
 
-  const handleSetRating = ({ target: { value } }) => {
+  const handleSetRating = ({ target: { value } }: TextInputOnChange) => {
     const numberSystem = 10;
     const parsedValue = parseInt(value, numberSystem);
 
@@ -83,12 +86,5 @@ const AddOpinionForm = ({
     />
   );
 };
-
-AddOpinionForm.propTypes = exact({
-  setIsOpinionAdded: func.isRequired,
-  setIsAddedOpinionError: func.isRequired,
-  textareaRef: element.isRequired,
-  refetchOpinions: func.isRequired
-}).isRequired;
 
 export default AddOpinionForm;

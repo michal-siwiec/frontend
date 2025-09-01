@@ -1,22 +1,23 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { exact, string, number } from 'prop-types';
 import SmoothCollapse from 'react-smooth-collapse';
 import { isEmpty } from 'lodash';
-import { formatTimestamp } from 'utils/helpers.ts';
-import ShadowedContainer from 'components/containers/ShadowedContainer.tsx';
-import Rating from 'components/Rating.tsx';
+import { Opinion as OpinionType } from 'types/opinion';
+import { formatTimestamp } from 'utils/helpers';
+import ShadowedContainer from 'components/containers/ShadowedContainer';
+import Rating from 'components/Rating';
 import Avatar from 'components/Avatar.jsx';
-import { APPEARING_IN_SEQUENCE } from 'data/animations.ts';
-import { generateOpinionContent } from 'services/opinions.ts';
+import { APPEARING_IN_SEQUENCE } from 'data/animations';
+import { generateOpinionContent } from 'services/opinions';
 
-const Opinion = ({ opinionsData: { content, mark, updatedAt, user: { email, avatars } }, index }) => {
+type OpinionProps = { opinionsData: OpinionType, index: number };
+
+const Opinion = ({ opinionsData: { content, mark, updatedAt, user: { email, avatars } }, index }: OpinionProps) => {
   const blockName = 'opinion';
   const displayedNumberOfChars = 25;
   const [contentExpanded, setContentExpanded] = useState(false);
-  // ? Czemu to nie ma initialState
-  const [presentedNarrowContent, setPresentedNarrowContent] = useState();
-  const [presentedRestOfContent, setPresentedRestOfContent] = useState();
-  const [isTextToLongToDisplay, setIsTextToLongToDisplay] = useState();
+  const [presentedNarrowContent, setPresentedNarrowContent] = useState('');
+  const [presentedRestOfContent, setPresentedRestOfContent] = useState('');
+  const [isTextToLongToDisplay, setIsTextToLongToDisplay] = useState(false);
 
   const handleExpandContentOnMouseDown = () => setContentExpanded(!contentExpanded);
 
@@ -40,7 +41,7 @@ const Opinion = ({ opinionsData: { content, mark, updatedAt, user: { email, avat
         variants: APPEARING_IN_SEQUENCE,
         custom: index,
         initial: APPEARING_IN_SEQUENCE.hidden,
-        animate: APPEARING_IN_SEQUENCE.visible
+        animate: APPEARING_IN_SEQUENCE.visible(index)
       }}
     >
       <Fragment>
@@ -83,12 +84,5 @@ const Opinion = ({ opinionsData: { content, mark, updatedAt, user: { email, avat
     </ShadowedContainer>
   );
 };
-
-Opinion.propTypes = exact({
-  content: string.isRequired,
-  mark: number.isRequired,
-  updatedAt: string.isRequired,
-  email: string.isRequired
-}).isRequired;
 
 export default Opinion;
