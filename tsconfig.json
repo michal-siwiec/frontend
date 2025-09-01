@@ -12,7 +12,10 @@
     "baseUrl": "src",
     "allowJs": true,
     "checkJs": false,
-    "noEmit": true 
+    "noEmit": true,
+    "paths": {
+      "tests/*": ["../tests/*"] 
+    }
   },
   "include": ["src", "tests"]
 }

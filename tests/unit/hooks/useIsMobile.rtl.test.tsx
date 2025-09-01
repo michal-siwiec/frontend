@@ -1,7 +1,7 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import useIsMobile from 'hooks/useIsMobile.tsx';
-import { WIDTH_BREAKPOINTS } from 'data/breakpoints.ts';
-import { resizeWindow } from 'tests/helpers/domUtils.ts';
+import useIsMobile from 'hooks/useIsMobile';
+import { WIDTH_BREAKPOINTS } from 'data/breakpoints';
+import { resizeWindow } from 'tests/helpers/domUtils';
 
 describe('useIsMobile', () => {
   const originalInnerWidth = global.innerWidth;

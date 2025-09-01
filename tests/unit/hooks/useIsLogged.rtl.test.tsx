@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks';
-import useIsLogged from 'hooks/useIsLogged.tsx';
+import useIsLogged from 'hooks/useIsLogged';
 import createProvidersWrapper from 'tests/unit/helpers/createProvidersWrapper.jsx';
 
 describe('useIsLogged', () => {
