@@ -1,5 +1,5 @@
 import { createContext } from 'react';
 
-type OrderContextType = { step: number, setStep: () => void } | null
+type OrderContextType = { step: number, setStep: (step: number) => void }
 
-export const OrderContext = createContext<OrderContextType>(null);
+export const OrderContext = createContext<OrderContextType>({ step: 0, setStep: () => {} });

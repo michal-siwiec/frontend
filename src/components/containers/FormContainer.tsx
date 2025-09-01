@@ -3,7 +3,7 @@ import React, { ReactElement } from 'react';
 type FormContainerProps = {
   header: string | ReactElement,
   form: ReactElement,
-  classNames?: ''
+  classNames?: string
 };
 
 const FormContainer = ({ header, form, classNames = '' }: FormContainerProps) => {

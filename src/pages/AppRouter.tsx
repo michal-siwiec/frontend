@@ -4,7 +4,7 @@ import Products from './Products';
 import Login from 'pages/Login';
 import Register from 'pages/Register';
 import Opinions from 'pages/opinions/Opinions.jsx';
-import Order from 'pages/order/Order.jsx';
+import Order from 'pages/order/Order.tsx';
 import ThankYouPage from 'pages/ThankYouPage';
 import UserPanel from 'pages/userPanel/UserPanel';
 import MyDetails from 'pages/userPanel/MyDetails';

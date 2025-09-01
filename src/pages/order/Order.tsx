@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { RootState } from 'redux_/store';
 import { isEmpty } from 'lodash';
 import useRedirect from 'hooks/useRedirect.jsx';
-import { OrderContext } from 'contexts/contexts.ts';
-import FormContainer from 'components/containers/FormContainer.tsx';
-import Header from './Header.jsx';
+import { OrderContext } from 'contexts/contexts';
+import FormContainer from 'components/containers/FormContainer';
+import Header from './Header';
 import From from './form/Form.jsx';
 
 const Order = () => {
   const [step, setStep] = useState(0);
-  const { addedProducts } = useSelector((store) => store.basket);
+  const { addedProducts } = useSelector((store: RootState) => store.basket);
 
   useRedirect({ path: '/', shouldRedirect: isEmpty(addedProducts) });
 
