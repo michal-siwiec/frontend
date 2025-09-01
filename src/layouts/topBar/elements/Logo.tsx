@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useFetchUrl from 'hooks/useFetchUrl.tsx';
+import useFetchUrl from 'hooks/useFetchUrl';
 
 const Logo = () => {
   const blockName = 'top-bar-elements';

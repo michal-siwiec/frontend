@@ -6,7 +6,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import Tooltip from 'components/Tooltip';
-import useFetchUrl from 'hooks/useFetchUrl.tsx';
+import useFetchUrl from 'hooks/useFetchUrl';
 import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem';
 import { formatPhoneNumber } from 'utils/helpers';
 import { FOOTER_MENU_ROUTING } from 'data/routing';

@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 import { isEmpty } from 'lodash';
 import { GetOpinionsResponse } from 'types/opinion';
 import { GET_OPINIONS } from 'graphql/queries/opinion';
-import useIsLogged from 'hooks/useIsLogged.tsx';
+import useIsLogged from 'hooks/useIsLogged';
 import LoadingModal from 'components/modals/LoadingModal';
 import SuccessModal from 'components/modals/SuccessModal';
 import ErrorModal from 'components/modals/ErrorModal';

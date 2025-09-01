@@ -1,7 +1,7 @@
 import React from 'react';
 import DesktopContent from './DesktopContent';
 import MobileContent from './MobileContent';
-import useIsMobile from 'hooks/useIsMobile.tsx';
+import useIsMobile from 'hooks/useIsMobile';
 import { WIDTH_BREAKPOINTS } from 'data/breakpoints';
 
 const TopBar = () => {

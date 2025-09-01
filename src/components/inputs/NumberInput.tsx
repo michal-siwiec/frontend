@@ -5,7 +5,7 @@ type NumberInputProps = {
   max?: number,
   classNames?: string,
   disabled?: boolean,
-  onChange: () => void
+  onChange?: (...args: any[]) => void
 };
 
 const NumberInput = ({ value, max = undefined, classNames = '', disabled = false, onChange }: NumberInputProps) => (
