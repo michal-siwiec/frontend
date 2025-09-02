@@ -1,11 +1,12 @@
+import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import NumberInput from 'components/inputs/NumberInput.tsx';
+import NumberInput from 'components/inputs/NumberInput';
 
 describe('NumberInput component', () => {
   const mockOnChange = jest.fn();
 
   it('renders an input of type number with correct value and max', () => {
-    render(<NumberInput max={10} value="5" onChange={mockOnChange} />);
+    render(<NumberInput max={10} value={5} onChange={mockOnChange} />);
 
     const input = screen.getByDisplayValue('5');
 
@@ -16,7 +17,7 @@ describe('NumberInput component', () => {
   });
 
   it('calls onChange when value changes', () => {
-    render(<NumberInput max={10} value="5" onChange={mockOnChange} />);
+    render(<NumberInput max={10} value={5} onChange={mockOnChange} />);
 
     const input = screen.getByDisplayValue('5');
     fireEvent.change(input, { target: { value: '6' } });
@@ -25,7 +26,7 @@ describe('NumberInput component', () => {
   });
 
   it('respects the disabled prop', () => {
-    render(<NumberInput max={10} value="5" onChange={mockOnChange} disabled />);
+    render(<NumberInput max={10} value={5} onChange={mockOnChange} disabled />);
 
     const input = screen.getByDisplayValue('5');
 

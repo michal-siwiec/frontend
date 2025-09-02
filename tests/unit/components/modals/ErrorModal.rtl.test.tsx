@@ -1,5 +1,6 @@
+import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import ErrorModal from 'components/modals/ErrorModal.tsx';
+import ErrorModal from 'components/modals/ErrorModal';
 
 describe('ErrorModal', () => {
   const mockClose = jest.fn();

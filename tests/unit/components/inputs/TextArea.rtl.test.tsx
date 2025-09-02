@@ -1,10 +1,10 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import TextArea from 'components/inputs/TextArea.tsx';
+import TextArea from 'components/inputs/TextArea';
 
 describe('TextArea', () => {
   const mockOnChange = jest.fn();
-  const mockRef = React.createRef();
+  const mockRef = React.createRef<HTMLTextAreaElement>();
 
   const setup = (props = {}) => {
     render(

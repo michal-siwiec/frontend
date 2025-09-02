@@ -1,5 +1,6 @@
+import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import SuccessModal from 'components/modals/SuccessModal.tsx';
+import SuccessModal from 'components/modals/SuccessModal';
 
 describe('SuccessModal', () => {
   const handleOnClose = jest.fn();
