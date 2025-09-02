@@ -1,6 +1,7 @@
+// @ts-nocheck
 import FileSaver from 'file-saver';
-import * as S3Service from 'services/s3.ts';
-import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem.ts';
+import * as S3Service from 'services/s3';
+import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem';
 
 describe('fetchFileOnLocalFileSystem', () => {
   beforeEach(() => {
@@ -9,11 +10,12 @@ describe('fetchFileOnLocalFileSystem', () => {
 
   it('calls getObject with success response', () => {
     // Mocking method createObjectURL because it's not available by default and "FileSaver" needs it
-    global.URL = {};
-    global.URL.createObjectURL = () => {};
-    jest.spyOn(global.URL, 'createObjectURL').mockImplementation(() => 'mock-blob-url');
+    Object.defineProperty(global.URL, 'createObjectURL', {
+      writable: true,
+      value: jest.fn(() => 'mock-blob-url'),
+    });
 
-    const getObjectSpy = jest.spyOn(S3Service, 'getObject').mockImplementation((key, bucket, responseHandler) => {
+    const getObjectSpy = jest.spyOn(S3Service, 'getObject').mockImplementation((_key, _bucket, responseHandler) => {
       const binaryData = Buffer.from('binary-fake-data', 'utf8');
       responseHandler(null, { Body: binaryData });
     });

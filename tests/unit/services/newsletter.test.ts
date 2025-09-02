@@ -1,9 +1,9 @@
-import { handleSaveToNewsletterValidation } from 'services/newsletter.ts';
+import { handleSaveToNewsletterValidation } from 'services/newsletter';
 
 describe('handleSaveToNewsletterValidation', () => {
-  let name;
-  let surname;
-  let email;
+  let name: string;
+  let surname: string;
+  let email: string;
 
   beforeEach(() => {
     name = 'Michal';

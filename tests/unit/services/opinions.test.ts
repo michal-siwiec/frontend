@@ -1,5 +1,5 @@
-import { handleAddOpinionValidation, generateOpinionContent } from 'services/opinions.ts';
-import OpinionPresentedContentGenerator from 'services/opinions/opinionPresentedContentGenerator.ts';
+import { handleAddOpinionValidation, generateOpinionContent } from 'services/opinions';
+import OpinionPresentedContentGenerator from 'services/opinions/opinionPresentedContentGenerator';
 
 describe('handleAddOpinionValidation', () => {
   it('returns false status if opinion is empty', () => {
@@ -16,12 +16,12 @@ describe('handleAddOpinionValidation', () => {
 });
 
 describe('generateOpinionContent', () => {
-  const callSpy = jest.spyOn(OpinionPresentedContentGenerator.prototype, 'call').mockResolvedValue('opinion-content-response');
+  const callSpy = jest.spyOn(OpinionPresentedContentGenerator.prototype, 'call').mockReturnValue({ narrowContent: 'opinion', restOfContent: '-content-response', textToLongToDisplay: false });
 
   it('returns OpinionPresentedContentGenerator result', async () => {
-    const response = await generateOpinionContent(4, 'Lorem ipsum', true);
+    const response = generateOpinionContent(4, 'Lorem ipsum', true);
 
     expect(callSpy).toHaveBeenCalledTimes(1);
-    expect(response).toEqual('opinion-content-response');
+    expect(response).toEqual({ narrowContent: 'opinion', restOfContent: '-content-response', textToLongToDisplay: false });
   });
 });

@@ -1,4 +1,4 @@
-import { addProductToBasket } from 'services/basket.ts';
+import { addProductToBasket } from 'services/basket';
 
 describe('addProductToBasket', () => {
   it('adds product to basket when is not added yet', () => {
@@ -12,7 +12,8 @@ describe('addProductToBasket', () => {
           name: 'Syropian fundamentowy 15 cm',
           pictureBucket: 'budoman-development',
           pictureKey: 'styropian_fundamentowy_15cm.png',
-          price: 178
+          price: 178,
+          __typename: 'ProductObject'
         }
       }
     ];
@@ -28,7 +29,8 @@ describe('addProductToBasket', () => {
           name: 'Taśma kalenicowa',
           pictureBucket: 'budoman-development',
           pictureKey: 'images/products/roof_ accessories/tasma_kalenicowa.jpeg',
-          price: 55
+          price: 55,
+          __typename: 'ProductObject'
         }
       }
     );
@@ -44,7 +46,8 @@ describe('addProductToBasket', () => {
             name: 'Syropian fundamentowy 15 cm',
             pictureBucket: 'budoman-development',
             pictureKey: 'styropian_fundamentowy_15cm.png',
-            price: 178
+            price: 178,
+            __typename: 'ProductObject'
           }
         },
         {
@@ -56,7 +59,8 @@ describe('addProductToBasket', () => {
             name: 'Taśma kalenicowa',
             pictureBucket: 'budoman-development',
             pictureKey: 'images/products/roof_ accessories/tasma_kalenicowa.jpeg',
-            price: 55
+            price: 55,
+            __typename: 'ProductObject'
           }
         }
       ]
@@ -74,7 +78,8 @@ describe('addProductToBasket', () => {
           name: 'Taśma kalenicowa',
           pictureBucket: 'budoman-development',
           pictureKey: 'images/products/roof_ accessories/tasma_kalenicowa.jpeg',
-          price: 55
+          price: 55,
+          __typename: 'ProductObject'
         }
       }
     ];
@@ -90,7 +95,8 @@ describe('addProductToBasket', () => {
           name: 'Taśma kalenicowa',
           pictureBucket: 'budoman-development',
           pictureKey: 'images/products/roof_ accessories/tasma_kalenicowa.jpeg',
-          price: 55
+          price: 55,
+          __typename: 'ProductObject'
         }
       }
     );
@@ -106,7 +112,8 @@ describe('addProductToBasket', () => {
             name: 'Taśma kalenicowa',
             pictureBucket: 'budoman-development',
             pictureKey: 'images/products/roof_ accessories/tasma_kalenicowa.jpeg',
-            price: 55
+            price: 55,
+            __typename: 'ProductObject'
           }
         }
       ]
