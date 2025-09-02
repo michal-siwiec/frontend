@@ -1,10 +1,10 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
-import FileInput from 'components/inputs/FileInput.tsx';
+import FileInput from 'components/inputs/FileInput';
 
 describe('FileInput component', () => {
   const mockOnChange = jest.fn();
-  const mockRef = React.createRef();
+  const mockRef = React.createRef<HTMLInputElement>();
 
   it('renders component properly', () => {
     const { container } = render(<FileInput onChange={mockOnChange} innerRef={mockRef} dataTestID="file-input" />);
@@ -19,7 +19,7 @@ describe('FileInput component', () => {
 
     const file = new File(['hello'], 'hello.png', { type: 'image/png' });
     const input = container.querySelector('[data-testid="file-input"]');
-    fireEvent.change(input, { target: { files: [file] } });
+    fireEvent.change(input!, { target: { files: [file] } });
 
     expect(mockOnChange).toHaveBeenCalled();
   });
