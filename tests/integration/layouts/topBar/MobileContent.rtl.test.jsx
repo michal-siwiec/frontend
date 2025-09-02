@@ -1,6 +1,6 @@
 import { screen, fireEvent, waitFor } from '@testing-library/react';
 import MobileContent from 'layouts/topBar/MobileContent.tsx';
-import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
+import renderWithProviders from 'tests/integration/helpers/renderWithProviders.tsx';
 import { resizeWindow } from 'tests/helpers/domUtils.ts';
 import { WIDTH_BREAKPOINTS } from 'data/breakpoints.ts';
 

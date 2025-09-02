@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
 import DesktopContent from 'layouts/topBar/DesktopContent.tsx';
-import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
+import renderWithProviders from 'tests/integration/helpers/renderWithProviders.tsx';
 import { WIDTH_BREAKPOINTS } from 'data/breakpoints.ts';
 import { resizeWindow } from 'tests/helpers/domUtils.ts';
 

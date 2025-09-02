@@ -1,21 +1,30 @@
+import React, { ReactElement } from 'react';
+import { ApolloProvider } from '@apollo/client';
 import { render } from '@testing-library/react';
+import { MockedResponse } from '@apollo/client/testing';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, type PreloadedState } from '@reduxjs/toolkit';
 import { MockedProvider } from '@apollo/client/testing';
-import rootReducer from 'redux_/rootReducer.ts';
-import { ApolloProvider } from '@apollo/client';
-import Client from 'graphql/client.ts';
+import rootReducer from 'redux_/rootReducer';
+import { RootState, AppStore } from 'types/store';
+import Client from 'graphql/client';
+
+type RenderWithProvidersType = {
+  preloadedState?: PreloadedState<RootState>,
+  initialEntries?: Array<string>,
+  mocks?: ReadonlyArray<MockedResponse>,
+  store?: AppStore,
+};
 
 const renderWithProviders = (
-  ui,
+  ui: ReactElement,
   {
     preloadedState = {},
     initialEntries = ['/'],
     mocks = [],
     store = configureStore({ reducer: rootReducer, preloadedState }),
-    ...renderOptions
-  } = {}
+  }: RenderWithProvidersType = {}
 ) => (
   render(
     <ApolloProvider client={Client}>
@@ -27,8 +36,7 @@ const renderWithProviders = (
           </MemoryRouter>
         </MockedProvider>
       </Provider>
-    </ApolloProvider>,
-    renderOptions
+    </ApolloProvider>
   )
 );
 

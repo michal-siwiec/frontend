@@ -1,7 +1,7 @@
 import { screen, fireEvent, waitFor } from '@testing-library/react';
 import Authorization from 'layouts/topBar/elements/Authorization.tsx';
 import { LOGOUT_USER } from 'graphql/mutations/user.ts';
-import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
+import renderWithProviders from 'tests/integration/helpers/renderWithProviders.tsx';
 
 describe('Authorization', () => {
   it('renders login/register page when user is not logged', () => {

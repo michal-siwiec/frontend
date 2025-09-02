@@ -1,5 +1,5 @@
 import { screen, fireEvent, waitFor } from '@testing-library/react';
-import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
+import renderWithProviders from 'tests/integration/helpers/renderWithProviders.tsx';
 import Basket from 'layouts/topBar/elements/basket/Basket.tsx';
 
 describe('Basket', () => {

@@ -1,6 +1,6 @@
 import { screen, waitFor } from '@testing-library/react';
 import { Routes, Route } from 'react-router-dom';
-import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
+import renderWithProviders from 'tests/integration/helpers/renderWithProviders.tsx';
 import NotFound from 'pages/NotFound.tsx';
 
 describe('NotFound component', () => {

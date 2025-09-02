@@ -1,5 +1,5 @@
 import { screen } from '@testing-library/react';
-import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
+import renderWithProviders from 'tests/integration/helpers/renderWithProviders.tsx';
 import SelectedQuantityPresenter from 'components/product/SelectedQuantityPresenter.tsx';
 
 describe('SelectedQuantityPresenter', () => {

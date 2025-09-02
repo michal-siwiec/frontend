@@ -1,5 +1,5 @@
 import { screen } from '@testing-library/react';
-import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
+import renderWithProviders from 'tests/integration/helpers/renderWithProviders.tsx';
 import MenuList from 'layouts/topBar/elements/MenuList.tsx';
 import { TOP_BAR_MENU_ROUTING } from 'data/routing.ts';
 

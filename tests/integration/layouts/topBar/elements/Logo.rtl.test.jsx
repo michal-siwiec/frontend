@@ -1,5 +1,5 @@
 import { screen } from '@testing-library/react';
-import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
+import renderWithProviders from 'tests/integration/helpers/renderWithProviders.tsx';
 import Logo from 'layouts/topBar/elements/Logo.tsx';
 
 describe('Logo', () => {

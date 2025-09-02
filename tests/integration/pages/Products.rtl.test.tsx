@@ -1,8 +1,10 @@
+import React from 'react';
 import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Products from 'pages/Products.tsx';
-import renderWithProviders from 'tests/integration/helpers/renderWithProviders.jsx';
-import { GET_PRODUCTS } from 'graphql/queries/products.ts';
+import { MockedResponse } from '@apollo/client/testing';
+import Products from 'pages/Products';
+import renderWithProviders from 'tests/integration/helpers/renderWithProviders';
+import { GET_PRODUCTS } from 'graphql/queries/products';
 
 describe('Products', () => {
   beforeAll(() => {
@@ -10,7 +12,7 @@ describe('Products', () => {
   });
 
   it('displayes loading modal when products are fetching', async () => {
-    const mocks = [
+    const mocks: Array<MockedResponse> = [
       {
         request: {
           query: GET_PRODUCTS,
