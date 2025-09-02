@@ -1,5 +1,6 @@
+import React from 'react';
 import { render, screen } from '@testing-library/react';
-import FormContainer from 'components/containers/FormContainer.tsx';
+import FormContainer from 'components/containers/FormContainer';
 
 describe('FormContainer', () => {
   it('renders component properly', () => {
