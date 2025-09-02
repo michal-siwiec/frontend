@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import MuiDrawer, { DrawerProps as MuiDrawerProps } from '@mui/material/Drawer';
 
-type DrawerProps = {
+export type DrawerProps = {
   anchor?: MuiDrawerProps['anchor'],
   isOpen: boolean,
   children: ReactElement,

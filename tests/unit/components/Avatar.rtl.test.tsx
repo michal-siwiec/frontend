@@ -1,12 +1,15 @@
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Avatar from 'components/Avatar.jsx';
-import useFetchUrl from 'hooks/useFetchUrl.tsx';
+import useFetchUrl from 'hooks/useFetchUrl';
 
 jest.mock('hooks/useFetchUrl');
 
 describe('Avatar Component', () => {
+  const mockedUseFetchUrl = jest.mocked(useFetchUrl); 
+
   it('renders default avatar image when avatars is empty', () => {
-    useFetchUrl.mockReturnValue('default-avatar-url.jpg');
+    mockedUseFetchUrl.mockReturnValue('default-avatar-url.jpg');
     render(<Avatar avatars={[]} />);
 
     const img = screen.getByAltText('avatar');
@@ -19,7 +22,7 @@ describe('Avatar Component', () => {
   it('renders main avatar image from avatars prop', () => {
     const avatars = [{ main: false, key: 'secondary.jpg', bucket: 'development' }, { main: true, key: 'main.jpg', bucket: 'development' }];
 
-    useFetchUrl.mockReturnValue('main-avatar-url.jpg');
+    mockedUseFetchUrl.mockReturnValue('main-avatar-url.jpg');
     render(<Avatar avatars={avatars} />);
 
     const img = screen.getByAltText('avatar');

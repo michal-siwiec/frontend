@@ -13,6 +13,7 @@
     "allowJs": true,
     "checkJs": false,
     "noEmit": true,
+    // "verbatimModuleSyntax": true, // TODO to import type before runtime only
     "paths": {
       "tests/*": ["../tests/*"] 
     },

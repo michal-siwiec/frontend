@@ -1,10 +1,10 @@
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Drawer from 'components/Drawer.tsx';
+import Drawer from 'components/Drawer';
 
 describe('Drawer component', () => {
   const defaultProps = {
-    anchor: 'left',
     isOpen: true,
     onClose: jest.fn(),
     children: <div>Hello from Drawer</div>,
