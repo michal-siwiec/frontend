@@ -1,9 +1,9 @@
-import OpinionPresentedContentGenerator from 'services/opinions/opinionPresentedContentGenerator.ts';
-import * as helpers from 'utils/helpers.ts';
+import OpinionPresentedContentGenerator from 'services/opinions/opinionPresentedContentGenerator';
+import * as helpers from 'utils/helpers';
 
 describe('OpinionPresentedContentGenerator', () => {
-  let cutAfterNCharsSpy;
-  let isTextLongerSpy;
+  let cutAfterNCharsSpy: jest.SpyInstance<ReturnType<typeof helpers.cutAfterNChars>, Parameters<typeof helpers.cutAfterNChars>>;
+  let isTextLongerSpy: jest.SpyInstance<ReturnType<typeof helpers.isTextLonger>, Parameters<typeof helpers.isTextLonger>>;
 
   beforeEach(() => {
     cutAfterNCharsSpy = jest.spyOn(helpers, 'cutAfterNChars');

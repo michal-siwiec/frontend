@@ -1,11 +1,11 @@
-import AvatarsGenerator from 'services/users/avatarsGenerator.ts';
+import AvatarsGenerator from 'services/users/avatarsGenerator';
 
 describe('AvatarsGenerator', () => {
   it('should convert multiple files to base64 and mark the first one as main', async () => {
-    const mockedFiles = {
-      0: new File(['(⌐□_□)'], 'avatar1.png', { type: 'image/png' }),
-      1: new File(['(•_•)'], 'avatar2.png', { type: 'image/png' })
-    };
+    const mockedFiles = [
+      new File(['(⌐□_□)'], 'avatar1.png', { type: 'image/png' }),
+      new File(['(•_•)'], 'avatar2.png', { type: 'image/png' })
+    ];
 
     const avatars = await new AvatarsGenerator(mockedFiles).call();
 
@@ -19,7 +19,7 @@ describe('AvatarsGenerator', () => {
   });
 
   it('should return an empty array if no files are provided', async () => {
-    const avatars = await new AvatarsGenerator({}).call();
+    const avatars = await new AvatarsGenerator([]).call();
 
     expect(avatars).toEqual([]);
   });
