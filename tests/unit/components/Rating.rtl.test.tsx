@@ -1,10 +1,11 @@
+import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
-import Rating from 'components/Rating.tsx';
+import Rating from 'components/Rating';
 
 describe('Rating Component', () => {
   it('renders without crashing', () => {
     render(<Rating value={3} onChange={() => {}} readOnly={false} />);
-    const radios = screen.getAllByRole('radio');
+    const radios = screen.getAllByRole<HTMLInputElement>('radio');
     const checkedRadios = radios.filter((button) => button.checked);
 
     expect(checkedRadios).toHaveLength(1);

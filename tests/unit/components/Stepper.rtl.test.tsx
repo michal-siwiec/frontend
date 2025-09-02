@@ -1,6 +1,7 @@
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Stepper from 'components/Stepper.tsx';
+import Stepper from 'components/Stepper';
 
 describe('Stepper Component', () => {
   const labels = ['Step 1', 'Step 2', 'Step 3'];

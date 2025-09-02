@@ -1,5 +1,6 @@
+import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Tooltip from 'components/Tooltip.tsx';
+import Tooltip from 'components/Tooltip';
 
 describe('Tooltip Component', () => {
   it('renders without crashing', () => {
@@ -34,7 +35,7 @@ describe('Tooltip Component', () => {
     expect(screen.queryByText('Test Header')).not.toBeInTheDocument();
     expect(screen.queryByText('Test Secondary')).not.toBeInTheDocument();
     // MUI generate this inside DOM with 0 size so it's invisible
-    expect(children.getBoundingClientRect().width).toBe(0);
-    expect(children.getBoundingClientRect().height).toBe(0);
+    expect(children!.getBoundingClientRect().width).toBe(0);
+    expect(children!.getBoundingClientRect().height).toBe(0);
   });
 });
