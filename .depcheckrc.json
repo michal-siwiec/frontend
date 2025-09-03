@@ -3,6 +3,8 @@
     "@babel/polyfill",
     "webpack-cli",
     "ts-node",
+    "sass-loader",
+    "sass",
     "stylelint",
     "stylelint-config-standard"
   ]
