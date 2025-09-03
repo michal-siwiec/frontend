@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
+        # TODO: validate-dependencies
         script: ['lint:css', 'lint:ts', 'test:unit:jest', 'test:unit:rtl', 'test:integration']
     steps:
     - name: Setup Node 18.0

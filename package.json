@@ -8,6 +8,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --config ./config/webpack.config.development.js",
+    "validate-dependencies": "depcheck",
     "lint:css": "npx stylelint '**/*.css' '**/*.scss' --custom-syntax postcss-less",
     "lint:ts": "npx eslint '**/*.js' '**/*.jsx' '**/*.ts' '**/*.tsx'",
     "test:unit:jest": "jest tests/unit --testPathIgnorePatterns rtl.test.ts",
@@ -39,6 +40,7 @@
     "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.5.1",
+    "depcheck": "^1.4.7",
     "dotenv": "^16.5.0",
     "dotenv-webpack": "^8.1.0",
     "eslint": "^9.34.0",
