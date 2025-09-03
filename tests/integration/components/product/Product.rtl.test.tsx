@@ -32,7 +32,7 @@ describe('Product', () => {
 
   it('renders component successfully is basket mode', () => {
     const preloadedState = {
-      basket: withPersist({ addedProducts: [{ id: product.id, quantity: 222, attributes: { ...product } }] }),
+      basket: withPersist({ addedProducts: [{ id: product.id, quantity: 222, attributes: { ...product } }] })
     };
 
     renderWithProviders(<Product product={product} index={0} mode="basket" />, { preloadedState });

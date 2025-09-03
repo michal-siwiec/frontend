@@ -23,7 +23,7 @@ const renderWithProviders = (
     preloadedState = {},
     initialEntries = ['/'],
     mocks = [],
-    store = configureStore({ reducer: rootReducer, preloadedState }),
+    store = configureStore({ reducer: rootReducer, preloadedState })
   }: RenderWithProvidersType = {}
 ) => (
   render(

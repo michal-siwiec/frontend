@@ -2,10 +2,11 @@ import reactPlugin from 'eslint-plugin-react';
 import importPlugin from 'eslint-plugin-import';
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import globals from 'globals';
+import tsParser from '@typescript-eslint/parser';
 
 export default [
   {
-    files: ['**/*.{js,jsx}'],
+    files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
@@ -70,6 +71,18 @@ export default [
     },
     linterOptions: {
       reportUnusedDisableDirectives: true,
+    }
+  },
+  {
+    files: ['**/*.ts', '**/*.tsx'],
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        ecmaFeatures: { jsx: true },
+      },
     },
+    rules: {
+      'import/extensions': 'off',
+    }
   }
 ];

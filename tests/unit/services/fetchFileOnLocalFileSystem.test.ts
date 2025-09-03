@@ -12,7 +12,7 @@ describe('fetchFileOnLocalFileSystem', () => {
     // Mocking method createObjectURL because it's not available by default and "FileSaver" needs it
     Object.defineProperty(global.URL, 'createObjectURL', {
       writable: true,
-      value: jest.fn(() => 'mock-blob-url'),
+      value: jest.fn(() => 'mock-blob-url')
     });
 
     const getObjectSpy = jest.spyOn(S3Service, 'getObject').mockImplementation((_key, _bucket, responseHandler) => {

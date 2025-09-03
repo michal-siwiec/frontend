@@ -9,7 +9,7 @@ const mockNavigate = jest.fn();
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useNavigate: () => mockNavigate,
+  useNavigate: () => mockNavigate
 }));
 
 describe('useRedirect', () => {
@@ -19,7 +19,7 @@ describe('useRedirect', () => {
 
   it('calls navigate when shouldRedirect is true', () => {
     renderHook(() => useRedirect({ path: '/target', shouldRedirect: true }), {
-      wrapper: ({ children }) => <MemoryRouter>{children}</MemoryRouter>,
+      wrapper: ({ children }) => <MemoryRouter>{children}</MemoryRouter>
     });
 
     expect(mockNavigate).toHaveBeenCalledWith('/target');
@@ -27,7 +27,7 @@ describe('useRedirect', () => {
 
   it('does not call navigate when shouldRedirect is false', () => {
     renderHook(() => useRedirect({ path: '/target', shouldRedirect: false }), {
-      wrapper: ({ children }) => <MemoryRouter>{children}</MemoryRouter>,
+      wrapper: ({ children }) => <MemoryRouter>{children}</MemoryRouter>
     });
 
     expect(mockNavigate).not.toHaveBeenCalled();

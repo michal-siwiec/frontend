@@ -78,8 +78,8 @@ describe('generateAddOrderPayload', () => {
       paymentMethod: 'cash_payment',
       userId: '2e785e4-93d5-42f4-aea1-8196b26a4f49',
       productsOrder: [
-        { productId: 'a9758911-6438-4b0b-abf4-a6193940503f', productQuantity: 2 },
-        { productId: '70347f38-31e5-4944-bde0-65973140de2a', productQuantity: 5 }
+        { productId: '99297ff9-e0f9-4d71-b3d4-461ac09e3eec', productQuantity: 2 },
+        { productId: 'a2e9ad84-8ad2-4a74-a511-b67b55aab6cc', productQuantity: 5 }
       ]
     });
   });
