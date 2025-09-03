@@ -11,7 +11,7 @@ import { RootState, AppStore } from 'types/store';
 import Client from 'graphql/client';
 
 type RenderWithProvidersType = {
-  preloadedState?: PreloadedState<RootState | any>, // TODO
+  preloadedState?: PreloadedState<RootState>,
   initialEntries?: Array<string>,
   mocks?: ReadonlyArray<MockedResponse>,
   store?: AppStore,
