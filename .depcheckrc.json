@@ -5,6 +5,8 @@
     "ts-node",
     "sass-loader",
     "sass",
+    "css-loader",
+    "babel-loader",
     "stylelint",
     "stylelint-config-standard"
   ]
