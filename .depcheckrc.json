@@ -7,6 +7,7 @@
     "sass",
     "css-loader",
     "babel-loader",
+    "jest-environment-jsdom",
     "stylelint",
     "stylelint-config-standard"
   ]
