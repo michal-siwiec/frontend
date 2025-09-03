@@ -1,0 +1,9 @@
+{
+  "ignores": [
+    "@babel/polyfill",
+    "webpack-cli",
+    "ts-node",
+    "stylelint",
+    "stylelint-config-standard"
+  ]
+}
