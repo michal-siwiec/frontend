@@ -1,6 +1,7 @@
+import React from 'react';
 import { screen } from '@testing-library/react';
-import renderWithProviders from 'tests/integration/helpers/renderWithProviders.tsx';
-import Product from 'components/product/Product.tsx';
+import renderWithProviders from 'tests/integration/helpers/renderWithProviders';
+import Product from 'components/product/Product';
 
 jest.mock('hooks/useFetchUrl', () => ({
   __esModule: true,
@@ -10,10 +11,11 @@ jest.mock('hooks/useFetchUrl', () => ({
 const product = {
   id: '088fc480-ce29-4d10-852a-971d60a01e59',
   name: 'Powłoka przeciwwilgociowa',
-  picture: 'images/products/foundation_materials/powłoka_przeciwwilgociowa.jpeg',
   pictureBucket: 'budoman-development',
+  pictureKey: 'images/products/foundation_materials/powłoka_przeciwwilgociowa.jpeg',
   price: 599.99,
-  availableQuantity: 3
+  availableQuantity: 3,
+  __typename: 'ProductObject'
 };
 
 describe('Product', () => {
@@ -28,7 +30,14 @@ describe('Product', () => {
   });
 
   it('renders component successfully is basket mode', () => {
-    const preloadedState = { basket: { addedProducts: [{ id: product.id, quantity: 222 }] } };
+    const preloadedState = {
+      basket: {
+        addedProducts: [
+          { id: product.id, quantity: 222, attributes: { ...product } }
+        ],
+      },
+    };
+
     renderWithProviders(<Product product={product} index={0} mode="basket" />, { preloadedState });
 
     expect(screen.getByAltText('Zdjęcie produktu')).toBeInTheDocument();
