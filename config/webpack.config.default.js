@@ -27,20 +27,6 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
-        use: [
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              mozjpeg: {
-                quality: 15
-              }
-            }
-          }
-        ]
-      },
-      {
         test: /\.(js|jsx|ts|tsx)$/i,
         loader: 'babel-loader',
         exclude: /node_modules/,
