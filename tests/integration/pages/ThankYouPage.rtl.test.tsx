@@ -1,24 +1,15 @@
+import React from 'react';
 import { screen, fireEvent } from '@testing-library/react';
-import renderWithProviders from 'tests/integration/helpers/renderWithProviders.tsx';
-import ThankYouPage from 'pages/ThankYouPage.tsx';
-import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem.ts';
+import renderWithProviders from 'tests/integration/helpers/renderWithProviders';
+import { generatePreloadedState } from 'tests/integration/helpers/preloadedState';
+import ThankYouPage from 'pages/ThankYouPage';
+import fetchFileOnLocalFileSystem from 'services/fetchFileOnLocalFileSystem';
 
 jest.mock('services/fetchFileOnLocalFileSystem.ts', () => jest.fn());
 
 describe('ThankYouPage', () => {
-  const baseState = {
-    user: {
-      loggedUserId: '0c1069c7-8e77-4749-bc4b-e308c6679d1c'
-    },
-    order: {
-      orderID: 'da97aa73-f0e4-4a17-9157-9f17454c73f3',
-      paymentMethod: 'traditional_transfer',
-      totalPrice: 199.99
-    }
-  };
-
   it('renders thank you message and payment info if payment method is traditional transfer', () => {
-    renderWithProviders(<ThankYouPage />, { preloadedState: baseState });
+    renderWithProviders(<ThankYouPage />, { preloadedState: generatePreloadedState({ userStatePresent: true, orderStatePresent: true }) });
 
     expect(screen.getByText('Dziękujemy za dokonanie zakupu!')).toBeInTheDocument();
     expect(screen.getByText('Prosimy o dokonanie płatności według poniszych danych:')).toBeInTheDocument();
@@ -36,15 +27,10 @@ describe('ThankYouPage', () => {
   });
 
   it('does not render payment info if payment method is not traditional_transfer', () => {
-    const cardState = {
-      ...baseState,
-      order: {
-        ...baseState.order,
-        paymentMethod: 'card'
-      }
-    };
+    const state = { ...generatePreloadedState({ userStatePresent: true, orderStatePresent: true }) };
+    state.order.paymentMethod = 'cashPayment';
 
-    renderWithProviders(<ThankYouPage />, { preloadedState: cardState });
+    renderWithProviders(<ThankYouPage />, { preloadedState: state });
 
     expect(screen.getByText('Dziękujemy za dokonanie zakupu!')).toBeInTheDocument();
     expect(screen.queryByText('Prosimy o dokonanie płatności według poniszych danych:')).not.toBeInTheDocument();
@@ -62,7 +48,7 @@ describe('ThankYouPage', () => {
   });
 
   it('calls fetchFileOnLocalFileSystem with correct arguments on button click', () => {
-    renderWithProviders(<ThankYouPage />, { preloadedState: baseState });
+    renderWithProviders(<ThankYouPage />, { preloadedState: generatePreloadedState({ userStatePresent: true, orderStatePresent: true }) });
 
     fireEvent.mouseDown(screen.getByText('Pobierz fakturę w formacie PDF'));
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-import { withPersist } from 'tests/helpers/storeUtils';
+import { generatePreloadedState } from 'tests/integration/helpers/preloadedState';
 import renderWithProviders from 'tests/integration/helpers/renderWithProviders';
 import Product from 'components/product/Product';
 
@@ -31,9 +31,10 @@ describe('Product', () => {
   });
 
   it('renders component successfully is basket mode', () => {
-    const preloadedState = {
-      basket: withPersist({ addedProducts: [{ id: product.id, quantity: 222, attributes: { ...product } }] })
-    };
+    const preloadedState = generatePreloadedState({
+      basketStatePresent: true,
+      basketState: { addedProducts: [{ id: product.id, quantity: 222, attributes: { ...product } }] }
+    });
 
     renderWithProviders(<Product product={product} index={0} mode="basket" />, { preloadedState });
 
