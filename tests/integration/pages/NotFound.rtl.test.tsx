@@ -1,7 +1,8 @@
+import React from 'react';
 import { screen, waitFor } from '@testing-library/react';
 import { Routes, Route } from 'react-router-dom';
-import renderWithProviders from 'tests/integration/helpers/renderWithProviders.tsx';
-import NotFound from 'pages/NotFound.tsx';
+import renderWithProviders from 'tests/integration/helpers/renderWithProviders';
+import NotFound from 'pages/NotFound';
 
 describe('NotFound component', () => {
   beforeEach(() => {
