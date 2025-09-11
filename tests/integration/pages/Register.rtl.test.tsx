@@ -1,10 +1,12 @@
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ApolloError } from '@apollo/client';
 import { screen, fireEvent, waitFor } from '@testing-library/react';
-import renderWithProviders from 'tests/integration/helpers/renderWithProviders.tsx';
-import { REGISTER_USER } from 'graphql/mutations/user.ts';
-import { ERROR_CODES } from 'data/errors.ts';
-import Register from 'pages/Register.tsx';
+import renderWithProviders from 'tests/integration/helpers/renderWithProviders';
+import { generatePreloadedState } from 'tests/integration/helpers/preloadedState';
+import { REGISTER_USER } from 'graphql/mutations/user';
+import { ERROR_CODES } from 'data/errors';
+import Register from 'pages/Register';
 
 describe('Register page', () => {
   afterEach(() => {
@@ -18,7 +20,7 @@ describe('Register page', () => {
         <Route path="/register" element={<Register />} />
       </Routes>,
       {
-        preloadedState: { user: { loggedUserId: 'da97aa73-f0e4-4a17-9157-9f17454c73f3' } },
+        preloadedState: generatePreloadedState({ userStatePresent: true }),
         initialEntries: ['/register']
       }
     );
@@ -37,7 +39,10 @@ describe('Register page', () => {
   });
 
   it('renders component successfully when user is not logged', async () => {
-    renderWithProviders(<Register />, { preloadedState: { user: { loggedUserId: null } } });
+    renderWithProviders(
+      <Register />,
+      { preloadedState: generatePreloadedState({ userStatePresent: true, userState: { loggedUserId: null, avatars: [] } }) }
+    );
 
     const loginLink = screen.getByRole('link', { name: 'Logowanie' });
     const registerLink = screen.getByRole('link', { name: 'Rejestracja' });
@@ -55,11 +60,14 @@ describe('Register page', () => {
   });
 
   it('properly fills input with values', async () => {
-    renderWithProviders(<Register />, { preloadedState: { user: { loggedUserId: null } } });
+    renderWithProviders(
+      <Register />,
+      { preloadedState: generatePreloadedState({ userStatePresent: true, userState: { loggedUserId: null, avatars: [] } }) }
+    );
 
     const emailField = screen.getByPlaceholderText('Email');
     const passwordField = screen.getByPlaceholderText('Password');
-    const fileField = screen.getByTestId('register-file-input');
+    const fileField: HTMLInputElement = screen.getByTestId('register-file-input');
 
     fireEvent.change(emailField, { target: { value: 'siwiec.michal724@gmail.com' } });
     fireEvent.change(passwordField, { target: { value: 'Some password' } });
@@ -73,13 +81,16 @@ describe('Register page', () => {
 
     await waitFor(() => {
       expect(fileField.files).toHaveLength(1);
-      expect(fileField.files[0].name).toBe('avatar.png');
-      expect(fileField.files[0]).toBeInstanceOf(File);
+      expect(fileField.files![0].name).toBe('avatar.png');
+      expect(fileField.files![0]).toBeInstanceOf(File);
     });
   });
 
   it('shows validation error messages', async () => {
-    renderWithProviders(<Register />, { preloadedState: { user: { loggedUserId: null } } });
+    renderWithProviders(
+      <Register />,
+      { preloadedState: generatePreloadedState({ userStatePresent: true, userState: { loggedUserId: null, avatars: [] } }) }
+    );
 
     fireEvent.change(screen.getByPlaceholderText('Email'), { target: { value: 'siwiec.michal724gmail.com' } });
     fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'ax34@@' } });
@@ -126,7 +137,7 @@ describe('Register page', () => {
         <Route path="/register" element={<Register />} />
       </Routes>,
       {
-        preloadedState: { user: { loggedUserId: null } },
+        preloadedState: generatePreloadedState({ userStatePresent: true, userState: { loggedUserId: null, avatars: [] } }),
         initialEntries: ['/register'],
         mocks
       }
@@ -139,7 +150,7 @@ describe('Register page', () => {
     await waitFor(() => {
       expect(screen.getByPlaceholderText('Email')).toHaveValue('');
       expect(screen.getByPlaceholderText('Password')).toHaveValue('');
-      expect(screen.getByTestId('register-file-input').files).toHaveLength(0);
+      expect((screen.getByTestId('register-file-input') as HTMLInputElement).files).toHaveLength(0);
     });
   });
 
@@ -169,7 +180,7 @@ describe('Register page', () => {
         <Route path="/register" element={<Register />} />
       </Routes>,
       {
-        preloadedState: { user: { loggedUserId: null } },
+        preloadedState: generatePreloadedState({ userStatePresent: true, userState: { loggedUserId: null, avatars: [] } }),
         initialEntries: ['/register'],
         mocks
       }
@@ -197,7 +208,8 @@ describe('Register page', () => {
           networkError: {
             name: 'ServerError',
             statusCode: 500,
-            bodyText: 'Internal Server Error'
+            bodyText: 'Internal Server Error',
+            message: 'Internal Server Error'
           }
         })
       }
@@ -209,7 +221,7 @@ describe('Register page', () => {
         <Route path="/register" element={<Register />} />
       </Routes>,
       {
-        preloadedState: { user: { loggedUserId: null } },
+        preloadedState: generatePreloadedState({ userStatePresent: true, userState: { loggedUserId: null, avatars: [] } }),
         initialEntries: ['/register'],
         mocks
       }
@@ -236,8 +248,9 @@ describe('Register page', () => {
         error: new ApolloError({
           graphQLErrors: [
             {
+              message: 'Email is already taken',
               extensions: {
-                error_code: ERROR_CODES.EMAIL_ALREADY_TAKEN
+                error_code: ERROR_CODES.EMAIL_ALREADY_TAKEN,
               }
             }
           ]
@@ -251,7 +264,7 @@ describe('Register page', () => {
         <Route path="/register" element={<Register />} />
       </Routes>,
       {
-        preloadedState: { user: { loggedUserId: null } },
+        preloadedState: generatePreloadedState({ userStatePresent: true, userState: { loggedUserId: null, avatars: [] } }),
         initialEntries: ['/register'],
         mocks
       }

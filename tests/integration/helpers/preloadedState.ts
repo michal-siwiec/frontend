@@ -1,7 +1,7 @@
 import { RootState, WithoutPersist } from 'types/store';
 import { withPersist } from 'tests/helpers/storeUtils';
 
-const USER_EXAMPLE_STATE = { loggedUserId: '0c1069c7-8e77-4749-bc4b-e308c6679d1c', avatars: [] };
+const USER_EXAMPLE_STATE: WithoutPersist<RootState['user']> = { loggedUserId: '0c1069c7-8e77-4749-bc4b-e308c6679d1c', avatars: [] };
 const BASKET_EXAMPLE_STATE: WithoutPersist<RootState['basket']> = { addedProducts: [] };
 const ORDER_EXAMPLE_STATE = {
   clientDetails: {
