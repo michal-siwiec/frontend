@@ -1,10 +1,12 @@
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ApolloError } from '@apollo/client';
-import renderWithProviders from 'tests/integration/helpers/renderWithProviders.tsx';
 import { screen, fireEvent, waitFor } from '@testing-library/react';
-import { LOGIN_USER } from 'graphql/mutations/user.ts';
-import { ERROR_CODES } from 'data/errors.ts';
-import Login from 'pages/Login.tsx';
+import renderWithProviders from 'tests/integration/helpers/renderWithProviders';
+import { generatePreloadedState } from 'tests/integration/helpers/preloadedState';
+import { LOGIN_USER } from 'graphql/mutations/user';
+import { ERROR_CODES } from 'data/errors';
+import Login from 'pages/Login';
 
 describe('Login', () => {
   it('redirect to / path when user is logged', () => {
@@ -13,7 +15,7 @@ describe('Login', () => {
         <Route path="/" element={<div>Home Page</div>} />
         <Route path="/login" element={<Login />} />
       </Routes>,
-      { preloadedState: { user: { loggedUserId: 'da97aa73-f0e4-4a17-9157-9f17454c73f3' } }, initialEntries: ['/login'] }
+      { preloadedState: generatePreloadedState({ userStatePresent: true }), initialEntries: ['/login'] }
     );
 
     expect(screen.queryByText('Rejestracja')).not.toBeInTheDocument();
@@ -29,7 +31,7 @@ describe('Login', () => {
         <Route path="/" element={<div>Home Page</div>} />
         <Route path="/login" element={<Login />} />
       </Routes>,
-      { preloadedState: { user: { loggedUserId: null } }, initialEntries: ['/login'] }
+      { preloadedState: generatePreloadedState(), initialEntries: ['/login'] }
     );
 
     const loginLink = screen.getByRole('link', { name: 'Logowanie' });
@@ -50,7 +52,7 @@ describe('Login', () => {
         <Route path="/" element={<div>Home Page</div>} />
         <Route path="/login" element={<Login />} />
       </Routes>,
-      { preloadedState: { user: { loggedUserId: null } }, initialEntries: ['/login'] }
+      { preloadedState: generatePreloadedState(), initialEntries: ['/login'] }
     );
 
     const emailInput = screen.getByPlaceholderText('Adres email');
@@ -69,7 +71,7 @@ describe('Login', () => {
         <Route path="/" element={<div>Home Page</div>} />
         <Route path="/login" element={<Login />} />
       </Routes>,
-      { preloadedState: { user: { loggedUserId: null } }, initialEntries: ['/login'] }
+      { preloadedState: generatePreloadedState(), initialEntries: ['/login'] }
     );
 
     expect(screen.queryByText('Email ma niepoprawny format!')).not.toBeInTheDocument();
@@ -105,7 +107,7 @@ describe('Login', () => {
         <Route path="/" element={<div>Home Page</div>} />
         <Route path="/login" element={<Login />} />
       </Routes>,
-      { preloadedState: { user: { loggedUserId: null } }, initialEntries: ['/login'], mocks }
+      { preloadedState: generatePreloadedState(), initialEntries: ['/login'], mocks }
     );
 
     fireEvent.change(screen.getByPlaceholderText('Adres email'), { target: { value: 'test@example.com' } });
@@ -146,7 +148,7 @@ describe('Login', () => {
         <Route path="/" element={<div>Home Page</div>} />
         <Route path="/login" element={<Login />} />
       </Routes>,
-      { preloadedState: { user: { loggedUserId: null } }, initialEntries: ['/login'], mocks }
+      { preloadedState: generatePreloadedState(), initialEntries: ['/login'], mocks }
     );
 
     fireEvent.change(screen.getByPlaceholderText('Adres email'), { target: { value: 'test@example.com' } });
@@ -180,7 +182,7 @@ describe('Login', () => {
         <Route path="/" element={<div>Home Page</div>} />
         <Route path="/login" element={<Login />} />
       </Routes>,
-      { preloadedState: { user: { loggedUserId: null } }, initialEntries: ['/login'], mocks }
+      { preloadedState: generatePreloadedState(), initialEntries: ['/login'], mocks }
     );
 
     fireEvent.change(screen.getByPlaceholderText('Adres email'), { target: { value: 'test@example.com' } });
@@ -202,6 +204,7 @@ describe('Login', () => {
         error: new ApolloError({
           graphQLErrors: [
             {
+              message: 'User not found!',
               extensions: {
                 error_code: ERROR_CODES.USER_NOT_FOUND
               }
@@ -216,7 +219,7 @@ describe('Login', () => {
         <Route path="/" element={<div>Home Page</div>} />
         <Route path="/login" element={<Login />} />
       </Routes>,
-      { preloadedState: { user: { loggedUserId: null } }, initialEntries: ['/login'], mocks }
+      { preloadedState: generatePreloadedState(), initialEntries: ['/login'], mocks }
     );
 
     fireEvent.change(screen.getByPlaceholderText('Adres email'), { target: { value: 'test@example.com' } });
@@ -238,6 +241,7 @@ describe('Login', () => {
         error: new ApolloError({
           graphQLErrors: [
             {
+              message: 'User not found!',
               extensions: {
                 error_code: ERROR_CODES.USER_NOT_FOUND
               }
@@ -252,7 +256,7 @@ describe('Login', () => {
         <Route path="/" element={<div>Home Page</div>} />
         <Route path="/login" element={<Login />} />
       </Routes>,
-      { preloadedState: { user: { loggedUserId: null } }, initialEntries: ['/login'], mocks }
+      { preloadedState: generatePreloadedState(), initialEntries: ['/login'], mocks }
     );
 
     fireEvent.change(screen.getByPlaceholderText('Adres email'), { target: { value: 'test@example.com' } });
