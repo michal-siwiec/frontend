@@ -1,5 +1,5 @@
 const path = require('path');
-const config = require('./webpack.config.default.js');
+const config = require('./config.default.js');
 
 module.exports = {
   mode: 'development',
