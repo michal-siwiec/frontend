@@ -1,11 +1,13 @@
+import React from 'react';
 import { screen, fireEvent, waitFor } from '@testing-library/react';
-import Authorization from 'layouts/topBar/elements/Authorization.tsx';
-import { LOGOUT_USER } from 'graphql/mutations/user.ts';
-import renderWithProviders from 'tests/integration/helpers/renderWithProviders.tsx';
+import { generatePreloadedState } from 'tests/integration/helpers/preloadedState';
+import Authorization from 'layouts/topBar/elements/Authorization';
+import { LOGOUT_USER } from 'graphql/mutations/user';
+import renderWithProviders from 'tests/integration/helpers/renderWithProviders';
 
 describe('Authorization', () => {
   it('renders login/register page when user is not logged', () => {
-    renderWithProviders(<Authorization />, { preloadedState: { user: { loggedUserId: null } } });
+    renderWithProviders(<Authorization />, { preloadedState: generatePreloadedState() });
 
     expect(screen.getByText('Logowanie')).toBeInTheDocument();
     expect(screen.getByText('Rejestracja')).toBeInTheDocument();
@@ -13,7 +15,7 @@ describe('Authorization', () => {
   });
 
   it('renders logout page when user is logged', () => {
-    renderWithProviders(<Authorization />, { preloadedState: { user: { loggedUserId: '1e976dcb-cacc-4d1a-874a-ea97699ac706' } } });
+    renderWithProviders(<Authorization />, { preloadedState: generatePreloadedState({ userStatePresent: true }) });
 
     expect(screen.queryByText('Logowanie')).not.toBeInTheDocument();
     expect(screen.queryByText('Rejestracja')).not.toBeInTheDocument();
@@ -25,20 +27,20 @@ describe('Authorization', () => {
       {
         request: {
           query: LOGOUT_USER,
-          variables: { input: { id: '1e976dcb-cacc-4d1a-874a-ea97699ac706' } }
+          variables: { input: { id: '0c1069c7-8e77-4749-bc4b-e308c6679d1c' } }
         },
         result: {
           data: {
             user: {
               __typename: 'UserObject',
-              id: '1e976dcb-cacc-4d1a-874a-ea97699ac706'
+              id: '0c1069c7-8e77-4749-bc4b-e308c6679d1c'
             }
           }
         }
       }
     ];
 
-    renderWithProviders(<Authorization />, { preloadedState: { user: { loggedUserId: '1e976dcb-cacc-4d1a-874a-ea97699ac706' } }, mocks });
+    renderWithProviders(<Authorization />, { preloadedState: generatePreloadedState({ userStatePresent: true }), mocks });
 
     fireEvent.mouseDown(screen.getByText('Wyloguj'));
 
