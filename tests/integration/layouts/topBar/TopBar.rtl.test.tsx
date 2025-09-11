@@ -1,8 +1,9 @@
+import React from 'react';
 import { screen } from '@testing-library/react';
-import TopBar from 'layouts/topBar/TopBar.tsx';
-import { WIDTH_BREAKPOINTS } from 'data/breakpoints.ts';
-import renderWithProviders from 'tests/integration/helpers/renderWithProviders.tsx';
-import { resizeWindow } from 'tests/helpers/domUtils.ts';
+import TopBar from 'layouts/topBar/TopBar';
+import { WIDTH_BREAKPOINTS } from 'data/breakpoints';
+import renderWithProviders from 'tests/integration/helpers/renderWithProviders';
+import { resizeWindow } from 'tests/helpers/domUtils';
 
 describe('TopBar', () => {
   it('renders MobileContent when window width is below mobile breakpoint', () => {

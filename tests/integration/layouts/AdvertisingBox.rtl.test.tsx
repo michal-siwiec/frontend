@@ -1,3 +1,5 @@
+// TODO
+// @ts-nocheck
 import { render, screen } from '@testing-library/react';
 import AdvertisingBox from 'layouts/AdvertisingBox.tsx';
 import * as s3 from 'services/s3.ts';

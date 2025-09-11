@@ -1,6 +1,8 @@
+import React from 'react';
 import { screen, fireEvent } from '@testing-library/react';
-import renderWithProviders from 'tests/integration/helpers/renderWithProviders.tsx';
-import BasketSummaryModal from 'layouts/topBar/elements/basket/BasketSummaryModal.tsx';
+import renderWithProviders from 'tests/integration/helpers/renderWithProviders';
+import { generatePreloadedState } from 'tests/integration/helpers/preloadedState';
+import BasketSummaryModal from 'layouts/topBar/elements/basket/BasketSummaryModal';
 
 const mockNavigate = jest.fn();
 
@@ -14,8 +16,9 @@ jest.mock('react-router-dom', () => {
 });
 
 describe('BasketSummaryModal', () => {
-  const preloadedState = {
-    basket: {
+  const preloadedState = generatePreloadedState({
+    basketStatePresent: true,
+    basketState: {
       addedProducts: [
         {
           id: 'da97aa73-f0e4-4a17-9157-9f17454c73f3',
@@ -26,12 +29,13 @@ describe('BasketSummaryModal', () => {
             price: 124.99,
             availableQuantity: 1000,
             pictureKey: 'images/products/foundation_materials/bloczke_termalika.jpeg',
-            pictureBucket: 'budoman-development'
+            pictureBucket: 'budoman-development',
+            __typename: 'ProductObject'
           }
         }
       ]
     }
-  };
+  });
 
   it('renders basket correctly', () => {
     renderWithProviders(<BasketSummaryModal open handleOnClose={() => {}} />, { preloadedState });

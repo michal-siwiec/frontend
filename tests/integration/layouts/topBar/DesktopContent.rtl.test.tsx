@@ -1,8 +1,9 @@
+import React from 'react';
 import { screen } from '@testing-library/react';
-import DesktopContent from 'layouts/topBar/DesktopContent.tsx';
-import renderWithProviders from 'tests/integration/helpers/renderWithProviders.tsx';
-import { WIDTH_BREAKPOINTS } from 'data/breakpoints.ts';
-import { resizeWindow } from 'tests/helpers/domUtils.ts';
+import DesktopContent from 'layouts/topBar/DesktopContent';
+import renderWithProviders from 'tests/integration/helpers/renderWithProviders';
+import { WIDTH_BREAKPOINTS } from 'data/breakpoints';
+import { resizeWindow } from 'tests/helpers/domUtils';
 
 describe('DesktopContent', () => {
   beforeEach(() => {

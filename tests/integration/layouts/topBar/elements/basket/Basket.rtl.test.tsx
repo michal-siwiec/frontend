@@ -1,11 +1,14 @@
+import React from 'react';
 import { screen, fireEvent, waitFor } from '@testing-library/react';
-import renderWithProviders from 'tests/integration/helpers/renderWithProviders.tsx';
-import Basket from 'layouts/topBar/elements/basket/Basket.tsx';
+import renderWithProviders from 'tests/integration/helpers/renderWithProviders';
+import { generatePreloadedState } from 'tests/integration/helpers/preloadedState';
+import Basket from 'layouts/topBar/elements/basket/Basket';
 
 describe('Basket', () => {
   it('renders basket when some product is added', () => {
-    const preloadedState = {
-      basket: {
+    const preloadedState = generatePreloadedState({
+      basketStatePresent: true,
+      basketState: {
         addedProducts: [
           {
             id: 'da97aa73-f0e4-4a17-9157-9f17454c73f3',
@@ -16,12 +19,13 @@ describe('Basket', () => {
               price: 124.99,
               availableQuantity: 1000,
               pictureKey: 'images/products/foundation_materials/bloczke_termalika.jpeg',
-              pictureBucket: 'budoman-development'
+              pictureBucket: 'budoman-development',
+              __typename: 'ProductObject'
             }
           }
         ]
       }
-    };
+    });
 
     renderWithProviders(<Basket />, { preloadedState });
 
@@ -32,9 +36,7 @@ describe('Basket', () => {
   });
 
   it('displays and hides empty basket modal after click in icon when basket is empty', async () => {
-    const preloadedState = { basket: { addedProducts: [] } };
-
-    renderWithProviders(<Basket />, { preloadedState });
+    renderWithProviders(<Basket />, { preloadedState: generatePreloadedState({ basketStatePresent: true }) });
 
     fireEvent.mouseDown(screen.getByTestId('basket-icon'));
 
@@ -51,8 +53,9 @@ describe('Basket', () => {
   });
 
   it('displays and hides basket summary modal after click in icon when basket has added products', async () => {
-    const preloadedState = {
-      basket: {
+    const preloadedState = generatePreloadedState({
+      basketStatePresent: true,
+      basketState: {
         addedProducts: [
           {
             id: 'da97aa73-f0e4-4a17-9157-9f17454c73f3',
@@ -63,12 +66,13 @@ describe('Basket', () => {
               price: 124.99,
               availableQuantity: 1000,
               pictureKey: 'images/products/foundation_materials/bloczke_termalika.jpeg',
-              pictureBucket: 'budoman-development'
+              pictureBucket: 'budoman-development',
+              __typename: 'ProductObject'
             }
           }
         ]
       }
-    };
+    });
 
     renderWithProviders(<Basket />, { preloadedState });
 
