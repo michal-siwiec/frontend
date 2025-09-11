@@ -3,14 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import { exact, arrayOf, shape, string } from 'prop-types';
 import clsx from 'clsx';
-import { generateTooltipHeaderText, generateTooltipSecondaryText, sortAvatarByMainField } from 'services/user.js';
-import { UPDATE_USER_AVATARS } from 'graphql/mutations/user.js';
-import { updateAvatars } from 'redux_/user/actionsCreator.js';
-import Tooltip from 'components/Tooltip.jsx';
-import SubmitButton from 'components/SubmitButton.jsx';
-import LoadingModal from 'components/modals/LoadingModal.jsx';
-import SuccessModal from 'components/modals/SuccessModal.jsx';
-import ErrorModal from 'components/modals/ErrorModal.jsx';
+import { generateTooltipHeaderText, generateTooltipSecondaryText, sortAvatarByMainField } from 'services/user.ts';
+import { UPDATE_USER_AVATARS } from 'graphql/mutations/user.ts';
+import { updateAvatars } from 'redux_/user/actionsCreator.ts';
+import Tooltip from 'components/Tooltip.tsx';
+import SubmitButton from 'components/SubmitButton.tsx';
+import LoadingModal from 'components/modals/LoadingModal.tsx';
+import SuccessModal from 'components/modals/SuccessModal.tsx';
+import ErrorModal from 'components/modals/ErrorModal.tsx';
 
 const PresentAvatarsContent = ({ avatars }) => {
   const blockName = 'present-avatars';

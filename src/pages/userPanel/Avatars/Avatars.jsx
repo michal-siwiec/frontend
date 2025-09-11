@@ -3,6 +3,8 @@ import { isEmpty } from 'lodash';
 import NoAvatarsContent from './NoAvatarsContent.jsx';
 import PresentAvatarsContent from './PresentAvatarsContent.jsx';
 
+// TODO - Fix logic with avatars and rewrite on TS
+
 const Avatars = () => {
   const blockName = 'avatars';
   const { avatars } = useSelector((store) => store.user);

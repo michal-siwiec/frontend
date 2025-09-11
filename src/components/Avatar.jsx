@@ -1,6 +1,8 @@
 import { exact, arrayOf, shape, bool, string } from 'prop-types';
 import { isEmpty } from 'lodash';
-import useFetchUrl from 'hooks/useFetchUrl.jsx';
+import useFetchUrl from 'hooks/useFetchUrl.tsx';
+
+// TODO: Rewrite on TS and fix logic with avatars
 
 const Avatar = ({ avatars, classNames }) => {
   let avatarURL = null;

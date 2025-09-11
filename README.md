@@ -1,18 +1,8 @@
-# Budoman-front
+# Budoman frontend
 
 ## About project
 
-Budoman-front is a frontend application representing construction shop.
-This is developed using:
-
-- [React](https://reactjs.org/) (17.0.2)
-- [Graphql](https://graphql.org/) (16.2.0)
-- [Redux](https://redux.js.org/) (4.2.0)
-- [RTL](https://testing-library.com/docs/react-testing-library/intro/) (12.0.0)
-
-## Requirements
-
-- Node.js 18.0.0
+Budoman-front is a frontend application representing construction shop. It allows to login and register users, making orders, savings to newsletter, access to user's panel etc...
 
 ## Application setup
 1. Make sure that you have filled .env file
@@ -22,8 +12,10 @@ This is developed using:
 To start app use:
 ```bash
 SSH_PUB_KEY=$(cat ~/.ssh/id_ed25519.pub) docker-compose build --no-cache # Update path to public SSH key
-docker-compose up # App should be available on port 3003
+SSH_PUB_KEY=$(cat ~/.ssh/id_ed25519.pub) docker-compose up # App should be available on port 3003
 ```
+
+Application uses Typescript so when you'll open it inside code editor will start to get error "Could not find a declaration file for module...". To handle this in VSCode use extension "Dev Containers" and open app using this. It should solve problems with external packages.
 
 ## Code quality
 ```bash

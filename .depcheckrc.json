@@ -1,0 +1,14 @@
+{
+  "ignores": [
+    "@babel/polyfill",
+    "webpack-cli",
+    "ts-node",
+    "sass-loader",
+    "sass",
+    "css-loader",
+    "babel-loader",
+    "jest-environment-jsdom",
+    "stylelint",
+    "stylelint-config-standard"
+  ]
+}
