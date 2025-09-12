@@ -1,17 +1,32 @@
 name: Test code quality
 on: push
-env:
-  API_URL: http://localhost:3333
-  AWS_ACCESS_KEY_ID: ${{ secrets.BUDOMAN_FRONTEND_AWS_ACCESS_KEY_ID }}
-  AWS_BUCKET: budoman-development
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.BUDOMAN_FRONTEND_AWS_SECRET_ACCESS_KEY }}
 jobs:
-  core-validation:
+  optional-checks:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        # TODO: validate-dependencies
-        script: ['lint:css', 'lint:ts', 'test:unit:jest', 'test:unit:rtl', 'test:integration']
+        script: ['lint:css', 'lint:ts', 'packages:validate-usefulness']
+    steps:
+      - name: Setup Node 18.0
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.0
+      - name: Upload repository
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install
+      - name: Start ${{ matrix.script }}
+        run: npm run ${{ matrix.script }}
+  core-validation:
+    runs-on: ubuntu-latest
+    env:
+      API_URL: http://localhost:3333
+      AWS_ACCESS_KEY_ID: ${{ secrets.BUDOMAN_FRONTEND_AWS_ACCESS_KEY_ID }}
+      AWS_BUCKET: budoman-development
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.BUDOMAN_FRONTEND_AWS_SECRET_ACCESS_KEY }}
+    strategy:
+      matrix:
+        script: ['test:unit:jest', 'test:unit:rtl', 'test:integration']
     steps:
     - name: Setup Node 18.0
       uses: actions/setup-node@v3

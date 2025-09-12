@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -30,20 +31,12 @@ module.exports = {
         exclude: /node_modules/,
         resolve: {
           extensions: ['.ts', '.tsx', '.js', '.jsx'],
-          alias: {
-            components: path.resolve(__dirname, '../', 'src/components'),
-            data: path.resolve(__dirname, '../', 'src/data'),
-            graphql: path.resolve(__dirname, '../', 'src/graphql'),
-            hooks: path.resolve(__dirname, '../', 'src/hooks'),
-            redux_: path.resolve(__dirname, '../', 'src/redux_'),
-            services: path.resolve(__dirname, '../', 'src/services'),
-            utils: path.resolve(__dirname, '../', 'src/utils'),
-            validators: path.resolve(__dirname, '../', 'src/validators'),
-            pages: path.resolve(__dirname, '../', 'src/pages'),
-            contexts: path.resolve(__dirname, '../', 'src/contexts'),
-            layouts: path.resolve(__dirname, '../', 'src/layouts'),
-            types: path.resolve(__dirname, '../', 'src/types')
-          }
+          plugins: [
+            new TsconfigPathsPlugin({
+              configFile: path.resolve(__dirname, '../tsconfig.json'),
+              extensions: ['.ts', '.tsx', '.js', '.jsx'],
+            }),
+          ],
         },
         options: {
           presets: [
