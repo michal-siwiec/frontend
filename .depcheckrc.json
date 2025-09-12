@@ -9,6 +9,18 @@
     "babel-loader",
     "jest-environment-jsdom",
     "stylelint",
-    "stylelint-config-standard"
+    "stylelint-config-standard",
+    "postcss-scss",
+    "utils",
+    "types",
+    "data",
+    "services",
+    "redux_",
+    "tests",
+    "hooks",
+    "components",
+    "pages",
+    "layouts",
+    "contexts"
   ]
 }
