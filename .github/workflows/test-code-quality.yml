@@ -1,5 +1,6 @@
 name: Test code quality
 on: push
+# TODO: Add here token to fetch from private repos
 jobs:
   optional-checks:
     runs-on: ubuntu-latest
